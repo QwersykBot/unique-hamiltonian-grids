@@ -1,0 +1,821 @@
+{
+  "status": "PASS",
+  "source_hashes": {
+    "check_upper_construction.py": "25618c769ef574a1058927518566c112760cafb5485ee3bca0bee99335b6f407",
+    "independent_cycle_counter.py": "9f6949815a4fa56b05fdc2463578186a9e713dd36b2274a8956329d4646527de",
+    "two_k_construction.md": "52f61a99433bca3f94409d3df493982a22731393dd1e5394d04b46bfbe2f5c07"
+  },
+  "method": "Independent undirected graph-edge search with degree propagation and proper-subtour rejection; no transfer or SCC imports",
+  "counter_semantics": "0 and 1 are exact; 2 means at least two distinct undirected Hamiltonian cycles",
+  "ladder_completions": [
+    [
+      [
+        "A",
+        "L"
+      ],
+      [
+        "B",
+        "D"
+      ],
+      [
+        "C",
+        "R"
+      ],
+      [
+        "L",
+        "R"
+      ]
+    ],
+    [
+      [
+        "A",
+        "C"
+      ],
+      [
+        "B",
+        "L"
+      ],
+      [
+        "D",
+        "R"
+      ],
+      [
+        "L",
+        "R"
+      ]
+    ],
+    [
+      [
+        "A",
+        "L"
+      ],
+      [
+        "B",
+        "L"
+      ],
+      [
+        "C",
+        "R"
+      ],
+      [
+        "D",
+        "R"
+      ]
+    ]
+  ],
+  "controls": [
+    {
+      "name": "two_by_two_cycle",
+      "edge_count_capped_at_two": 1,
+      "path_oracle_capped_at_two": 1,
+      "calls": 1
+    },
+    {
+      "name": "two_by_five_ladder",
+      "edge_count_capped_at_two": 1,
+      "path_oracle_capped_at_two": 1,
+      "calls": 5
+    },
+    {
+      "name": "three_by_three_odd",
+      "edge_count_capped_at_two": 0,
+      "path_oracle_capped_at_two": 0,
+      "calls": 0
+    },
+    {
+      "name": "three_by_four_multiple",
+      "edge_count_capped_at_two": 2,
+      "path_oracle_capped_at_two": 2,
+      "calls": 5
+    },
+    {
+      "name": "four_by_three_perimeter",
+      "edge_count_capped_at_two": 1,
+      "path_oracle_capped_at_two": 1,
+      "calls": 1
+    }
+  ],
+  "cases": [
+    {
+      "m": 4,
+      "n": 3,
+      "k": 1,
+      "deleted": 2,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 1
+    },
+    {
+      "m": 4,
+      "n": 4,
+      "k": 1,
+      "deleted": 2,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 1
+    },
+    {
+      "m": 4,
+      "n": 5,
+      "k": 1,
+      "deleted": 2,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 1
+    },
+    {
+      "m": 4,
+      "n": 6,
+      "k": 1,
+      "deleted": 2,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 1
+    },
+    {
+      "m": 4,
+      "n": 7,
+      "k": 1,
+      "deleted": 2,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 1
+    },
+    {
+      "m": 4,
+      "n": 8,
+      "k": 1,
+      "deleted": 2,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          6
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 1
+    },
+    {
+      "m": 8,
+      "n": 3,
+      "k": 2,
+      "deleted": 4,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 5
+    },
+    {
+      "m": 8,
+      "n": 4,
+      "k": 2,
+      "deleted": 4,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          2
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 5
+    },
+    {
+      "m": 8,
+      "n": 5,
+      "k": 2,
+      "deleted": 4,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          6,
+          3
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 5
+    },
+    {
+      "m": 8,
+      "n": 6,
+      "k": 2,
+      "deleted": 4,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          4
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 5
+    },
+    {
+      "m": 8,
+      "n": 7,
+      "k": 2,
+      "deleted": 4,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          6,
+          5
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 5
+    },
+    {
+      "m": 8,
+      "n": 8,
+      "k": 2,
+      "deleted": 4,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 5
+    },
+    {
+      "m": 12,
+      "n": 3,
+      "k": 3,
+      "deleted": 6,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          10,
+          1
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 9
+    },
+    {
+      "m": 12,
+      "n": 4,
+      "k": 3,
+      "deleted": 6,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          2
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 9
+    },
+    {
+      "m": 12,
+      "n": 5,
+      "k": 3,
+      "deleted": 6,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          10,
+          3
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 9
+    },
+    {
+      "m": 12,
+      "n": 6,
+      "k": 3,
+      "deleted": 6,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          4
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 9
+    },
+    {
+      "m": 12,
+      "n": 7,
+      "k": 3,
+      "deleted": 6,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          10,
+          5
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 9
+    },
+    {
+      "m": 12,
+      "n": 8,
+      "k": 3,
+      "deleted": 6,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          6
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 9
+    },
+    {
+      "m": 16,
+      "n": 3,
+      "k": 4,
+      "deleted": 8,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          14,
+          1
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 13
+    },
+    {
+      "m": 16,
+      "n": 4,
+      "k": 4,
+      "deleted": 8,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          2
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 13
+    },
+    {
+      "m": 16,
+      "n": 5,
+      "k": 4,
+      "deleted": 8,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          10,
+          3
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          14,
+          3
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 13
+    },
+    {
+      "m": 16,
+      "n": 6,
+      "k": 4,
+      "deleted": 8,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          4
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 13
+    },
+    {
+      "m": 16,
+      "n": 7,
+      "k": 4,
+      "deleted": 8,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          14,
+          5
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 13
+    },
+    {
+      "m": 16,
+      "n": 8,
+      "k": 4,
+      "deleted": 8,
+      "deleted_vertices_zero_based": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          6
+        ]
+      ],
+      "cycles_capped_at_two": 1,
+      "calls": 13
+    }
+  ],
+  "scope": "Finite checks supplement the general forced-edge and premature-cycle proof. The 2k bound was already stated in the motivating questions; no novelty is claimed."
+}

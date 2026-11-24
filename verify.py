@@ -11,14 +11,24 @@ from pathlib import Path
 import subprocess
 import sys
 
+if sys.version_info < (3, 10):
+    raise SystemExit("Python 3.10 or later is required for the supplied checks.")
+
 
 ROOT = Path(__file__).resolve().parent
 PROOF = "grid_width_classification.md"
 PROOF_SHA256 = "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1"
+REVIEWED_SOURCES = {
+    PROOF: PROOF_SHA256,
+    "four_n_cutoff.md": "a5608581586c614c9e219666a5caac5fcc5b7c5a15f8ef29ddac4b68bf06944b",
+    "eventual_exact_optimum.md": "13445aefa748d7ec3c593833db3854ed73aaa863b1e1fff96127df4cc87afc6b",
+    "two_k_construction.md": "52f61a99433bca3f94409d3df493982a22731393dd1e5394d04b46bfbe2f5c07",
+}
 OPTIMIZED_MESSAGE = "Verification requires assertions."
 CHECKS = (
     ("checks/check_geometry.py", "results/geometry.json"),
     ("checks/check_graph_lemma.py", "results/graph_lemma.json"),
+    ("checks/check_upper_construction.py", "results/upper_construction.json"),
 )
 
 
@@ -34,7 +44,8 @@ def read_json(relative):
 def verify_manifest():
     manifest = read_json("manifest.json")
     require(manifest["proof_sha256"] == PROOF_SHA256, "Unexpected proof identity in manifest")
-    require(PROOF in manifest["files"], "Proof missing from manifest")
+    require(manifest["reviewed_sources_sha256"] == REVIEWED_SOURCES,
+            "Unexpected reviewed-source identities in manifest")
     for relative, expected in manifest["files"].items():
         path = (ROOT / relative).resolve()
         path.relative_to(ROOT)
@@ -42,8 +53,10 @@ def verify_manifest():
         require(len(data) == expected["bytes"], relative + ": size mismatch")
         require(hashlib.sha256(data).hexdigest() == expected["sha256"],
                 relative + ": SHA256 mismatch")
-    actual_proof = hashlib.sha256((ROOT / PROOF).read_bytes()).hexdigest()
-    require(actual_proof == PROOF_SHA256, "Reviewed proof has changed")
+    for relative, expected in REVIEWED_SOURCES.items():
+        require(relative in manifest["files"], relative + ": missing from manifest")
+        require(hashlib.sha256((ROOT / relative).read_bytes()).hexdigest() == expected,
+                relative + ": reviewed mathematical source has changed")
     return len(manifest["files"])
 
 
@@ -62,7 +75,8 @@ def verify_check(script, pinned):
 
 def verify_optimized_rejection():
     rejected = []
-    for script in ("verify.py", *(script for script, _ in CHECKS)):
+    for script in ("verify.py", *(script for script, _ in CHECKS),
+                   "checks/independent_cycle_counter.py"):
         completed = subprocess.run(
             [sys.executable, "-O", str(ROOT / script)],
             cwd=ROOT, capture_output=True, text=True,
@@ -80,6 +94,7 @@ def main():
     print(json.dumps({
         "status": "PASS",
         "proof_sha256": PROOF_SHA256,
+        "reviewed_sources_sha256": REVIEWED_SOURCES,
         "manifest_files_checked": count,
         "finite_checks_match_pinned_results": results,
         "optimized_mode_rejected": optimized,

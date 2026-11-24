@@ -1,20 +1,30 @@
 {
   "schema_version": 1,
-  "candidate_version": "2026-11-24-1",
+  "candidate_version": "2026-11-24-3",
   "proof_sha256": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1",
+  "reviewed_sources_sha256": {
+    "grid_width_classification.md": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1",
+    "four_n_cutoff.md": "a5608581586c614c9e219666a5caac5fcc5b7c5a15f8ef29ddac4b68bf06944b",
+    "eventual_exact_optimum.md": "13445aefa748d7ec3c593833db3854ed73aaa863b1e1fff96127df4cc87afc6b",
+    "two_k_construction.md": "52f61a99433bca3f94409d3df493982a22731393dd1e5394d04b46bfbe2f5c07"
+  },
   "scope": "All candidate files except this manifest. Hashes identify a snapshot, not independent proof of correctness.",
   "files": {
     ".gitattributes": {
       "bytes": 14,
       "sha256": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9"
     },
+    ".github/workflows/verify.yml": {
+      "bytes": 462,
+      "sha256": "3315da95887b77e7eb0f6596277c28dde9ddcf57f944f3d974316eae08b12c71"
+    },
     "LICENSE.txt": {
       "bytes": 528,
       "sha256": "8e0a46dfa98b6f00b64266d2fcc11ea50dfdd6aa2e6afd44a6d239c417b85aa8"
     },
     "README.md": {
-      "bytes": 5153,
-      "sha256": "5e31d6043d8db5dbfab8640d8104001d2c23fb34c7804d6d14006281bdcb91eb"
+      "bytes": 7649,
+      "sha256": "96bf873a9df64444ba58d543680e139de49d85ff48ae1aa07e73135baf1fb1a5"
     },
     "checks/check_geometry.py": {
       "bytes": 5637,
@@ -24,17 +34,33 @@
       "bytes": 3427,
       "sha256": "cedf05ccfcb9c1ab05be7d0ef1ed45afb5538ba0c5386826a3cf3ed82679a55a"
     },
+    "checks/check_upper_construction.py": {
+      "bytes": 4427,
+      "sha256": "25618c769ef574a1058927518566c112760cafb5485ee3bca0bee99335b6f407"
+    },
+    "checks/independent_cycle_counter.py": {
+      "bytes": 4828,
+      "sha256": "9f6949815a4fa56b05fdc2463578186a9e713dd36b2274a8956329d4646527de"
+    },
+    "eventual_exact_optimum.md": {
+      "bytes": 6754,
+      "sha256": "13445aefa748d7ec3c593833db3854ed73aaa863b1e1fff96127df4cc87afc6b"
+    },
     "figures/grid_scc_gadgets.svg": {
       "bytes": 49329,
       "sha256": "6b9142b091709eeedf828e864e06f77e7fa819d6c3a7402a6d8de960c150403a"
+    },
+    "four_n_cutoff.md": {
+      "bytes": 11274,
+      "sha256": "a5608581586c614c9e219666a5caac5fcc5b7c5a15f8ef29ddac4b68bf06944b"
     },
     "grid_width_classification.md": {
       "bytes": 17117,
       "sha256": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1"
     },
     "provenance.json": {
-      "bytes": 5044,
-      "sha256": "57bae84847ea48fad18716ee4b51aff72e1f32bab76bae93c8cafd25f238bac5"
+      "bytes": 11318,
+      "sha256": "2bece0c7aa4363dc419c81f866ea00e65d846df19f6cca3dd3393f673e720b40"
     },
     "results/geometry.json": {
       "bytes": 1712,
@@ -44,13 +70,17 @@
       "bytes": 1083,
       "sha256": "db9027e9c858b83812925360c404d681dad2675c02c105740d194976cab0689c"
     },
-    "verify.py": {
-      "bytes": 3192,
-      "sha256": "35262fccfe3478c3cdde98e3e6a2381daa5de2ce0faac7ba02023784c0d43c2b"
+    "results/upper_construction.json": {
+      "bytes": 11771,
+      "sha256": "91f515d5baffc154390809a886cb8545275a5c2a7e157dfebd712762819e45a1"
     },
-    ".github/workflows/verify.yml": {
-      "bytes": 462,
-      "sha256": "3315da95887b77e7eb0f6596277c28dde9ddcf57f944f3d974316eae08b12c71"
+    "two_k_construction.md": {
+      "bytes": 9104,
+      "sha256": "52f61a99433bca3f94409d3df493982a22731393dd1e5394d04b46bfbe2f5c07"
+    },
+    "verify.py": {
+      "bytes": 4052,
+      "sha256": "24ddc796420077a518c4416040e4ed1a8fe108b18253ac834bcfc20b9bf4ba80"
     }
   }
 }
