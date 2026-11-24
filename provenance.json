@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "candidate_version": "2026-11-24-3",
+  "candidate_version": "2026-11-24-4",
   "authorship_and_review": "AI-origin proof and independent AI-agent reviews; no human peer review, proof-assistant verification, external acceptance, or literature-wide priority claim.",
   "original_archives": [
     {
@@ -110,19 +110,35 @@
         "Add explicit optimized-interpreter rejection before imports.",
         "Preserve all graph construction, edge search, propagation, proper-cycle rejection, timeout behavior, and separate vertex-path enumeration code unchanged."
       ]
+    },
+    {
+      "file": "checks/check_reverse_geometry.py",
+      "source_member": "check_reverse_geometry_candidate.py",
+      "source_sha256": "9cd3ca3702889d8555fdfb3850a5f032f1f8ca96d18795ade18b2122ec5108db",
+      "changes": [
+        "Resolve the exact published polynomial note from the checks directory instead of the internal frozen draft.",
+        "Change one introductory docstring word from draft to note.",
+        "Preserve all geometry enumeration, noncrossing matching generation, glued-graph connectivity, rejection controls, and finite test ranges unchanged."
+      ],
+      "independence": "Uses exhaustive binary degree equations and whole-graph connected components; does not implement the proof witness-insertion rule or import any transfer, SCC, or existing checker code.",
+      "root_verification": "Read the complete checker; compared all oracle function ASTs against the supplied candidate; replayed both versions and matched all output except checker/document identity metadata.",
+      "limits": "Finite one-column existence through height 10 only; neither an all-height or sequence proof nor a proof of the polynomial cutoff."
     }
   ],
   "pinned_results": {
     "geometry": "Original finite geometry result with nondeterministic CPU timing removed.",
     "graph_lemma": "Original finite graph result with CPU timing removed and the checker hash updated to the adapted script. Verification reruns the adapted scripts and compares their complete output with these records.",
-    "upper_construction": "The original standard-library checker was replayed in isolation and matched its recorded result after recursively removing CPU timing. This normalized record retains all 24 cases, all five controls, all three ladder completions, and deterministic search counts; source hashes identify the adapted files and unchanged proof. The integrated verifier independently replays the adapted checker and compares its complete JSON output."
+    "upper_construction": "The original standard-library checker was replayed in isolation and matched its recorded result after recursively removing CPU timing. This normalized record retains all 24 cases, all five controls, all three ladder completions, and deterministic search counts; source hashes identify the adapted files and unchanged proof. The integrated verifier independently replays the adapted checker and compares its complete JSON output.",
+    "reverse_geometry": "The complete deterministic independent oracle result: 9,046 cap-free geometries at heights 3 through 10, 23,888 input matching obligations, 60,936 output matching trials, and both explicit rejection controls. Source identities are updated to the packaged checker and exact reviewed publication note. The integrated verifier replays the complete check."
   },
   "new_packaging": [
-    "README.md: current 4N bounds, eventual equality, reading order, explicit prior-construction attribution, and reproduction scope.",
-    "verify.py: preserve original proof pin; add exact pins for the three further reviewed notes, the upper-construction replay, guarded-counter optimized-mode test, and Python 3.10 minimum.",
-    "manifest.json: exact byte counts and hashes for every included file other than the manifest.",
-    "provenance.json: source archive pins, unchanged mathematical sources, adaptation record, and attribution refinement.",
-    "The previously published .gitattributes and pinned read-only GitHub Actions workflow are unchanged."
+    "README.md: current quadratic cutoff and deletion consequences, smaller earlier bounds, reading order, related polynomial reconfiguration attribution, and finite-check scope.",
+    "polynomial_cutoff.md: exact publication revision covered by the supplied non-author AI review receipt.",
+    "reviews/polynomial_cutoff.md: one focused current review receipt binding the cubic proof, quadratic refinement, integrated text, and final publication source.",
+    "checks/check_reverse_geometry.py and results/reverse_geometry.json: one independent finite reverse-lifting oracle with two negative controls.",
+    "verify.py: add the exact polynomial source pin and reverse-geometry replay; existing source pins and checkers remain unchanged.",
+    "manifest.json and provenance.json: exact current snapshot and source/review provenance.",
+    "The four earlier mathematical notes, existing checkers/results, diagram, license, .gitattributes, and GitHub Actions workflow remain unchanged."
   ],
   "missing_transfer_source": "The initial two archives omitted the grid_transfer.py discussed in their review companion. A later cutoff archive includes a transfer implementation for separate numerical work. It is outside this focused update and is neither included nor executed; this repository does not claim to replay that implementation-level review.",
   "excluded_material": "No width-twelve matrix theorem, matrix computation, numerical cutoff record, historical ZIP copy, deployment receipt, session data, accumulated review log, optional Matplotlib renderer, duplicate PNG, third-party paper, or forum answer text is included. The 24 upper-construction examples include width twelve but require only the standard-library graph counter.",
@@ -158,17 +174,45 @@
     {
       "url": "https://arxiv.org/html/math/0211285v2",
       "scope": "de Gier, Loops, matchings and alternating-sign matrices, Section 2.1, Equation (1): established adjacent reconnection of noncrossing matchings."
+    },
+    {
+      "url": "https://arxiv.org/pdf/2601.06731",
+      "scope": "Kazazi, Reconfiguration of Hamiltonian Cycles in Rectangular Grid Graphs (2026), Introduction main theorem: at most mn^2 valid double-switch moves between complete cycles when n>=m. Related polynomial reconfiguration of complete cycles, not a theorem about column-appending frontier-pairing connectors or entrywise transfer multiplicities."
     }
   ],
   "license": "Original included material is offered under CC0 1.0. Referenced third-party works retain their original terms.",
-  "based_on_published_manifest_sha256": "857fb0467ac31785bd7802b182925edcc64984a3978aacae22e17a911aa06dfe",
+  "based_on_published_manifest_sha256": "a4d5e3155c6dc2ece646afaa30f656196b2dceaa71211d94e5ec679b21050e87",
   "source_path_map": {
     "two_k_exploration/two_k_construction.md": "two_k_construction.md"
   },
-  "source_path_map_scope": "The cutoff note retains its frozen archive path; the unchanged upper-construction source is placed at repository root so the signed-cut note's relative link also resolves. No mathematical source text was edited.",
+  "source_path_map_scope": "The earlier 4N cutoff note retains its frozen archive path; the unchanged upper-construction source is placed at repository root so the signed-cut note also resolves. The four earlier mathematical source texts remain unchanged.",
   "attribution_refinement": {
     "upper_construction": "Misha Lavrov's 25 October 2025 square-grid answer gives the 2k cap/forced-zigzag construction. Transpose and row reflection match the square specialization here. His 17 November 2025 rectangular-grid comment gives the even-length extension and proposes reflection for odd lengths. The included note is a self-contained checked reconstruction of that prior work; no construction or parity-extension priority is claimed.",
-    "frozen_source_scope": "The four mathematical source snapshots retain their original bytes. The README and this provenance record supply the more precise earlier attribution discovered during publication review.",
+    "frozen_source_scope": "The four earlier mathematical source snapshots retain their original bytes. The README and this provenance record supply the more precise attribution found during publication review. The new polynomial note includes that attribution directly.",
     "transfer_background": "Jacobsen (2007), Section 2, describes frontier connectivity information and premature-cycle rejection. These are established methods, not claimed innovations of this project. The 2-factor outlet-word classification of Đokić, Doroslovački, and Bodroža-Pantić is related prior work with different state semantics. Adjacent matching reconnection is standard, as in de Gier, Section 2.1, Equation (1)."
+  },
+  "polynomial_cutoff": {
+    "file": "polynomial_cutoff.md",
+    "sha256": "46ab4d73958ff6b46aa49c2362e7ee446903388e5c13c79b5f776378bb266453",
+    "bytes": 35468,
+    "original_reviewed_draft_sha256": "78c315816a6feb9c2df2dabc85cedf7414dccb298c2d8bd77f504a9e18de349b",
+    "publication_revision_changes": [
+      "Replace internal draft status and archive-local paths with scoped research status and repository-relative links.",
+      "Make sequential cap validation against current components explicit; all proof constructions already satisfy it.",
+      "State the existing zero-word charge correspondence Z=-q and clarify hole-parity orientation.",
+      "Append strip-replacement, signed-cut and parity consequences; retain the smaller of the polynomial and 4N cutoffs.",
+      "Add precise prior-method and prior-upper-construction attribution; do not claim global novelty or external acceptance.",
+      "Retain the individual-generator cubic proof and add sequential monotone-run routing to obtain a quadratic bound in the same source file.",
+      "Use the minimum of both polynomial estimates consistently in the connector, padding, and deletion arguments; retain the optional smaller state-count bound.",
+      "Restrict the one-cap assertion to the new matching-routing stage; inherited reverse-normalization columns retain sequential current-component checks.",
+      "Update only header/footer status after complete comparison review of the integrated text."
+    ],
+    "review_receipt": "reviews/polynomial_cutoff.md",
+    "review_receipt_sha256": "aff8e12e559613ab912c1e4dbb876553f5ac762e932ff7d3ef52e290746ded1e",
+    "review_scope": "A non-author AI reviewer read the complete cubic proof and its local-return dependency, the separate sequential-routing refinement, and the integrated publication text. The reviewer checked all changed corollaries, source dependencies, attribution, and final status-only edits. Root independently read the proofs, each integration diff, and the finite checker. This is not human peer review, formal verification, or a priority assessment.",
+    "mathematical_scope": "A quadratic-in-width cutoff for the full pairing transfer, retaining the earlier cubic bound where smaller; alternating endpoint states are removed only when 4 divides the width. A cubic sufficient threshold in k for the eventual deletion optimum at width 4k. No sharp exponent, square-grid optimum, or matrix-sweep extrapolation is claimed.",
+    "reviewed_cubic_publication_sha256": "fafd3b56c9fcaf680eae89935889d7414afb04a0280720bae3e0786691d0c0d9",
+    "reviewed_quadratic_refinement_sha256": "b4decfc6a9b699cfde088cd30fba61ceec4535169f613afbafa6aa165bf38827",
+    "reviewed_integrated_candidate_sha256": "5bc027d51cbc104d332db1d75dbcded0ec889e7fcdbab7c7da1ae6a3b42d8c53"
   }
 }

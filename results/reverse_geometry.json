@@ -1,0 +1,161 @@
+{
+  "checker_sha256": "44309e7129a98583834e4680df9f0446d9368ce98d56900695ee76c4f710b9a5",
+  "heights": [
+    {
+      "by_cup_count": {
+        "0": 4
+      },
+      "geometries": 4,
+      "height": 3,
+      "input_matching_obligations": 4,
+      "output_matchings_tested": 4,
+      "proper_cycle_rejections": 0,
+      "valid_lifts": 4
+    },
+    {
+      "by_cup_count": {
+        "0": 9,
+        "1": 3
+      },
+      "geometries": 12,
+      "height": 4,
+      "input_matching_obligations": 13,
+      "output_matchings_tested": 16,
+      "proper_cycle_rejections": 3,
+      "valid_lifts": 13
+    },
+    {
+      "by_cup_count": {
+        "0": 20,
+        "1": 15
+      },
+      "geometries": 35,
+      "height": 5,
+      "input_matching_obligations": 43,
+      "output_matchings_tested": 58,
+      "proper_cycle_rejections": 15,
+      "valid_lifts": 43
+    },
+    {
+      "by_cup_count": {
+        "0": 49,
+        "1": 44,
+        "2": 6
+      },
+      "geometries": 99,
+      "height": 6,
+      "input_matching_obligations": 140,
+      "output_matchings_tested": 218,
+      "proper_cycle_rejections": 71,
+      "valid_lifts": 147
+    },
+    {
+      "by_cup_count": {
+        "0": 120,
+        "1": 120,
+        "2": 36
+      },
+      "geometries": 276,
+      "height": 7,
+      "input_matching_obligations": 457,
+      "output_matchings_tested": 811,
+      "proper_cycle_rejections": 297,
+      "valid_lifts": 514
+    },
+    {
+      "by_cup_count": {
+        "0": 289,
+        "1": 335,
+        "2": 129,
+        "3": 10
+      },
+      "geometries": 763,
+      "height": 8,
+      "input_matching_obligations": 1504,
+      "output_matchings_tested": 3071,
+      "proper_cycle_rejections": 1241,
+      "valid_lifts": 1830
+    },
+    {
+      "by_cup_count": {
+        "0": 696,
+        "1": 919,
+        "2": 414,
+        "3": 70
+      },
+      "geometries": 2099,
+      "height": 9,
+      "input_matching_obligations": 4994,
+      "output_matchings_tested": 11697,
+      "proper_cycle_rejections": 5086,
+      "valid_lifts": 6611
+    },
+    {
+      "by_cup_count": {
+        "0": 1681,
+        "1": 2464,
+        "2": 1303,
+        "3": 295,
+        "4": 15
+      },
+      "geometries": 5758,
+      "height": 10,
+      "input_matching_obligations": 16733,
+      "output_matchings_tested": 45061,
+      "proper_cycle_rejections": 20885,
+      "valid_lifts": 24176
+    }
+  ],
+  "limits": [
+    "Finite one-column existence check only; no all-height or sequence proof",
+    "No witness insertion, transfer matrices, SCCs, or imported proof/checker code",
+    "All closure is excluded from lifting, even a sole completed cycle",
+    "No polynomial-cutoff or novelty conclusion is inferred"
+  ],
+  "method": "Exhaustive local degree equations; Catalan enumeration checked independently for crossings; full glued-graph connected components",
+  "negative_controls": {
+    "empty_input_two_cup_birth_height_4": {
+      "ordinary_lifts": 0,
+      "reversed_outcomes": [
+        "completed_cycle",
+        "proper_cycle"
+      ]
+    },
+    "joint_caps_height_6": {
+      "cap_order_reversal_checked": true,
+      "caps": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "matching": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "outcome": "proper_cycle",
+      "straight_rows": [
+        5,
+        6
+      ]
+    }
+  },
+  "reviewed_document": "polynomial_cutoff.md",
+  "reviewed_document_sha256": "46ab4d73958ff6b46aa49c2362e7ee446903388e5c13c79b5f776378bb266453",
+  "scope": "Every cap-free full column with nonempty even input/output ports at heights 3..10; every noncrossing output matching; surjectivity onto every noncrossing input matching",
+  "status": "PASS"
+}

@@ -1,12 +1,13 @@
 {
   "schema_version": 1,
-  "candidate_version": "2026-11-24-3",
+  "candidate_version": "2026-11-24-4",
   "proof_sha256": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1",
   "reviewed_sources_sha256": {
     "grid_width_classification.md": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1",
     "four_n_cutoff.md": "a5608581586c614c9e219666a5caac5fcc5b7c5a15f8ef29ddac4b68bf06944b",
     "eventual_exact_optimum.md": "13445aefa748d7ec3c593833db3854ed73aaa863b1e1fff96127df4cc87afc6b",
-    "two_k_construction.md": "52f61a99433bca3f94409d3df493982a22731393dd1e5394d04b46bfbe2f5c07"
+    "two_k_construction.md": "52f61a99433bca3f94409d3df493982a22731393dd1e5394d04b46bfbe2f5c07",
+    "polynomial_cutoff.md": "46ab4d73958ff6b46aa49c2362e7ee446903388e5c13c79b5f776378bb266453"
   },
   "scope": "All candidate files except this manifest. Hashes identify a snapshot, not independent proof of correctness.",
   "files": {
@@ -23,8 +24,8 @@
       "sha256": "8e0a46dfa98b6f00b64266d2fcc11ea50dfdd6aa2e6afd44a6d239c417b85aa8"
     },
     "README.md": {
-      "bytes": 7649,
-      "sha256": "96bf873a9df64444ba58d543680e139de49d85ff48ae1aa07e73135baf1fb1a5"
+      "bytes": 9852,
+      "sha256": "d718048a75e1111cf04dd2fedcd0d0c28784d42e158a29ebacf57db4e1c9c677"
     },
     "checks/check_geometry.py": {
       "bytes": 5637,
@@ -33,6 +34,10 @@
     "checks/check_graph_lemma.py": {
       "bytes": 3427,
       "sha256": "cedf05ccfcb9c1ab05be7d0ef1ed45afb5538ba0c5386826a3cf3ed82679a55a"
+    },
+    "checks/check_reverse_geometry.py": {
+      "bytes": 8143,
+      "sha256": "44309e7129a98583834e4680df9f0446d9368ce98d56900695ee76c4f710b9a5"
     },
     "checks/check_upper_construction.py": {
       "bytes": 4427,
@@ -58,9 +63,13 @@
       "bytes": 17117,
       "sha256": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1"
     },
+    "polynomial_cutoff.md": {
+      "bytes": 35468,
+      "sha256": "46ab4d73958ff6b46aa49c2362e7ee446903388e5c13c79b5f776378bb266453"
+    },
     "provenance.json": {
-      "bytes": 11318,
-      "sha256": "2bece0c7aa4363dc419c81f866ea00e65d846df19f6cca3dd3393f673e720b40"
+      "bytes": 16475,
+      "sha256": "79544273ef76c00890637a62dff1949800e2733d796857e8d53586c69077c8f6"
     },
     "results/geometry.json": {
       "bytes": 1712,
@@ -70,17 +79,25 @@
       "bytes": 1083,
       "sha256": "db9027e9c858b83812925360c404d681dad2675c02c105740d194976cab0689c"
     },
+    "results/reverse_geometry.json": {
+      "bytes": 3825,
+      "sha256": "60c927c09b3062e1760d72a10c94bd4184998aba356f703dedff0fea64008ea2"
+    },
     "results/upper_construction.json": {
       "bytes": 11771,
       "sha256": "91f515d5baffc154390809a886cb8545275a5c2a7e157dfebd712762819e45a1"
+    },
+    "reviews/polynomial_cutoff.md": {
+      "bytes": 7425,
+      "sha256": "aff8e12e559613ab912c1e4dbb876553f5ac762e932ff7d3ef52e290746ded1e"
     },
     "two_k_construction.md": {
       "bytes": 9104,
       "sha256": "52f61a99433bca3f94409d3df493982a22731393dd1e5394d04b46bfbe2f5c07"
     },
     "verify.py": {
-      "bytes": 4052,
-      "sha256": "24ddc796420077a518c4416040e4ed1a8fe108b18253ac834bcfc20b9bf4ba80"
+      "bytes": 4223,
+      "sha256": "c76b1fc10b7aa964b4356eb8a26dd0b1c2e4d39b7a871275505b9b48f60d5c4d"
     }
   }
 }
