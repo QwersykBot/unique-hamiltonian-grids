@@ -7,7 +7,7 @@
     "four_n_cutoff.md": "a5608581586c614c9e219666a5caac5fcc5b7c5a15f8ef29ddac4b68bf06944b",
     "eventual_exact_optimum.md": "13445aefa748d7ec3c593833db3854ed73aaa863b1e1fff96127df4cc87afc6b",
     "two_k_construction.md": "52f61a99433bca3f94409d3df493982a22731393dd1e5394d04b46bfbe2f5c07",
-    "polynomial_cutoff.md": "fafd3b56c9fcaf680eae89935889d7414afb04a0280720bae3e0786691d0c0d9"
+    "polynomial_cutoff.md": "46ab4d73958ff6b46aa49c2362e7ee446903388e5c13c79b5f776378bb266453"
   },
   "scope": "All candidate files except this manifest. Hashes identify a snapshot, not independent proof of correctness.",
   "files": {
@@ -24,8 +24,8 @@
       "sha256": "8e0a46dfa98b6f00b64266d2fcc11ea50dfdd6aa2e6afd44a6d239c417b85aa8"
     },
     "README.md": {
-      "bytes": 9733,
-      "sha256": "4a1021ce0cd5246a066a4922972a54730a93aee5dddb7898a7d4f3ad2f8ecc21"
+      "bytes": 9852,
+      "sha256": "d718048a75e1111cf04dd2fedcd0d0c28784d42e158a29ebacf57db4e1c9c677"
     },
     "checks/check_geometry.py": {
       "bytes": 5637,
@@ -64,12 +64,12 @@
       "sha256": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1"
     },
     "polynomial_cutoff.md": {
-      "bytes": 26820,
-      "sha256": "fafd3b56c9fcaf680eae89935889d7414afb04a0280720bae3e0786691d0c0d9"
+      "bytes": 35468,
+      "sha256": "46ab4d73958ff6b46aa49c2362e7ee446903388e5c13c79b5f776378bb266453"
     },
     "provenance.json": {
-      "bytes": 15399,
-      "sha256": "a7d050ed9e9ca3d075036e275d41b9ac4333c01f40ed3a0503ddb522637092b7"
+      "bytes": 16475,
+      "sha256": "79544273ef76c00890637a62dff1949800e2733d796857e8d53586c69077c8f6"
     },
     "results/geometry.json": {
       "bytes": 1712,
@@ -81,15 +81,15 @@
     },
     "results/reverse_geometry.json": {
       "bytes": 3825,
-      "sha256": "c598c3341d5813877097aa73bbeaa4510df7611d546da57686b7b6e30dcfc18a"
+      "sha256": "60c927c09b3062e1760d72a10c94bd4184998aba356f703dedff0fea64008ea2"
     },
     "results/upper_construction.json": {
       "bytes": 11771,
       "sha256": "91f515d5baffc154390809a886cb8545275a5c2a7e157dfebd712762819e45a1"
     },
     "reviews/polynomial_cutoff.md": {
-      "bytes": 7842,
-      "sha256": "c487a0682747a6d5857b640474b07dd7c132994b13c8195e6c47351ef5bdd27d"
+      "bytes": 7425,
+      "sha256": "aff8e12e559613ab912c1e4dbb876553f5ac762e932ff7d3ef52e290746ded1e"
     },
     "two_k_construction.md": {
       "bytes": 9104,
@@ -97,7 +97,7 @@
     },
     "verify.py": {
       "bytes": 4223,
-      "sha256": "1f6486db654385ba9a6bd8791847d252b0d77360f19d42f7848fd3e03216d7be"
+      "sha256": "c76b1fc10b7aa964b4356eb8a26dd0b1c2e4d39b7a871275505b9b48f60d5c4d"
     }
   }
 }

@@ -1,130 +1,144 @@
-# Non-author AI review receipt: polynomial grid cutoff
+# Final non-author AI review receipt: polynomial grid cutoff
 
-**Date:** 24 November 2026.  
-**Reviewer:** a non-author AI mathematical reviewer in the same collaborating
-collective.  
-**Verdict:** no mathematical or dependency-reference blocker found in the
-corrected publication candidate identified below. This receipt explicitly
-covers that candidate, including its added deletion corollaries, combined
-cutoff, and attribution section.
+**Date:** 24 November 2026.
 
-## Texts bound by this receipt
+**Verdict:** no mathematical or dependency-reference blocker found. This
+receipt covers the complete integrated proof, both polynomial cutoff
+bounds, their minimum with the 4N bound, and all stated deletion corollaries.
 
-The complete original logical review concerned
-`polynomial_grid_cutoff_draft.md`, SHA256:
+## Publication identity
+
+The proof covered by this receipt is to be published as
+`polynomial_cutoff.md`, with exactly the following reviewed bytes:
 
 ```text
+Size:   35468 bytes
+SHA256: 46ab4d73958ff6b46aa49c2362e7ee446903388e5c13c79b5f776378bb266453
+```
+
+These are the bytes of the final source `polynomial_cutoff_final.md`.
+The reviewer verified that its only differences from the reviewed
+integrated candidate are the header and footer's accurate review-status
+statements. No mathematical argument, formula, reference, or corollary
+changed in that last step. The receipt covers a published
+`polynomial_cutoff.md` only if it has this exact hash; it does not itself
+certify that publication has occurred.
+
+## Review history and method
+
+The same non-author reviewer completed the original proof review, reviewed
+the sequential-routing refinement independently, compared the integrated
+text against both reviewed inputs, and finally checked the status-only
+revision. The source identities are:
+
+```text
+Initial complete cubic draft:
 78c315816a6feb9c2df2dabc85cedf7414dccb298c2d8bd77f504a9e18de349b
-```
 
-The reviewer subsequently compared the exact publication candidate against
-that frozen source, checked every change and addition, and verified
-`polynomial_cutoff_publication_candidate.md`, SHA256:
-
-```text
+Reviewed cubic publication candidate, including corollaries:
 fafd3b56c9fcaf680eae89935889d7414afb04a0280720bae3e0786691d0c0d9
+
+Complete sequential-routing refinement:
+b4decfc6a9b699cfde088cd30fba61ceec4535169f613afbafa6aa165bf38827
+
+Integrated comparison candidate:
+5bc027d51cbc104d332db1d75dbcded0ec889e7fcdbab7c7da1ae6a3b42d8c53
 ```
 
-The second hash is the final candidate covered here. Its two upper-bound
-links point to the repository-root `two_k_construction.md`. All four local
-dependency targets were checked in the intended repository layout. If the
-candidate is published with these exact bytes, this receipt covers that
-published text; subsequent substantive changes require another comparison.
+The integrated Sections 1--4 are byte-identical to the reviewed cubic
+publication candidate. Its former Section 5 is retained as Section 5.1.
+The new run-routing argument, connector minimum, padding, formulas,
+cross-references, and corollaries were checked as one complete chain.
+The refinement review did not rely on the author's child-agent audit.
 
-## The theorem and complete proof scope
+This is logical proof review. No finite-width matrix sweep was performed.
+Any accompanying code oracle or finite checks are supplemental and were
+not the validation of the all-width theorem recorded here.
 
-For `m >= 3`, let `p=floor(m/2)`. Use the full-column transfer graph on
-noncrossing pairings of nonempty even endpoint sets, with empty-prefix and
-completed-cycle states. Enforce degree two and reject closed components
-unless the sole component is the completed cycle. A completed cycle has no
-full-column successor. When `4 | m`, remove all states whose endpoint set
-is every odd row or every even row. The reviewed theorem is
+## Cutoff and proof coverage
+
+For `m>=3`, put `p=floor(m/2)`. The matrix is the stated full-column
+transfer on noncrossing pairings, with empty-prefix and completed-cycle
+states and rejection of premature closed components. Alternating endpoint
+states are removed exactly when `4 | m`. The reviewed conclusions are
 
 ```text
-A^ell has no entry equal to one for every integer ell >= L(m),
-L(m) = 2p^3 + 7p^2 + 3p + 11.
+L_c(m) = 2p^3+7p^2+3p+11,
+L_q(m) = 13p^2+11p+11,
+L(m)   = min{L_c(m),L_q(m)},
+A^ell has no entry equal to one for every integer ell >= L(m).
 ```
 
-The independent logical review covered the full chain: the charge and
-exceptional-state analysis; both width parities of cap-free normalization;
-the no-odd-port preparation; noncrossing reverse lifting of multiple cups;
-pairing-preserving routing of every adjacent reconnection; the odd extreme
-sector and its `p=1` boundary case; directed canonical-matching connectivity;
-parity-compatible connectors; multiplicity padding; and the empty-prefix
-and completed-cycle boundary cases. It also checked the arithmetic
+The review covered charge sectors and exceptional/isolated states;
+cap-free normalization at both width parities; the odd no-odd-port
+preparation; noncrossing reverse lifting, including simultaneous reversed
+cups; all canonical adjacent reconnections; and preservation of nonempty
+frontiers and valid current-component connections.
+
+For the quadratic refinement, the FF, FHF, and FHH moves place the selected
+F on exactly the next two endpoint ordinals. Recorded inverse swaps remain
+through-only and valid after generators change the matching. Identity
+skips retain the scheduled-position accounting. The conversion needs no
+generator indexed `K-1`, so the odd bottom singleton requires no routing
+across it. The recursive word has at most `p+1` nonempty runs and at most
+`p(p+1)/2` scheduled positions. Consequently its column cost is at most
+`J=9p(p+1)`. The direct-generator exceptional cases and `t=1` are covered.
+
+With `T=2p^2+p+2`, `B=4p+2`, and `E=p(p+1)/2`, the checked accounting is
 
 ```text
-T = 2p^2+p+2,  B = 4p+2,  E = p(p+1)/2,
-D = 2T+BE+1 = 2p^3+7p^2+3p+5,  L = D+6.
+D_c = 2T+BE+1 = 2p^3+7p^2+3p+5,
+D_q = 2T+J+1  = 13p^2+11p+5,
+D   = min{D_c,D_q},
+L   = D+6.
 ```
 
-The local-return dependency was included in the review: every retained
-ordinary state with a boundary endpoint or adjacent endpoints has a
-two-column return and two four-column returns, hence two returns of every
-even length at least four. All four geometric cases in Section 1 of the
-4N note were checked with their endpoint-pairing and premature-cycle
-safeguards. No finite-width matrix sweep establishes this verdict.
+Both connector constructions are available for every eligible endpoint
+pair and required parity, so selecting the smaller bound is valid. The
+local-return dependency gives two alternatives for every even padding
+length at least four. At most two additional edges handle the empty-prefix
+and completed-cycle states. Higher powers remain free of entries one by
+nonnegative matrix multiplication.
 
-### Clarification incorporated in the candidate
+The final text correctly requires caps to join distinct **current**
+components. Its one-cap-per-column assertion is restricted to the new
+matching-routing stage; reversed normalization may contain several caps,
+handled by the reverse-lifting lemma. Both earlier wording concerns are
+resolved in the text covered by this receipt.
 
-The publication candidate now correctly requires each cap to join distinct
-**current** components after earlier caps in that column have been applied.
-The reverse-lifting paragraph explicitly uses that interpretation too.
+## Corollaries and numerical qualifications
 
-Checking all caps only against the original matching would be insufficient:
-for `(1,4)(2,3)(5,6)`, caps `(1,2)` and `(3,4)` jointly close a proper cycle
-while rows 5 and 6 remain through. No proof construction relied on that
-incorrect interpretation. Normalization is cap-free, each reconnection
-uses one cap, and reverse lifting supplies a valid sequential order for
-all caps in a simultaneous column. The clarification therefore resolves a
-wording risk without changing the proof.
-
-The new identity `Z=s-C=-q` is algebraically correct, and specifying that
-H orientation refers to its hole removes a possible sign ambiguity.
-
-## Added corollaries checked
-
-For `m,n >= 3`, the added strip-replacement argument is valid, including
-blocks touching either grid boundary. With `M(m,n)` counting the minimum
-deletions needed for one undirected Hamiltonian cycle, it gives
+The strip-replacement argument preserves boundary states and the fixed
+prefix/suffix connections, including blocks touching grid boundaries.
+The signed-cut lemma excludes alternating states when fewer than `2k`
+vertices are deleted at width `4k`. Together these give
 
 ```text
-M(m,n) >= floor(n/L(m))                         when 4 does not divide m,
-M(4k,n) >= min(2k, floor(n/L(4k))),
-L(4k) = 16k^3+28k^2+6k+11.
+M(m,n) >= floor(n/L(m))                    when 4 does not divide m,
+M(4k,n) >= min{2k, floor(n/L(4k))},
+M(4k,n) = 2k when n >= (2k-1)L(4k).
 ```
 
-The signed-cut calculation forces at least `k` deletions on each side of
-an alternating cut. Thus a cycle with fewer than `2k` deletions stays in
-the retained transfer graph. Since the deleted-vertex count at width `4k`
-is even, fewer than `2k` means at most `2k-2`. The block lower bound and the
-reviewed upper construction therefore imply
+The equality also uses evenness of the deletion count and the reviewed
+upper construction, including its `k=1` and `n=3` cases. In particular the
+standalone sufficient threshold
 
 ```text
-M(4k,n) = 2k whenever n >= (2k-1)L(4k).
+n >= (2k-1)(52k^2+22k+11)
 ```
 
-The upper construction used here was read and checked, including its
-three local ladder completions, forced exclusion of a proper cycle, and
-the cases `k=1` and `n=3`.
+is valid. It is not claimed sharp and does not settle square dimensions.
 
-The 4N theorem uses the same retained graph, with
+The retained state count is `N_m=1+Motzkin(m)`, minus `2 Catalan(m/4)`
+when `4 | m`. The same matrix therefore admits
+`Lhat(m)=min{L_c(m),L_q(m),4N_m}`, which can replace `L` in these
+corollaries. The comparison `L_c-L_q=2p(p-4)(p+1)` is correct. The text
+also correctly notes that the polynomial minimum gives 23 at width three
+and 61 at width four, whereas the corresponding 4N bounds are 20 and 32.
 
-```text
-N_m = 1+Motzkin(m)                         if 4 does not divide m,
-N_m = 1+Motzkin(m)-2 Catalan(m/4)           if 4 divides m.
-```
+## Dependencies, attribution, and limits
 
-Consequently `Lhat(m)=min(L(m),4N_m)` is valid and can replace `L` in all
-three corollaries. The candidate correctly retains the numerical
-qualification: `L(3)=23` exceeds `4N_3=20`, and `L(4)=61` exceeds
-`4N_4=32`. Polynomial growth in width does not imply a smaller value at
-every small width. Neither the cutoff nor the equality threshold is
-claimed sharp, and the fixed-width threshold does not settle square cases.
-
-## Dependencies checked
-
-The following exact local sources were verified:
+The reviewed local dependency identities are:
 
 ```text
 four_n_cutoff.md
@@ -140,33 +154,23 @@ two_k_construction.md
 52f61a99433bca3f94409d3df493982a22731393dd1e5394d04b46bfbe2f5c07
 ```
 
-## Attribution audit and limits
+The review included all four geometric cases of the 4N note's local-return
+fact, the signed-cut calculation, and the upper construction's forced
+ladder argument. All four relative dependency targets were verified in
+the intended repository layout.
 
-The reviewer read the cited primary sources for the added attribution
-claims. [Jacobsen, Section 2](https://arxiv.org/html/0709.2322v1) supports
-the frontier-connectivity and early-cycle-rejection attribution;
-the [Bodroza-Pantic et al. paper](https://people.dmi.uns.ac.rs/~bodroza/Radovi/match43.pdf)
-supports the grid Hamiltonian-cycle transfer background.
-[Djokic, Doroslovacki, and Bodroza-Pantic](https://arxiv.org/pdf/2212.00317),
-Definition 4 and Theorem 1 with Sections 2--3, support the stated `Z`
-definition and endpoint-word component classification. The candidate
-correctly distinguishes that 2-factor graph from the pairing model with
-premature cycles forbidden. [De Gier, Section 2.1, equation (1)](https://arxiv.org/html/math/0211285v2)
-gives the stated adjacent matching action.
+Attribution statements were checked against the cited primary papers and
+original forum contributions: transfer-connectivity background, the
+zero-word charge, the Temperley--Lieb action, and the prior upper-bound
+construction and its stated scope. The added Kazazi citation accurately
+describes complete-cycle reconfiguration and is explicitly related
+context, not a dependency of the column-append proof. This was a targeted
+source check, not a literature-wide novelty search.
 
-The original [Lavrov answer](https://math.stackexchange.com/questions/5103789/minimum-of-black-squares-to-guarantee-uniqueness-of-loop-visiting-all-white-sq)
-and [later comment](https://math.stackexchange.com/questions/5109188/minimum-number-of-forbidden-cells-for-a-unique-loop-on-m-times-n-grid)
-support the dates and scope described in the candidate, including the
-comment's explicit qualification that its odd-length case had not been
-carefully checked. Both linked motivating questions state the general
-`2k` upper bound. The candidate uses the complete local reconstruction as
-its mathematical dependency and claims no priority for the upper bound or
-cap construction. This attribution check is not a literature-wide search.
-
-This receipt records non-author AI-agent logical review within one
-collective, not human peer review, third-party institutional review,
-proof-assistant formalization, or an exhaustive computational certificate.
-It does not certify novelty, priority, external acceptance, adoption, or
-publication. The reviewer only read public sources; no messages were sent
-to external people and no publication action was taken. The proof,
-candidate, and repository were not edited by the reviewer.
+The reviewer is a non-author AI agent within the same collaborating
+collective. This receipt is not human peer review, proof-assistant
+formalization, third-party institutional review, or an exhaustive
+computational certificate. It establishes no priority, external
+acceptance, adoption, or publication status. The conjectured sharp linear
+cutoff remains unproved here. The reviewer sent no external messages,
+took no publication action, and did not edit the proof or repository.

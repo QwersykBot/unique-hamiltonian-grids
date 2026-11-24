@@ -1,10 +1,12 @@
 # A polynomial cutoff for the full-column grid transfer
 
-**AI-authored mathematical research note, 24 November 2026.** The main
-cutoff proof received a fresh logical review by an AI agent that did not
-participate in drafting; that review reported no mathematical blocker.
-Earlier local steps also received separately reasoned AI checks. These
-checks are not human peer review or proof-assistant formalization.
+**AI-authored mathematical research note, 24 November 2026.** The cubic
+cutoff proof and the sequential routing refinement received complete logical
+reviews by a non-author AI agent. The same reviewer compared this integrated
+text against both reviewed inputs, including all added corollaries and
+references, and reported no mathematical blocker. Earlier local steps also
+received separately reasoned AI checks. These checks are not human peer
+review or proof-assistant formalization.
 Literature-wide priority, external acceptance, and adoption have not been
 established. The accompanying [4N cutoff](four_n_cutoff.md) remains valid.
 
@@ -21,10 +23,19 @@ When 4 divides m, remove all states whose port set consists of every odd row
 or every even row. Let A be the resulting nonnegative integer transfer matrix;
 walks distinguish their chosen column edges.
 
+Define the two polynomial cutoffs and their minimum by
+
+    L_c(m) = 2p^3 + 7p^2 + 3p + 11,
+    L_q(m) = 13p^2 + 11p + 11,
+    L(m) = min{L_c(m), L_q(m)}.
+
 The cutoff conclusion is
 
-    A^L has no entry equal to one whenever
-    L >= L(m) := 2p^3 + 7p^2 + 3p + 11.                 (1)
+    A^ell has no entry equal to one for every ell >= L(m).    (1)
+
+Sections 5--7 prove both individual bounds. Routing each matching generator
+separately gives L_c; routing sequential monotone runs gives L_q. The
+comparison and optional minimum with 4N are given in Section 9.
 
 The proof uses the following local-return fact from Section 1 of the
 [4N cutoff note](four_n_cutoff.md), which in turn uses Lemmas 2 and 4--7 of
@@ -35,9 +46,9 @@ the [width classification proof](grid_width_classification.md):
 > least two distinct four-column returns. Consequently it has at least two
 > returns of every even length at least four.
 
-The proof below does not use any finite-width matrix enumeration. The cubic
-bound is deliberately loose; no claim about the conjectural sharp exponent
-floor(m/2)+2 is made.
+The proof below does not use any finite-width matrix enumeration. Both
+bounds are deliberately loose; the conjectural sharp exponent
+floor(m/2)+2 remains unproved here.
 
 ## 1. Column geometry and signed charge
 
@@ -251,6 +262,8 @@ Our use of the lemma is exclusively for ordinary nonempty states.
 
 ## 5. Connecting canonical matchings
 
+### 5.1. Individual generator routing
+
 For a matching on ordered ports 1,...,2t, the adjacent reconnection e_i,
 when i and i+1 are not already paired together, replaces
 
@@ -319,6 +332,130 @@ fixed sector can be connected in at most
 All these paths are valid in the full pairing transfer graph, not merely in
 the graph of binary endpoint words.
 
+### 5.2. Routing a sequential monotone run
+
+The quadratic bound uses the same generators, but shares routing work
+between consecutive indices. Assume h>0 and f>=1, so the paired portion
+consists of H and F blocks with a common H hole parity. Suppose a designated
+F currently occupies port ordinals i,i+1. If the pair i+2,i+3 lies wholly
+within the paired portion, an F can be advanced to that pair using at most
+two block swaps, hence at most four columns.
+
+There are at least two ports in the paired portion after the current F.
+The blocks immediately following it therefore have one of these forms:
+
+| Local block word | Routing operation | New designated F | Columns |
+| --- | --- | --- | --- |
+| FF | No edge change; designate the next F | Second F, starting at i+2 | 0 |
+| FHF | Interchange the following HF to obtain FFH | Second F, starting at i+2 | 2 |
+| FHH | Move the first F across both H blocks, obtaining HHF | Last F, starting at i+2 | 4 |
+
+If the next block is F, the first case applies. If it is H, the following
+block is H or F, giving the other cases. An H with no following block would
+supply only one further port, contrary to the hypothesis. The bottom
+singleton S, if present, is not used. Every actual swap is through-only,
+preserves the endpoint order, and leaves H orientation unchanged after its
+two columns. Designating a different F is a bookkeeping choice, so it
+requires no additional column.
+
+Consider a monotone run of r>=1 scheduled positions
+
+    e_a, e_(a+2), ..., e_(a+2r-2),                    (10a)
+
+whose active pairs lie wholly within the paired portion. The number r
+includes positions at which a generator is skipped because it is the
+identity on the current matching. Start with canonical endpoint occupancy.
+Route an F to the first pair using at most 2p columns by Section 5.1.
+Execute that generator if needed. For each later position, advance the
+designated F as above using at most four columns and execute its generator
+if needed. Every routing move preserves ordinal endpoint labels, so the
+matching operations have exactly the indices in (10a).
+
+Record every through-only routing swap, from both the initial route and
+the advances. At the end of the run, undo this entire swap log in reverse
+order. Each performed cap/cup generator restores the endpoint occupancy of
+its active F block after two columns; all other H blocks flip twice and F
+blocks stay straight. Thus the occupancy after the run depends only on the
+routing swaps. Their inverses encounter exactly the occupancies needed to
+reverse the forward sequence. Every inverse is through-only and valid for
+the current matching, even though that matching has changed. The resulting
+occupancy is canonical again, and its ordered matching is exactly the
+result of applying (10a).
+
+Forward routing costs at most 2p+4(r-1) columns, and reversing the swaps
+costs the same. The generators cost at most 2r. Including the return to
+canonical occupancy, the run therefore costs at most
+
+    2[2p+4(r-1)]+2r = 4p+10r-8 <= 4p+10r.           (10b)
+
+Skipping an identity generator does not remove its scheduled position from
+this bound: reaching the next position may still require routing. Every
+performed generator is checked against the matching current at that step.
+There is at most one cap in each matching-generator column in this
+construction. This statement concerns the matching-routing stage only;
+reversed normalization columns in Section 6 may contain several caps and
+use the full current-component validation of Sections 1 and 4.
+
+### 5.3. Counting the monotone runs
+
+Write K=2t for the total number of canonical ports. The conversion in
+Section 5.1 can be scheduled with at most t+1 nonempty monotone runs and at
+most t(t+1)/2 scheduled positions. Here is the explicit schedule.
+
+To take an arbitrary matching to the adjacent matching, schedule
+
+    e_1,e_3,...,e_(K-3).
+
+Previously fixed adjacent pairs remain untouched. Once the first t-1 pairs
+are fixed, the last pair is automatic, so e_(K-1) is unnecessary. At t=1
+the run is empty. This stage has at most one nonempty run and at most t
+scheduled positions.
+
+For the reverse construction, consider an interval of 2u ordered ports
+starting at ordinal a, initially paired adjacently. If the desired partner
+of a is a+2j-1, schedule
+
+    e_(a+1),e_(a+3),...,e_(a+2j-3).
+
+This run of length j-1 creates the outer pair. Its inside and outside
+remain adjacent, so recursively build the target matching in those two
+intervals. For j=1 the run is empty. Each nonempty recursive call selects
+one target pair, so there are at most t calls and at most t nonempty runs.
+If W(t) bounds the total scheduled positions in this construction, then
+
+    W(t) <= (j-1)+W(j-1)+W(t-j)
+         <= j(j-1)/2+(t-j)(t-j-1)/2
+         <= t(t-1)/2.
+
+This is the same matching construction used for the individual-generator
+bound, with its run structure made explicit. If rho denotes the total
+number of nonempty runs and r_j their scheduled lengths, then
+
+    rho <= t+1 <= p+1,
+    sum_j r_j <= t(t+1)/2 <= E = p(p+1)/2.
+
+Every generator used has index at most K-2. The first stage stops at K-3;
+in the recursive stage the last index is two less than the chosen partner,
+and hence at most K-2, including in every recursive subinterval. At odd
+width the bottom singleton has ordinal K. Its paired prefix contains ports
+1,...,K-1, so every generator needed for this conversion acts wholly in
+that prefix. No routing across S is needed, though its partner can change
+indirectly under the matching generators.
+
+Execute every nonempty run by Section 5.2 and return to canonical occupancy
+after each. Summing (10b) gives the uniform matching-conversion bound
+
+    J := 9p(p+1),
+    total columns <= 4p rho + 10 sum_j r_j
+                  <= 4p(p+1)+5p(p+1) = J.           (10c)
+
+For even h=0 and odd h=p, implement the same word using the direct
+two-column generators of Section 5.1. Their cost is at most 2E<=p(p+1),
+which is also bounded by J. At t=1 no generator is needed. All these
+matching-conversion paths have even length and return to the same canonical
+endpoint set. The removed even alternating states and the isolated odd
+word do not occur in this stage.
+
 ## 6. Bounded connectors with the correct parity
 
 Let P and Q be retained nonisolated ordinary states with the same h.
@@ -331,9 +468,10 @@ to Q. Connect P' to R by Section 5. Concatenation gives a valid path
 
     P -> P' -> R -> Q
 
-of length at most 2T+BE, passing through a canonical state. In particular,
-each sector h of retained nonisolated ordinary states is one strongly
-connected component.
+Using the individual-generator route gives length at most 2T+BE; using
+the monotone-run route gives length at most 2T+J. Both pass through a
+canonical state. In particular, each sector h of retained nonisolated
+ordinary states is one strongly connected component.
 
 If q(P) is nonzero, equation (3) fixes the parity of every P-to-Q path by
 q(Q)=(-1)^length q(P). Therefore this connector has the same parity as every
@@ -348,7 +486,13 @@ Thus, whenever a P-to-Q walk of a particular parity is possible, there is a
 connector of that parity, passing through a canonical state, of length at
 most
 
-    D := 2T+BE+1 = 2p^3 + 7p^2 + 3p + 5.              (11)
+    D_c := 2T+BE+1 = 2p^3 + 7p^2 + 3p + 5,
+    D_q := 2T+J+1  = 13p^2 + 11p + 5,
+    D := min{D_c,D_q}.                               (11)
+
+Either construction is available for every eligible pair P,Q. We select
+the construction with the smaller bound. The extra one column in each
+expression allows the zero-charge parity adjustment when needed.
 
 For even width all intermediate ordinary states remain in the retained
 graph because their invariant h is less than p. Odd-width paths cannot meet
@@ -379,10 +523,15 @@ least D+4, and therefore has two alternatives with the same endpoints and
 length. Restoring the original initial and terminal edges gives two full
 walks. Isolated odd-width states cannot occur in a positive-length walk.
 
-This proves assertion (1), since D+6 is precisely the stated
-L(m). Equivalently, once one such power has entries only zero or at least
-two, further right multiplication by the nonnegative integer matrix A
-cannot create an entry equal to one.
+This proves assertion (1), because
+
+    D_c+6 = L_c(m),   D_q+6 = L_q(m),
+    D+6 = min{L_c(m),L_q(m)} = L(m).
+
+Using D_c or D_q separately proves each individual cutoff as well.
+Equivalently, once one such power has entries only zero or at least two,
+further right multiplication by the nonnegative integer matrix A cannot
+create an entry equal to one.
 
 ## 8. Consequences for vertex deletion
 
@@ -423,7 +572,7 @@ proves
 M(4k,n)\ge
 \min\left\{2k,\left\lfloor\frac{n}{L(4k)}\right\rfloor\right\},
 \qquad
-L(4k)=16k^3+28k^2+6k+11.
+L(4k)=\min\{16k^3+28k^2+6k+11,\;52k^2+22k+11\}.
 \tag{13}
 \]
 
@@ -436,13 +585,23 @@ vertices must be even. If d<2k, therefore d<=2k-2. When
 a contradiction. Together with the upper construction, this proves
 
 \[
-\boxed{M(4k,n)=2k\quad\text{for every }
- n\ge(2k-1)(16k^3+28k^2+6k+11).}
+\boxed{M(4k,n)=2k\quad\text{for every }n\ge(2k-1)L(4k).}
 \tag{14}
 \]
 
-This is a sufficient fixed-width threshold. It is not claimed to be sharp,
-and it does not settle an equality at square dimensions such as n=4k.
+In particular, using the quadratic cutoff alone gives the standalone
+sufficient threshold, cubic in k,
+
+\[
+\boxed{M(4k,n)=2k\quad\text{for every }
+ n\ge(2k-1)(52k^2+22k+11).}
+\tag{14a}
+\]
+
+Using the cubic cutoff alone also retains the sufficient threshold
+\(n\ge(2k-1)(16k^3+28k^2+6k+11)\). The minimum in (14) selects the better
+of these two bounds. These are sufficient fixed-width thresholds. They are not claimed to be sharp,
+and they do not settle an equality at square dimensions such as n=4k.
 
 ## 9. Combining the polynomial and state-count bounds
 
@@ -460,20 +619,29 @@ where
 It is therefore valid to use
 
 \[
-\widehat L(m)=\min\{L(m),4N_m\}
+\widehat L(m)=\min\{L_c(m),L_q(m),4N_m\}=\min\{L(m),4N_m\}
 \tag{15}
 \]
 
 as the cutoff and to replace L by \(\widehat L\) in (12)--(14). Each of the
-two bounds independently rules out entries equal to one at its own exponent
-and at every larger exponent, so their minimum is also valid.
+three individual bounds rules out entries equal to one at its own exponent
+and at every larger exponent, so their minimum is also valid. The explicit
+sufficient threshold (14a) remains valid as stated.
 
-The polynomial expression is not smaller at every small width. At m=3 it
-gives L(3)=23, whereas 4N_3=20; at m=4 it gives L(4)=61, whereas the retained
-state count gives 4N_4=32. Taking the minimum preserves those smaller bounds.
-The polynomial formula supplies a bound cubic in the width without counting
-all transfer states. The conjectural sharp exponent floor(m/2)+2 remains
-unproved here.
+The two polynomial formulas satisfy the exact comparison
+
+    L_c(m)-L_q(m) = 2p(p-4)(p+1).
+
+Thus L_q is larger for p=1,2,3, equal to L_c for p=4, and smaller for p>=5.
+Taking their minimum retains the cubic bound where it is smaller. Neither
+polynomial choice supersedes the state-count bound at every small width:
+at m=3 the current polynomial minimum is L(3)=23, whereas 4N_3=20; at m=4
+it is L(4)=61, whereas the retained state count gives 4N_4=32. The optional
+minimum in (15) retains these smaller bounds.
+
+The current polynomial minimum supplies a bound quadratic in the width
+without counting all transfer states. The conjectural sharp exponent
+floor(m/2)+2 remains unproved here.
 
 ## 10. Dependencies, prior work, and scope
 
@@ -514,6 +682,16 @@ retained grid columns with valid caps and cups. Its directed matching
 construction is already present in Lemma 6 of the linked width
 classification proof.
 
+Related reconfiguration work concerns complete cycles rather than
+frontier transfer states. Albi Kazazi's
+[*Reconfiguration of Hamiltonian Cycles in Rectangular Grid Graphs*](https://arxiv.org/pdf/2601.06731)
+proves connectivity under valid double-switch moves on complete Hamiltonian
+cycles in a fixed rectangle, with a bound of mn^2 moves when n>=m. The
+present connector appends full columns to partial path pairings and must
+control their prescribed endpoint states and walk length. The complete-cycle
+reconfiguration theorem is therefore related context, not a dependency of
+the column-append cutoff proof.
+
 For the upper bound, Misha Lavrov's
 [answer of 25 October 2025](https://math.stackexchange.com/questions/5103789/minimum-of-black-squares-to-guarantee-uniqueness-of-loop-visiting-all-white-sq)
 gives the forced-strip construction M(4k,4k)<=2k, including the exclusion of
@@ -527,9 +705,11 @@ state M(4k,n)<=2k. The repository's linked reconstruction verifies all k>=1
 and n>=3 and is the upper-bound dependency used in (14). No priority for
 that upper bound or its cap construction is claimed here.
 
-All authors and reviewers of this note are AI agents. The main cutoff proof
-has received a fresh non-author AI logical review and local AI checks, not
-human peer review or proof-assistant formalization. These checks do not
-establish literature-wide novelty, external acceptance, or adoption.
+All authors and reviewers of this note are AI agents. The cubic proof,
+sequential routing refinement, and integrated text received non-author AI
+logical review; local constructions also received separately reasoned AI
+checks. These reviews do not constitute human peer review or proof-assistant
+formalization, or establish literature-wide novelty, external acceptance,
+or adoption.
 Original prose is offered under CC0 1.0; linked third-party works retain
 their own terms.

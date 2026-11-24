@@ -132,9 +132,9 @@
     "reverse_geometry": "The complete deterministic independent oracle result: 9,046 cap-free geometries at heights 3 through 10, 23,888 input matching obligations, 60,936 output matching trials, and both explicit rejection controls. Source identities are updated to the packaged checker and exact reviewed publication note. The integrated verifier replays the complete check."
   },
   "new_packaging": [
-    "README.md: current polynomial cutoff and deletion consequences, smaller state-count option, reading order, related polynomial reconfiguration attribution, and finite-check scope.",
+    "README.md: current quadratic cutoff and deletion consequences, smaller earlier bounds, reading order, related polynomial reconfiguration attribution, and finite-check scope.",
     "polynomial_cutoff.md: exact publication revision covered by the supplied non-author AI review receipt.",
-    "reviews/polynomial_cutoff.md: unchanged focused review receipt binding the frozen draft and final publication revision.",
+    "reviews/polynomial_cutoff.md: one focused current review receipt binding the cubic proof, quadratic refinement, integrated text, and final publication source.",
     "checks/check_reverse_geometry.py and results/reverse_geometry.json: one independent finite reverse-lifting oracle with two negative controls.",
     "verify.py: add the exact polynomial source pin and reverse-geometry replay; existing source pins and checkers remain unchanged.",
     "manifest.json and provenance.json: exact current snapshot and source/review provenance.",
@@ -193,19 +193,26 @@
   },
   "polynomial_cutoff": {
     "file": "polynomial_cutoff.md",
-    "sha256": "fafd3b56c9fcaf680eae89935889d7414afb04a0280720bae3e0786691d0c0d9",
-    "bytes": 26820,
+    "sha256": "46ab4d73958ff6b46aa49c2362e7ee446903388e5c13c79b5f776378bb266453",
+    "bytes": 35468,
     "original_reviewed_draft_sha256": "78c315816a6feb9c2df2dabc85cedf7414dccb298c2d8bd77f504a9e18de349b",
     "publication_revision_changes": [
       "Replace internal draft status and archive-local paths with scoped research status and repository-relative links.",
       "Make sequential cap validation against current components explicit; all proof constructions already satisfy it.",
       "State the existing zero-word charge correspondence Z=-q and clarify hole-parity orientation.",
       "Append strip-replacement, signed-cut and parity consequences; retain the smaller of the polynomial and 4N cutoffs.",
-      "Add precise prior-method and prior-upper-construction attribution; do not claim global novelty or external acceptance."
+      "Add precise prior-method and prior-upper-construction attribution; do not claim global novelty or external acceptance.",
+      "Retain the individual-generator cubic proof and add sequential monotone-run routing to obtain a quadratic bound in the same source file.",
+      "Use the minimum of both polynomial estimates consistently in the connector, padding, and deletion arguments; retain the optional smaller state-count bound.",
+      "Restrict the one-cap assertion to the new matching-routing stage; inherited reverse-normalization columns retain sequential current-component checks.",
+      "Update only header/footer status after complete comparison review of the integrated text."
     ],
     "review_receipt": "reviews/polynomial_cutoff.md",
-    "review_receipt_sha256": "c487a0682747a6d5857b640474b07dd7c132994b13c8195e6c47351ef5bdd27d",
-    "review_scope": "A fresh non-author AI reviewer read the entire frozen argument and its local-return dependency, then compared the exact publication revision, checked all added corollaries and dependency hashes, and audited the cited attribution. Root independently read both the proof and publication diff. This is not human peer review, formal verification, or a priority assessment.",
-    "mathematical_scope": "A cubic-in-width cutoff for the full pairing transfer after removing alternating endpoint states only when 4 divides the width; a quartic sufficient threshold for eventual deletion optimum. No sharp exponent, square-grid optimum, or matrix-sweep extrapolation is claimed."
+    "review_receipt_sha256": "aff8e12e559613ab912c1e4dbb876553f5ac762e932ff7d3ef52e290746ded1e",
+    "review_scope": "A non-author AI reviewer read the complete cubic proof and its local-return dependency, the separate sequential-routing refinement, and the integrated publication text. The reviewer checked all changed corollaries, source dependencies, attribution, and final status-only edits. Root independently read the proofs, each integration diff, and the finite checker. This is not human peer review, formal verification, or a priority assessment.",
+    "mathematical_scope": "A quadratic-in-width cutoff for the full pairing transfer, retaining the earlier cubic bound where smaller; alternating endpoint states are removed only when 4 divides the width. A cubic sufficient threshold in k for the eventual deletion optimum at width 4k. No sharp exponent, square-grid optimum, or matrix-sweep extrapolation is claimed.",
+    "reviewed_cubic_publication_sha256": "fafd3b56c9fcaf680eae89935889d7414afb04a0280720bae3e0786691d0c0d9",
+    "reviewed_quadratic_refinement_sha256": "b4decfc6a9b699cfde088cd30fba61ceec4535169f613afbafa6aa165bf38827",
+    "reviewed_integrated_candidate_sha256": "5bc027d51cbc104d332db1d75dbcded0ec889e7fcdbab7c7da1ae6a3b42d8c53"
   }
 }

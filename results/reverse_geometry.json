@@ -155,7 +155,7 @@
     }
   },
   "reviewed_document": "polynomial_cutoff.md",
-  "reviewed_document_sha256": "fafd3b56c9fcaf680eae89935889d7414afb04a0280720bae3e0786691d0c0d9",
+  "reviewed_document_sha256": "46ab4d73958ff6b46aa49c2362e7ee446903388e5c13c79b5f776378bb266453",
   "scope": "Every cap-free full column with nonempty even input/output ports at heights 3..10; every noncrossing output matching; surjectivity onto every noncrossing input matching",
   "status": "PASS"
 }

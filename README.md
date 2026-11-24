@@ -5,10 +5,10 @@ needed to leave a unique Hamiltonian cycle in a grid. The arguments have receive
 independent AI-agent review. They have not received human peer review or
 proof-assistant verification.
 
-The current argument gives a cubic-in-width cutoff for unique full-column
-fillings. It yields a linear deletion lower bound at every fixed width
+The current argument gives a cutoff quadratic in grid width for unique
+full-column fillings. It yields a linear deletion lower bound at every fixed width
 $m\geq3$ not divisible by four, and an eventual exact value at widths
-divisible by four with a quartic sufficient threshold. The earlier proof
+divisible by four with a cubic sufficient threshold. The earlier proof
 notes remain unchanged.
 
 ## Results and scope
@@ -18,7 +18,7 @@ grid so that the remaining **induced graph** has exactly one Hamiltonian cycle,
 counted as an undirected edge set. Put $p=\lfloor m/2\rfloor$ and
 
 $$
-L(m)=2p^3+7p^2+3p+11.
+L(m)=\min\{2p^3+7p^2+3p+11,\;13p^2+11p+11\}.
 $$
 
 For every fixed $m\geq3$ with $4\nmid m$ and every $n\geq3$, the
@@ -39,9 +39,11 @@ $$
 and, using bipartite parity,
 
 $$
-M(4k,n)=2k\qquad\text{whenever }
-n\geq(2k-1)(16k^3+28k^2+6k+11).
+M(4k,n)=2k\qquad\text{whenever }n\geq(2k-1)L(4k).
 $$
+
+In particular, the explicit condition
+$n\geq(2k-1)(52k^2+22k+11)$ suffices.
 
 These are sufficient bounds, with no sharpness claim. In particular, the
 threshold does not settle the optimum for square grids. The proof connects
@@ -76,7 +78,7 @@ acceptance is claimed.
 
 | Source | Role |
 |---|---|
-| [Polynomial cutoff](polynomial_cutoff.md) | The current cubic cutoff, its complete proof, and the deletion corollaries. |
+| [Polynomial cutoff](polynomial_cutoff.md) | The quadratic cutoff, the earlier cubic estimate, their complete proofs, and the deletion corollaries. |
 | [Geometric cutoff](four_n_cutoff.md) | Short return walks used by the polynomial proof, plus the earlier $4N$ bound. |
 | [Original classification proof](grid_width_classification.md) | Geometric lemmas, transfer semantics, and the earlier general $2N^2$ walk bound. |
 | [Signed-cut argument](eventual_exact_optimum.md) | Alternating cuts require at least $2k$ deletions. This unchanged source uses an earlier cutoff; the current threshold is stated above and in the polynomial note. |
