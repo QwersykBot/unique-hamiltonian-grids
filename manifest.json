@@ -1,19 +1,20 @@
 {
   "schema_version": 1,
-  "candidate_version": "2026-11-24-4",
+  "candidate_version": "2026-11-24-5",
   "proof_sha256": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1",
   "reviewed_sources_sha256": {
     "grid_width_classification.md": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1",
     "four_n_cutoff.md": "a5608581586c614c9e219666a5caac5fcc5b7c5a15f8ef29ddac4b68bf06944b",
     "eventual_exact_optimum.md": "13445aefa748d7ec3c593833db3854ed73aaa863b1e1fff96127df4cc87afc6b",
     "two_k_construction.md": "52f61a99433bca3f94409d3df493982a22731393dd1e5394d04b46bfbe2f5c07",
-    "polynomial_cutoff.md": "46ab4d73958ff6b46aa49c2362e7ee446903388e5c13c79b5f776378bb266453"
+    "polynomial_cutoff.md": "46ab4d73958ff6b46aa49c2362e7ee446903388e5c13c79b5f776378bb266453",
+    "cylinder_transfer.md": "bbf8ccefdab549967892b3623fce9e1390e459905f60510853dac220fc5f90a0"
   },
   "scope": "All candidate files except this manifest. Hashes identify a snapshot, not independent proof of correctness.",
   "files": {
     ".gitattributes": {
-      "bytes": 14,
-      "sha256": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9"
+      "bytes": 27,
+      "sha256": "07a2f41719cd55762e837e3598cd3ba067bc207a7ec63a46b2d86f609dc50acd"
     },
     ".github/workflows/verify.yml": {
       "bytes": 462,
@@ -24,8 +25,12 @@
       "sha256": "8e0a46dfa98b6f00b64266d2fcc11ea50dfdd6aa2e6afd44a6d239c417b85aa8"
     },
     "README.md": {
-      "bytes": 9852,
-      "sha256": "d718048a75e1111cf04dd2fedcd0d0c28784d42e158a29ebacf57db4e1c9c677"
+      "bytes": 14514,
+      "sha256": "f008c1f5d9b8dac43f6717b069dd0522a44597a8eaade9272bc3263e1cbcadf5"
+    },
+    "checks/check_cylinder_model.py": {
+      "bytes": 18372,
+      "sha256": "97f9ff0c8a008cbeefba45ead9d4129072523de667fc98a6cbf5980423356f92"
     },
     "checks/check_geometry.py": {
       "bytes": 5637,
@@ -46,6 +51,14 @@
     "checks/independent_cycle_counter.py": {
       "bytes": 4828,
       "sha256": "9f6949815a4fa56b05fdc2463578186a9e713dd36b2274a8956329d4646527de"
+    },
+    "cylinder_transfer.md": {
+      "bytes": 28155,
+      "sha256": "bbf8ccefdab549967892b3623fce9e1390e459905f60510853dac220fc5f90a0"
+    },
+    "cylinder_transfer.pdf": {
+      "bytes": 167733,
+      "sha256": "f2f6054c884cff72fca7810238a247d180d15c625ab743f489dd8d2ded82f365"
     },
     "eventual_exact_optimum.md": {
       "bytes": 6754,
@@ -68,8 +81,12 @@
       "sha256": "46ab4d73958ff6b46aa49c2362e7ee446903388e5c13c79b5f776378bb266453"
     },
     "provenance.json": {
-      "bytes": 16475,
-      "sha256": "79544273ef76c00890637a62dff1949800e2733d796857e8d53586c69077c8f6"
+      "bytes": 26020,
+      "sha256": "944d50fd4c7969b6ed7aaa5cf6b172834f59a00012ea155bc6aec0969e22f4e5"
+    },
+    "results/cylinder_model.json": {
+      "bytes": 5500,
+      "sha256": "fbb0255fc6cd38774b653b9d3605d26392151a0cd5129fa6b89c5b8a6ecca662"
     },
     "results/geometry.json": {
       "bytes": 1712,
@@ -87,6 +104,10 @@
       "bytes": 11771,
       "sha256": "91f515d5baffc154390809a886cb8545275a5c2a7e157dfebd712762819e45a1"
     },
+    "reviews/cylinder_transfer.md": {
+      "bytes": 10839,
+      "sha256": "0d409178c7e4b5262647ecc3e5c84372a1293d67c782c189b06e5f5033653be8"
+    },
     "reviews/polynomial_cutoff.md": {
       "bytes": 7425,
       "sha256": "aff8e12e559613ab912c1e4dbb876553f5ac762e932ff7d3ef52e290746ded1e"
@@ -96,8 +117,8 @@
       "sha256": "52f61a99433bca3f94409d3df493982a22731393dd1e5394d04b46bfbe2f5c07"
     },
     "verify.py": {
-      "bytes": 4223,
-      "sha256": "c76b1fc10b7aa964b4356eb8a26dd0b1c2e4d39b7a871275505b9b48f60d5c4d"
+      "bytes": 4390,
+      "sha256": "9c856c23f2ca27e470caf96a7852851f48c9274b77388ca0c2fc293bd196d913"
     }
   }
 }

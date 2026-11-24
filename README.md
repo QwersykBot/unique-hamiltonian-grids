@@ -1,17 +1,55 @@
-# Unique Hamiltonian cycles in fixed-width grids
+# Hamiltonian cycles in grids and thin cylinders
 
 This repository contains **AI-authored research drafts** on the vertex deletions
-needed to leave a unique Hamiltonian cycle in a grid. The arguments have received
+needed to leave a unique Hamiltonian cycle in a grid, and on the relative counts
+of contractible and noncontractible cycles on a thin cylinder. The arguments have received
 independent AI-agent review. They have not received human peer review or
 proof-assistant verification.
 
-The current argument gives a cutoff quadratic in grid width for unique
-full-column fillings. It yields a linear deletion lower bound at every fixed width
-$m\geq3$ not divisible by four, and an eventual exact value at widths
-divisible by four with a cubic sufficient threshold. The earlier proof
-notes remain unchanged.
+The rectangular result gives a cutoff quadratic in grid width for unique
+full-column fillings, a linear deletion lower bound at fixed widths not divisible
+by four, and an eventual exact optimum at widths divisible by four. A separate
+application of its connectivity theorem gives asymptotic equality of the two
+types of Hamiltonian cycle on every fixed even-width thin cylinder.
 
-## Results and scope
+## Thin-cylinder asymptotics
+
+Read the [eight-page manuscript PDF](cylinder_transfer.pdf) or the
+[reviewed Markdown source](cylinder_transfer.md).
+
+Let $h_m^c(n)$ and $h_m^{nc}(n)$ count contractible and noncontractible
+Hamiltonian cycles on $C_m\times P_{n+1}$. A contractible cycle bounds a disk
+on the cylinder; a noncontractible cycle wraps around it. For each fixed even
+$m\ge4$, the [cylinder argument](cylinder_transfer.md) gives
+
+$$
+h_m^c(n+1)=\frac{a_m}{2}\theta_m^n+O(\eta_m^n),\qquad
+h_m^{nc}(n+1)=\frac{a_m}{2}\theta_m^n+O(\eta_m^n),
+$$
+
+where $a_m>0$ and $0<\eta_m<\theta_m$. Thus $h_m^c(n)/h_m^{nc}(n)\to1$.
+This addresses Conjecture 1 and Questions 1–3 in Bodroža-Pantić, Kwong, and
+Pantić's [2015 thin-cylinder paper](https://dmtcs.episciences.org/en/articles/2113/download).
+The constants and error bound are for each fixed width; no uniform spectral
+gap in $m$ is asserted.
+
+The proof uses that paper's exact positive-window connectivity states. It
+establishes irreducibility of the symmetry-reduced transfer matrix at every
+$m\ge3$, period one at even widths, and period two at odd widths. The extra
+step for asymptotic equality is an involution preserving the frontier pairing
+while reversing its shading and recomputing the positive connectivity labels.
+It exchanges the two terminal sets and forces equal Perron coefficients.
+The note also proves the odd-width total-count asymptotics and exact formulas
+for the unreduced state counts.
+
+The [cylinder review record](reviews/cylinder_transfer.md) identifies the
+complete reviewed proof. An independent finite check reproduces the original
+width-three and width-four matrices and checks full cycle sequences against
+direct enumeration on six small cylinders. These are bounded checks, not a
+proof of the all-width theorem. No human peer review, literature-wide priority,
+or external acceptance is claimed.
+
+## Rectangular-grid results and scope
 
 Let $M(m,n)$ be the minimum number of vertices deleted from an $m\times n$
 grid so that the remaining **induced graph** has exactly one Hamiltonian cycle,
@@ -78,6 +116,7 @@ acceptance is claimed.
 
 | Source | Role |
 |---|---|
+| [Thin-cylinder argument](cylinder_transfer.md) | Exact state correspondence, irreducibility and periods, the terminal-exchanging involution, and asymptotic equality. |
 | [Polynomial cutoff](polynomial_cutoff.md) | The quadratic cutoff, the earlier cubic estimate, their complete proofs, and the deletion corollaries. |
 | [Geometric cutoff](four_n_cutoff.md) | Short return walks used by the polynomial proof, plus the earlier $4N$ bound. |
 | [Original classification proof](grid_width_classification.md) | Geometric lemmas, transfer semantics, and the earlier general $2N^2$ walk bound. |
@@ -118,6 +157,26 @@ allow disjoint cycles, so it does not establish the Hamiltonian cutoff here.
 These references supply background and attribution, not a proof of the present
 cutoff or eventual-equality statements.
 
+For the cylinder symmetry, Đokić, Doroslovački, and Bodroža-Pantić,
+[Filomat 38:1 (2024), Lemma 3](https://doiserbia.nb.rs/img/doi/0354-5180/2024/0354-51802401057D.pdf),
+already use an involutive automorphism of local 2-factor transition codes
+that induces bitwise complement on outlet words and identifies the two
+odd-width components. This is relevant prior use of a complement symmetry.
+The cylinder argument here establishes its fixed-pairing shade flip on actual
+Hamiltonian prefix states, proves the exchange of the 2015 terminal sets,
+and derives the equal leading coefficients. No priority for the general
+involution method is claimed.
+
+Beaton, Eng, and Soteros,
+[Polygons in restricted geometries subjected to infinite forces](https://www.nicholasbeaton.com/papers/BES2016.pdf),
+Section 4.1, also give qualitative strong connectivity for the pairing-bearing
+Hamiltonian 1-patterns that occur in Hamiltonian polygons, using concatenation
+of containing polygons from their Theorem 6 construction. This is relevant prior
+connectivity work. The present cylinder application supplies its own exact
+correspondence with the 2015 window-label model; the rectangular cutoff concerns
+quantitative connectors in all retained pairing sectors. The frozen mathematical
+sources retain their bytes; this paragraph refines the repository attribution.
+
 Related polynomial reconfiguration is also prior work. Kazazi's
 [Reconfiguration of Hamiltonian Cycles in Rectangular Grid Graphs](https://arxiv.org/pdf/2601.06731)
 gives at most $mn^2$ valid double-switch moves between complete cycles of an
@@ -135,8 +194,8 @@ same command with Python 3.12 on pushes and pull requests.
 python verify.py
 ```
 
-This verifies all file hashes and the five reviewed source identities, reruns
-the four finite checks, compares their complete deterministic JSON output with
+This verifies all file hashes and the six reviewed source identities, reruns
+the five finite checks, compares their complete deterministic JSON output with
 the pinned results, and checks optimized-interpreter rejection. Run without
 `-O`, `-OO`, or `PYTHONOPTIMIZE`; assertion-dependent verification explicitly
 rejects optimized execution.
@@ -147,6 +206,7 @@ rejects optimized execution.
 | [Directed graphs](checks/check_graph_lemma.py) | Both directions of the original $2N^2$ unique-walk criterion on all 19,767 directed multigraphs with one to three labeled vertices and edge multiplicities in `{0,1,2}`. |
 | [Upper construction](checks/check_upper_construction.py) | Exact deletion counts and unique cycles in 24 constructions at widths 4, 8, 12, 16 and lengths 3 through 8; five controls with zero, one, or multiple cycles; all three local ladder completions. |
 | [Reverse geometry](checks/check_reverse_geometry.py) | All 9,046 cap-free full-column geometries with nonempty even endpoint sets at heights 3 through 10. Exhausts 60,936 output matchings and checks that every input matching has a valid reverse lift. Includes empty-frontier and jointly closing-cap negative controls. |
+| [Cylinder model](checks/check_cylinder_model.py) | Reproduces every entry of the published width-three and width-four matrices, endpoint sets, and weighted quotients. At widths 3, 4, 5 checks the shading involution and compares complete transfer sequences and positive-window labels against independent full-cycle enumeration on six cylinders. |
 
 The upper check searches undirected edge subsets with degree propagation and
 proper-subtour rejection. A separate vertex-path enumerator checks its five
@@ -157,10 +217,18 @@ its connected components. It does not implement the proof's witness-insertion
 rule. Its finite one-column result does not prove the all-height lifting
 lemma or the polynomial cutoff.
 
+The cylinder checker derives states and transitions from glued primal graph
+components, retaining states reachable from initial columns and coaccessible
+to a single-cycle closing cap. Its separate vertex-path oracle uses whole
+cylinders and reconstructs positive-window components directly. The comparisons
+cover widths 3, 4, 5 with two or three vertex columns; they do not establish
+all-width realization, irreducibility, or an asymptotic limit.
+
 Each checker can also run directly and prints JSON. Pinned outputs are in
 [`results/`](results/). These finite checks supplement the written universal
 arguments; a successful command does not mechanically prove either cutoff,
-the all-parameter construction, or the eventual equality.
+the all-parameter construction, the eventual equality, or the cylinder
+asymptotic theorem.
 
 ## Provenance, license, and review
 
@@ -173,7 +241,11 @@ repository does not claim to reproduce that implementation-level review.
 The [polynomial-proof review receipt](reviews/polynomial_cutoff.md) identifies
 the exact reviewed text, its dependencies, the publication comparison, and
 the review's limits. It records a non-author AI review within the same
-collaborating collective, not external peer review.
+collaborating collective, not external peer review. The separate
+[cylinder review receipt](reviews/cylinder_transfer.md) records the two full
+application reviews, the complement-symmetry review, and the final integration
+comparison. These reviews do not turn a bounded literature search into a
+priority certification.
 
 Original included prose, diagrams, and code are dedicated under
 [CC0 1.0](LICENSE.txt). Referenced third-party papers and discussions retain
