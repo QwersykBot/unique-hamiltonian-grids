@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "candidate_version": "2026-11-24-2",
+  "candidate_version": "2026-11-24-3",
   "authorship_and_review": "AI-origin proof and independent AI-agent reviews; no human peer review, proof-assistant verification, external acceptance, or literature-wide priority claim.",
   "original_archives": [
     {
@@ -14,6 +14,16 @@
       "bytes": 14387,
       "sha256": "771adac5b2b5489d4fe8ff79222491969c1a6c383d29ea46f1da5fd09e15231e",
       "reported_public_location": "https://collective-evidence-79c148.workspace-350227.chatgpt.site/grid-classification-independent-review-v1.zip"
+    },
+    {
+      "name": "grid-cutoff-supplement-v1.zip",
+      "bytes": 51857,
+      "sha256": "0a1a0eab0487628acefbf6441d1d236963bcd8aa8e9c01050c76cfc410a65873"
+    },
+    {
+      "name": "sharp-bounded-grid-companion-v2.zip",
+      "bytes": 35562,
+      "sha256": "c16c89cb72326394272af1222e44805c8f239ad7825f345978d0e7b7b9d62b43"
     }
   ],
   "archive_location_scope": "Historical source locations, not a new availability assertion. Reproduction needs only this repository.",
@@ -33,6 +43,27 @@
       "file": "LICENSE.txt",
       "source_member": "LICENSE.txt",
       "sha256": "8e0a46dfa98b6f00b64266d2fcc11ea50dfdd6aa2e6afd44a6d239c417b85aa8"
+    },
+    {
+      "file": "four_n_cutoff.md",
+      "source_archive": "grid-cutoff-supplement-v1.zip",
+      "source_member": "four_n_cutoff.md",
+      "bytes": 11274,
+      "sha256": "a5608581586c614c9e219666a5caac5fcc5b7c5a15f8ef29ddac4b68bf06944b"
+    },
+    {
+      "file": "eventual_exact_optimum.md",
+      "source_archive": "grid-cutoff-supplement-v1.zip",
+      "source_member": "eventual_exact_optimum.md",
+      "bytes": 6754,
+      "sha256": "13445aefa748d7ec3c593833db3854ed73aaa863b1e1fff96127df4cc87afc6b"
+    },
+    {
+      "file": "two_k_construction.md",
+      "source_archive": "grid-cutoff-supplement-v1.zip",
+      "source_member": "two_k_exploration/two_k_construction.md",
+      "bytes": 9104,
+      "sha256": "52f61a99433bca3f94409d3df493982a22731393dd1e5394d04b46bfbe2f5c07"
     }
   ],
   "adapted_checks": [
@@ -56,22 +87,45 @@
         "Remove CPU timing and result-file writes; retain deterministic JSON and checker-source hash on stdout.",
         "Preserve exhaustive families and both directions of the tested criterion."
       ]
+    },
+    {
+      "file": "checks/check_upper_construction.py",
+      "source_archive": "sharp-bounded-grid-companion-v2.zip",
+      "source_member": "verify_two_k_construction.py",
+      "source_sha256": "dd96702c569de28dc0a159d78579c21ae04f968c3d4721ae33de0ef14e6bbc15",
+      "changes": [
+        "Add explicit optimized-interpreter rejection before imports.",
+        "Keep the 24 constructions, five separate-oracle controls, and exhaustive ladder-completion checks unchanged.",
+        "Bind the output to the adapted checker, guarded counter module, and unchanged upper-construction proof.",
+        "Remove CPU timing fields, progress output, and result-file writes; print one deterministic full JSON report.",
+        "Suppress import-cache creation so the standalone check leaves the repository unchanged."
+      ]
+    },
+    {
+      "file": "checks/independent_cycle_counter.py",
+      "source_archive": "sharp-bounded-grid-companion-v2.zip",
+      "source_member": "independent_cycle_counter.py",
+      "source_sha256": "18842fb6dbedf98cb70b9cb5f73c04866fcc56770b4ee043895c0577430e8e66",
+      "changes": [
+        "Add explicit optimized-interpreter rejection before imports.",
+        "Preserve all graph construction, edge search, propagation, proper-cycle rejection, timeout behavior, and separate vertex-path enumeration code unchanged."
+      ]
     }
   ],
   "pinned_results": {
     "geometry": "Original finite geometry result with nondeterministic CPU timing removed.",
-    "graph_lemma": "Original finite graph result with CPU timing removed and the checker hash updated to the adapted script. Verification reruns the adapted scripts and compares their complete output with these records."
+    "graph_lemma": "Original finite graph result with CPU timing removed and the checker hash updated to the adapted script. Verification reruns the adapted scripts and compares their complete output with these records.",
+    "upper_construction": "The original standard-library checker was replayed in isolation and matched its recorded result after recursively removing CPU timing. This normalized record retains all 24 cases, all five controls, all three ladder completions, and deterministic search counts; source hashes identify the adapted files and unchanged proof. The integrated verifier independently replays the adapted checker and compares its complete JSON output."
   },
   "new_packaging": [
-    "README.md: concise theorem, attribution, scope, and reproduction instructions.",
-    "verify.py: explicit integrity checks, exact result replay, and optimized-mode rejection tests.",
-    "manifest.json: exact byte counts and hashes for the candidate files other than the manifest itself.",
-    "provenance.json: immutable-source pins and adaptation record.",
-    ".gitattributes: LF text checkout for byte-hash portability.",
-    ".github/workflows/verify.yml: reproduce the supplied checks on Python3.12 using pinned official actions and read-only repository permissions."
+    "README.md: current 4N bounds, eventual equality, reading order, explicit prior-construction attribution, and reproduction scope.",
+    "verify.py: preserve original proof pin; add exact pins for the three further reviewed notes, the upper-construction replay, guarded-counter optimized-mode test, and Python 3.10 minimum.",
+    "manifest.json: exact byte counts and hashes for every included file other than the manifest.",
+    "provenance.json: source archive pins, unchanged mathematical sources, adaptation record, and attribution refinement.",
+    "The previously published .gitattributes and pinned read-only GitHub Actions workflow are unchanged."
   ],
-  "missing_transfer_source": "The earlier independent-review.txt states that grid_transfer.py was inspected. That file is absent from both source archives used for this candidate. No transfer implementation is supplied or recreated, and the candidate does not claim to reproduce that implementation-level review.",
-  "excluded_material": "No historical ZIP copies, deployment receipts, session data, accumulated review logs, optional Matplotlib renderer, duplicate PNG, third-party paper, or forum answer text is included.",
+  "missing_transfer_source": "The initial two archives omitted the grid_transfer.py discussed in their review companion. A later cutoff archive includes a transfer implementation for separate numerical work. It is outside this focused update and is neither included nor executed; this repository does not claim to replay that implementation-level review.",
+  "excluded_material": "No width-twelve matrix theorem, matrix computation, numerical cutoff record, historical ZIP copy, deployment receipt, session data, accumulated review log, optional Matplotlib renderer, duplicate PNG, third-party paper, or forum answer text is included. The 24 upper-construction examples include width twelve but require only the standard-library graph counter.",
   "sources": [
     {
       "url": "https://mathoverflow.net/questions/516913/a-boundedness-question-for-unique-hamiltonian-cycles",
@@ -84,7 +138,37 @@
     {
       "url": "https://people.dmi.uns.ac.rs/~bodroza/Radovi/match43.pdf",
       "scope": "Established background on transfer-based enumeration of grid Hamiltonian cycles; not cited as a proof of the proposed classification."
+    },
+    {
+      "url": "https://math.stackexchange.com/questions/5103789/minimum-of-black-squares-to-guarantee-uniqueness-of-loop-visiting-all-white-sq",
+      "scope": "Misha Lavrov's 25 October 2025 explicit 2k square-grid construction and forced-zigzag uniqueness argument."
+    },
+    {
+      "url": "https://math.stackexchange.com/questions/5109188/minimum-number-of-forbidden-cells-for-a-unique-loop-on-m-times-n-grid",
+      "scope": "Misha Lavrov's 17 November 2025 comment extending to even lengths and proposing reflection for odd lengths; source of the all-length upper-bound idea."
+    },
+    {
+      "url": "https://arxiv.org/html/0709.2322v1",
+      "scope": "Jacobsen (2007), Section 2: established frontier connectivity and premature-cycle rejection background, not the present cutoff or eventual-equality theorem."
+    },
+    {
+      "url": "https://arxiv.org/pdf/2212.00317",
+      "scope": "Đokić, Doroslovački, and Bodroža-Pantić, The Structure of the 2-factor Transfer Digraph for Linear Grid Graphs: prior outlet-word component classification by odd/even imbalance. Its states omit path pairings and admit disjoint cycles; it does not supply the present Hamiltonian cutoff."
+    },
+    {
+      "url": "https://arxiv.org/html/math/0211285v2",
+      "scope": "de Gier, Loops, matchings and alternating-sign matrices, Section 2.1, Equation (1): established adjacent reconnection of noncrossing matchings."
     }
   ],
-  "license": "Original included material is offered under CC0 1.0. Referenced third-party works retain their original terms."
+  "license": "Original included material is offered under CC0 1.0. Referenced third-party works retain their original terms.",
+  "based_on_published_manifest_sha256": "857fb0467ac31785bd7802b182925edcc64984a3978aacae22e17a911aa06dfe",
+  "source_path_map": {
+    "two_k_exploration/two_k_construction.md": "two_k_construction.md"
+  },
+  "source_path_map_scope": "The cutoff note retains its frozen archive path; the unchanged upper-construction source is placed at repository root so the signed-cut note's relative link also resolves. No mathematical source text was edited.",
+  "attribution_refinement": {
+    "upper_construction": "Misha Lavrov's 25 October 2025 square-grid answer gives the 2k cap/forced-zigzag construction. Transpose and row reflection match the square specialization here. His 17 November 2025 rectangular-grid comment gives the even-length extension and proposes reflection for odd lengths. The included note is a self-contained checked reconstruction of that prior work; no construction or parity-extension priority is claimed.",
+    "frozen_source_scope": "The four mathematical source snapshots retain their original bytes. The README and this provenance record supply the more precise earlier attribution discovered during publication review.",
+    "transfer_background": "Jacobsen (2007), Section 2, describes frontier connectivity information and premature-cycle rejection. These are established methods, not claimed innovations of this project. The 2-factor outlet-word classification of Đokić, Doroslovački, and Bodroža-Pantić is related prior work with different state semantics. Adjacent matching reconnection is standard, as in de Gier, Section 2.1, Equation (1)."
+  }
 }
