@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "families": [
+    {
+      "vertices": 1,
+      "allowed_edge_multiplicities": [
+        0,
+        1,
+        2
+      ],
+      "graphs_checked": 3,
+      "graphs_without_deterministic_cyclic_scc": 2,
+      "counterexamples": 0
+    },
+    {
+      "vertices": 2,
+      "allowed_edge_multiplicities": [
+        0,
+        1,
+        2
+      ],
+      "graphs_checked": 81,
+      "graphs_without_deterministic_cyclic_scc": 55,
+      "counterexamples": 0
+    },
+    {
+      "vertices": 3,
+      "allowed_edge_multiplicities": [
+        0,
+        1,
+        2
+      ],
+      "graphs_checked": 19683,
+      "graphs_without_deterministic_cyclic_scc": 15672,
+      "counterexamples": 0
+    }
+  ],
+  "graphs_checked": 19767,
+  "scope": "Every directed multigraph on 1, 2, or 3 labeled vertices with each edge multiplicity in {0,1,2}, including self-loops.",
+  "limits": "Finite falsification check only; the universal theorem relies on the separately reviewed written argument.",
+  "checker_sha256": "cedf05ccfcb9c1ab05be7d0ef1ed45afb5538ba0c5386826a3cf3ed82679a55a"
+}

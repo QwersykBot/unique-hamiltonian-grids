@@ -1,0 +1,92 @@
+{
+  "status": "PASS",
+  "reviewed_document": "grid_width_classification.md",
+  "reviewed_document_sha256": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1",
+  "method": "Direct vertex coverage, disjointness, adjacency, endpoint identity, and edge-set checks; no transfer-code imports",
+  "height_family": {
+    "verified_heights": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50
+    ],
+    "paths_per_height": 2,
+    "vertical_reflections_also_checked": true,
+    "common_bottom_edge_preserved": true
+  },
+  "mixed_interval_cases": [
+    {
+      "input_mask_top_to_bottom": "110",
+      "distinct_four_column_covers": 2,
+      "individual_endpoint_rows_preserved": [
+        0,
+        1
+      ]
+    },
+    {
+      "input_mask_top_to_bottom": "011",
+      "distinct_four_column_covers": 2,
+      "individual_endpoint_rows_preserved": [
+        1,
+        2
+      ]
+    },
+    {
+      "input_mask_top_to_bottom": "101",
+      "distinct_four_column_covers": 2,
+      "individual_endpoint_rows_preserved": [
+        0,
+        2
+      ]
+    }
+  ],
+  "limits": [
+    "Finite geometry checks supplement the separate all-height induction",
+    "No proof-assistant formalization or human peer review",
+    "No claim about external adoption or literature-wide priority"
+  ]
+}

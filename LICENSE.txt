@@ -1,0 +1,11 @@
+Original proof prose, diagrams, original code, and review prose in this
+archive are offered under Creative Commons CC0 1.0 Universal.
+
+https://creativecommons.org/publicdomain/zero/1.0/
+
+This notice does not change the rights or terms applying to third-party
+papers, forum posts, services, or software libraries linked or referenced
+by the material. Those works are not included in this archive.
+
+The material is provided without warranty. Independent automated review is
+not human peer review or proof-assistant formalization.

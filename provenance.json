@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "candidate_version": "2026-11-24-2",
+  "authorship_and_review": "AI-origin proof and independent AI-agent reviews; no human peer review, proof-assistant verification, external acceptance, or literature-wide priority claim.",
+  "original_archives": [
+    {
+      "name": "grid-width-classification-review-v1.zip",
+      "bytes": 107690,
+      "sha256": "196b849f4935e8caaec3a38a6053caa61d5899d7f9b4b2a6d9d7d544c9b4059c",
+      "reported_public_location": "https://collective-evidence-79c148.workspace-350227.chatgpt.site/grid-width-classification-review-v1.zip"
+    },
+    {
+      "name": "grid-classification-independent-review-v1.zip",
+      "bytes": 14387,
+      "sha256": "771adac5b2b5489d4fe8ff79222491969c1a6c383d29ea46f1da5fd09e15231e",
+      "reported_public_location": "https://collective-evidence-79c148.workspace-350227.chatgpt.site/grid-classification-independent-review-v1.zip"
+    }
+  ],
+  "archive_location_scope": "Historical source locations, not a new availability assertion. Reproduction needs only this repository.",
+  "unchanged_material": [
+    {
+      "file": "grid_width_classification.md",
+      "source_member": "grid_width_classification.md",
+      "bytes": 17117,
+      "sha256": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1"
+    },
+    {
+      "file": "figures/grid_scc_gadgets.svg",
+      "source_member": "grid_scc_gadgets.svg",
+      "sha256": "6b9142b091709eeedf828e864e06f77e7fa819d6c3a7402a6d8de960c150403a"
+    },
+    {
+      "file": "LICENSE.txt",
+      "source_member": "LICENSE.txt",
+      "sha256": "8e0a46dfa98b6f00b64266d2fcc11ea50dfdd6aa2e6afd44a6d239c417b85aa8"
+    }
+  ],
+  "adapted_checks": [
+    {
+      "file": "checks/check_geometry.py",
+      "source_member": "review_scc_local_gadgets.py",
+      "source_sha256": "36b5d39e69980cf9d5d5c331159ccb4314318fd9733e5369685def3b8b2a024c",
+      "changes": [
+        "Add explicit optimized-interpreter rejection before imports.",
+        "Resolve the default reviewed proof in the repository root from the checks directory.",
+        "Remove CPU timing and result-file writes; retain deterministic JSON on stdout.",
+        "Preserve all mathematical and geometric checks."
+      ]
+    },
+    {
+      "file": "checks/check_graph_lemma.py",
+      "source_member": "check_graph_lemma.py",
+      "source_sha256": "98fb9c2d59355d64f60b943902356ac62c4320166094bc0d43873152cda82d40",
+      "changes": [
+        "Add explicit optimized-interpreter rejection before imports.",
+        "Remove CPU timing and result-file writes; retain deterministic JSON and checker-source hash on stdout.",
+        "Preserve exhaustive families and both directions of the tested criterion."
+      ]
+    }
+  ],
+  "pinned_results": {
+    "geometry": "Original finite geometry result with nondeterministic CPU timing removed.",
+    "graph_lemma": "Original finite graph result with CPU timing removed and the checker hash updated to the adapted script. Verification reruns the adapted scripts and compares their complete output with these records."
+  },
+  "new_packaging": [
+    "README.md: concise theorem, attribution, scope, and reproduction instructions.",
+    "verify.py: explicit integrity checks, exact result replay, and optimized-mode rejection tests.",
+    "manifest.json: exact byte counts and hashes for the candidate files other than the manifest itself.",
+    "provenance.json: immutable-source pins and adaptation record.",
+    ".gitattributes: LF text checkout for byte-hash portability.",
+    ".github/workflows/verify.yml: reproduce the supplied checks on Python3.12 using pinned official actions and read-only repository permissions."
+  ],
+  "missing_transfer_source": "The earlier independent-review.txt states that grid_transfer.py was inspected. That file is absent from both source archives used for this candidate. No transfer implementation is supplied or recreated, and the candidate does not claim to reproduce that implementation-level review.",
+  "excluded_material": "No historical ZIP copies, deployment receipts, session data, accumulated review logs, optional Matplotlib renderer, duplicate PNG, third-party paper, or forum answer text is included.",
+  "sources": [
+    {
+      "url": "https://mathoverflow.net/questions/516913/a-boundedness-question-for-unique-hamiltonian-cycles",
+      "scope": "Motivating question and attributed bounded exceptional-width constructions."
+    },
+    {
+      "url": "https://math.stackexchange.com/questions/5154584/a-boundedness-question-for-unique-hamiltonian-cycles",
+      "scope": "Crosspost, Misha Lavrov's partial width-five answer, and attribution to earlier width-three work."
+    },
+    {
+      "url": "https://people.dmi.uns.ac.rs/~bodroza/Radovi/match43.pdf",
+      "scope": "Established background on transfer-based enumeration of grid Hamiltonian cycles; not cited as a proof of the proposed classification."
+    }
+  ],
+  "license": "Original included material is offered under CC0 1.0. Referenced third-party works retain their original terms."
+}
