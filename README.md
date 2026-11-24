@@ -5,47 +5,65 @@ needed to leave a unique Hamiltonian cycle in a grid. The arguments have receive
 independent AI-agent review. They have not received human peer review or
 proof-assistant verification.
 
-The current argument gives a linear deletion lower bound at every width other
-than two or a multiple of four, and an eventual exact value at widths divisible
-by four. All four reviewed mathematical source files are preserved byte for byte.
+The current argument gives a cubic-in-width cutoff for unique full-column
+fillings. It yields a linear deletion lower bound at every fixed width
+$m\geq3$ not divisible by four, and an eventual exact value at widths
+divisible by four with a quartic sufficient threshold. The earlier proof
+notes remain unchanged.
 
 ## Results and scope
 
 Let $M(m,n)$ be the minimum number of vertices deleted from an $m\times n$
 grid so that the remaining **induced graph** has exactly one Hamiltonian cycle,
-counted as an undirected edge set. Set
+counted as an undirected edge set. Put $p=\lfloor m/2\rfloor$ and
 
 $$
-N_m=1+\operatorname{Motzkin}_m
-=1+\sum_{j=0}^{\lfloor m/2\rfloor}\binom{m}{2j}C_j,
-\qquad C_j=\frac{1}{j+1}\binom{2j}{j}.
+L(m)=2p^3+7p^2+3p+11.
 $$
 
 For every fixed $m\geq3$ with $4\nmid m$ and every $n\geq3$, the
-[geometric cutoff argument](four_n_cutoff.md) gives
+[polynomial cutoff argument](polynomial_cutoff.md) gives
 
 $$
-M(m,n)\geq\left\lfloor\frac{n}{4N_m}\right\rfloor.
+M(m,n)\geq\left\lfloor\frac{n}{L(m)}\right\rfloor.
 $$
 
-For $m=4k$, put $R_k=N_{4k}-2C_k$. The signed-cut argument and the
-credited prior upper construction give, for $k\geq1$ and $n\geq3$,
+For $m=4k$, the signed-cut argument and the credited prior upper
+construction give, for $k\geq1$ and $n\geq3$,
 
 $$
-\min\!\left(2k,\left\lfloor\frac{n}{4R_k}\right\rfloor\right)
+\min\!\left(2k,\left\lfloor\frac{n}{L(4k)}\right\rfloor\right)
 \leq M(4k,n)\leq2k,
 $$
 
 and, using bipartite parity,
 
 $$
-M(4k,n)=2k\qquad\text{whenever }n\geq4(2k-1)R_k.
+M(4k,n)=2k\qquad\text{whenever }
+n\geq(2k-1)(16k^3+28k^2+6k+11).
 $$
 
-These are sufficient bounds, with no sharpness claim. The cutoff is linear in
-the number of transfer states, which grows exponentially with width. Its proof
-uses short return walks and a parity lift of the grid transfer graph; it does
+These are sufficient bounds, with no sharpness claim. In particular, the
+threshold does not settle the optimum for square grids. The proof connects
+arbitrary frontier path pairings through a common endpoint pattern in a
+bounded number of columns, then inserts distinct short returns. It retains
+path connectivity and rejects premature closed cycles throughout; it does
 not extrapolate from finite-width experiments.
+
+The earlier [state-count cutoff](four_n_cutoff.md) can be smaller at narrow
+widths. Both results apply to the same matrix, so $L(m)$ may be replaced
+throughout by $\min\{L(m),4S_m\}$, where
+
+$$
+S_m=1+\operatorname{Motzkin}_m-
+\begin{cases}2C_{m/4},&4\mid m,\\0,&4\nmid m,\end{cases}
+\qquad
+\operatorname{Motzkin}_m=\sum_{j=0}^{\lfloor m/2\rfloor}\binom{m}{2j}C_j,
+\quad C_j=\frac{1}{j+1}\binom{2j}{j}.
+$$
+
+For example, $4S_3=20<L(3)=23$ and $4S_4=32<L(4)=61$.
+The new gain is the polynomial growth rate in width.
 
 The result addresses the missing unbounded direction of the
 [MathOverflow boundedness question](https://mathoverflow.net/questions/516913/a-boundedness-question-for-unique-hamiltonian-cycles)
@@ -58,13 +76,14 @@ acceptance is claimed.
 
 | Source | Role |
 |---|---|
-| [Geometric cutoff](four_n_cutoff.md) | The current $4N$ argument and its lower-bound and eventual-equality consequences. |
+| [Polynomial cutoff](polynomial_cutoff.md) | The current cubic cutoff, its complete proof, and the deletion corollaries. |
+| [Geometric cutoff](four_n_cutoff.md) | Short return walks used by the polynomial proof, plus the earlier $4N$ bound. |
 | [Original classification proof](grid_width_classification.md) | Geometric lemmas, transfer semantics, and the earlier general $2N^2$ walk bound. |
-| [Signed-cut argument](eventual_exact_optimum.md) | Alternating cuts require at least $2k$ deletions. This unchanged source uses the earlier cutoff; the current threshold is stated above and in the geometric cutoff note. |
+| [Signed-cut argument](eventual_exact_optimum.md) | Alternating cuts require at least $2k$ deletions. This unchanged source uses an earlier cutoff; the current threshold is stated above and in the polynomial note. |
 | [Prior upper construction](two_k_construction.md) | A self-contained reconstruction proving existence and uniqueness after exactly $2k$ deletions for all $k\geq1$, $n\geq3$. |
 
 The [local path diagrams](figures/grid_scc_gadgets.svg) illustrate the geometric
-replacements. The cutoff note retains its original archive reference
+replacements. The 4N cutoff note retains its original archive reference
 `two_k_exploration/two_k_construction.md`; that exact source is supplied here as
 `two_k_construction.md`.
 
@@ -97,6 +116,13 @@ allow disjoint cycles, so it does not establish the Hamiltonian cutoff here.
 These references supply background and attribution, not a proof of the present
 cutoff or eventual-equality statements.
 
+Related polynomial reconfiguration is also prior work. Kazazi's
+[Reconfiguration of Hamiltonian Cycles in Rectangular Grid Graphs](https://arxiv.org/pdf/2601.06731)
+gives at most $mn^2$ valid double-switch moves between complete cycles of an
+$m\times n$ rectangle when $n\geq m$. That graph of completed cycles differs
+from the column-appending transfer graph here, whose states carry arbitrary
+frontier pairings and whose connectors need a specified length parity.
+
 ## Reproduce the supplied checks
 
 Use Python **3.10 or later**; only the standard library is required. Local
@@ -107,8 +133,8 @@ same command with Python 3.12 on pushes and pull requests.
 python verify.py
 ```
 
-This verifies all file hashes and the four reviewed source identities, reruns
-the three finite checks, compares their complete deterministic JSON output with
+This verifies all file hashes and the five reviewed source identities, reruns
+the four finite checks, compares their complete deterministic JSON output with
 the pinned results, and checks optimized-interpreter rejection. Run without
 `-O`, `-OO`, or `PYTHONOPTIMIZE`; assertion-dependent verification explicitly
 rejects optimized execution.
@@ -118,14 +144,20 @@ rejects optimized execution.
 | [Geometry](checks/check_geometry.py) | The original local path families at heights 3 through 50 and the three mixed-interval cases. |
 | [Directed graphs](checks/check_graph_lemma.py) | Both directions of the original $2N^2$ unique-walk criterion on all 19,767 directed multigraphs with one to three labeled vertices and edge multiplicities in `{0,1,2}`. |
 | [Upper construction](checks/check_upper_construction.py) | Exact deletion counts and unique cycles in 24 constructions at widths 4, 8, 12, 16 and lengths 3 through 8; five controls with zero, one, or multiple cycles; all three local ladder completions. |
+| [Reverse geometry](checks/check_reverse_geometry.py) | All 9,046 cap-free full-column geometries with nonempty even endpoint sets at heights 3 through 10. Exhausts 60,936 output matchings and checks that every input matching has a valid reverse lift. Includes empty-frontier and jointly closing-cap negative controls. |
 
 The upper check searches undirected edge subsets with degree propagation and
 proper-subtour rejection. A separate vertex-path enumerator checks its five
 controls. Neither uses a transfer matrix or SCC implementation.
 
+The reverse-geometry check independently builds the glued graph and finds
+its connected components. It does not implement the proof's witness-insertion
+rule. Its finite one-column result does not prove the all-height lifting
+lemma or the polynomial cutoff.
+
 Each checker can also run directly and prints JSON. Pinned outputs are in
 [`results/`](results/). These finite checks supplement the written universal
-arguments; a successful command does not mechanically prove the $4N$ cutoff,
+arguments; a successful command does not mechanically prove either cutoff,
 the all-parameter construction, or the eventual equality.
 
 ## Provenance, license, and review
@@ -135,6 +167,11 @@ attribution, and the exact checker adaptations. The mathematical search logic
 is preserved; execution guards and output normalization support reliable replay.
 An earlier review also discussed a separate grid-transfer implementation; this
 repository does not claim to reproduce that implementation-level review.
+
+The [polynomial-proof review receipt](reviews/polynomial_cutoff.md) identifies
+the exact reviewed text, its dependencies, the publication comparison, and
+the review's limits. It records a non-author AI review within the same
+collaborating collective, not external peer review.
 
 Original included prose, diagrams, and code are dedicated under
 [CC0 1.0](LICENSE.txt). Referenced third-party papers and discussions retain

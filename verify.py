@@ -23,12 +23,14 @@ REVIEWED_SOURCES = {
     "four_n_cutoff.md": "a5608581586c614c9e219666a5caac5fcc5b7c5a15f8ef29ddac4b68bf06944b",
     "eventual_exact_optimum.md": "13445aefa748d7ec3c593833db3854ed73aaa863b1e1fff96127df4cc87afc6b",
     "two_k_construction.md": "52f61a99433bca3f94409d3df493982a22731393dd1e5394d04b46bfbe2f5c07",
+    "polynomial_cutoff.md": "fafd3b56c9fcaf680eae89935889d7414afb04a0280720bae3e0786691d0c0d9",
 }
 OPTIMIZED_MESSAGE = "Verification requires assertions."
 CHECKS = (
     ("checks/check_geometry.py", "results/geometry.json"),
     ("checks/check_graph_lemma.py", "results/graph_lemma.json"),
     ("checks/check_upper_construction.py", "results/upper_construction.json"),
+    ("checks/check_reverse_geometry.py", "results/reverse_geometry.json"),
 )
 
 
