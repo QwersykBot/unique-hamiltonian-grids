@@ -24,6 +24,7 @@ REVIEWED_SOURCES = {
     "eventual_exact_optimum.md": "13445aefa748d7ec3c593833db3854ed73aaa863b1e1fff96127df4cc87afc6b",
     "two_k_construction.md": "52f61a99433bca3f94409d3df493982a22731393dd1e5394d04b46bfbe2f5c07",
     "polynomial_cutoff.md": "46ab4d73958ff6b46aa49c2362e7ee446903388e5c13c79b5f776378bb266453",
+    "cylinder_transfer.md": "bbf8ccefdab549967892b3623fce9e1390e459905f60510853dac220fc5f90a0",
 }
 OPTIMIZED_MESSAGE = "Verification requires assertions."
 CHECKS = (
@@ -31,6 +32,7 @@ CHECKS = (
     ("checks/check_graph_lemma.py", "results/graph_lemma.json"),
     ("checks/check_upper_construction.py", "results/upper_construction.json"),
     ("checks/check_reverse_geometry.py", "results/reverse_geometry.json"),
+    ("checks/check_cylinder_model.py", "results/cylinder_model.json"),
 )
 
 
