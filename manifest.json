@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "candidate_version": "2026-11-25-formal-2",
+  "candidate_version": "2026-11-25-formal-3",
   "proof_sha256": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1",
   "reviewed_sources_sha256": {
     "grid_width_classification.md": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1",
@@ -101,9 +101,49 @@
       "bytes": 12194,
       "sha256": "d981f8b41ea7d99a321ab5b11845f4740c7a9be4e3aac77fc55a8c8eb649cf5b"
     },
+    "formal/BoundaryState.lean": {
+      "bytes": 12360,
+      "sha256": "552632d73c5b5b3f5bb8af1a9486284ecbbeb108e44feacbbd1ae49b53a8d5c5"
+    },
+    "formal/BoundaryVertical.lean": {
+      "bytes": 16376,
+      "sha256": "88878e56e5afe32ea18c5fa74dc86f71ab17ddefcc3f1a6b2fd7efa8fdc82b55"
+    },
+    "formal/ColumnBoundaryDegree.lean": {
+      "bytes": 5226,
+      "sha256": "253de1f7cd3dab7661ec40cd33d41ebbff80e23979399fdb48ba1c9a06483d7e"
+    },
     "formal/ColumnCut.lean": {
       "bytes": 8438,
       "sha256": "ec3d16b85ee44c1c80532db6b0f05be828400a66482e116fff226fe4ed3c3e36"
+    },
+    "formal/ColumnCutOutgoing.lean": {
+      "bytes": 7003,
+      "sha256": "f3a46e941e118900d4576e61462cae3ce095534c791a5f2f97daa7d2c7dbfe96"
+    },
+    "formal/ColumnEmbedding.lean": {
+      "bytes": 2779,
+      "sha256": "9c39416b13620f488b9c7d8b7873083ffbc46ca50ddaca90ca0ee1c6a9709408"
+    },
+    "formal/ColumnFragments.lean": {
+      "bytes": 7877,
+      "sha256": "24bedfdbfe637f2432838d483b16cf2c431f96a5c8c23cff2eb416bd412f5391"
+    },
+    "formal/ColumnGeometry.lean": {
+      "bytes": 6309,
+      "sha256": "0550d21514ef624aa4e72da4d60f6b38bffeb770ffd6e02913fc635f2fe6216f"
+    },
+    "formal/ColumnHamiltonian.lean": {
+      "bytes": 5543,
+      "sha256": "770334e6ba01404702551e26d11dd036a6afcbea29d7d7038adea000ae2dd0f3"
+    },
+    "formal/ColumnWeights.lean": {
+      "bytes": 8971,
+      "sha256": "2acab36db1cc42c5762cec9bf665429eb1526a53281a6448308c06e65259dcd9"
+    },
+    "formal/CommonWitnessState.lean": {
+      "bytes": 11379,
+      "sha256": "5c644a34f3b381ae3dd54569c5925912d39cfd4e76084b6138ecb345b40e51de"
     },
     "formal/ConnectedTwoRegular.lean": {
       "bytes": 3200,
@@ -113,6 +153,10 @@
       "bytes": 6545,
       "sha256": "8a0e8cd07056a3b869758f5a0abe8001ad67ed15724f6cfdd017e6aafa0b9bd4"
     },
+    "formal/CycleSaturation.lean": {
+      "bytes": 2148,
+      "sha256": "a77aaa223141ed410cf3ea91633c7f7ac24ca81f1beeac0ee4d2b24adf2f33a9"
+    },
     "formal/CylinderSplice.lean": {
       "bytes": 7866,
       "sha256": "1a1b35a591ada4069cabad3e571221dad35f46f97052176fe2e7316572a1df43"
@@ -121,9 +165,17 @@
       "bytes": 2050,
       "sha256": "08be46d676d088ac19b85df2be26dc6dfb6f95cce1fcdb38a23a452b3a184526"
     },
+    "formal/EdgeReplacementReachability.lean": {
+      "bytes": 5793,
+      "sha256": "f8572d7602babec2b81766aa7f2f053dfaf689b7f0b8029bf4a4e3269fd94547"
+    },
     "formal/EnumeratedWalk.lean": {
       "bytes": 9135,
       "sha256": "560bf7712190bb361701c93b2da3009f930d43651779283d6c351d006fe2d4ca"
+    },
+    "formal/ExceptionalState.lean": {
+      "bytes": 8440,
+      "sha256": "8287ef5c579e921a374ca6201fe26f70eca60d0097aede0ba71f988d50d450c7"
     },
     "formal/FiniteTransfer.lean": {
       "bytes": 5056,
@@ -137,9 +189,21 @@
       "bytes": 4578,
       "sha256": "26b0cd486ff7b29bc0912d80af8cd7745a9f5694228ab5fc0ae484deb8e541ca"
     },
+    "formal/FrontierDegrees.lean": {
+      "bytes": 5874,
+      "sha256": "9a549c48336ab7583fde1cb94562e576028cfd086537b5bc495114f54adbb1e1"
+    },
+    "formal/FrontierDegreesGeneral.lean": {
+      "bytes": 5469,
+      "sha256": "f43ea3e7c4465edcb75f2dd8beaa6e298201c9d55c3c186c404dd53d3467061a"
+    },
     "formal/FrontierSubstitution.lean": {
       "bytes": 8234,
       "sha256": "7f8ddf84f64e47b4d9e0c8e76b9b6e1e0a1fac91b17dc9c041a360d5c60baf69"
+    },
+    "formal/FullCrossing.lean": {
+      "bytes": 3628,
+      "sha256": "5c5e1a374183e3f3bf790f99f895ef1678df23b2a64ad961ce44bc6e82e2fc6a"
     },
     "formal/GenericEdgeWeights.lean": {
       "bytes": 3936,
@@ -170,12 +234,12 @@
       "sha256": "21b18600f47568e1534be59cfc5634cc52e3eaf0bd3e9280f44135ff2c080742"
     },
     "formal/ProofAudit.lean": {
-      "bytes": 11481,
-      "sha256": "b6d167a4b4db2881d1e58fbca3be351ad0748582d4f3106e3ac2a574af2b0630"
+      "bytes": 22767,
+      "sha256": "50a2d867c30be70d8eb9c89d84bfa5b5d09100a59e833c22507d1cbed914c06c"
     },
     "formal/README.md": {
-      "bytes": 14147,
-      "sha256": "a67fa2a415dd2e12202663311bdd9dc1df6571a31f01cb6832c3ef04e2d33b90"
+      "bytes": 18223,
+      "sha256": "1b22ac8996427800a65df51244dadf16fb3da3aae7b2dda359575e9c5869b164"
     },
     "formal/RowRotation.lean": {
       "bytes": 8658,
@@ -221,29 +285,65 @@
       "bytes": 8965,
       "sha256": "b9166361488dcd53c43d648daf6855f991b3504873906dcf788aa2e2a6170b8f"
     },
+    "formal/ZigzagException.lean": {
+      "bytes": 8496,
+      "sha256": "0dc6bd98c607bc90198a33c410ea8604be27153d90190c30700d8f653d11e775"
+    },
     "formal/lake-manifest.json": {
       "bytes": 3147,
       "sha256": "40b1835f8096d30247e849ae1aa3425e5f71f2307ddeaf4e324509a6c01b6b97"
     },
     "formal/lakefile.toml": {
-      "bytes": 997,
-      "sha256": "5d5e0cb365a68454f6fa357af0bce7ed6abe835290b9c701904950ab2da37896"
+      "bytes": 1345,
+      "sha256": "f05b4efb0ac3c1d9006b30bfdb29b7d90daf04634391ea0d7fa184c11818e702"
     },
     "formal/lean-toolchain": {
       "bytes": 25,
       "sha256": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea"
     },
     "formal/provenance.json": {
-      "bytes": 8091,
-      "sha256": "e771b38ec9a813cd4f2ccc97c50dd9ffe5a1593e61d24ad8b0a79af5357f5dd5"
+      "bytes": 12485,
+      "sha256": "641b9073c3b4a471aa90de55fda118df16505ec00da54d8a67bbf2fbdd151a2e"
     },
     "formal/reviews/auxiliary_cycle.md": {
       "bytes": 8414,
       "sha256": "d52f2b9e206685c33f9df2546f9a3d2784201d0d0d70345ad4c2559a8c3593f5"
     },
+    "formal/reviews/boundary_states_and_fragments.md": {
+      "bytes": 12309,
+      "sha256": "8a97ec66f38d13d41b541bd72994eb6cfcafadc3a261148b52d4efa69c0d8315"
+    },
+    "formal/reviews/boundary_vertical.md": {
+      "bytes": 6309,
+      "sha256": "2b16a8cc009b96a075fa1de828a1853bf20977a3b380136a3ce0a1bde3c393cc"
+    },
+    "formal/reviews/column_boundary_degree.md": {
+      "bytes": 6842,
+      "sha256": "4642600ebf2f03279a40c4a0e562b33e0383b7aea0210bee678961929a0f93e5"
+    },
+    "formal/reviews/column_geometry.txt": {
+      "bytes": 4084,
+      "sha256": "51a9aa33891c75d24a28c693eed0ce42974fe0caab8748550753a77b1bb0bf98"
+    },
+    "formal/reviews/column_hamiltonian.json": {
+      "bytes": 1652,
+      "sha256": "a88a411b0df278e92c0d3b280b779e93fdf351b747422051048bb3298bad0a8f"
+    },
+    "formal/reviews/column_weights.txt": {
+      "bytes": 2096,
+      "sha256": "9989179bf9292f73bb73c45dfcb4fa46f62d2cc49fdac5d41723761b76a249ec"
+    },
     "formal/reviews/counted_objects.txt": {
       "bytes": 5590,
       "sha256": "9f95d0f358182bbe5399393d33c446852f8e2a1dcbe3f6e4ffd5399f79a8a1b6"
+    },
+    "formal/reviews/cycle_saturation.json": {
+      "bytes": 962,
+      "sha256": "6a1d035eb1955fa59de698fd618e725f45ada87569e15a15f642e36eb7356498"
+    },
+    "formal/reviews/edge_replacement.md": {
+      "bytes": 6616,
+      "sha256": "a787ca2137c3c92c19a0c4e5f0debdb93d1b435edd0776d9861cc18b59e35834"
     },
     "formal/reviews/finite_labelled_transfer.md": {
       "bytes": 8418,
@@ -252,6 +352,14 @@
     "formal/reviews/frontier_substitution.md": {
       "bytes": 5011,
       "sha256": "33820de0d20c4354cf2ac3408541bcbbf2b124cfe42e97599dc575175c0eafac"
+    },
+    "formal/reviews/full_crossing.txt": {
+      "bytes": 6622,
+      "sha256": "0ed6efe4cb6ecdb80774d96311be37ae37c27134788d43b5f06e641dddb9d384"
+    },
+    "formal/reviews/generalized_frontier_degrees.md": {
+      "bytes": 4635,
+      "sha256": "9cc6d8948a9b3a146b22dd1019a89c22c82057602402d494a8db6559753e66e3"
     },
     "formal/reviews/graph_statements.md": {
       "bytes": 10761,
@@ -269,9 +377,13 @@
       "bytes": 8515,
       "sha256": "7d8bc13d98a357f977c5c1b2036cd28c9d5e908ac7cf10fdbbe087a5930de3e2"
     },
+    "formal/reviews/zigzag_support.txt": {
+      "bytes": 2326,
+      "sha256": "61a8e6cb476cb8a8ac16f68999567b302b91f3db984ea157997a2de48b3ddd8a"
+    },
     "formal/verify.py": {
-      "bytes": 16788,
-      "sha256": "27984f1e92eee499c35f60e939b012e518ef47b649317455149f39f5cd0669c3"
+      "bytes": 25750,
+      "sha256": "7d91f939a37f99ec4b72830ec305e06577ef0445e76db55432f92bb7b870794a"
     },
     "four_n_cutoff.md": {
       "bytes": 11274,

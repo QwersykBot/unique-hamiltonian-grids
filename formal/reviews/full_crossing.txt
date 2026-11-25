@@ -1,0 +1,135 @@
+INDEPENDENT SEMANTIC REVIEW — ARBITRARY-CUT FULL-CROSSING OBSTRUCTION
+
+Reviewer: /root/grid_proof_review
+Date: 2026-11-25 UTC
+Decision: PASS. No substantive mathematical or statement-scope blocker found.
+
+This is a full-source semantic review of the four files below, not an
+independent compiler replay. The parent reported strict compilation and owns
+the combined compiler/axiom receipt. This review made no source changes and
+ran no Lean compiler. It does not attest uninspected transitive dependencies
+afresh.
+
+FROZEN INPUTS
+
+Directory:
+/workspace/scratch/3a4d7a8b3970/cylinder_formal_bridges/full_crossing
+
+ColumnEmbedding.lean
+  2779 bytes
+  SHA256 9c39416b13620f488b9c7d8b7873083ffbc46ca50ddaca90ca0ee1c6a9709408
+FullCrossing.lean
+  3628 bytes
+  SHA256 5c5e1a374183e3f3bf790f99f895ef1678df23b2a64ad961ce44bc6e82e2fc6a
+ZigzagException.lean
+  8496 bytes
+  SHA256 0dc6bd98c607bc90198a33c410ea8604be27153d90190c30700d8f653d11e775
+CycleSaturation.lean
+  2148 bytes
+  SHA256 a77aaa223141ed410cf3ea91633c7f7ac24ca81f1beeac0ee4d2b24adf2f33a9
+
+The reviewer read all four complete files and checked these byte hashes.
+For the mask corollary, the existing definitions of IsHamiltonianGeometry and
+HamiltonianGeometry were also inspected in column_counted/src/
+ColumnHamiltonian.lean: the predicate is exactly connectedness of the
+realized-edge spanning graph and neighborSet.ncard = 2 at every vertex.
+That interface check is not a fresh full-source review of that dependency.
+
+1. SHIFTED TWO-COLUMN EMBEDDING
+
+columnShift maps (r,k) in Fin m x Fin 2 to (r,c.val+k.val) in Fin m x Fin L,
+where c : Fin (L-1). Its bound follows from c < L-1 and k < 2. Its injectivity
+uses row equality and cancellation of the fixed natural column offset.
+The left/right specialization lemmas identify its images with precisely
+lowerCol c and upperCol c. No row rotation or longitudinal wrap is introduced.
+
+A supplied cut already implies L >= 2. For L = 0 or 1 the cut type is empty,
+so the universally quantified arbitrary-cut theorem has no nonexistent cut
+to interpret. There is no hidden lower-bound hypothesis on L.
+
+2. PHYSICAL MASKS REALLY GIVE THE CLAIMED EDGES
+
+FullCrossingAt hm H c asserts, for every row r, both actual H-adjacencies
+  (r,lowerCol c) -- (r,upperCol c), and
+  (r,lowerCol c) -- (rowSucc hm r,upperCol c).
+Thus it is the physical all-horizontal/all-diagonal crossing condition,
+not a surrogate state or a condition on abstract frontier connectivity.
+
+selectedId_adj passes from an actual selected ID through membership in
+realizedEdges to fromEdgeSet adjacency. The ambient physical-edge proof
+supplies distinct endpoints, as required by fromEdgeSet. The mask theorem
+specializes this to the H and D IDs with their true Boolean bits. It therefore
+establishes FullCrossingAt for the actual selected spanning graph.
+
+Nonblocking prose clarity: selectedId_adj's comment about excluding
+"diagonal pairs" means equal-endpoint pairs (self-loops). It does not exclude
+the physical D-edge family. The proof itself is unambiguous and correct.
+
+3. THE IMPORTED ZIGZAG IS A CONCRETE STANDARD CYCLE
+
+ZigzagException.geometry sets all V bits false and all H/D bits true on two
+columns. Its realized-edge and adjacency characterizations give exactly the
+two physical families above, in both undirected orientations. The explicit
+neighbor calculations give degree two; the row-successor argument connects
+successive left vertices through a right vertex, and horizontal edges reach
+every right vertex. The connected-two-regular theorem then supplies an
+actual Mathlib Hamiltonian walk p in that selected graph.
+
+The local cycle has length card (Fin m x Fin 2) = m*2. The source also proves
+parity statements, but FullCrossing does not use them. This obstruction does
+not depend on identifying parity with topological winding or cycle type.
+
+4. HOMOMORPHISM INTO AN ARBITRARY CONNECTED TWO-REGULAR H
+
+zigzagInto uses columnShift on vertices. Its adjacency proof unfolds the
+exact zigzag edge characterization and handles both orientations using
+FullCrossingAt and symmetry of H. zigzagInto_injective is exactly the shifted
+vertex map's injectivity. Hence mapping the supplied local p gives a cycle
+in H and preserves its length.
+
+No premise H <= the ambient triangular-cylinder graph is needed. The proof
+only requires H to contain these crossing edges. Any connected two-regular
+finite simple graph containing this embedded cycle must be saturated by it,
+even if H was initially presented without an ambient-edge restriction.
+
+5. SATURATION RETAINS THE SAME SUPPLIED CYCLE
+
+CycleSaturation.isHamiltonianCycle_of_neighbor_ncard_two accepts a particular
+p : G.Walk v v together with p.IsCycle, G.Connected, and the degree-two
+condition, and concludes p.IsHamiltonianCycle for that same p. It does not
+replace p by another cycle whose length could be unrelated.
+
+The proof obtains G.IsCycles from the degree condition, then uses the
+supplied cycle's subgraph-closure property to propagate membership along
+ambient reachability. Connectedness forces every vertex into that cycle's
+subgraph. Its original support-tail nodup property and this coverage prove
+Hamiltonicity. The subsequent length theorem therefore concerns the exact
+input walk. The finite-type assumptions give ncard = 2 its intended ordinary
+degree meaning.
+
+6. LENGTH CANCELLATION AND MASK COROLLARIES
+
+For the mapped local cycle, saturation gives
+  p.length = card (Fin m x Fin L) = m*L,
+while local Hamiltonicity gives p.length = m*2. Walk mapping preserves the
+length. The final cancellation of m is valid because hm : 3 <= m implies
+0 < m. The result is L = 2; there is no cancellation at m = 0 and no assumed
+spanning property smuggled into the embedding step.
+
+length_two_of_full_crossing_masks applies this result to the selected graph
+of a HamiltonianGeometry, using its exact connected/two-regular predicate
+and the bit-to-adjacency bridge. not_full_crossing_masks then contradicts
+L >= 3. These are concrete mask/graph consequences at any supplied cut.
+
+SCOPE
+
+Confirmed: the stated arbitrary-cut full-crossing obstruction for m >= 3,
+including the concrete selected-mask corollaries and the stronger arbitrary-H
+formulation without H <= ambient graph.
+
+Not claimed here: a formal frontier state-isolation theorem; an implication
+from an abstract outgoing state to these actual selected edges; attachment
+or boundary-isolation glue; a parity/topology correspondence; any transfer
+matrix, counting, primitivity, or asymptotic conclusion. This review supplies
+semantic evidence only; the separate strict compiler/axiom audit remains
+the parent's responsibility.

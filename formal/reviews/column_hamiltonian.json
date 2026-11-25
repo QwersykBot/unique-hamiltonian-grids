@@ -1,0 +1,27 @@
+{
+  "reviewer": "/root/resource_and_impact_audit/selected_semantic_review",
+  "verdict": "PASS",
+  "mode": "Complete small-source semantic review; no edits, compilation, or network",
+  "sources": {
+    "ColumnHamiltonian.lean": {
+      "bytes": 5543,
+      "sha256": "770334e6ba01404702551e26d11dd036a6afcbea29d7d7038adea000ae2dd0f3"
+    },
+    "ColumnGeometry.lean": {
+      "bytes": 6309,
+      "sha256": "0550d21514ef624aa4e72da4d60f6b38bffeb770ffd6e02913fc635f2fe6216f"
+    },
+    "CountedHamiltonian.lean": {
+      "bytes": 6545,
+      "sha256": "8a0e8cd07056a3b869758f5a0abe8001ad67ed15724f6cfdd017e6aafa0b9bd4"
+    }
+  },
+  "findings": [
+    "IsHamiltonianGeometry is connectedness and exactly two neighbors in the actual fromEdgeSet of realizedEdges; realizedEdges_mem supplies admissibility.",
+    "hamiltonianSelectionEquiv is the restriction of the exact columnSelectionEquiv, followed by removal of a redundant edge-membership proof. No roots, directions, rotations, or presentation witnesses are counted.",
+    "Physical-ID weight equality uses toEdge_injective through Finset.sum_image, so distinct physical IDs do not collapse in the selected edge set.",
+    "selectionParity and parityCount are the exact unchanged counted-foundation definitions; the new equivalence restricts to each of those classes.",
+    "For L=0 the sole empty mask family fails actual graph Connectedness; for L=1 only vertical positions remain. No extra length assumption or fictitious intercolumn edge is introduced.",
+    "The result is an exact representation and equality of finite counts, with no frontier transfer or contractibility interpretation."
+  ]
+}

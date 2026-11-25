@@ -116,6 +116,14 @@ horizontal, and consistently oriented diagonal identifiers correspond
 bijectively to the actual graph edges, for `m ≥ 3` and every column count.
 This statement does not introduce a multigraph convention at `m = 2`.
 
+[ColumnGeometry](ColumnGeometry.lean) encodes arbitrary selections by
+Boolean V/H/D masks. [ColumnHamiltonian](ColumnHamiltonian.lean) restricts
+that exact encoding to connected, two-regular selections and proves an
+equivalence with the counted Hamiltonian edge sets, including equality of
+each parity count. [ColumnWeights](ColumnWeights.lean) decomposes additive
+weights into the physical column and cut choices. For meridian parity,
+only the last-row vertical and diagonal bits contribute.
+
 The frontier connectivity interfaces are separate from the counting types:
 
 | Module | Checked result |
@@ -130,6 +138,61 @@ cylinder adjacency. It then derives the prefix attachment invariant from
 the original graph's connectedness. The compressed relation edges in
 `FrontierCongruence` carry only connectivity information; their degrees
 are not physical selected degrees.
+
+[ColumnFragments](ColumnFragments.lean) normalizes prefixes and suffixes
+independently of the lengths of their original completions, then proves
+that their transported join has legal cylinder edges. The
+[generalized degree sum](FrontierDegreesGeneral.lean) allows the prefix
+to own boundary-column verticals while the suffix owns no boundary edges.
+[ColumnCutOutgoing](ColumnCutOutgoing.lean) identifies each boundary
+vertex's suffix neighbors as its selected horizontal and diagonal edges.
+[ColumnBoundaryDegree](ColumnBoundaryDegree.lean) uses these facts to prove
+that matching outgoing masks preserve degree two when fragments are mixed.
+These interfaces separate ambient validity, connectivity, and degree.
+
+## Concrete boundary data and the two-column exception
+
+[BoundaryState](BoundaryState.lean) gives a finite raw state at the complete
+last processed column. It records two outgoing physical masks, the Boolean
+reachability relation inside the actual processed prefix, and a mod-two
+parity. The parity charges every selected physical edge whose source
+column has been processed, including outgoing diagonals. Those outgoing
+edges are absent from the prefix connectivity graph until their next
+column is processed. The two conventions are proved explicitly.
+
+Actual occurrence separately requires a standard Hamiltonian cycle in the
+intended ambient graph. The raw parity flip is involutive and has no fixed
+points; closure of the actual occurring states under that flip is still
+an application obligation.
+
+[CommonWitnessState](CommonWitnessState.lean) computes the entire state of
+the two- and three-column zero-parity witnesses: only the first- and
+last-row horizontal crossings are selected, every pair of boundary rows
+is connected inside the prefix, and parity is zero. It proves literal
+equality of the two states and actual occurrence for every `m ≥ 3`.
+It does not yet prove transfer returns of lengths two and three.
+
+The [two-column zigzag](ZigzagException.lean) selects all horizontal and
+diagonal edges and no vertical edges. Its actual selected graph is
+connected and two-regular, and its meridian parity is one.
+[ExceptionalState](ExceptionalState.lean) derives its raw state directly:
+both outgoing masks are full, prefix reachability is equality of rows,
+and assigned parity is one.
+
+[FullCrossing](FullCrossing.lean) proves that a connected two-regular
+selected graph containing every H/D edge at any one physical cut must
+have exactly two columns. The proof embeds the actual zigzag cycle and
+uses [CycleSaturation](CycleSaturation.lean) to show that this same cycle
+must span the whole graph. Thus no Hamiltonian selection on at least
+three columns has a full H/D cut.
+[BoundaryVertical](BoundaryVertical.lean) independently derives a selected
+vertical edge at each end of every such longer cylinder.
+
+[EdgeReplacementReachability](EdgeReplacementReachability.lean) proves
+that replacing an existing edge by a connected disjoint gadget and two
+seams preserves the entire reachability relation on old vertices.
+Applying that result to the exact cylinder splice, including all state
+coordinates, remains separate work.
 
 ## Generic ordered-matrix theorem
 
@@ -215,12 +278,12 @@ divided out.
 ## Remaining cylinder obligations
 
 To obtain a formal cylinder counting theorem, the development still needs
-the complete state and transition model, the isolated two-column case, a
-bijection between accepted transfer configurations and undirected Hamiltonian edge
-sets, preservation of actual frontier states under splicing, and the
-concrete involution and endpoint exchange. It also needs common-state
-return witnesses, support connectivity, positive totals, and any claimed
-physical edge-weight bounds.
+the complete transition model, the state-level treatment of the isolated
+two-column case, a bijection between accepted transfer configurations and
+undirected Hamiltonian edge sets, preservation of actual frontier states
+under splicing, and the concrete involution and endpoint exchange. It also
+needs common-state return witnesses, support connectivity, positive totals,
+and any claimed physical edge-weight bounds.
 
 Identification of combinatorial parity with annular contractibility,
 the circumference-two multigraph convention, and the stronger absolute
@@ -242,6 +305,13 @@ The auxiliary and zero-witness reviewer authored the imported enumeration
 helper; those reports explicitly exclude independent review of that helper.
 The repository steward also read the packaged sources. The conventional
 project check validates their integration under the pinned dependencies.
+
+Further reports in the [review directory](reviews/) cover concrete boundary
+states and fragments, exact column-mask and parity-count correspondences,
+physical weight decomposition, generalized boundary degrees, edge
+replacement, selected end verticals, cycle saturation, and full-crossing
+exclusion. Each report distinguishes source review from a compiler replay
+and records its dependency and authorship limits.
 
 The reports identify the earlier prototype hashes and may refer to paths
 in the reviewers' workspaces. [`provenance.json`](provenance.json) maps

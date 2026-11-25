@@ -1,0 +1,41 @@
+ROOT SEMANTIC REVIEW OF EXCEPTION SUPPORT SOURCES — PASS
+25 November 2026
+
+The root read the complete frozen sources:
+ZigzagException.lean, SHA256
+0dc6bd98c607bc90198a33c410ea8604be27153d90190c30700d8f653d11e775;
+CycleSaturation.lean, SHA256
+a77aaa223141ed410cf3ea91633c7f7ac24ca81f1beeac0ee4d2b24adf2f33a9;
+BoundaryIsolation.lean, SHA256
+50f19bb8f2c991e42c6c7eee1b59486bb03c808dc75b38a05934ce66647f1815.
+No semantic blocker was found.
+
+The zigzag's adjacency characterization covers exactly the selected H/D
+endpoint pairs and no V edge. The selected-edge subtype is correctly the
+ambient finite graph on two columns. Left and right neighborhoods have two
+distinct elements, using row-successor nonfixity and injectivity. Natural
+row induction gives actual reachability from row zero; right vertices
+attach through selected horizontal edges. Those facts, rather than an
+assumed Hamiltonian predicate, feed the preexisting constructor. Its
+selected-graph cycle witness is suitable for later graph homomorphisms.
+The counted selection and parity agree with the frozen concrete encoding;
+the sole selected last-row diagonal supplies exactly one parity unit.
+
+CycleSaturation concerns the given cycle p. Its subgraph is adjacency-closed
+because both its cycle vertices and the ambient graph have exactly two
+neighbors. Connected reachability then gives full support. The standard
+cycle's support-tail uniqueness, with the final root occurrence handled
+explicitly, proves IsHamiltonianCycle for that same walk. The length lemma
+therefore does not swap to a different cycle or assume spanning as input.
+
+BoundaryIsolation's core proof reverses an actual boundary-reaching walk.
+The empty walk case is impossible because its endpoints inhabit different
+sum constructors. The nonempty walk contradicts isolation on its first
+edge. The ncard=0 variants retain explicit finite-neighborhood or finite-type
+premises, correctly avoiding the natural-cardinality behavior on infinite
+sets. This optional module proves no physical outgoing-degree implication.
+
+The new root embedding/full-cut composition is independently reviewed in
+the separate source-bound review. The combined strict replay covers all
+sources together; this document reports source meaning rather than a second
+compiler implementation or an additional machine replay.
