@@ -1,6 +1,6 @@
 {
   "source_publication_commit": "79b692d1b5127d440d91c016b15adc9ffa839590",
-  "scope": "Concrete triangular-cylinder meridian-parity count ratios and a finite geometric imbalance bound for every fixed m >= 3; topology and circumference two remain separate.",
+  "scope": "Concrete triangular-cylinder parity-count and physical edge-product ratio limits, with a geometric relative bound uniform over shared fields with common positive edge bounds for every fixed m >= 3; topology and circumference two remain separate.",
   "copied_sources": {
     "CylinderSplice.lean": {
       "prototype_sha256": "d8c3e3445b48d56fc526985b798dcdcab05d7e4a3ecdf2154cb47942b9496cc4",
@@ -465,6 +465,46 @@
     "TriangularCountImbalance.lean": {
       "prototype_sha256": "11f36283596d11a48deb40033cc79ad19d0b7fb01e7a4a83710565771a1338f1",
       "packaged_sha256": "11f36283596d11a48deb40033cc79ad19d0b7fb01e7a4a83710565771a1338f1",
+      "change": "byte-identical"
+    },
+    "WeightedFiniteTransfer.lean": {
+      "prototype_sha256": "61a9244a9d35cf89fc2c88309b16a7989cb9a94c1c7efa826263b87a9593c4c8",
+      "packaged_sha256": "61a9244a9d35cf89fc2c88309b16a7989cb9a94c1c7efa826263b87a9593c4c8",
+      "change": "byte-identical"
+    },
+    "WeightedCylinderEncoding.lean": {
+      "prototype_sha256": "fb1c4b1017a4ebedc4ce5f74b2ec20859babb767f24543c79642bf87bd92c533",
+      "packaged_sha256": "fb1c4b1017a4ebedc4ce5f74b2ec20859babb767f24543c79642bf87bd92c533",
+      "change": "byte-identical"
+    },
+    "WeightedCountTransfer.lean": {
+      "prototype_sha256": "5c483cc96eba22153f27190e1ce9cdb5c453523276a8b691b2c5438b9c88a86c",
+      "packaged_sha256": "5c483cc96eba22153f27190e1ce9cdb5c453523276a8b691b2c5438b9c88a86c",
+      "change": "byte-identical"
+    },
+    "WeightedCountPositivity.lean": {
+      "prototype_sha256": "0fac8a81e8498ad5fa80c37163ac4eabecc7f09fa00e291fbbb87ee5ee386487",
+      "packaged_sha256": "0fac8a81e8498ad5fa80c37163ac4eabecc7f09fa00e291fbbb87ee5ee386487",
+      "change": "byte-identical"
+    },
+    "WeightedCylinderSymmetry.lean": {
+      "prototype_sha256": "9690a97abd7bc40fa5a2772e9962ab1a070596674bd1b5af9182a81b5d77112c",
+      "packaged_sha256": "9690a97abd7bc40fa5a2772e9962ab1a070596674bd1b5af9182a81b5d77112c",
+      "change": "byte-identical"
+    },
+    "WeightedCylinderBounds.lean": {
+      "prototype_sha256": "59fb868be968bad877f7ef53223777c7177d265d04b6e773f67acddad14412db",
+      "packaged_sha256": "59fb868be968bad877f7ef53223777c7177d265d04b6e773f67acddad14412db",
+      "change": "byte-identical"
+    },
+    "WeightedCountImbalance.lean": {
+      "prototype_sha256": "465fb06e6881b3ff7909c82dc1fa330461fa29d556df8c604670ce6453f457d1",
+      "packaged_sha256": "465fb06e6881b3ff7909c82dc1fa330461fa29d556df8c604670ce6453f457d1",
+      "change": "byte-identical"
+    },
+    "WeightedCountRatio.lean": {
+      "prototype_sha256": "608eb4a6ca34db8dc74de6a3ff75f20a6e66bf83bb256769a007aea46c3f885e",
+      "packaged_sha256": "608eb4a6ca34db8dc74de6a3ff75f20a6e66bf83bb256769a007aea46c3f885e",
       "change": "byte-identical"
     }
   }

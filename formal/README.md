@@ -1,4 +1,4 @@
-# Checked triangular-cylinder parity-count ratio
+# Checked triangular-cylinder parity balance
 
 This Lean/mathlib project proves the concrete combinatorial ratio limit
 underlying the [triangular-cylinder argument](../triangular_cylinder_asymptotics.md).
@@ -20,11 +20,15 @@ and common return paths are all proved by the project. Hamiltonian cycles
 are counted as unordered edge sets on fixed labelled vertices, with no
 root or traversal multiplicity.
 
-The formal result concerns combinatorial meridian parity. Its identification
+The [physical edge-product extension](#physical-edge-product-weights) proves
+uniform geometric balance for arbitrary shared edge-weight fields with fixed
+positive lower and upper bounds. The field may vary with row, column, edge
+direction, and length; no translation symmetry is required.
+
+The formal results concern combinatorial meridian parity. Its identification
 with annular contractibility, the circumference-two multigraph convention,
-weighted physical-cylinder extensions, and absolute spectral asymptotics
-remain separate. The square-cylinder and rectangular-grid results have
-not been formalized by this project.
+and absolute spectral asymptotics remain separate. The square-cylinder and
+rectangular-grid results have not been formalized by this project.
 
 The project uses Lean 4.19.0, compiler commit `6caaee842e94`, and Mathlib
 commit `c44e0c8ee63ca166450922a373c7409c5d26b00b`. These are fixed historical
@@ -445,15 +449,105 @@ evaluated. The inequality uses no division and remains valid if counts
 vanish at a short length. It bounds the imbalance relative to the total;
 it does not assert that the absolute difference of the counts tends to zero.
 
+## Physical edge-product weights
+
+For a real weight field $w$ on the actual unordered physical edges, define
+
+$$
+Z_p(m,L;w)=\sum_{E\in\mathcal H_p(m,L)}\prod_{e\in E}w(e),
+$$
+
+where $\mathcal H_p(m,L)$ is the same existing parity subtype of undirected
+Hamiltonian edge selections used for $C_p(m,L)$. The two classes use **the
+same field** at each length. Roots, traversal directions, and the witnesses
+that certify local realizability add no factors or multiplicity.
+
+[WeightedCountImbalance](WeightedCountImbalance.lean) proves the following
+uniform statement. Fix $m\ge3$, $\epsilon>0$, and $M\in\mathbb R$. There are
+$N\ge2$ and $0\le\rho<1$ such that, for **every** $L\ge3$ and **every** field
+satisfying $\epsilon\le w(e)\le M$ on actual graph edges,
+
+$$
+|Z_0(m,L;w)-Z_1(m,L;w)|\le
+\rho^{\lfloor(L-2)/N\rfloor}\bigl(Z_0(m,L;w)+Z_1(m,L;w)\bigr).
+$$
+
+The constants are chosen before the length and weight field. They may depend
+on $m,\epsilon,M$ and are not numerically evaluated. No bound is imposed on
+nonedges. The field may assign different values to every row, column and
+edge direction. The inequality has no denominator and remains meaningful
+when both short-length counts vanish.
+
+[WeightedCountRatio](WeightedCountRatio.lean) takes an arbitrary dependent
+family `w : ∀ L : ℕ, Sym2 (Vertex m L) → ℝ`, with the same bounds required
+only eventually. It proves that both weighted counts are positive eventually
+and that both $Z_0/Z_1$ and $Z_1/Z_0$ tend to one. There is no consistency,
+stationarity, or probabilistic assumption relating fields at different
+lengths. Short initial lengths may violate the weight bounds or have zero
+counts.
+
+### Exact encoding and uniform estimates
+
+At width $L=n+2$, the initial factor owns $V_0$; local step $i$ owns the
+source cut's $H_i,D_i$ and the next column's $V_{i+1}$; the terminal factor
+owns $H_n,D_n,V_{n+1}$. Every selected physical edge is charged exactly once.
+The generic weighted path theorem then gives the ordered transfer product
+$fM_0M_1\cdots M_{n-1}g_p$. The matrices need not commute.
+
+The core flip preserves each H/D mask and every vertical-label mask. Its
+local and terminal factors therefore evaluate the same field at the same
+physical positions, even though larger cycles were used to prove label
+realizability. The terminal vectors satisfy $g_1(s)=g_0(Js)$; no initial-vector
+symmetry is assumed.
+
+Each local label uses at most $3m$ physical factors. Padding unselected edges
+by the factor one gives the common entry bounds
+
+$$
+a=\min(1,\epsilon)^{3m}>0,\qquad
+b=2^m\max(1,M)^{3m}.
+$$
+
+The lower bound applies on every positive entry of the fixed unweighted
+support. The upper bound uses at most $2^m$ actual vertical-mask labels.
+The existing common-return and connectivity proofs give the positive blocks
+needed by the ordered contraction theorem. Nonnegative boundary vectors
+suffice; their magnitudes need no uniform bound.
+
+| Module | Checked role |
+|---|---|
+| [WeightedFiniteTransfer](WeightedFiniteTransfer.lean) | Sums actual weighted paths and accepted objects into an ordered matrix product over a commutative semiring, including length zero. |
+| [WeightedCylinderEncoding](WeightedCylinderEncoding.lean) | Preserves actual physical edge products and transports finite sums through the counted bijection for $n\ge1$; unit weights recover the original counts at every width. |
+| [WeightedCountTransfer](WeightedCountTransfer.lean) | Composes the two identities into the physical ordered transfer formula. |
+| [WeightedCountPositivity](WeightedCountPositivity.lean) | Positive physical weights make a weighted count positive exactly when the original unweighted count is positive, at every width. |
+| [WeightedCylinderSymmetry](WeightedCylinderSymmetry.lean) | Proves same-position local symmetry and the paired terminal-vector identity. |
+| [WeightedCylinderBounds](WeightedCylinderBounds.lean) | Proves the padded physical-factor, label-cardinality, matrix-entry, and boundary nonnegativity estimates. |
+| [WeightedCountImbalance](WeightedCountImbalance.lean) | Establishes the uniform finite bound with constants before $L,w$. |
+| [WeightedCountRatio](WeightedCountRatio.lean) | Establishes both eventual positive counts and both ratio limits for arbitrary eventually bounded fields. |
+
+The two-column isolated zigzag remains outside the retained core transfer:
+the exact weighted count-to-transfer identity requires $n\ge1$, or $L\ge3$.
+The product identities on accepted objects at $n=0$ do not include that
+additional counted cycle.
+
+Strict positivity alone does not imply the uniform conclusion. A length-dependent
+family can assign weight one to a chosen Hamiltonian cycle and decreasing positive
+weights to all other edges, forcing its parity to dominate. Likewise,
+different fields for the two classes can create an exponential imbalance.
+The [weighted application review](reviews/weighted_application.md) records
+these scope checks. Common absolute bounds are sufficient; no optimality
+claim is made for the quantitative constants or hypotheses.
+
 ## Scope beyond the formal theorem
 
 The development does not contain the annular embedding and topological
 classification needed to identify even parity with contractibility and odd
 parity with noncontractibility. It does not cover circumference two's parallel
-edge convention, physical weighted counts, or a common leading exponential
-coefficient with a smaller exponential error term. Generic matrix theorems
-and physical weight identities are supporting interfaces for those further
-applications. No uniform convergence rate in the circumference is asserted.
+edge convention or a common leading exponential coefficient with a smaller
+exponential error term. The physical weighted extension covers one shared
+field with common positive bounds; arbitrary positive fields with unbounded
+contrast are not covered. No uniform convergence rate in the circumference
+is asserted.
 
 ## Review and provenance
 
@@ -504,6 +598,12 @@ the geometric strengthening and its quantifier order.
 The [integration assessment](reviews/final_parity_interfaces.md) records the
 remaining parity and coordinate interfaces, the counting conventions, and
 the exact limits of these reviews.
+
+The [weighted application review](reviews/weighted_application.md) records the
+eight-module extension, exact physical counting convention, uniform quantifier
+order, source-review provenance, and the integration gate. Earlier review
+reports describe their own pinned checkpoints and may list weighted counts
+among work that was then outside scope.
 
 The repository's [CC0 notice](../LICENSE.txt) applies to this original work.
 Mathlib and Lean retain their own licenses. The concrete parity-count ratio

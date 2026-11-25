@@ -111,6 +111,14 @@ MODULES = (
     "CoreConnectivity",
     "TriangularCountRatio",
     "TriangularCountImbalance",
+    "WeightedFiniteTransfer",
+    "WeightedCylinderEncoding",
+    "WeightedCountTransfer",
+    "WeightedCountPositivity",
+    "WeightedCylinderSymmetry",
+    "WeightedCylinderBounds",
+    "WeightedCountImbalance",
+    "WeightedCountRatio",
 )
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 EXPECTED_AUDITS = set("""
@@ -800,6 +808,50 @@ TriangularCylinder.Transfer.core_path_nonempty
 TriangularCylinder.Transfer.triangular_parity_ratio_limit
 TriangularCylinder.Transfer.triangular_parity_ratio_limit_reciprocal
 TriangularCylinder.Transfer.exists_parityCount_geometric_imbalance
+CylinderTransfer.labelledPathWeight_eq_prod_observe
+CylinderTransfer.sum_labelledPathWeight_zero
+CylinderTransfer.sum_labelledPathWeight_succ
+CylinderTransfer.sum_labelledPathWeight
+CylinderTransfer.sum_acceptedWeight
+CylinderTransfer.sum_acceptedWeight_zero
+CountedHamiltonian.selectionProduct_ofCycle
+TriangularEdgeEncoding.prod_realizedEdges_eq_selectedIds
+TriangularEdgeEncoding.prod_realizedEdges_eq_column_cut
+TriangularCylinder.Transfer.acceptedLocalFactor_eq_observed
+TriangularCylinder.Transfer.acceptedEdges_product_eq_factors
+TriangularCylinder.Transfer.acceptedSelection_product_eq_factors
+TriangularCylinder.Transfer.selectionProduct_eq_encoded_factors
+TriangularCylinder.Transfer.acceptedWeight_eq_factors
+TriangularCylinder.Transfer.weightedParityCount_eq_sum_factors
+TriangularCylinder.Transfer.weightedParityCount_eq_sum_acceptedWeight
+TriangularCylinder.Transfer.weightedParityCount_one
+TriangularCylinder.Transfer.initialPhysicalVector
+TriangularCylinder.Transfer.localPhysicalMatrix
+TriangularCylinder.Transfer.terminalPhysicalVector
+TriangularCylinder.Transfer.weightedParityCount_eq_ordered_transfer
+CountedHamiltonian.selectionProduct_pos
+TriangularCylinder.Transfer.weightedParityCount_pos_iff
+TriangularCylinder.Transfer.localPhysicalWeight_flip
+TriangularCylinder.Transfer.terminalPhysicalWeight_flip
+TriangularCylinder.Transfer.weightedTransitionMatrix_flip
+TriangularCylinder.Transfer.weightedTerminalVector_flip
+TriangularCylinder.Transfer.weightedTerminalVector_one_eq_zero_flip
+TriangularCylinder.WeightedCylinderBounds.verticalFactor_bounds
+TriangularCylinder.WeightedCylinderBounds.cutFactor_bounds
+TriangularCylinder.WeightedCylinderBounds.localPhysicalWeight_bounds
+TriangularCylinder.WeightedCylinderBounds.terminalPhysicalWeight_bounds
+TriangularCylinder.WeightedCylinderBounds.initialPhysicalWeight_nonneg
+TriangularCylinder.WeightedCylinderBounds.localPhysicalWeight_nonneg
+TriangularCylinder.WeightedCylinderBounds.terminalPhysicalWeight_nonneg
+TriangularCylinder.WeightedCylinderBounds.localLabel_card_le
+TriangularCylinder.WeightedCylinderBounds.constants_pos_le
+TriangularCylinder.WeightedCylinderBounds.weightedTransitionMatrix_nonneg
+TriangularCylinder.WeightedCylinderBounds.weightedTransitionMatrix_lower
+TriangularCylinder.WeightedCylinderBounds.weightedTransitionMatrix_upper
+TriangularCylinder.WeightedCylinderBounds.weightedInitialVector_nonneg
+TriangularCylinder.WeightedCylinderBounds.weightedTerminalVector_nonneg
+TriangularCylinder.Transfer.exists_weightedParityCount_geometric_imbalance
+TriangularCylinder.Transfer.weighted_parity_ratio_limits
 """.split())
 
 
@@ -872,7 +924,7 @@ def main() -> int:
     receipt = {
         "status": "RUNNING",
         "checked_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-        "scope": "Concrete triangular-cylinder meridian-parity count ratios and a finite geometric imbalance bound for every fixed m >= 3; topology and circumference two remain separate.",
+        "scope": "Concrete triangular-cylinder parity-count and physical edge-product ratio limits, with a geometric relative bound uniform over shared fields with common positive edge bounds for every fixed m >= 3; topology and circumference two remain separate.",
         "commands": [],
     }
 
@@ -935,7 +987,7 @@ def main() -> int:
         print(version)
         print(f"PASS: {len(MODULES)} proof modules; {len(EXPECTED_AUDITS)} exact named audits; "
               "standard logical axioms only.")
-        print("Actual triangular-cylinder parity-count ratios are checked for fixed m >= 3; topology and circumference two remain separate.")
+        print("Actual triangular-cylinder unweighted and uniformly bounded physical-weight parity ratios are checked for fixed m >= 3; topology and circumference two remain separate.")
         return 0
     except (OSError, RuntimeError, ValueError, subprocess.TimeoutExpired) as error:
         receipt["status"] = "FAIL"

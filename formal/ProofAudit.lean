@@ -91,6 +91,14 @@ import AuxiliaryParity
 import CoreConnectivity
 import TriangularCountRatio
 import TriangularCountImbalance
+import WeightedFiniteTransfer
+import WeightedCylinderEncoding
+import WeightedCountTransfer
+import WeightedCountPositivity
+import WeightedCylinderSymmetry
+import WeightedCylinderBounds
+import WeightedCountImbalance
+import WeightedCountRatio
 
 /-! Exact named supporting results; standard logical axioms only. -/
 
@@ -783,3 +791,48 @@ import TriangularCountImbalance
 #print axioms TriangularCylinder.Transfer.triangular_parity_ratio_limit_reciprocal
 
 #print axioms TriangularCylinder.Transfer.exists_parityCount_geometric_imbalance
+
+#print axioms CylinderTransfer.labelledPathWeight_eq_prod_observe
+#print axioms CylinderTransfer.sum_labelledPathWeight_zero
+#print axioms CylinderTransfer.sum_labelledPathWeight_succ
+#print axioms CylinderTransfer.sum_labelledPathWeight
+#print axioms CylinderTransfer.sum_acceptedWeight
+#print axioms CylinderTransfer.sum_acceptedWeight_zero
+#print axioms CountedHamiltonian.selectionProduct_ofCycle
+#print axioms TriangularEdgeEncoding.prod_realizedEdges_eq_selectedIds
+#print axioms TriangularEdgeEncoding.prod_realizedEdges_eq_column_cut
+#print axioms TriangularCylinder.Transfer.acceptedLocalFactor_eq_observed
+#print axioms TriangularCylinder.Transfer.acceptedEdges_product_eq_factors
+#print axioms TriangularCylinder.Transfer.acceptedSelection_product_eq_factors
+#print axioms TriangularCylinder.Transfer.selectionProduct_eq_encoded_factors
+#print axioms TriangularCylinder.Transfer.acceptedWeight_eq_factors
+#print axioms TriangularCylinder.Transfer.weightedParityCount_eq_sum_factors
+#print axioms TriangularCylinder.Transfer.weightedParityCount_eq_sum_acceptedWeight
+#print axioms TriangularCylinder.Transfer.weightedParityCount_one
+#print axioms TriangularCylinder.Transfer.initialPhysicalVector
+#print axioms TriangularCylinder.Transfer.localPhysicalMatrix
+#print axioms TriangularCylinder.Transfer.terminalPhysicalVector
+#print axioms TriangularCylinder.Transfer.weightedParityCount_eq_ordered_transfer
+#print axioms CountedHamiltonian.selectionProduct_pos
+#print axioms TriangularCylinder.Transfer.weightedParityCount_pos_iff
+#print axioms TriangularCylinder.Transfer.localPhysicalWeight_flip
+#print axioms TriangularCylinder.Transfer.terminalPhysicalWeight_flip
+#print axioms TriangularCylinder.Transfer.weightedTransitionMatrix_flip
+#print axioms TriangularCylinder.Transfer.weightedTerminalVector_flip
+#print axioms TriangularCylinder.Transfer.weightedTerminalVector_one_eq_zero_flip
+#print axioms TriangularCylinder.WeightedCylinderBounds.verticalFactor_bounds
+#print axioms TriangularCylinder.WeightedCylinderBounds.cutFactor_bounds
+#print axioms TriangularCylinder.WeightedCylinderBounds.localPhysicalWeight_bounds
+#print axioms TriangularCylinder.WeightedCylinderBounds.terminalPhysicalWeight_bounds
+#print axioms TriangularCylinder.WeightedCylinderBounds.initialPhysicalWeight_nonneg
+#print axioms TriangularCylinder.WeightedCylinderBounds.localPhysicalWeight_nonneg
+#print axioms TriangularCylinder.WeightedCylinderBounds.terminalPhysicalWeight_nonneg
+#print axioms TriangularCylinder.WeightedCylinderBounds.localLabel_card_le
+#print axioms TriangularCylinder.WeightedCylinderBounds.constants_pos_le
+#print axioms TriangularCylinder.WeightedCylinderBounds.weightedTransitionMatrix_nonneg
+#print axioms TriangularCylinder.WeightedCylinderBounds.weightedTransitionMatrix_lower
+#print axioms TriangularCylinder.WeightedCylinderBounds.weightedTransitionMatrix_upper
+#print axioms TriangularCylinder.WeightedCylinderBounds.weightedInitialVector_nonneg
+#print axioms TriangularCylinder.WeightedCylinderBounds.weightedTerminalVector_nonneg
+#print axioms TriangularCylinder.Transfer.exists_weightedParityCount_geometric_imbalance
+#print axioms TriangularCylinder.Transfer.weighted_parity_ratio_limits

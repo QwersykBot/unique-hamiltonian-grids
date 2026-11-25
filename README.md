@@ -11,10 +11,12 @@ triangulated cylinder have ratio tending to one as its number of columns
 tends to infinity. Both counts are positive eventually. It also proves a
 geometric bound on their imbalance relative to the total count. The project proves
 the exact finite counting correspondence and supplies every hypothesis of
-its transfer-ratio argument. Identifying that parity with annular
-contractibility, the circumference-two multigraph case, weighted extensions,
-absolute spectral asymptotics, and the other manuscript results remain
-outside the formal theorem.
+its transfer-ratio argument. The [physical weighted extension](formal/README.md#physical-edge-product-weights)
+proves the same balance uniformly over shared edge-weight fields within fixed
+positive lower and upper bounds; the field may vary arbitrarily with position
+and cylinder length. Identifying parity with annular contractibility, the
+circumference-two multigraph case, absolute spectral asymptotics, and the
+other manuscript results remain outside these formal theorems.
 
 The cylinder results prove asymptotic equality of the two cycle types on every
 fixed even-width square-grid cylinder and every fixed-width consistently
