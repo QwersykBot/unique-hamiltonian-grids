@@ -1,0 +1,39 @@
+name: Check Lean supporting proofs
+
+on:
+  push:
+    paths: ['formal/**', '.github/workflows/formal.yml', 'manifest.json']
+  pull_request:
+    paths: ['formal/**', '.github/workflows/formal.yml', 'manifest.json']
+
+permissions:
+  contents: read
+
+jobs:
+  formal:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install pinned Lean toolchain
+        env:
+          FORMAL_LEAN_ARCHIVE: ${{ runner.temp }}/lean-4.19.0-linux.tar.zst
+        run: |
+          curl --fail --location --retry 2 \
+            https://github.com/leanprover/lean4/releases/download/v4.19.0/lean-4.19.0-linux.tar.zst \
+            --output "$FORMAL_LEAN_ARCHIVE"
+          python3 - <<'PY'
+          import hashlib, os
+          from pathlib import Path
+          archive = Path(os.environ['FORMAL_LEAN_ARCHIVE'])
+          expected = '6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe'
+          if hashlib.sha256(archive.read_bytes()).hexdigest() != expected:
+              raise SystemExit('Lean release archive SHA-256 mismatch')
+          PY
+          tar --zstd --extract --file "$FORMAL_LEAN_ARCHIVE" --directory "$RUNNER_TEMP"
+          printf '%s\n' "$RUNNER_TEMP/lean-4.19.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Build and audit the supporting proofs
+        working-directory: formal
+        run: python3 verify.py --fetch-cache

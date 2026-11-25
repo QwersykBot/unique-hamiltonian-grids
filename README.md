@@ -3,8 +3,10 @@
 This repository contains **AI-authored research drafts** on the vertex deletions
 needed to leave a unique Hamiltonian cycle in a grid, and on the relative counts
 of contractible and noncontractible cycles on a thin cylinder. The arguments have received
-independent AI-agent review. They have not received human peer review or
-proof-assistant verification.
+independent AI-agent review. They have not received human peer review.
+The [Lean development checkpoint](formal/README.md) checks supporting graph
+lemmas and a generic ordered-matrix ratio theorem. The complete cylinder
+and rectangular-grid arguments have not been formally verified.
 
 The cylinder results prove asymptotic equality of the two cycle types on every
 fixed even-width square-grid cylinder and every fixed-width consistently

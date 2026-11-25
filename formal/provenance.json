@@ -1,0 +1,66 @@
+{
+  "source_publication_commit": "79b692d1b5127d440d91c016b15adc9ffa839590",
+  "scope": "Supporting lemmas only; no complete formal proof of either cylinder asymptotic theorem.",
+  "copied_sources": {
+    "CylinderSplice.lean": {
+      "prototype_sha256": "d8c3e3445b48d56fc526985b798dcdcab05d7e4a3ecdf2154cb47942b9496cc4",
+      "packaged_sha256": "1a1b35a591ada4069cabad3e571221dad35f46f97052176fe2e7316572a1df43",
+      "change": "documentation heading marker only"
+    },
+    "TriangularCylinder.lean": {
+      "prototype_sha256": "6f4f4fe9f9603168ee6eb596a60a071e5471b992eddacb6d1c8a9ee26d47bf04",
+      "packaged_sha256": "2768b0baab2ec3f7d3cffefcced34be4a9483484fe191362f9f6fb8f48f72217",
+      "change": "documentation heading marker only"
+    },
+    "TriangularParity.lean": {
+      "prototype_sha256": "c5d90d59aa758f4074fc0a905c3c52ee8976fe1235fc8f9b55adc03ca355e8c3",
+      "packaged_sha256": "c79f924c6a7200bb9f3bf96a6052c6f4745464d7a91ceb5d1040ee7f7bedacb6",
+      "change": "documentation heading marker only"
+    },
+    "MatrixContraction/Basic.lean": {
+      "prototype_sha256": "05840c6b226533535e9c5b710aaad4e7af8f289d292e39cb562f053cc946c80d",
+      "packaged_sha256": "05840c6b226533535e9c5b710aaad4e7af8f289d292e39cb562f053cc946c80d",
+      "change": "byte-identical"
+    },
+    "MatrixContraction/Limits.lean": {
+      "prototype_sha256": "8c14236bf79aed99d426fb62ea4de4145ff74c96ac9182927e248f74f86967a0",
+      "packaged_sha256": "8c14236bf79aed99d426fb62ea4de4145ff74c96ac9182927e248f74f86967a0",
+      "change": "byte-identical"
+    },
+    "MatrixContraction/PositiveBlocks.lean": {
+      "prototype_sha256": "d5bde70fb3484824be3093f88ee3a955377424916f4e742d37caff82fe7bdbfc",
+      "packaged_sha256": "d5bde70fb3484824be3093f88ee3a955377424916f4e742d37caff82fe7bdbfc",
+      "change": "byte-identical"
+    },
+    "EnumeratedWalk.lean": {
+      "prototype_sha256": "560bf7712190bb361701c93b2da3009f930d43651779283d6c351d006fe2d4ca",
+      "packaged_sha256": "560bf7712190bb361701c93b2da3009f930d43651779283d6c351d006fe2d4ca",
+      "change": "byte-identical"
+    },
+    "MeridianClassifier.lean": {
+      "prototype_sha256": "f02907309c7dca23e85385c0eeaff89b0d323b005581ac4eea0f138e5b8ac5fb",
+      "packaged_sha256": "f02907309c7dca23e85385c0eeaff89b0d323b005581ac4eea0f138e5b8ac5fb",
+      "change": "byte-identical"
+    },
+    "AuxiliaryCycle.lean": {
+      "prototype_sha256": "1534298b48bf904d8d582f9e1394678fb1435955c684d23b05715b278c3b8589",
+      "packaged_sha256": "d981f8b41ea7d99a321ab5b11845f4740c7a9be4e3aac77fc55a8c8eb649cf5b",
+      "change": "documentation heading marker only"
+    },
+    "EdgeCoboundary.lean": {
+      "prototype_sha256": "08be46d676d088ac19b85df2be26dc6dfb6f95cce1fcdb38a23a452b3a184526",
+      "packaged_sha256": "08be46d676d088ac19b85df2be26dc6dfb6f95cce1fcdb38a23a452b3a184526",
+      "change": "byte-identical"
+    },
+    "MatrixContraction/OrderedApplication.lean": {
+      "prototype_sha256": "9be2e0512511587db680ff88ea49182b6f2ab1b2a3023b2ff10a4977f32c132f",
+      "packaged_sha256": "9be2e0512511587db680ff88ea49182b6f2ab1b2a3023b2ff10a4977f32c132f",
+      "change": "byte-identical"
+    },
+    "RowRotation.lean": {
+      "prototype_sha256": "ca67c5ecc3a0660d8979a2264375265e94c84b89d67aa650dce4f8633893b359",
+      "packaged_sha256": "ca67c5ecc3a0660d8979a2264375265e94c84b89d67aa650dce4f8633893b359",
+      "change": "byte-identical"
+    }
+  }
+}

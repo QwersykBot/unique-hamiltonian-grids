@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "candidate_version": "2026-11-25-1",
+  "candidate_version": "2026-11-25-formal-1",
   "proof_sha256": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1",
   "reviewed_sources_sha256": {
     "grid_width_classification.md": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1",
@@ -17,17 +17,21 @@
       "bytes": 27,
       "sha256": "07a2f41719cd55762e837e3598cd3ba067bc207a7ec63a46b2d86f609dc50acd"
     },
+    ".github/workflows/formal.yml": {
+      "bytes": 1489,
+      "sha256": "22b8b23b515511ace4ef361ab73c0fa9735fa0b90fea71184e3c66b20fb14359"
+    },
     ".github/workflows/verify.yml": {
       "bytes": 462,
       "sha256": "3315da95887b77e7eb0f6596277c28dde9ddcf57f944f3d974316eae08b12c71"
     },
     "LICENSE.txt": {
-      "bytes": 528,
-      "sha256": "8e0a46dfa98b6f00b64266d2fcc11ea50dfdd6aa2e6afd44a6d239c417b85aa8"
+      "bytes": 592,
+      "sha256": "ee0df234ac9968c830b1873cb4c9e5cb3ecabb41428ccfac876b360dbb683a79"
     },
     "README.md": {
-      "bytes": 17700,
-      "sha256": "02921233f6f6c33697d5fd5876b6a6afe3c094543ae7f713cbbe8af47ac0521b"
+      "bytes": 17881,
+      "sha256": "80d200fd5133d8c506a94526ff9ce4fffde2e776f41f37b32239f498b036b211"
     },
     "checks/check_cylinder_model.py": {
       "bytes": 18372,
@@ -84,6 +88,98 @@
     "figures/render_splice_m4.py": {
       "bytes": 11106,
       "sha256": "edcfde4a10582ca219d45a495f069f1983199ec5f7a9c6fe0da651479c87a96a"
+    },
+    "formal/.gitignore": {
+      "bytes": 41,
+      "sha256": "c3e19d2f115f1209b02e053370ae08e22d31e9d1b90fcde40abdcaa8d41405d7"
+    },
+    "formal/AuxiliaryCycle.lean": {
+      "bytes": 12194,
+      "sha256": "d981f8b41ea7d99a321ab5b11845f4740c7a9be4e3aac77fc55a8c8eb649cf5b"
+    },
+    "formal/CylinderSplice.lean": {
+      "bytes": 7866,
+      "sha256": "1a1b35a591ada4069cabad3e571221dad35f46f97052176fe2e7316572a1df43"
+    },
+    "formal/EdgeCoboundary.lean": {
+      "bytes": 2050,
+      "sha256": "08be46d676d088ac19b85df2be26dc6dfb6f95cce1fcdb38a23a452b3a184526"
+    },
+    "formal/EnumeratedWalk.lean": {
+      "bytes": 9135,
+      "sha256": "560bf7712190bb361701c93b2da3009f930d43651779283d6c351d006fe2d4ca"
+    },
+    "formal/MatrixContraction/Basic.lean": {
+      "bytes": 14408,
+      "sha256": "05840c6b226533535e9c5b710aaad4e7af8f289d292e39cb562f053cc946c80d"
+    },
+    "formal/MatrixContraction/Limits.lean": {
+      "bytes": 5160,
+      "sha256": "8c14236bf79aed99d426fb62ea4de4145ff74c96ac9182927e248f74f86967a0"
+    },
+    "formal/MatrixContraction/OrderedApplication.lean": {
+      "bytes": 10091,
+      "sha256": "9be2e0512511587db680ff88ea49182b6f2ab1b2a3023b2ff10a4977f32c132f"
+    },
+    "formal/MatrixContraction/PositiveBlocks.lean": {
+      "bytes": 11343,
+      "sha256": "d5bde70fb3484824be3093f88ee3a955377424916f4e742d37caff82fe7bdbfc"
+    },
+    "formal/MeridianClassifier.lean": {
+      "bytes": 3260,
+      "sha256": "f02907309c7dca23e85385c0eeaff89b0d323b005581ac4eea0f138e5b8ac5fb"
+    },
+    "formal/ProofAudit.lean": {
+      "bytes": 3471,
+      "sha256": "0fb3004a6106e969ce5267342ed791c00627fb720f0697d0067de8e3411feb91"
+    },
+    "formal/README.md": {
+      "bytes": 8906,
+      "sha256": "caac5688622b01ebfb5a54b344359376e0de527b80fffd6dc0464efd3058ca55"
+    },
+    "formal/RowRotation.lean": {
+      "bytes": 8658,
+      "sha256": "ca67c5ecc3a0660d8979a2264375265e94c84b89d67aa650dce4f8633893b359"
+    },
+    "formal/TriangularCylinder.lean": {
+      "bytes": 7981,
+      "sha256": "2768b0baab2ec3f7d3cffefcced34be4a9483484fe191362f9f6fb8f48f72217"
+    },
+    "formal/TriangularParity.lean": {
+      "bytes": 5466,
+      "sha256": "c79f924c6a7200bb9f3bf96a6052c6f4745464d7a91ceb5d1040ee7f7bedacb6"
+    },
+    "formal/lake-manifest.json": {
+      "bytes": 3147,
+      "sha256": "40b1835f8096d30247e849ae1aa3425e5f71f2307ddeaf4e324509a6c01b6b97"
+    },
+    "formal/lakefile.toml": {
+      "bytes": 610,
+      "sha256": "4c5d96f88f9fabdbc801283c273dfe6246cc2b99838fb47200b5119e6378ea97"
+    },
+    "formal/lean-toolchain": {
+      "bytes": 25,
+      "sha256": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea"
+    },
+    "formal/provenance.json": {
+      "bytes": 3420,
+      "sha256": "c2d0b9baea5f8b0000dc2636d47dfcd6d11916ccde554dd4e2a6d0682ab026a9"
+    },
+    "formal/reviews/auxiliary_cycle.md": {
+      "bytes": 8414,
+      "sha256": "d52f2b9e206685c33f9df2546f9a3d2784201d0d0d70345ad4c2559a8c3593f5"
+    },
+    "formal/reviews/graph_statements.md": {
+      "bytes": 10761,
+      "sha256": "f35c10332ca134325a65d03d1c78438bba42ea13c8e7ef2271cb5e12f17e62b2"
+    },
+    "formal/reviews/ordered_matrices.md": {
+      "bytes": 9031,
+      "sha256": "9961653feba4068868af3ab4f737f1f05904a388a79a055565582e88d588aab6"
+    },
+    "formal/verify.py": {
+      "bytes": 10666,
+      "sha256": "128fd6f1ff25d759b9f4961567e74d5e7e2d6adc2e8e90b5d4d0f569859b74c6"
     },
     "four_n_cutoff.md": {
       "bytes": 11274,

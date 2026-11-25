@@ -1,0 +1,59 @@
+import RowRotation
+import MatrixContraction.OrderedApplication
+
+/-! The named supporting results must use only Lean's standard logical axioms. -/
+
+#print axioms CylinderSplice.splice_cycles_isHamiltonianCycle
+#print axioms CylinderSplice.splice_edgeSet
+#print axioms CylinderSplice.splice_edgeWeight
+#print axioms TriangularCylinder.spliceAt_isHamiltonianCycle
+#print axioms TriangularCylinder.spliceAt_typeParity
+#print axioms EnumeratedWalk.ofFnWalk_support
+#print axioms EnumeratedWalk.ofFnWalk_edges
+#print axioms EnumeratedWalk.ofFnWalk_isHamiltonian
+#print axioms EnumeratedWalk.ofFnCycle_isHamiltonianCycle
+#print axioms EnumeratedWalk.mem_ofCyclicEnumeration_edges
+#print axioms EnumeratedWalk.ofCyclicEnumeration_isHamiltonianCycle
+#print axioms TriangularCylinder.nextRow_cases
+#print axioms TriangularCylinder.nextRow_last_first
+#print axioms TriangularCylinder.nextRow_target_first_of_source_last
+#print axioms TriangularCylinder.nextRow_source_last_iff_target_first
+#print axioms TriangularCylinder.nextRow_pair_eq_meridian_iff
+#print axioms TriangularCylinder.meridianWeight_nextRow
+#print axioms TriangularCylinder.meridianWeight_last_first
+#print axioms TriangularCylinder.auxiliaryCycle_isHamiltonianCycle
+#print axioms TriangularCylinder.auxiliaryCycle_typeParity
+#print axioms TriangularCylinder.auxiliaryCycle_left_edges_iff
+#print axioms TriangularCylinder.auxiliaryCycle_right_edges_iff
+#print axioms TriangularCylinder.exists_three_column_auxiliary
+#print axioms EdgeCoboundary.edgeWeight_change
+#print axioms EdgeCoboundary.edgeWeight_eq_of_closed
+#print axioms TriangularCylinder.typeParity_shift
+#print axioms TriangularCylinder.exists_row_avoiding_two
+#print axioms TriangularCylinder.exists_aligned_three_column_auxiliary
+#print axioms CylinderMatrixContraction.subtract_constant_mulVec
+#print axioms CylinderMatrixContraction.single_block_contraction
+#print axioms CylinderMatrixContraction.ordered_product_contraction
+#print axioms CylinderMatrixContraction.endpoint_contraction
+#print axioms CylinderMatrixContraction.probability_deviation_bound
+#print axioms CylinderMatrixContraction.ratio_deviation_bound
+#print axioms CylinderMatrixContraction.ratio_tendsto_one_of_imbalance
+#print axioms CylinderMatrixContraction.matrix_family_ratio_tendsto_one
+#print axioms CylinderMatrixContraction.bulk_block_count_tendsto
+#print axioms CylinderMatrixContraction.matrix_pow_add_entry_pos
+#print axioms CylinderMatrixContraction.returns_of_lengths_two_three
+#print axioms CylinderMatrixContraction.eventual_positive_powers
+#print axioms CylinderMatrixContraction.matrix_pow_le_list_prod
+#print axioms CylinderMatrixContraction.matrix_list_prod_le_pow
+#print axioms CylinderMatrixContraction.scaled_matrix_pow_apply
+#print axioms CylinderMatrixContraction.uniform_positive_blocks_of_support
+#print axioms CylinderMatrixContraction.fullChunks_length
+#print axioms CylinderMatrixContraction.fullChunks_flatten_append_drop
+#print axioms CylinderMatrixContraction.fullChunks_spec
+#print axioms CylinderMatrixContraction.chunkProducts_length
+#print axioms CylinderMatrixContraction.factorResidual_length_lt
+#print axioms CylinderMatrixContraction.chunkProducts_mul_residual
+#print axioms CylinderMatrixContraction.symmetricUnder_mul
+#print axioms CylinderMatrixContraction.symmetricUnder_list_prod
+#print axioms CylinderMatrixContraction.uniform_finite_imbalance_of_support
+#print axioms CylinderMatrixContraction.ordered_factor_family_ratio_tendsto_one
