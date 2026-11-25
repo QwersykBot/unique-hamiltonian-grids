@@ -6,16 +6,24 @@ of contractible and noncontractible cycles on a thin cylinder. The arguments hav
 independent AI-agent review. They have not received human peer review or
 proof-assistant verification.
 
+The cylinder results prove asymptotic equality of the two cycle types on every
+fixed even-width square-grid cylinder and every fixed-width consistently
+triangulated cylinder. Both proofs use complete-cycle splicing and a symmetry
+that exchanges the two terminal conditions. They are self-contained and do not
+depend on the separate rectangular-grid cutoff theorem.
+
 The rectangular result gives a cutoff quadratic in grid width for unique
 full-column fillings, a linear deletion lower bound at fixed widths not divisible
-by four, and an eventual exact optimum at widths divisible by four. A separate
-application of its connectivity theorem gives asymptotic equality of the two
-types of Hamiltonian cycle on every fixed even-width thin cylinder.
+by four, and an eventual exact optimum at widths divisible by four.
 
 ## Thin-cylinder asymptotics
 
-Read the [eight-page manuscript PDF](cylinder_transfer.pdf) or the
-[reviewed Markdown source](cylinder_transfer.md).
+| Model | Fixed circumferences covered by the ratio limit | Complete argument |
+|---|---|---|
+| Square-grid cylinder | Every even $m\ge4$ | [PDF](cylinder_transfer.pdf) · [Source](cylinder_transfer.md) |
+| Consistently triangulated cylinder | Every $m\ge2$; the published exact formula supplies $m=2$ | [PDF](triangular_cylinder_asymptotics.pdf) · [Source](triangular_cylinder_asymptotics.md) |
+
+### Square-grid cylinders
 
 Let $h_m^c(n)$ and $h_m^{nc}(n)$ count contractible and noncontractible
 Hamiltonian cycles on $C_m\times P_{n+1}$. A contractible cycle bounds a disk
@@ -39,15 +47,51 @@ $m\ge3$, period one at even widths, and period two at odd widths. The extra
 step for asymptotic equality is an involution preserving the frontier pairing
 while reversing its shading and recomputing the positive connectivity labels.
 It exchanges the two terminal sets and forces equal Perron coefficients.
-The note also proves the odd-width total-count asymptotics and exact formulas
-for the unreduced state counts.
+The note also proves the odd-width total-count asymptotics. The earlier exact
+state-count formulas and their stronger formal-realization argument remain in
+the [preceding snapshot](https://github.com/QwersykBot/unique-hamiltonian-grids/blob/e8cbd3996559d95857a37e59f14ed8704904d9ae/cylinder_transfer.md).
 
 The [cylinder review record](reviews/cylinder_transfer.md) identifies the
 complete reviewed proof. An independent finite check reproduces the original
 width-three and width-four matrices and checks full cycle sequences against
 direct enumeration on six small cylinders. These are bounded checks, not a
-proof of the all-width theorem. No human peer review, literature-wide priority,
-or external acceptance is claimed.
+proof of the all-width theorem.
+
+### Triangular cylinders
+
+Add the diagonal $(i,j)(i+1,j+1)$ to every square of the cylinder, with cyclic
+row indices. For each fixed $m\ge3$, the
+[triangular argument](triangular_cylinder_asymptotics.md) gives positive
+$c_m,\lambda_m$ and $0<\theta_m<\lambda_m$ such that
+
+$$
+t_m^c(n)=c_m\lambda_m^{n-1}+O(\theta_m^{n-1}),\qquad
+t_m^{nc}(n)=c_m\lambda_m^{n-1}+O(\theta_m^{n-1}).
+$$
+
+Here $n+1$ is the number of vertex columns. Together with the published exact
+width-two formula, this proves the ratio limit for every fixed $m\ge2$ in
+Conjecture 6 of Bodroža-Pantić, Kwong, Doroslovački, and Pantić's
+[2018 paper](https://bibliotekanauki.pl/articles/31342332.pdf).
+
+The geometric state records selected frontier edges, their prefix pairing,
+and winding parity. A unique isolated two-column zigzag must be removed.
+Splicing proves strong connectivity of the remaining actual states and
+realizes the parity-complement involution. Explicit two- and three-column
+cycles give period one. The same terminal symmetry then forces equal leading
+coefficients. This proof does not identify its matrix with the paper's
+window-labeled transfer.
+
+The [triangular review record](reviews/triangular_cylinder.md) binds the
+complete argument to its independent reviews. An independent finite check
+generates the complete state graphs at widths 3 and 4, verifies the structural
+claims there, and compares five small graphs with a separate whole-graph
+enumeration. The all-width theorem uses the written geometric proof.
+
+The [illustrated splice](figures/figure-splice-m4.svg) shows one exact
+four-row example of joining two cycles; its [data](figures/figure-splice-m4-data.json)
+and [renderer](figures/render_splice_m4.py) are supplied separately. No human
+peer review, literature-wide priority, or external acceptance is claimed.
 
 ## Rectangular-grid results and scope
 
@@ -117,6 +161,7 @@ acceptance is claimed.
 | Source | Role |
 |---|---|
 | [Thin-cylinder argument](cylinder_transfer.md) | Exact state correspondence, irreducibility and periods, the terminal-exchanging involution, and asymptotic equality. |
+| [Triangular-cylinder argument](triangular_cylinder_asymptotics.md) | The isolated zigzag, actual geometric states, complete-cycle splicing, and asymptotic equality at every fixed circumference. |
 | [Polynomial cutoff](polynomial_cutoff.md) | The quadratic cutoff, the earlier cubic estimate, their complete proofs, and the deletion corollaries. |
 | [Geometric cutoff](four_n_cutoff.md) | Short return walks used by the polynomial proof, plus the earlier $4N$ bound. |
 | [Original classification proof](grid_width_classification.md) | Geometric lemmas, transfer semantics, and the earlier general $2N^2$ walk bound. |
@@ -172,8 +217,9 @@ Beaton, Eng, and Soteros,
 Section 4.1, also give qualitative strong connectivity for the pairing-bearing
 Hamiltonian 1-patterns that occur in Hamiltonian polygons, using concatenation
 of containing polygons from their Theorem 6 construction. This is relevant prior
-connectivity work. The present cylinder application supplies its own exact
-correspondence with the 2015 window-label model; the rectangular cutoff concerns
+connectivity work. The square-cylinder application supplies its own exact
+correspondence with the 2015 window-label model; the triangular application
+uses a separate geometric transfer. The rectangular cutoff concerns
 quantitative connectors in all retained pairing sectors. The frozen mathematical
 sources retain their bytes; this paragraph refines the repository attribution.
 
@@ -194,8 +240,8 @@ same command with Python 3.12 on pushes and pull requests.
 python verify.py
 ```
 
-This verifies all file hashes and the six reviewed source identities, reruns
-the five finite checks, compares their complete deterministic JSON output with
+This verifies all file hashes and the seven reviewed source identities, reruns
+the six finite checks, compares their complete deterministic JSON output with
 the pinned results, and checks optimized-interpreter rejection. Run without
 `-O`, `-OO`, or `PYTHONOPTIMIZE`; assertion-dependent verification explicitly
 rejects optimized execution.
@@ -207,6 +253,7 @@ rejects optimized execution.
 | [Upper construction](checks/check_upper_construction.py) | Exact deletion counts and unique cycles in 24 constructions at widths 4, 8, 12, 16 and lengths 3 through 8; five controls with zero, one, or multiple cycles; all three local ladder completions. |
 | [Reverse geometry](checks/check_reverse_geometry.py) | All 9,046 cap-free full-column geometries with nonempty even endpoint sets at heights 3 through 10. Exhausts 60,936 output matchings and checks that every input matching has a valid reverse lift. Includes empty-frontier and jointly closing-cap negative controls. |
 | [Cylinder model](checks/check_cylinder_model.py) | Reproduces every entry of the published width-three and width-four matrices, endpoint sets, and weighted quotients. At widths 3, 4, 5 checks the shading involution and compares complete transfer sequences and positive-window labels against independent full-cycle enumeration on six cylinders. |
+| [Triangular model](checks/check_triangular_model.py) | Exhausts the reachable state graphs at widths 3 and 4, prunes prefixes without a terminal completion, isolates the two-column exception, checks strong connectivity, period one, weighted parity symmetry, and terminal exchange, and compares five independent whole-graph cycle counts. |
 
 The upper check searches undirected edge subsets with degree propagation and
 proper-subtour rejection. A separate vertex-path enumerator checks its five
@@ -228,7 +275,7 @@ Each checker can also run directly and prints JSON. Pinned outputs are in
 [`results/`](results/). These finite checks supplement the written universal
 arguments; a successful command does not mechanically prove either cutoff,
 the all-parameter construction, the eventual equality, or the cylinder
-asymptotic theorem.
+asymptotic theorems.
 
 ## Provenance, license, and review
 
@@ -242,8 +289,10 @@ The [polynomial-proof review receipt](reviews/polynomial_cutoff.md) identifies
 the exact reviewed text, its dependencies, the publication comparison, and
 the review's limits. It records a non-author AI review within the same
 collaborating collective, not external peer review. The separate
-[cylinder review receipt](reviews/cylinder_transfer.md) records the two full
-application reviews, the complement-symmetry review, and the final integration
+[cylinder review receipt](reviews/cylinder_transfer.md) records the direct-splicing
+integration review and publication comparison. The
+[triangular review receipt](reviews/triangular_cylinder.md) records the independent
+all-width proof reviews, exact model check, finite audit, and publication
 comparison. These reviews do not turn a bounded literature search into a
 priority certification.
 
