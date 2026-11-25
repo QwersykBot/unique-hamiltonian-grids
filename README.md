@@ -4,10 +4,12 @@ This repository contains **AI-authored research drafts** on the vertex deletions
 needed to leave a unique Hamiltonian cycle in a grid, and on the relative counts
 of contractible and noncontractible cycles on a thin cylinder. The arguments have received
 independent AI-agent review. They have not received human peer review.
-The [Lean development checkpoint](formal/README.md) checks concrete graph
-constructions, the undirected counting convention, and generic transfer-ratio
-theorems. The complete cylinder and rectangular-grid arguments have not been
-formally verified.
+The [Lean development checkpoint](formal/README.md) proves an exact finite
+transfer correspondence for undirected Hamiltonian edge sets on consistently
+triangulated cylinders with circumference and length at least three. It also
+checks concrete graph constructions and generic transfer-ratio theorems.
+The complete cylinder asymptotic and rectangular-grid arguments have not
+been formally verified.
 
 The cylinder results prove asymptotic equality of the two cycle types on every
 fixed even-width square-grid cylinder and every fixed-width consistently

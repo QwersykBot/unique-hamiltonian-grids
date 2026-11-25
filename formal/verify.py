@@ -65,6 +65,33 @@ MODULES = (
     "EdgeReplacementReachability",
     "ColumnBoundaryDegree",
     "BoundaryVertical",
+    "FiniteTransferPaths",
+    "ActualTransfer",
+    "CycleAccepted",
+    "AcceptedReconstruction",
+    "TransferWitnesses",
+    "PrefixReplacement",
+    "FragmentRecovery",
+    "ColumnStepConnectivity",
+    "ProcessedPrefix",
+    "AcceptedExtensionality",
+    "AcceptedGraph",
+    "AcceptedStateRecovery",
+    "BoundaryParity",
+    "BoundaryParityUpdates",
+    "AcceptedParity",
+    "AcceptedUniqueness",
+    "CompletionTransport",
+    "AcceptedRealization",
+    "CountedTransferEquivalence",
+    "CycleIntervals",
+    "SplicePrefixCoordinates",
+    "ReplacementRestriction",
+    "SelectedCycleDeletion",
+    "SpliceSelectedGraph",
+    "SplicePrefixReachability",
+    "SpliceStateFields",
+    "StateEndVertical",
 )
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 EXPECTED_AUDITS = set("""
@@ -407,6 +434,260 @@ TriangularCylinder.BoundaryVertical.last_crossings_selected_of_no_vertical
 TriangularCylinder.BoundaryVertical.exists_first_selected_vertical
 TriangularCylinder.BoundaryVertical.exists_last_selected_vertical
 TriangularCylinder.BoundaryVertical.exists_selected_verticals_at_both_ends
+CylinderTransfer.LabelledPath.append
+CylinderTransfer.LabelledPath.ofSequence
+CylinderTransfer.LabelledPath.observe
+CylinderTransfer.LabelledPath.observe_ofSequence
+CylinderTransfer.LabelledPath.nonempty_ofSequence
+CylinderTransfer.LabelledPath.nonempty_append
+TriangularCylinder.Transfer.coreState_finite
+TriangularCylinder.Transfer.coreState_ne_exceptional
+TriangularCylinder.Transfer.widthEquiv_row
+TriangularCylinder.Transfer.widthEquiv_col_val
+TriangularCylinder.Transfer.widthEquiv_refl
+TriangularCylinder.Transfer.cutTail_pos
+TriangularCylinder.Transfer.cutWidth_eq
+TriangularCylinder.Transfer.cutState_eq_stateAt
+TriangularCylinder.Transfer.cutState_horizontal_iff
+TriangularCylinder.Transfer.cutState_diagonal_iff
+TriangularCylinder.Transfer.cutState_reach_iff
+TriangularCylinder.Transfer.cutState_parity
+TriangularCylinder.Transfer.verticalMask_physical_iff
+TriangularCylinder.Transfer.verticalMask_iff
+TriangularCylinder.Transfer.cutState_occurs
+TriangularCylinder.Transfer.lowerCol_cutEdgeIndex
+TriangularCylinder.Transfer.upperCol_cutEdgeIndex
+TriangularCylinder.Transfer.cutState_horizontal_physical_iff
+TriangularCylinder.Transfer.cutState_diagonal_physical_iff
+TriangularCylinder.Transfer.width_two_of_cutState_full
+TriangularCylinder.Transfer.cutState_not_full
+TriangularCylinder.Transfer.coreAtCut
+TriangularCylinder.Transfer.coreAtCut_val
+TriangularCylinder.Transfer.InitialLabel
+TriangularCylinder.Transfer.LocalLabel
+TriangularCylinder.Transfer.TerminalLabel
+TriangularCylinder.Transfer.initialLabel_finite
+TriangularCylinder.Transfer.localLabel_finite
+TriangularCylinder.Transfer.terminalLabel_finite
+TriangularCylinder.Transfer.initialLabelOfCycle
+TriangularCylinder.Transfer.localLabelOfCycle
+TriangularCylinder.Transfer.terminalLabelOfCycle
+TriangularCylinder.Transfer.initialLabelOfCycle_val
+TriangularCylinder.Transfer.localLabelOfCycle_val
+TriangularCylinder.Transfer.terminalLabelOfCycle_val
+TriangularCylinder.Transfer.cyclePath
+TriangularCylinder.Transfer.cycleAccepted
+TriangularCylinder.Transfer.cycleAccepted_initialState
+TriangularCylinder.Transfer.cycleAccepted_terminalState
+TriangularCylinder.Transfer.cycleAccepted_initialMask
+TriangularCylinder.Transfer.cycleAccepted_terminalMask
+TriangularCylinder.Transfer.cycleAccepted_localMasks
+TriangularCylinder.Transfer.cycleAccepted_cutStates
+TriangularCylinder.Transfer.cycleAccepted_verticalMasks
+TriangularCylinder.Transfer.cycleAccepted_vertical_physical_iff
+TriangularCylinder.Transfer.cycleAccepted_horizontal_physical_iff
+TriangularCylinder.Transfer.cycleAccepted_diagonal_physical_iff
+TriangularCylinder.Transfer.nonempty_accepted_of_cycle
+TriangularCylinder.Transfer.acceptedEdges_mem
+TriangularCylinder.Transfer.acceptedGeometry_cycleAccepted_flag_iff
+TriangularCylinder.Transfer.acceptedEdges_cycleAccepted
+TriangularCylinder.Transfer.selectionGraph_edgeSet
+TriangularCylinder.Transfer.selectionCoreAtCut
+TriangularCylinder.Transfer.selectionCoreAtCut_val
+TriangularCylinder.Transfer.presentation_typeParity_eq
+TriangularCylinder.Transfer.selectionAccepted
+TriangularCylinder.Transfer.selectionAccepted_localMasks
+TriangularCylinder.Transfer.selectionAccepted_cutStates
+TriangularCylinder.Transfer.selectionAccepted_verticalMasks
+TriangularCylinder.Transfer.acceptedGeometry_selectionAccepted_flag_iff
+TriangularCylinder.Transfer.acceptedEdges_selectionAccepted
+TriangularCylinder.Transfer.selectionAccepted_injective
+TriangularCylinder.Transfer.selectionAcceptedEmbedding
+TriangularCylinder.Transfer.commonWitnessState_not_full
+TriangularCylinder.Transfer.commonCoreState_val
+TriangularCylinder.Transfer.cutState_two_columns
+TriangularCylinder.Transfer.initialLabel_common_nonempty
+TriangularCylinder.Transfer.terminalZeroLabel_common_nonempty
+TriangularCylinder.Transfer.initialChoices_nonempty
+TriangularCylinder.Transfer.terminalZeroChoices_nonempty
+TriangularCylinder.PrefixReplacement.mixedGraph_le
+TriangularCylinder.PrefixReplacement.mixedGlue_connected
+TriangularCylinder.PrefixReplacement.mixedGraph_connected
+TriangularCylinder.PrefixReplacement.mixedGraph_neighbor_ncard_two
+TriangularCylinder.PrefixReplacement.exact_realization_of_connected_two
+TriangularCylinder.PrefixReplacement.replacement_properties
+TriangularCylinder.PrefixReplacement.replacement_exact_hamiltonian
+TriangularCylinder.PrefixReplacement.replacement_of_raw_state_eq
+CylinderFrontier.glue_prefix_adj_of_no_boundary_edges
+CylinderFrontier.glue_suffix_restricted_adj
+TriangularCylinder.FragmentRecovery.prefixPart_transportedGlue
+TriangularCylinder.FragmentRecovery.suffixPart_transportedGlue
+TriangularCylinder.FragmentRecovery.prefixPart_mixedGraph
+TriangularCylinder.FragmentRecovery.suffixPart_mixedGraph
+TriangularCylinder.FragmentRecovery.suffixPart_boundary_next_adj_iff
+TriangularCylinder.FragmentRecovery.stateAt_horizontal_eq_of_suffixPart_eq
+TriangularCylinder.FragmentRecovery.stateAt_diagonal_eq_of_suffixPart_eq
+TriangularCylinder.FragmentRecovery.stateAt_mixedGraph_horizontal
+TriangularCylinder.FragmentRecovery.stateAt_mixedGraph_diagonal
+TriangularCylinder.FragmentRecovery.stateAt_mixedGraph_reach
+TriangularCylinder.FragmentRecovery.stateAt_mixedGraph_fields
+TriangularCylinder.ColumnStep.sameColumn_adj_iff
+TriangularCylinder.ColumnStep.sameColumn_adj_iff_of_masks_eq
+TriangularCylinder.ColumnStep.firstPrefix_eq_of_verticalMask_eq
+TriangularCylinder.ColumnStep.firstState_reach_eq_of_verticalMask_eq
+TriangularCylinder.ColumnStep.oneColumn_suffix_interior_adj
+TriangularCylinder.ColumnStep.oneColumn_suffix_eq_of_masks_eq
+TriangularCylinder.ColumnStep.nextColumn_reachable_iff
+TriangularCylinder.ProcessedPrefix.columnInclusion_prefixCoord
+TriangularCylinder.ProcessedPrefix.normalizedPrefix_le
+TriangularCylinder.ProcessedPrefix.widthEquiv_graph_comap
+TriangularCylinder.ProcessedPrefix.cutGraph_le
+TriangularCylinder.ProcessedPrefix.cutGraph_connected
+TriangularCylinder.ProcessedPrefix.stepPrefix_le
+TriangularCylinder.ProcessedPrefix.stepPrefix_old_prefix
+TriangularCylinder.ProcessedPrefix.stepPrefix_old_attached
+TriangularCylinder.ProcessedPrefix.stepPrefix_old_horizontal
+TriangularCylinder.ProcessedPrefix.stepPrefix_old_diagonal
+TriangularCylinder.ProcessedPrefix.stepPrefix_old_reach
+TriangularCylinder.ProcessedPrefix.stepPrefix_new_vertical
+TriangularCylinder.ProcessedPrefix.stepPrefix_new_reachable_iff
+TriangularCylinder.ProcessedPrefix.cutState_next_reach_eq
+TriangularCylinder.ProcessedPrefix.cutState_next_reach_eq_of_state_eq
+CylinderTransfer.LabelledPath.last_observed_state
+CylinderTransfer.LabelledPath.eq_of_observations
+CylinderTransfer.LabelledPath.observed_step
+TriangularCylinder.Transfer.acceptedCutStates_last
+TriangularCylinder.Transfer.accepted_initial_realized
+TriangularCylinder.Transfer.accepted_local_realized
+TriangularCylinder.Transfer.accepted_terminal_realized
+TriangularCylinder.Transfer.accepted_ext
+TriangularEdgeEncoding.mem_realizedEdges_iff
+TriangularCylinder.Transfer.acceptedGraph_le
+TriangularCylinder.Transfer.acceptedGraph_edgeSet
+TriangularCylinder.Transfer.acceptedGraph_vertical
+TriangularCylinder.Transfer.acceptedGraph_horizontal
+TriangularCylinder.Transfer.acceptedGraph_diagonal
+TriangularCylinder.Transfer.selectedCycleGraph_le
+TriangularCylinder.Transfer.cutState_initial_reach_eq
+TriangularCylinder.Transfer.acceptedGraph_initial_reach
+TriangularCylinder.Transfer.acceptedGraph_reach
+TriangularCylinder.BoundaryParity.mem_selectedPhysicalIds
+TriangularCylinder.BoundaryParity.assignedIds_eq_filter
+TriangularCylinder.BoundaryParity.idsOfGeometry_selectedGeometry
+TriangularCylinder.BoundaryParity.selectedGeometry_vertical
+TriangularCylinder.BoundaryParity.selectedGeometry_diagonal_cutState
+TriangularCylinder.BoundaryParity.selectedPhysicalIds_realizedEdges
+TriangularCylinder.BoundaryParity.selectedGeometry_realizedEdges
+TriangularCylinder.BoundaryParity.assignedIds_realizedEdges
+TriangularCylinder.BoundaryParity.assignedParity_realizedEdges
+TriangularCylinder.BoundaryParity.assignedParity_comap_widthEquiv
+TriangularCylinder.BoundaryParity.cutState_parity_eq_selected_filter
+TriangularCylinder.BoundaryParity.cutState_parity_eq_lastRow
+TriangularCylinder.BoundaryParity.cutState_parity_initial
+TriangularCylinder.BoundaryParity.cutState_parity_succ
+TriangularCylinder.BoundaryParity.sum_selectedPhysicalIds_eq_lastRow
+TriangularCylinder.BoundaryParity.selectedPhysicalIds_sum_terminal
+TriangularCylinder.BoundaryParity.typeParity_eq_selectedPhysicalIds
+TriangularCylinder.BoundaryParity.typeParity_terminal
+TriangularCylinder.BoundaryParity.selectionParity_terminal
+TriangularCylinder.BoundaryParity.initialLabel_parity
+TriangularCylinder.BoundaryParity.localLabel_parity
+TriangularCylinder.BoundaryParity.terminalLabel_parity
+TriangularCylinder.Transfer.acceptedGraph_parity
+TriangularCylinder.Transfer.acceptedEdges_parity
+TriangularCylinder.Transfer.acceptedGeometry_parity
+TriangularCylinder.Transfer.selectionParity_acceptedEdges
+TriangularCylinder.Transfer.acceptedGraph_state
+TriangularCylinder.Transfer.accepted_ext_of_edges_eq
+TriangularCylinder.Transfer.acceptedSelectionOfRealization
+TriangularCylinder.Transfer.acceptedGraph_connected_of_realization
+TriangularCylinder.Transfer.selectionAccepted_of_realization
+TriangularCylinder.CompletionTransport.advanceGraph_le
+TriangularCylinder.CompletionTransport.advanceGraph_connected
+TriangularCylinder.CompletionTransport.advanceGraph_ncard_two
+TriangularCylinder.CompletionTransport.nextPrefix_le
+TriangularCylinder.CompletionTransport.nextPrefix_old_prefix
+TriangularCylinder.CompletionTransport.nextPrefix_old_horizontal
+TriangularCylinder.CompletionTransport.nextPrefix_old_diagonal
+TriangularCylinder.CompletionTransport.nextPrefix_old_reach
+TriangularCylinder.CompletionTransport.nextPrefix_vertical
+TriangularCylinder.CompletionTransport.nextPrefix_reachable_iff
+TriangularCylinder.CompletionTransport.nextPrefix_eq_of_old_data
+TriangularCylinder.CompletionTransport.normalizedPrefix_comap
+TriangularCylinder.CompletionTransport.advance_prefix_eq_of_nextPrefix_eq
+TriangularCylinder.CompletionTransport.advance_reach_eq
+TriangularCylinder.CompletionTransport.suffixPart_interior_adj
+TriangularCylinder.CompletionTransport.advance_suffix_coordinate
+TriangularCylinder.CompletionTransport.advance_suffix_adj
+TriangularCylinder.CompletionTransport.advance_suffix_eq
+TriangularCylinder.CompletionTransport.next_vertical_eq_of_suffix_eq
+TriangularCylinder.CompletionTransport.stateAt_split_eq_cutState
+TriangularCylinder.CompletionTransport.prefixPart_split_eq_cutGraph
+TriangularCylinder.CompletionTransport.advance_comap_widthEquiv
+TriangularCylinder.AcceptedRealization.genuine_of_conditions
+TriangularCylinder.AcceptedRealization.genuine_of_cycle
+TriangularCylinder.AcceptedRealization.genuine_widthEquiv
+TriangularCylinder.AcceptedRealization.genuine_advance
+TriangularCylinder.AcceptedRealization.genuine_mixed
+TriangularCylinder.AcceptedRealization.split_boundary_vertical
+TriangularCylinder.AcceptedRealization.split_next_vertical
+TriangularCylinder.AcceptedRealization.prefixCompletion_zero
+TriangularCylinder.AcceptedRealization.prefixCompletion_succ
+TriangularCylinder.AcceptedRealization.prefixCompletion_all
+TriangularCylinder.AcceptedRealization.acceptedGraph_genuine
+TriangularCylinder.AcceptedRealization.acceptedEdges_hasHamiltonianRealization
+TriangularCylinder.AcceptedRealization.acceptedGraph_connected
+TriangularCylinder.AcceptedRealization.acceptedGraph_neighbor_ncard_two
+TriangularCylinder.Transfer.acceptedSelection
+TriangularCylinder.Transfer.acceptedSelection_edges
+TriangularCylinder.Transfer.acceptedSelection_selectionAccepted
+TriangularCylinder.Transfer.selectionAccepted_acceptedSelection
+TriangularCylinder.Transfer.countedTransferEquiv
+TriangularCylinder.Transfer.parityCount_eq_card_paritySelection
+TriangularCylinder.Transfer.parityCount_eq_card_accepted
+TriangularCylinder.Transfer.parityCount_eq_transfer
+TriangularCylinder.Transfer.parityCount_eq_transfer_real
+TriangularCylinder.Transfer.cutIntervalIndex_val
+TriangularCylinder.Transfer.cutIntervalIndex_zero
+TriangularCylinder.Transfer.cutIntervalIndex_last
+TriangularCylinder.Transfer.cutIntervalStep_val
+TriangularCylinder.Transfer.cutIntervalIndex_castSucc
+TriangularCylinder.Transfer.cutIntervalIndex_succ
+TriangularCylinder.Transfer.cycleIntervalPath
+TriangularCylinder.Transfer.cycleIntervalPath_observe
+TriangularCylinder.Transfer.cycleIntervalPath_verticalMasks
+TriangularCylinder.Transfer.cycleIntervalPath_targetStates
+TriangularCylinder.Transfer.cycleIntervalPath_nonempty
+TriangularCylinder.Transfer.cycleIntervalPath_nonempty_self
+TriangularCylinder.SplicePrefixCoordinates.columnSumEquiv
+TriangularCylinder.SplicePrefixCoordinates.columnSumEquiv_left
+TriangularCylinder.SplicePrefixCoordinates.columnSumEquiv_right
+TriangularCylinder.SplicePrefixCoordinates.ofPrefix_toPrefix
+TriangularCylinder.SplicePrefixCoordinates.toPrefix_ofPrefix
+TriangularCylinder.SplicePrefixCoordinates.prefixEquiv_boundary
+TriangularCylinder.SplicePrefixCoordinates.fullWidth_prefixVertex_eq_physicalPrefix
+TriangularCylinder.SplicePrefixCoordinates.physicalPrefix_injective
+TriangularCylinder.SplicePrefixCoordinates.prefixVertex_firstPrefixVertex
+CylinderFrontier.EdgeReplacement.comap_replacementGraph
+CylinderFrontier.EdgeReplacement.restricted_old_reachable_iff
+CylinderFrontier.selected_cycle_delete_edge_connected
+CylinderFrontier.EdgeReplacement.fromEdgeSet_spliceEdges
+CylinderFrontier.EdgeReplacement.fromEdgeSet_image_comap
+CylinderFrontier.EdgeReplacement.image_spliceEdges
+TriangularCylinder.SpliceSelectedGraph.selected_splice_comap
+TriangularCylinder.SplicePrefixReachability.joinedPrefix_comap_eq_physical
+TriangularCylinder.SplicePrefixReachability.physicalPrefix_comap_eq
+TriangularCylinder.SplicePrefixReachability.old_prefix_reachable_iff_of_comap
+TriangularCylinder.SplicePrefixReachability.exists_splice_preserving_old_prefix_reachability
+TriangularCylinder.SpliceStateFields.fullWidth_boundaryCol
+TriangularCylinder.SpliceStateFields.fullWidth_nextCol
+TriangularCylinder.SpliceStateFields.right_adj_iff_of_col_ne
+TriangularCylinder.SpliceStateFields.stateAt_horizontal_eq
+TriangularCylinder.SpliceStateFields.stateAt_diagonal_eq
+TriangularCylinder.SpliceStateFields.stateAt_reach_eq
+TriangularCylinder.StateEndVertical.full_masks_of_no_end_vertical_two_columns
+TriangularCylinder.StateEndVertical.exists_selected_verticals_of_nonfull_stateAt
+TriangularCylinder.StateEndVertical.exists_selected_end_edges_of_nonfull_stateAt
 """.split())
 
 
@@ -479,7 +760,7 @@ def main() -> int:
     receipt = {
         "status": "RUNNING",
         "checked_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-        "scope": "Named supporting lemmas; neither cylinder asymptotic theorem is fully formalized.",
+        "scope": "Exact finite triangular-cylinder counted correspondence and supporting lemmas; asymptotic theorems remain unformalized.",
         "commands": [],
     }
 
@@ -542,7 +823,7 @@ def main() -> int:
         print(version)
         print(f"PASS: {len(MODULES)} supporting modules; {len(EXPECTED_AUDITS)} exact named audits; "
               "standard logical axioms only.")
-        print("Full cylinder counting correspondence and asymptotic theorems remain unformalized.")
+        print("Finite triangular-cylinder counting correspondence is checked; asymptotic theorems remain unformalized.")
         return 0
     except (OSError, RuntimeError, ValueError, subprocess.TimeoutExpired) as error:
         receipt["status"] = "FAIL"

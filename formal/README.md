@@ -1,12 +1,15 @@
-# Checked supporting lemmas for the cylinder arguments
+# Exact finite cylinder counting and supporting lemmas
 
 This is a development checkpoint of Lean proofs supporting the
 [triangular-cylinder argument](../triangular_cylinder_asymptotics.md).
-It also contains exact finite counting interfaces and generic ratio theorems
-for labelled transfers and products of varying nonnegative matrices.
+It proves an exact finite correspondence between undirected Hamiltonian
+edge selections and accepted labelled transfers for consistently triangulated
+cylinders with circumference and length at least three. It also contains
+generic ratio theorems for labelled transfers and products of varying
+nonnegative matrices.
 **Neither cylinder asymptotic theorem has been fully formalized.**
-The exact correspondence between transfer products and the intended cycle
-counts remains to be proved.
+The concrete symmetry, support-connectivity, and return-path hypotheses of
+the ratio theorem remain to be supplied.
 
 The project uses Lean 4.19.0, compiler commit `6caaee842e94`, and Mathlib
 commit `c44e0c8ee63ca166450922a373c7409c5d26b00b`. These are fixed historical
@@ -150,6 +153,17 @@ vertex's suffix neighbors as its selected horizontal and diagonal edges.
 that matching outgoing masks preserve degree two when fragments are mixed.
 These interfaces separate ambient validity, connectivity, and degree.
 
+[PrefixReplacement](PrefixReplacement.lean) composes these results into a
+standard Hamiltonian realization of the mixed graph, with exactly its
+constructed edge set. Connectedness and degree two of the mixed graph are
+derived from the original selections and equality of their H/D and reach
+fields. [FragmentRecovery](FragmentRecovery.lean) proves exact recovery of
+both input fragments. [ColumnStepConnectivity](ColumnStepConnectivity.lean)
+and [ProcessedPrefix](ProcessedPrefix.lean) prove that old H/D masks, the
+old boundary relation, and one new V mask determine the next relation.
+Attachment is derived from actual connected completions; a processed prefix
+is allowed to have several components.
+
 ## Concrete boundary data and the two-column exception
 
 [BoundaryState](BoundaryState.lean) gives a finite raw state at the complete
@@ -191,8 +205,16 @@ vertical edge at each end of every such longer cylinder.
 [EdgeReplacementReachability](EdgeReplacementReachability.lean) proves
 that replacing an existing edge by a connected disjoint gadget and two
 seams preserves the entire reachability relation on old vertices.
-Applying that result to the exact cylinder splice, including all state
-coordinates, remains separate work.
+[SpliceSelectedGraph](SpliceSelectedGraph.lean) identifies the concrete
+selected-edge splice with this replacement graph. Its coordinate,
+restriction, and cycle-edge-deletion helpers justify the application inside
+every old prefix, including cut zero.
+[SplicePrefixReachability](SplicePrefixReachability.lean) preserves every old
+prefix reachability query for the same constructed Hamiltonian splice, and
+[SpliceStateFields](SpliceStateFields.lean) preserves its outgoing H/D and
+reach fields. Assigned-prefix parity under that splice remains separate.
+[StateEndVertical](StateEndVertical.lean) obtains both selected end verticals
+from a nonfull actual state, including a two-column witness.
 
 ## Generic ordered-matrix theorem
 
@@ -271,19 +293,89 @@ and the entry bounds, and removes a finite shift to allow zero counts at
 short lengths. Initial labels need no permutation symmetry.
 
 This theorem counts its dependent accepted-object type. Identifying that
-type with the intended Hamiltonian edge selections is a separate
-application obligation; no root or direction multiplicity is silently
-divided out.
+type with the intended Hamiltonian edge selections is established below;
+no root or direction multiplicity is silently divided out.
+
+## Exact triangular-cylinder counted correspondence
+
+[ActualTransfer](ActualTransfer.lean) defines the finite core as actual
+occurring raw states whose outgoing H/D masks are not both full. Initial,
+local, and terminal labels contain only a physical vertical mask as data.
+Their properties require occurrence in an actual Hamiltonian cycle; local
+source and target cuts must occur consecutively in the same witness. The
+witness's width, root, and traversal remain propositions, so they add no
+counting multiplicity. Finiteness is classical and does not assert an
+effective enumeration algorithm.
+
+[CycleAccepted](CycleAccepted.lean) encodes the actual ordered cut sequence
+of a Hamiltonian cycle. [AcceptedReconstruction](AcceptedReconstruction.lean)
+defines reconstruction as a physical unordered edge finset and proves exact
+recovery for the canonical encoding of an existing counted selection.
+[AcceptedGraph](AcceptedGraph.lean) recovers all V/H/D masks for arbitrary
+accepted data, and [AcceptedExtensionality](AcceptedExtensionality.lean)
+shows that the full cut-state sequence and all V masks distinguish the
+entire accepted object.
+
+[BoundaryParity](BoundaryParity.lean) identifies the existing assigned-ID
+sum with the physical V/D charges through each source column.
+[BoundaryParityUpdates](BoundaryParityUpdates.lean) derives the initial,
+consecutive, and terminal identities. The first cut charges its V and
+outgoing D bits; a step adds the new V and new outgoing D bits; after the
+last cut only the final-column V remains.
+[AcceptedParity](AcceptedParity.lean) proves that every accepted object's
+reconstructed physical edge sum has its stated terminal parity, without
+assuming reconstructed connectedness.
+
+[AcceptedRealization](AcceptedRealization.lean) proves that **every accepted
+object has a standard Hamiltonian realization selecting exactly its
+reconstructed edges**. The induction keeps a genuine Hamiltonian completion
+of each processed prefix. The initial and local witnesses provide these
+completions through exact prefix replacement. The terminal witness then
+closes the graph at the requested width. [CompletionTransport](CompletionTransport.lean)
+tracks the exact fragments when the cut advances. This realization theorem
+also covers zero-step accepted objects.
+
+[AcceptedStateRecovery](AcceptedStateRecovery.lean) recovers the recorded
+reach fields once the reconstructed graph is connected. That premise is
+supplied by the realization theorem.
+[AcceptedUniqueness](AcceptedUniqueness.lean) combines all state fields and
+proves the full right-inverse identity.
+[CountedTransferEquivalence](CountedTransferEquivalence.lean) consequently
+provides the mutual inverse maps and exact count formulas:
+
+```lean
+countedTransferEquiv hm hn p :
+  ParitySelection hm p (n + 2) ≃ AcceptedObject hm p n
+
+parityCount_eq_card_accepted hm hn p :
+  CountedHamiltonian.parityCount m (n + 2) hm p =
+    Fintype.card (AcceptedObject hm p n)
+```
+
+Here `hm : 3 ≤ m` and `hn : 1 ≤ n`; the cylinder has `n + 2 ≥ 3` columns.
+The source is exactly the existing counted selection type restricted by its
+existing meridian parity. The two-column full-crossing exception is excluded
+from the core, so the bijection is deliberately not asserted at `n = 0`.
+The same module proves the natural and real transfer identities
+`parityCount = f · M^n · g` in this range.
+
+[TransferWitnesses](TransferWitnesses.lean) obtains nonempty initial and
+parity-zero terminal choices from the concrete two-column perimeter witness.
+[CycleIntervals](CycleIntervals.lean) constructs exact labelled paths
+between ordered cuts of one longer actual cycle, with length equal to the
+difference of their cut indices. It does not by itself supply common-state
+returns or paths between arbitrary core states.
 
 ## Remaining cylinder obligations
 
-To obtain a formal cylinder counting theorem, the development still needs
-the complete transition model, the state-level treatment of the isolated
-two-column case, a bijection between accepted transfer configurations and
-undirected Hamiltonian edge sets, preservation of actual frontier states
-under splicing, and the concrete involution and endpoint exchange. It also
-needs common-state return witnesses, support connectivity, positive totals,
-and any claimed physical edge-weight bounds.
+To obtain the formal asymptotic ratio for the actual cylinder counts, the
+development still needs closure of actual core states under the parity
+flip, local-label and terminal-label equivalences under that involution,
+paths between every pair of core states, and common-state returns of
+lengths two and three. The checked generic ratio theorem then supplies
+eventual positivity from these hypotheses and the concrete nonempty
+boundary choices. Weighted applications also require their claimed
+physical edge-weight bounds.
 
 Identification of combinatorial parity with annular contractibility,
 the circumference-two multigraph convention, and the stronger absolute
@@ -319,6 +411,15 @@ each prototype hash to the packaged source. Four graph files have only a
 documentation-heading marker normalized; their proof text is unchanged.
 All other packaged proof sources are byte-identical to their frozen
 prototype versions. Compilation of the packaged files is checked afresh.
+
+The [counted-correspondence review](reviews/counted_transfer_equivalence.md)
+checks the unconditional realization and both inverse identities. The
+[accepted-data helper reviews](reviews/accepted_helpers.md) distinguish
+conditional relation recovery from unconditional physical parity recovery.
+The [transfer and completion review](reviews/transfer_completion_and_states.md)
+records the remaining state and prefix interfaces and their authorship
+limits. Separate splice reports cover the exact selected-graph identity,
+prefix restriction, and the three non-parity state fields.
 
 The repository's [CC0 notice](../LICENSE.txt) applies to this original work.
 Mathlib and Lean retain their own licenses. These results are a reproducible
