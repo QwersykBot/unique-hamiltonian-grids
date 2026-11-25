@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "candidate_version": "2026-11-24-5",
+  "candidate_version": "2026-11-25-1",
   "authorship_and_review": "AI-origin proof and independent AI-agent reviews; no human peer review, proof-assistant verification, external acceptance, or literature-wide priority claim.",
   "original_archives": [
     {
@@ -142,7 +142,26 @@
       ],
       "independence": "Derives initial/ordinary/final geometry by whole-graph connected components and retains reachable/coaccessible states. A separate Hamiltonian vertex-path enumeration reconstructs actual dual-window B labels and compares complete B-sequence sets. It imports no existing transfer, matching-routing, SCC, or checker implementation.",
       "root_verification": "Read the complete checker and literal paper matrices; all non-main function ASTs match the frozen input. Replayed the packaged checker and matched the complete original report after removing only checker/source identity metadata.",
-      "limits": "Only widths three through five and six tiny full cylinders; neither all-width actual-state realization nor an asymptotic proof."
+      "limits": "Only widths three through five and six tiny full cylinders; neither all-width actual-state realization nor an asymptotic proof.",
+      "direct_splice_revision": {
+        "previous_checker_sha256": "97f9ff0c8a008cbeefba45ead9d4129072523de667fc98a6cbf5980423356f92",
+        "changes": "Only the cylinder_transfer.md source-hash gate changed. Complete source comparison confirms every other byte unchanged.",
+        "result_comparison": "Replayed complete result agrees after removing only checker_sha256 and frozen_sources_sha256 identity fields."
+      }
+    },
+    {
+      "file": "checks/check_triangular_model.py",
+      "source_member": "verify_triangular.py",
+      "source_sha256": "c4d539389d24801d95637970b6119f35e1eb3eb308bbccb8226fd8bee85a2ad5",
+      "changes": [
+        "Use the repository-standard explicit optimized-interpreter rejection.",
+        "Fix the entrypoint to the audited circumferences three and four and maximum eight vertex columns; remove unused command-line options.",
+        "Remove progress output and result-file writes; emit one complete deterministic JSON object with status PASS.",
+        "Preserve every mathematical function byte-for-byte; update only the checker identity in the receipt."
+      ],
+      "independence": "Constructs the full reachable closure from degree-constrained column geometries, then terminal coreachability. Separate whole-graph vertex-path DFS imports no transfer legality, pairing, or connectivity routine. Declared witness states are extracted by direct graph traversal.",
+      "root_verification": "Read the entire original 830-line verifier, reran it, and matched the receipt and both canonical graph files byte-for-byte. Compared original and packaged mathematical function text byte-for-byte. Replayed the adapter: complete normalized receipt differs only in script_sha256 and added status PASS. Checked optimized-mode rejection.",
+      "limits": "Finite state graphs at circumferences three and four, five whole-cylinder counts, and specified self-splice witnesses. No all-width proof or identification with the 2018 labeled transfer."
     }
   ],
   "pinned_results": {
@@ -150,18 +169,18 @@
     "graph_lemma": "Original finite graph result with CPU timing removed and the checker hash updated to the adapted script. Verification reruns the adapted scripts and compares their complete output with these records.",
     "upper_construction": "The original standard-library checker was replayed in isolation and matched its recorded result after recursively removing CPU timing. This normalized record retains all 24 cases, all five controls, all three ladder completions, and deterministic search counts; source hashes identify the adapted files and unchanged proof. The integrated verifier independently replays the adapted checker and compares its complete JSON output.",
     "reverse_geometry": "The complete deterministic independent oracle result: 9,046 cap-free geometries at heights 3 through 10, 23,888 input matching obligations, 60,936 output matching trials, and both explicit rejection controls. Source identities are updated to the packaged checker and exact reviewed publication note. The integrated verifier replays the complete check.",
-    "cylinder_model": "Complete deterministic audit: original full and quotient matrices and endpoint sets at widths three and four; shading involution, geometry and quotient weights at widths three through five; exact full-cycle B-sequence comparisons on all six width-3/4/5, two/three-vertex-column cylinders. The integrated verifier replays the complete output."
+    "cylinder_model": "Complete deterministic audit: original full and quotient matrices and endpoint sets at widths three and four; shading involution, geometry and quotient weights at widths three through five; exact full-cycle B-sequence comparisons on all six width-3/4/5, two/three-vertex-column cylinders. The integrated verifier replays the complete output.",
+    "triangular_model": "Complete deterministic finite audit: full reachable/completable state graphs at circumferences three and four, unique zigzag exception, one retained SCC of period one, weighted parity symmetry, terminal exchange, five separate whole-graph DFS counts, explicit self-splices, and corrected partial-state rotation. Original receipt SHA256 5894c83b65c0f77ae53c97083896e2f4a1622b6800c044e53b4f1f82bcb201fa; publication adapter changes only script identity and adds status PASS."
   },
   "new_packaging": [
-    "cylinder_transfer.md: one complete reviewed application proving the 2015 thin-cylinder structure and asymptotic-equality statements.",
-    "cylinder_transfer.pdf: eight-page readable rendering of the exact reviewed cylinder source, with all mathematical source TeX retained as PDF ActualText.",
-    ".gitattributes: mark PDF files as binary so Git preserves their exact reviewed bytes.",
-    "reviews/cylinder_transfer.md: focused record of the independent logical reviews, source identities, integration check, and bounded computational evidence.",
-    "checks/check_cylinder_model.py and results/cylinder_model.json: independent graph-gluing and full-cycle/dual-window audit of the exact small cylinder model.",
-    "README.md: cylinder results, review/check scope, and the Beaton–Eng–Soteros pairing-state connectivity and Filomat 2024 complement-symmetry attribution.",
-    "verify.py: sixth frozen mathematical-source pin and fifth deterministic finite check; existing check logic and source pins remain unchanged.",
-    "manifest.json and provenance.json: exact current snapshot and source/review provenance.",
-    "The five earlier mathematical notes, existing checkers/results, diagram, license, and GitHub Actions workflow remain unchanged."
+    "cylinder_transfer.md and PDF: self-contained direct-splicing exposition of the existing square-cylinder theorem, replacing the rectangular-connectivity route.",
+    "triangular_cylinder_asymptotics.md and PDF: complete geometric proof of the 2018 fixed-width ratio conjecture, with the isolated two-column exception and the published width-two formula stated separately.",
+    "reviews/cylinder_transfer.md and reviews/triangular_cylinder.md: complete frozen independent reviews with clearly attributed publication-comparison and finite-audit addenda.",
+    "checks/check_triangular_model.py and results/triangular_model.json: independent finite geometric transfer and whole-graph verification; no all-width inference from computation.",
+    "checks/check_cylinder_model.py and results/cylinder_model.json: source-identity repin only; mathematical logic and evidence unchanged.",
+    "figures/figure-splice-m4.svg, its data JSON, and renderer: one exact illustrative splice, with independent degree/connectivity/color/type checks.",
+    "README.md, verify.py, manifest.json, and provenance.json: coherent result presentation and reproducible seven-source, six-check snapshot.",
+    "The five earlier mathematical notes, their earlier checkers/results, original diagram, license, and GitHub Actions workflow retain their bytes."
   ],
   "missing_transfer_source": "The initial two archives omitted the grid_transfer.py discussed in their review companion. A later cutoff archive includes a transfer implementation for separate numerical work. It is outside this focused update and is neither included nor executed; this repository does not claim to replay that implementation-level review.",
   "excluded_material": "No large-width cylinder matrix sweep, width-twelve numerical theorem, historical ZIP copy, deployment receipt, session data, accumulated review log, third-party paper, or forum answer text is included. The cylinder model check is restricted to widths three through five, with literal primary-source comparisons at widths three and four and six direct full-cylinder cases.",
@@ -221,17 +240,21 @@
     {
       "url": "https://toc.ui.ac.ir/article_27132_cdef34d92bfef052aa91ee964b38a9d6.pdf",
       "scope": "Transactions on Combinatorics13:1 (2024), printed p43: describes the motivating thin-cylinder asymptotic phenomenon as conjectural. Bounded literature context; not evidence excluding all earlier or later solutions."
+    },
+    {
+      "url": "https://bibliotekanauki.pl/articles/31342332.pdf",
+      "scope": "Bodroža-Pantić, Kwong, Doroslovački, Pantić, Discussiones Mathematicae Graph Theory38(2018)405–427, DOI10.7151/dmgt.2021: exact triangular graph, length/count convention, width-two formula, finite Tables2–3, isolated-state observation, and Conjecture6."
     }
   ],
   "license": "Original included material is offered under CC0 1.0. Referenced third-party works retain their original terms.",
-  "based_on_published_manifest_sha256": "0517fa775a2e1d866816531b4d50d99c2f937ed8e08a44e7d07b4d84c93eac18",
+  "based_on_published_manifest_sha256": "2a43109e42849387a9a67b5eff62f53b17251360dec0df655a4c656391c3d917",
   "source_path_map": {
     "two_k_exploration/two_k_construction.md": "two_k_construction.md"
   },
   "source_path_map_scope": "The earlier 4N cutoff note retains its frozen archive path; the unchanged upper-construction source is placed at repository root so the signed-cut note also resolves. The four earlier mathematical source texts remain unchanged.",
   "attribution_refinement": {
     "upper_construction": "Misha Lavrov's 25 October 2025 square-grid answer gives the 2k cap/forced-zigzag construction. Transpose and row reflection match the square specialization here. His 17 November 2025 rectangular-grid comment gives the even-length extension and proposes reflection for odd lengths. The included note is a self-contained checked reconstruction of that prior work; no construction or parity-extension priority is claimed.",
-    "frozen_source_scope": "The five earlier mathematical source snapshots retain their exact bytes. The README and provenance add the Beaton–Eng–Soteros pairing-state connectivity context. The new cylinder source includes that attribution directly.",
+    "frozen_source_scope": "The five earlier rectangular mathematical notes retain their exact bytes. The square-cylinder source has a self-contained direct-splicing revision; its earlier version and full provenance remain pinned by commit. The triangular source is new.",
     "transfer_background": "Jacobsen (2007), Section 2, describes frontier connectivity information and premature-cycle rejection. These are established methods, not claimed innovations of this project. The 2-factor outlet-word classification of Đokić, Doroslovački, and Bodroža-Pantić is related prior work with different state semantics. Adjacent matching reconnection is standard, as in de Gier, Section 2.1, Equation (1).",
     "realizable_pairing_connectivity": "Beaton–Eng–Soteros (2016), Section4.1, supplies prior qualitative strong connectivity for patterns occurring in Hamiltonian polygons. This is closer pairing-state prior work than the binary outlet quotient. The new application explicitly proves its own state correspondence, actual-state lifting, and endpoint-exchanging symmetry; no literature-wide priority is claimed.",
     "two_factor_complement_symmetry": "Đokić–Doroslovački–Bodroža-Pantić, Filomat38:1 (2024), Lemma3, pp64–65, already use the coordinatewise involution (a f)(b e)(c d) on local 2-factor codes, inducing binary outlet complement and the odd-width component isomorphism. This is prior complement-symmetry methodology. It does not establish the fixed-pairing shade flip on actual 2015 Hamiltonian B-states, the B4 endpoint exchange, or equal even-width leading amplitudes. The README and provenance add this credit while preserving the reviewed mathematical source."
@@ -262,44 +285,106 @@
   },
   "cylinder_transfer": {
     "file": "cylinder_transfer.md",
-    "sha256": "bbf8ccefdab549967892b3623fce9e1390e459905f60510853dac220fc5f90a0",
-    "bytes": 28155,
-    "dependency": {
-      "file": "polynomial_cutoff.md",
-      "sha256": "46ab4d73958ff6b46aa49c2362e7ee446903388e5c13c79b5f776378bb266453",
-      "published_commit": "7f5f0c1268a4538e52e1fd16c4c0a51d25eca743",
-      "used_scope": "Sections1–6: nonempty pairing-sector connectivity. No later unpublished normalizer or quantitative refinement is used."
-    },
+    "bytes": 27908,
+    "sha256": "0973bc0d64481268ddf83ec66df0fbc1f03187a7f4a49cf37a0bd03b8c284991",
+    "proof_dependencies": "Self-contained actual-state pairing/shade identification and complete-cycle splicing. Uses the exact B1-B4 model and counting convention of the 2015 primary paper. No rectangular-sector theorem or arbitrary formal-state realization is used for the stated theorem.",
     "review_receipt": "reviews/cylinder_transfer.md",
-    "review_receipt_sha256": "0d409178c7e4b5262647ecc3e5c84372a1293d67c782c189b06e5f5033653be8",
-    "review_scope": "Two independent non-author AI agents checked the exact correspondence and irreducibility. One checked the complete frozen shading-complement extension; the other independently checked all new mathematics and the final integrated source, without the first reviewer verdict or the finite audit. Root read the arguments and the complete independent checker. No human peer review, formal verification, or external acceptance is asserted.",
-    "mathematical_scope": "Exact 2015 thin-cylinder quotient irreducibility for m>=3, period1 for even m and2 for odd m; a weighted quotient involution exchanging the exact terminal sets; fixed-even-width asymptotic equality with exponential error, the odd total-count cancellation, and exact unreduced-state counts. No finite-length equality, sign-pattern theorem, sharp exponent, or uniform spectral gap.",
+    "review_receipt_sha256": "8835ddf01b4a3d60ffaf7755486e705298b07bbe8fb3784f4b2b15e69566d549",
+    "review_scope": "Full non-author AI-agent review of the complete direct-splicing candidate; root read the exact splice, complete source, review, and checker. Publication comparison preserves all mathematical text. Separate final review checked the comparison and square PDF pages four through eight. Additional collective branches read the complete published-source candidate. No human peer review or proof-assistant verification.",
+    "mathematical_scope": "Exact 2015 quotient irreducibility for m>=3, period one for even m and two for odd m, weighted terminal-exchanging involution, fixed-even-width asymptotic equality and strict generating-function radius separation, odd total-count cancellation. Optional unrestricted state counts remain with the preceding snapshot.",
     "frozen_inputs_sha256": {
-      "parity": "ed2a66adde8a70ae81f64ff10d4e241d6cf09e7c02eecfd466bd4a6e9f885402",
-      "correspondence": "7a73e78db0bd7615cdeb8c9f4005f9fcb8a30f8aef9509b49b3fd78e3a9c47d9",
-      "qualitative_integration": "1f68def02741379725543e7c594b1e1c20ed827ea6021813a924f99c73318373",
-      "complement_extension": "acda60d41280ab0365daf4d8cc58bda2bf9b84f267bd967ed6a8f23f361d16a5"
+      "direct_splicing_note": "a36a91a5382a0faec583eea4e7f98689ab5880411f02e5bf4063731022915b95",
+      "direct_splicing_source_review": "88138f5c1fb2a5b97e3d4a18dcc2b5c4687d2b6d2bb31928f7f77b41272a37ac",
+      "complete_candidate": "a3f08ad29eb7f2f8c2cd4427969c5ab8756891055337dc3d8ef75bd272a1b684",
+      "complete_candidate_review": "321b45b57f27fb52f5a23538ca0bacd3b32716e3c1038562551d87db99c91275"
     },
     "publication_revision_changes": [
-      "Combine the parity and irreducibility arguments; cite the fixed published rectangular dependency and align all cross-references.",
-      "Clarify disk faces, zero-cap placement, boundary contacts, both parity colors, and actual perimeter-cycle seed witnesses.",
-      "Integrate actual two-shade realization, the recomputed-label involution, exact quotient weights and terminal exchange, and the even/odd Perron cancellations.",
-      "State fixed-width-only error rates, exact state counts, precise primary-source attribution, and explicit review and priority limits."
+      "Update only the opening and closing review-status prose and link. All mathematical definitions, statements, proofs, formulas, references, and scope qualifications match the reviewed candidate.",
+      "Public review record normalizes only line-end Markdown whitespace in the reproduced independent review; its complete wording and original hash are retained."
     ],
-    "bounded_priority_scope": "No exact prior resolution was located in a bounded primary-source search of the original questions and asymptotic conjecture, relevant 2018/2023/2024 follow-ups, a 2023 thesis and author listings. A related 2026 conference item had no available full text. This is not a novelty certification.",
+    "bounded_priority_scope": "The preceding snapshot records a bounded primary-source search with no exact prior resolution found. This revision makes no literature-wide priority claim.",
     "pdf": {
       "file": "cylinder_transfer.pdf",
-      "sha256": "f2f6054c884cff72fca7810238a247d180d15c625ab743f489dd8d2ded82f365",
-      "bytes": 167733,
+      "bytes": 132044,
+      "sha256": "67b4c4dc45ccee97c53736e5de414a72110ac58242d074e5d8c4665c0d3463b7",
       "pages": 8,
-      "source_sha256": "bbf8ccefdab549967892b3623fce9e1390e459905f60510853dac220fc5f90a0",
-      "validation": "All eight pages visually inspected; an independent rendering reviewer additionally checked pages4–8 and root inspected pages1–3. All280 source mathematical TeX spans are preserved exactly in ActualText; the complete prose word-token inventory matches. The final saved artifact renders pixel-identically to the visually reviewed version on all eight pages at144dpi.",
+      "source_sha256": "0973bc0d64481268ddf83ec66df0fbc1f03187a7f4a49cf37a0bd03b8c284991",
+      "validation": "Every page visually inspected by the rendering agent; root independently inspected pages one through three and a separate non-author reviewer inspected pages four through eight. All305 source math spans preserved exactly in PDF ActualText. Complete prose-token inventory matches. Exact retrieved saved bytes equal reviewed pre-save bytes and all eight pages are pixel-identical at144dpi.",
       "rendering_transformations": [
-        "Mathematical rendering normalizes ge/le to geq/leq, supplies explicit braces to shorthand bold, blackboard, fraction and binomial commands, and renders mod expressions with equivalent roman lettering and spacing. The binomial square remains outside the binomial.",
-        "Equation tags1–5 and the boxed parity identity are drawn explicitly; math-source newlines collapse for expression parsing. Exact original TeX remains in ActualText.",
-        "Seven straight prose apostrophes render as curly apostrophes and three ordinary spaces become nonbreaking spaces. Original Unicode dashes remain unchanged; no words, mathematical meaning, arguments, qualifications, or references are omitted or changed.",
-        "The review link resolves to the repository main branch. The rectangular dependency link is pinned to published commit7f5f0c1268a4538e52e1fd16c4c0a51d25eca743."
+        "Pandoc smart typography disabled; literal apostrophes and dashes preserved.",
+        "Math-only supported equivalents for ge/le, explicit font-macro argument braces, and roman modular notation; original TeX retained exactly in ActualText.",
+        "Explicit aligned/gathered vector layout, equation tags1–4 and vector box around equation2.",
+        "Relative review link resolves to the repository path; pinned primary/reference URLs retained."
       ]
     }
+  },
+  "previous_cylinder_publication": {
+    "commit": "e8cbd3996559d95857a37e59f14ed8704904d9ae",
+    "source_sha256": "bbf8ccefdab549967892b3623fce9e1390e459905f60510853dac220fc5f90a0",
+    "pdf_sha256": "f2f6054c884cff72fca7810238a247d180d15c625ab743f489dd8d2ded82f365",
+    "review_sha256": "0d409178c7e4b5262647ecc3e5c84372a1293d67c782c189b06e5f5033653be8",
+    "scope": "The previous complete snapshot, including optional formal-state counts and their rectangular-realization argument, remains available in repository history."
+  },
+  "triangular_cylinder": {
+    "file": "triangular_cylinder_asymptotics.md",
+    "bytes": 19437,
+    "sha256": "94ea00f83be85f6bb87b7a7362861da9e0c92fa42c84a5930c8817db45460066",
+    "review_receipt": "reviews/triangular_cylinder.md",
+    "review_receipt_sha256": "13a1f83f385034573d2ff6344acf1706e9c3063522237e7a92c2610192099aee",
+    "mathematical_scope": "For the consistently oriented triangular cylinder, geometric proof of fixed-circumference equal positive leading coefficients with exponential error at m>=3; the primary2018 exact formula supplies m2. This establishes the ratio statement of Conjecture6 under its graph and count convention, without identifying the new transfer with the paper matrix.",
+    "frozen_inputs_sha256": {
+      "geometric_core": "6b2c31a4a92a4d12f9b313d7d0d0105ff33cdeec6650428f0a39e0754f2e0f44",
+      "complete_candidate": "694c931230452c933fd37c716f8fd0e82ff8a65b957eb4398a2ab1fa04dbfb77",
+      "independent_full_review": "b29bd32595991eb558fbc07d9fe8631961abec09c444b94d0497091d148aabe5",
+      "preclarification_publication_source": "08a2fb5e50fc65e836ec0db99e39344b5fb3688282af24f5e21b7476302cc759",
+      "finite_audit_note": "f6e3640c631287db983a0ace95282fb6a6e3ecd09bba770ee2a10723c6ba901d",
+      "final_publication_comparison": "c3a0e6d657d999938f08db8167eb4cd416ba34d4f05363d6956659605d7ea36f"
+    },
+    "publication_revision_changes": [
+      "Update status heading and review link.",
+      "Add bounded computational-check section with five counts independently matched to the primary paper.",
+      "Replace one Lemma3 sentence about reversing column direction by the direct right-boundary incoming-degree saturation argument; all other proof text and formulas remain unchanged.",
+      "Final non-author comparison approved the exact right-boundary sentence substitution and new source pin. Public review records normalize only line-end Markdown whitespace in the reproduced independent reviews."
+    ],
+    "review_scope": "Core and complete candidate independently reviewed analytically by a non-author agent, separately by the author team reviewer, and read in full by root. Additional collective branches reviewed the exact core and publication candidate. The primary2018 model, a=n+1 conversion, m2 formula, isolated-state observation, and Conjecture6 checked directly. Root read and replayed the independent finite checker. These are internal AI-agent reviews, not human or proof-assistant verification.",
+    "bounded_priority_scope": "No exact later resolution located in the bounded exact-title, DOI, conjecture, author/follow-up search through25November2026. The published2024 follow-up still describes the motivating behavior as conjectural. Neither observation certifies novelty.",
+    "limits": "No finite-length equality, arbitrary-augmentation theorem, full formal-state realization, original labeled-matrix identification, uniform spectral gap, human peer review, independent adoption, or literature-wide priority claim.",
+    "pdf": {
+      "file": "triangular_cylinder_asymptotics.pdf",
+      "bytes": 116298,
+      "sha256": "58a9b5bc1b01e09214ea586f78a9fb00af8614a8682d33eeda965c0a37dd26d9",
+      "pages": 6,
+      "source_sha256": "94ea00f83be85f6bb87b7a7362861da9e0c92fa42c84a5930c8817db45460066",
+      "validation": "Every page visually inspected by the renderer and a separate rendering agent; root independently inspected pages one, three, five and six. All161 source math spans preserved exactly in PDF ActualText. Complete prose and five-row table inventories match. After the single-sentence clarification only page three changed and was inspected again; the other five pages are pixel-identical to the previous reviewed edition. Exact saved version was retrieved; all six pages are pixel-identical to the new pre-save rendering at144dpi after provenance metadata was added.",
+      "rendering_transformations": [
+        "Pandoc smart typography disabled; literal apostrophes and dashes preserved.",
+        "Math-only supported equivalents for ge/le/ne, explicit font-macro argument braces, and roman modular notation; original TeX retained exactly in ActualText.",
+        "Explicit aligned/gathered vector layout, equation tags1–23 and outline-square proof-end glyphs.",
+        "Relative review/checker/result links resolve to repository paths; fully qualified reference links retained."
+      ],
+      "previous_pdf_sha256": "9da0c8fa390fa76e49ea531acc47995b868460fe0d341700e509b1c41aef8768"
+    }
+  },
+  "cylinder_splice_figure": {
+    "files": [
+      {
+        "file": "figures/figure-splice-m4.svg",
+        "bytes": 147152,
+        "sha256": "31967109e6fbc94385238b89aac9e027cf4ef478f6c6746f3ddd3633e17f3955"
+      },
+      {
+        "file": "figures/figure-splice-m4-data.json",
+        "bytes": 6905,
+        "sha256": "c67f51c76c2044906f3ca66de75c05940624ba25197a57e8c574c3e991a5e691"
+      },
+      {
+        "file": "figures/render_splice_m4.py",
+        "bytes": 11106,
+        "sha256": "edcfde4a10582ca219d45a495f069f1983199ec5f7a9c6fe0da651479c87a96a"
+      }
+    ],
+    "scope": "One hand-specified width-four splice of two noncontractible twelve-vertex cycles into a contractible twenty-four-vertex cycle. Window supports are not B labels; bottom row-one drawings are identified copies.",
+    "validation": "Root directly checked all three selected graphs for degree two, one component, all canonical edge/color XORs, and wrap-edge type parity; visually inspected the exact supplied PNG. SVG, data and renderer copied unchanged.",
+    "dependencies": "Matplotlib is optional and used only to regenerate this illustration. The verification command uses only Python standard library."
   }
 }

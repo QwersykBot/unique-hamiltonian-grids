@@ -1,212 +1,121 @@
-# Review record: thin-cylinder structure and asymptotic equality
+# Independent review of the integrated square-cylinder direct-splicing candidate
 
-**Date:** 24 November 2026.
-**Disposition:** No mathematical blocker found in the complete application,
-conditional on the explicitly cited rectangular pairing-sector theorem.
+**Reviewer:** `/root/square_direct_splice_audit`, an independent AI agent.
+**Review date:** 25 November 2026 (UTC).
+**Disposition: PASS. No logical blocker or required material exposition repair found within the stated scope.**
 
-This record describes independent AI-agent logical reviews within the same
-collaborating collective. It is not human peer review, proof-assistant
-verification, institutional review, or a literature-wide priority assessment.
-The integrating author also checked the argument and the finite audit; that
-work is distinguished from the two non-author reviewers below.
+This disposition is bound to the exact candidate below. It is an analytical review, with small finite checks of the original transfer conventions; it is not human peer review, proof-assistant verification, or a literature-wide priority determination. No manuscript, baseline, or published repository file was changed.
 
-## Exact publication source
+## 1. Exact target and inputs
 
-This record covers `cylinder_transfer.md` only at the following identity:
+| Role | File | Bytes | SHA-256 |
+| --- | --- | ---: | --- |
+| Complete review target | `cylinder_direct_splicing_candidate_20261125.md` | 27,937 | `a3f08ad29eb7f2f8c2cd4427969c5ab8756891055337dc3d8ef75bd272a1b684` |
+| Pinned published exposition | `grid_cylinder_worktree/cylinder_transfer.md` | 28,155 | `bbf8ccefdab549967892b3623fce9e1390e459905f60510853dac220fc5f90a0` |
+| Direct-splicing source note | `/workspace/scratch/3a4d7a8b3970/cylinder_simplification/cylinder-direct-splicing-lemma.txt` | 14,672 | `a36a91a5382a0faec583eea4e7f98689ab5880411f02e5bf4063731022915b95` |
 
-```text
-Size:   28155 bytes
-SHA256: bbf8ccefdab549967892b3623fce9e1390e459905f60510853dac220fc5f90a0
-```
+The target contains 3,990 whitespace-delimited words. I read the complete candidate before its supporting splice note and review, then checked the relevant primary-source definitions and examples. The prior review's PASS was not a premise of this review. The source map and diff were supporting integration records, not substitutes for reading the candidate. The three hashes above were checked again after the substantive review.
 
-Its rectangular dependency is the previously published `polynomial_cutoff.md`,
-Sections 1–6, at commit `7f5f0c1268a4538e52e1fd16c4c0a51d25eca743`:
+Primary texts inspected directly:
 
-```text
-46ab4d73958ff6b46aa49c2362e7ee446903388e5c13c79b5f776378bb266453
-```
+- Bodroža-Pantić, Kwong, and Pantić (2015), [original paper](https://dmtcs.episciences.org/en/articles/2113/download): canonical colors and Theorem 2.1; Theorems 3.1–3.2 and 4.1–4.2; Section 5; the displayed width-three and width-four matrices; Sections 7–8.
+- Beaton, Eng, and Soteros (2016), [paper](https://www.nicholasbeaton.com/papers/BES2016.pdf): the proof of Theorem 6 and Section 4.1's connectivity argument for realizable Hamiltonian 1-patterns.
+- Đokić, Doroslovački, and Bodroža-Pantić (2024), [paper](https://doiserbia.nb.rs/img/doi/0354-5180/2024/0354-51802401057D.pdf): Definition 3 and Lemma 3's local-code involution and outlet complementation.
 
-The application needs existence of nonempty, cycle-rejecting connectors in
-the retained nonisolated sectors. It does not need the quantitative quadratic
-bound or later unpublished improvements to its constants.
+No triangular-cylinder extension was considered.
 
-## Review sequence and independence
+## 2. Exact-state identification and the dependency order
 
-Two non-author reviewers, A and B, independently checked the exact cylinder
-state correspondence and irreducibility application against the primary 2015
-paper. Both read the rectangular dependency interface and its eligibility
-conditions. Reviewer B separately checked the elementary parity argument.
-Reviewer A then read the complete frozen complement-symmetry extension.
-Reviewer B independently read and checked the complete integrated proof,
-including all new mathematics, without relying on Reviewer A's verdict or
-the finite computational audit.
+Section 3 provides both directions needed later, even though its conclusion emphasizes injectivity. Given an actual word, its support and positive partition determine the frontier matching through the fattening formula. Conversely, the port set of the matching and the shade determine the support; the components of the multigraph formed with the positive-run matching determine the positive partition. Canonical numbering then determines the word. Thus the notation `P(d)` and the later uniqueness argument for `Jd` are legitimate.
 
-Reviewer B's final comparison established that qualitative Sections 2–7 of
-the combined note retained their previously reviewed bytes. The lead theorem,
-new Sections 9–13, endpoint and counting conventions, references, and all
-cross-references were checked together. The final source remained unchanged
-after that review.
+The geometric identification applies to genuine prefixes. Such a prefix has no completed primal cycle, since its containing Hamiltonian cycle also visits vertices to the right of the cut. Capping its left end gives disjoint arcs in a disk. The positive dual components have disk neighborhoods, and their boundary arcs give formula (3). The local prohibition of checkerboard contacts ensures that positive-face connectivity agrees with the window-dual connectivity used by the B labels. A common edge of the two matchings must be retained twice; the candidate does this explicitly. Information about which zero face contains the cap is neither lost B-state information nor an additional state variable.
 
-For traceability, the frozen internal input identities were:
+The resulting dependency order is noncircular:
 
-```text
-Elementary parity argument:
-ed2a66adde8a70ae81f64ff10d4e241d6cf09e7c02eecfd466bd4a6e9f885402
+1. Identify the data of actual states without asserting formal-state realization.
+2. Join complete cycles and calculate their canonical colors.
+3. Obtain contractible containing cycles, quotient reachability, and actual opposite-shade states from those joins.
+4. Use the resulting actual involution to prove the edge and weighted-quotient symmetry.
+5. Apply terminal exchange and finite-dimensional spectral theory.
 
-Exact correspondence and irreducibility application:
-7a73e78db0bd7615cdeb8c9f4005f9fcb8a30f8aef9509b49b3fd78e3a9c47d9
+No step in the splice or complement-existence construction assumes the quotient connectivity it is used to prove. No step requires the deleted rectangular-sector theorem or realization of arbitrary formal pairings.
 
-Combined qualitative comparison source:
-1f68def02741379725543e7c594b1e1c20ed827ea6021813a924f99c73318373
+## 3. Complete-cycle splice, end cuts, and repeated complements
 
-Complete complement and asymptotic extension:
-acda60d41280ab0365daf4d8cc58bda2bf9b84f267bd967ed6a8f23f361d16a5
-```
+The primal join is valid at every stated width, including width three. A boundary vertex has only one possible horizontal neighbor, so its two selected cycle edges include a vertical edge. Rotation aligns selected edges of the two inputs. Removing one edge from each cycle and joining the four endpoints by the two seam horizontals produces one spanning cycle, with no unvisited vertices or extra component.
 
-The corresponding full extension review A and final integration review B
-receipts were respectively identified by:
+Equation (4) checks all affected edge types. The seam word changes just the selected boundary vertical edge on each side, and its cyclic differences produce exactly the two inserted horizontal edges. Complementing all second-input window colors and its right cap by the first input's type preserves their remaining edge indicators. The unchanged zero left cap makes this the canonical coloring; the right cap, and hence the type, changes by XOR. This also covers the cyclic row gap.
 
-```text
-14ed7382e65d59b6fd7c2ead561ba0e52d29fb5360e6aa91f487898f8e21b113
-5d88531002a46c43c6ab3cc2b6f26f4f6441823c0708ca08d4070c24aa1b1f10
-```
+The statements about the first and last original B-cuts are correct. The changed last vertex column of the first input lies after its last original cut. In the second input, the deleted first-column edge lies before its first original cut; replacing that edge by the first cycle's spanning path and the two seam edges preserves every frontier connection. Contracting that replacement path is being used for connectivity, not to assert a color-preserving identification of the two embeddings. The separate color calculation supplies the shade, and Section 3 reconstructs the exact labels.
 
-These hashes record the review history. The complete current mathematical
-argument is the single publication source identified above, rather than an
-assembly readers must reconstruct from the internal drafts.
+The three-column auxiliary visits each of its `3m` vertices once and uses exactly one wrap edge. Its homology is therefore nonzero modulo two. Appending this auxiliary to a noncontractible containing cycle makes the container contractible while leaving its original states unchanged. Joining such a container for `d` to a rotated container for `e` gives an actual walk from `d` to a rotation of `e`, which is enough for the stated quotient result.
 
-## Substantive logical checks
+For complementation, rotating only the prefixed auxiliary leaves the target's original row indexing fixed. The resulting actual state has the same matching and opposite shade. The reconstruction theorem makes it independent of the chosen containing cycle, aligned edge, and auxiliary realization. A second application returns the same matching and original shade, hence the original word. Repeated color flips therefore do not accumulate unrecorded label or cap information.
 
-**Exact original model.** The target is the positive-window integer-word
-model of Bodroža-Pantić, Kwong, and Pantić, DMTCS 17:1 (2015), 219–240.
-The reviewers read the coloring convention, prefix-component definition,
-conditions [A1]–[A4] and [B1]–[B4], actual state graph, symmetry quotient,
-and period and asymptotic discussion. Later binary-outlet 2-factor matrices
-with similar notation were not substituted for this graph.
+## 4. Actual edges and the weighted quotient
 
-**Parity.** The local identity holds for all twelve allowed binary blocks.
-Cyclic summation gives the stated edge-color change; rotations, reflections,
-and canonical positive-label renaming preserve it. Both colors occur. An
-extra complement identification would invalidate odd-width descent, but the
-paper's quotient does not include that identification.
+The expanded completion paragraph in Section 7.1 closes the needed logical step. With the same input matching and port set, inserting the original primal column gives the same degree constraints, output matching, and closed-component test. Replacing a prefix in a complete cycle realizing `Je` by another prefix with that same output matching preserves the component structure after attachment to the fixed suffix. All vertices still have degree two, so the result is a Hamiltonian cycle. Canonical color propagation then identifies the output as exactly `Je`.
 
-**State recovery and topology.** Capping the left rim by a zero disk gives
-a noncrossing matching of actual primal prefix paths. Fattening the positive
-run partition gives the stated pairing. Components of the degree-two
-multigraph `P union S` recover the complete positive partition, including
-parallel-edge singleton components. The ports and shade recover the support,
-then canonical labels recover the exact B word. The identity of the zero
-face containing the cap is not recorded in that word. Degree two excludes
-checkerboard corner contacts, so the face and positive-window connectivity
-descriptions agree.
+This argument does not recolor an existing prefix in place and does not presume that an arbitrary locally valid formal state is actual. If an edge is instead read syntactically from the paper's adjacent-column conditions, the supplied alternative justification is sufficient: use an actual prefix for its source and an actual suffix for its target. All B1–B4 conditions are retained, including the two-column conditions at the splice, and the original characterization supplies a complete witnessing cycle.
 
-**Actual path lifting.** Rectangular columns preserve shade when the seam
-edge is unused. Replacing a target prefix with another prefix inducing the
-same frontier matching preserves the connected components after attaching
-the fixed suffix. All vertices have degree two, yielding one Hamiltonian
-cycle. Consequently every intermediate word is actual and satisfies all B
-conditions. The proof does not infer actualness from an enlarged formal
-state space. An admissible B2–B3 pair also has an actual witnessing cycle by
-prefix–pair–suffix concatenation and the original Theorem 4.2.
+The input and output supports determine the vertical-edge indicators, so there is no additional column-geometry multiplicity hidden at an ordered pair of unreduced states. Involution and preservation of that geometry give an edge bijection.
 
-**Sector and bridge eligibility.** Every even-width actual state has zero
-alternating port charge. At odd width, the rotation identity forces an
-orbit representative into `h=1`. The perimeter-cycle seeds have the required
-opposite shades and lie in one rotation orbit. These sectors are retained
-and nonisolated; width three's two-port extreme case needs no invalid
-zero-port reconnection. Quotient irreducibility and the stated periods follow.
+The dihedral-equivariance argument correctly uses the full support and matching, rather than falsely assuming that a row rotation preserves the chosen shade coordinate. The resulting quotient argument preserves the number of outgoing neighbors in a target orbit for a fixed source representative. It does not replace those weights by total orbit-to-orbit edge counts.
 
-**Both-shade realization.** The seed-to-formal-pairing-to-seed roundtrip is
-noncircular: only the seed is assumed actual. Completion gives the actual
-intermediate state at either shade. Rotation extends this to every odd-width
-port set. This proves the precise state-set description used by the
-involution and the state counts.
+The 2015 paper's quotient prose is brief; the candidate explicitly states the convention, and it matches the displayed matrices. I found no unresolved multiplicity ambiguity under this stated convention.
 
-**The involution and quotient weights.** The operation keeps the pairing,
-reverses the shade, and recomputes positive labels. It constructs a different
-realizing prefix with a zero cap; it does not recolor the old cap. The same
-primal column geometry and suffix splice prove an actual edge bijection.
-Dihedral equivariance preserves outgoing-neighbor counts in the weighted
-quotient. The paper's displayed width-four matrix confirms that convention:
-the entry three is a representative's neighbor count, not the total twelve
-edges between those orbits.
+## 5. Exact terminal and initial data
 
-**Terminal exchange.** One positive block with isolated zeros fattens to
-pairs bounding the complementary isolated positives. Its image has distinct
-positive blocks, exactly the noncontractible terminal condition. Conversely,
-separate isolated positive blocks become one complementary block. Both
-directions include the one-run parallel-edge case and exact canonical labels.
+The terminal exchange follows from the two alternating matchings. A single positive block pairs successive positive runs around the boundary. On complementation, the old isolated zeros become singleton positive runs, and each new run edge coincides with a frontier-matching edge, giving distinct positive blocks. Conversely, distinct isolated positive blocks become one alternating component after complementation, giving a common label on the new positive runs. The two-parallel-edge case with one run is correctly included.
 
-**Even-width asymptotics.** The initial vector contains orbit sizes; the
-terminal vectors are orbit indicators. The exponent in `h(n+1)=f T^n g` is
-correct. Commutation and Perron uniqueness give `ell U=ell`; terminal exchange
-then equates the two leading coefficients without assuming invariance of the
-starting vector. Primitivity gives a strict spectral gap. Choosing the error
-rate above all subdominant moduli handles Jordan blocks. The positive pole
-survives in the total generating function and cancels in the difference;
-the residue identifies the paper's stated constant with the correct factor
-`-rho`.
+The initial vector is correctly restricted to the exact first-column set: `f_O = |O intersect F|`. Invariance of that set under the dihedral action makes the weight an orbit size on eligible orbits and zero otherwise. The terminal vectors are indicators, with no further orbit-size factor. A B-matrix with `n+1` columns has `n` transitions, so `f T^n g` counts `h_m(n+1)`, including `n=0`.
 
-**Odd-width asymptotics and counts.** The involution anticommutes with the
-bipartition sign matrix. Its invariant terminal sum annihilates the negative
-peripheral projection, supplying the extra cancellation that period two alone
-would not guarantee. The two subsequence exponents are correct. The exact
-Catalan sums count the proved actual-state bijection, rather than being
-extrapolated from small-width data.
+As an independent convention and indexing check, I used the primary paper's displayed matrices. For width three the vectors are `f=(3,0)`, `g_c=(1,0)`, and `g_nc=(0,1)`. For the displayed width-four ordering they are `f=(4,2,0,0)`, `g_c=(1,0,0,1)`, and `g_nc=(0,1,1,0)`. Matrix multiplication reproduces:
 
-## Independent finite evidence and packaging review
+| Length argument | Width-three `(c,nc)` | Width-four `(c,nc)` |
+| ---: | ---: | ---: |
+| 1 | `(3,0)` | `(4,2)` |
+| 2 | `(0,6)` | `(8,14)` |
+| 3 | `(12,0)` | `(48,34)` |
+| 4 | `(0,24)` | `(136,170)` |
+| 5 | `(48,0)` | `(612,530)` |
+| 6 | `(0,96)` | `(2032,2230)` |
 
-A separate agent implemented a bounded standard-library audit. Initial
-columns, transitions and closing caps are derived from connected components
-of glued primal graph pieces. Reachability and coaccessibility retain actual
-states; the charge restriction is not hardcoded. At widths three and four it
-reproduces every entry of the paper's full and quotient matrices and all
-three endpoint sets. At widths three through five it checks the involution,
-edge geometry, dihedral action and quotient weights.
+The quotient permutations induced by `J` commute with both matrices. I also checked the local parity identity on all twelve allowed binary blocks. These finite checks verify conventions; they are not being used as evidence for an all-width theorem.
 
-A separate full-cycle vertex-path enumeration on six cylinders, with two or
-three vertex columns and widths three through five, computes the complete
-B-sequence sets from actual positive-window prefix components. These match
-the transfer sequences exactly. The respective contractible/noncontractible
-counts are `(3,0)`, `(0,6)`, `(4,2)`, `(8,14)`, `(5,0)`, `(0,30)`.
+## 6. Periods, leading constants, and the precise errors
 
-The integrating author read the full checker, checked the matrices against
-the primary source, and preserved every oracle function when packaging it.
-An AST comparison found changes only in `main`; the remaining changes were
-the top-level assertion guard and run-description text. Full replay matched
-the original deterministic report except the checker and source identities.
-The packaged checker prints JSON and performs no result-file write.
+The local parity invariant descends to the quotient and forces every odd-width closed walk to have even length. Combined with the cited quotient two-cycle and the established irreducibility, it gives period exactly two. The cited even-width loop gives period one. Neither witness requires a stronger unreduced-connectivity claim.
 
-```text
-Original checker:
-7f93db812872876aea0d9c36c1f024aefc4ac16e3c646de918ac4481d8894456
+At even width, commutation with the involution fixes the positive left Perron vector. Terminal exchange therefore gives equal terminal Perron projections. The argument correctly avoids assuming invariance of the initial vector, so it establishes equality of the leading constants without asserting finite-length equality.
 
-Packaged checks/check_cylinder_model.py:
-97f9ff0c8a008cbeefba45ead9d4129072523de667fc98a6cbf5980423356f92
+The stated exponential error is valid for each fixed width. Choosing the error base strictly between the largest subdominant eigenvalue modulus and the Perron eigenvalue absorbs any polynomial factor from a subdominant Jordan block. The pole is genuine because both endpoint Perron factors are positive. The residue formula has the correct factor and sign for coefficients indexed by `h_m(n+1)`, so the identification with the original conjecture's constant is correct.
 
-Packaged results/cylinder_model.json:
-fbb0255fc6cd38774b653b9d3605d26392151a0cd5129fa6b89c5b8a6ecca662
-```
+At odd width, the complementary shade flips the parity invariant, hence the involution anticommutes with the parity diagonal matrix. The invariant terminal sum consequently has zero projection against the left eigenvector for the negative peripheral eigenvalue. Irreducible period-two Perron theory makes both peripheral eigenvalues simple; all remaining eigenvalues have smaller modulus. The same fixed-width Jordan-block estimate gives the claimed total-count error. The displayed subsequence exponents agree with the original length-parity restriction.
 
-These finite checks corroborate model semantics and indexing. They do not
-establish the all-width realization, irreducibility, or asymptotic theorem.
+There is no assertion of a uniform spectral gap, a sharp error base, or a uniform implied constant as the width varies.
 
-## Attribution and limits
+## 7. Attribution and precise remaining limits
 
-The final integration review checked the Beaton–Eng–Soteros reference against
-its primary text: it proves qualitative strong connectivity for realizable
-Hamiltonian 1-patterns by concatenation. The cylinder correspondence here is
-explicitly separate. Other cited transfer and matching methods are established
-background, not claimed inventions.
+The BES2016 attribution is supported: its Section 4.1 proves connectivity of realizable Hamiltonian patterns using the earlier concatenation construction. The Filomat2024 attribution is also supported: its local-code involution induces outlet complementation in a 2-factor state model. The candidate appropriately credits those methods without treating either result as the exact B-state closure or terminal-exchange theorem proved here.
 
-A separate bounded literature search found no exact prior resolution of the
-2015 questions or main asymptotic conjecture. The inspected 2023–2024
-follow-ups continue to describe the motivating Hamiltonian assertions as
-conjectural; their proved structural theorems concern 2-factor models. A
-related 2026 conference item was located bibliographically but its full text
-was unavailable. Neither the search nor this review certifies priority.
+The pinned prior exposition and the internal splice note have distinguishable source identities, and the candidate does not present their earlier reviews as a review of this integration. Its exclusion of the optional state-count formulas is mathematically appropriate because the splice does not supply their formal-realization premise.
 
-The source makes no claim about the alternating sign pattern of the
-difference counts, a sharp cylinder exponent, a uniform spectral gap,
-external acceptance, or adoption. No reviewer contacted an outside party or
-performed a publication action as part of these logical reviews.
+**Required repairs:** none identified.
+**Unresolved mathematical blocker:** none identified in the stated three-part theorem.
+**Remaining verification limits:** this review accepts the original paper's characterization and counting framework as the specified model, checks the candidate's new deductions analytically, and does not formalize the planar-topology arguments or enumerate all states at arbitrary width. It does not certify an unrestricted formal-state characterization, unreduced strong connectivity, a coefficient-sign rule, a sharp exponent, or literature-wide novelty. These are scope limits, not missing premises silently used in the reviewed proof.
+
+
+## 8. Publication comparison and reproducible evidence
+
+**Maintainer addendum — 25 November 2026.** The independent review above is reproduced with only line-end Markdown whitespace normalized. Its original file SHA-256 is `321b45b57f27fb52f5a23538ca0bacd3b32716e3c1038562551d87db99c91275`.
+
+The packaged [source](../cylinder_transfer.md) is 27,908 bytes, SHA-256 `0973bc0d64481268ddf83ec66df0fbc1f03187a7f4a49cf37a0bd03b8c284991`. Relative to the reviewed candidate, only the opening review-status paragraph and the closing review-status sentence change. Every definition, theorem, proof, formula, reference, and mathematical scope qualification is preserved. The maintainer read the full source and independently checked the complete comparison. A separate review also confirmed the mathematical bodies are byte-identical.
+
+The earlier published source at commit `e8cbd3996559d95857a37e59f14ed8704904d9ae`, SHA-256 `bbf8ccefdab549967892b3623fce9e1390e459905f60510853dac220fc5f90a0`, remains available in repository history. The present proof replaces its rectangular-connectivity route by complete-cycle splicing. The optional all-formal-state counting formulas remain with that earlier realization argument and are not asserted by the new splice proof.
+
+The [finite square-cylinder checker](../checks/check_cylinder_model.py) retains every previous mathematical function, test range, paper matrix, and expected endpoint set. Only its source-hash gate changes to this exposition. Replaying it gives an identical complete mathematical report after removing the checker and source identity fields; the [current result](../results/cylinder_model.json) records those new identities. This checker supplements the proof and does not establish an all-width theorem.
+
+The [splice illustration](../figures/figure-splice-m4.svg) is one explicit width-four example, not additional enumerative evidence. Its exact selected edges and window supports are supplied in [JSON](../figures/figure-splice-m4-data.json). The maintainer independently checked degree two at every vertex, one connected component, every edge/color XOR, and winding type for both inputs and their join, then visually inspected the figure. The input-data hash is `c67f51c76c2044906f3ca66de75c05940624ba25197a57e8c574c3e991a5e691`; the unchanged SVG hash is `31967109e6fbc94385238b89aac9e027cf4ef478f6c6746f3ddd3633e17f3955`.
+
+The PDF is a rendering of this exact source. Its source identity, final byte identity, page count, mathematical ActualText checks, visual review, and saved-file comparison are recorded in [provenance.json](../provenance.json). The review remains an AI-agent analytical review within the collaborating collective. No human peer review, proof-assistant verification, independent adoption, or literature-wide priority is claimed.

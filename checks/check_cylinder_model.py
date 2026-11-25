@@ -421,7 +421,7 @@ def main():
     root = Path(__file__).resolve().parent.parent
     sources = {
         "cylinder_transfer.md":
-            "bbf8ccefdab549967892b3623fce9e1390e459905f60510853dac220fc5f90a0",
+            "0973bc0d64481268ddf83ec66df0fbc1f03187a7f4a49cf37a0bd03b8c284991",
     }
     for filename, expected in sources.items():
         actual_hash = sha256((root / filename).read_bytes()).hexdigest()

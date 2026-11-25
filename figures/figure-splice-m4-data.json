@@ -1,0 +1,135 @@
+{
+  "schema": "direct-cylinder-splice-figure-data-v1",
+  "created_utc_date": "2026-11-25",
+  "scope": "One hand-specified explanatory instance, m=4. No transfer-matrix enumeration or parameter search.",
+  "coordinates": {
+    "vertex": "[row, vertex_column], both one-based",
+    "row_count": 4,
+    "cyclic_rows": "row 5 is row 1",
+    "edge": "unordered pair of vertex coordinates; endpoints and edge list sorted lexicographically",
+    "cycle_order_closed": "last listed vertex connects to first; first is not repeated in the list",
+    "vertical_mask": "one vector per vertex column; entries are row gaps 1,2,3,4; gap 4 joins row 4 to row 1",
+    "horizontal_mask": "one vector per cut after vertex columns 1,...,a-1; entries are physical rows 1,2,3,4",
+    "colors": "cap_and_window_support_columns lists [left cap, windows at cuts 1,...,a-1, right cap]; every vector is in row-gap order 1,2,3,4",
+    "xor_vertical": "selected(i,j)-(i+1,j) = A[i,j-1] XOR A[i,j]",
+    "xor_horizontal": "selected(i,j)-(i,j+1) = A[i-1,j] XOR A[i,j], with cyclic row-gap indices",
+    "support_only": "These are binary window supports, not canonical positive-component B labels."
+  },
+  "provenance": {
+    "construction": "Section 5 explicit three-column noncontractible auxiliary, specialized only to m=4. H2 is a copy rotated by -1 row; join is Section 2 at row gap r=1.",
+    "source_file": "/workspace/scratch/3a4d7a8b3970/cylinder_simplification/cylinder-direct-splicing-lemma.txt",
+    "source_bytes": 14672,
+    "source_sha256": "a36a91a5382a0faec583eea4e7f98689ab5880411f02e5bf4063731022915b95",
+    "source_unchanged_after_check": true,
+    "preparer": "/root/grid_proof_review"
+  },
+  "rotation_H2": {
+    "row_shift": -1,
+    "row_map_original_to_rotated": {
+      "1": 4,
+      "2": 1,
+      "3": 2,
+      "4": 3
+    },
+    "column_shift_for_join": 3
+  },
+  "graphs": {
+    "H1": {
+      "vertex_columns": 3,
+      "global_column_offset": 0,
+      "type_bit": 1,
+      "type_name": "noncontractible",
+      "cycle_order_closed": [[1,1],[4,1],[3,1],[2,1],[2,2],[3,2],[4,2],[4,3],[3,3],[2,3],[1,3],[1,2]],
+      "selected_edges": [[[1,1],[1,2]],[[1,1],[4,1]],[[1,2],[1,3]],[[1,3],[2,3]],[[2,1],[2,2]],[[2,1],[3,1]],[[2,2],[3,2]],[[2,3],[3,3]],[[3,1],[4,1]],[[3,2],[4,2]],[[3,3],[4,3]],[[4,2],[4,3]]],
+      "vertical_selected_masks_by_vertex_column": [[0,1,1,1],[0,1,1,0],[1,1,1,0]],
+      "horizontal_selected_masks_by_cut": [[1,1,0,0],[1,0,0,1]],
+      "cap_and_window_support_columns": [[0,0,0,0],[0,1,1,1],[0,0,0,1],[1,1,1,1]],
+      "wrap_edges": [[[1,1],[4,1]]],
+      "verified": {
+        "vertices": 12,
+        "selected_edges": 12,
+        "every_vertex_degree": 2,
+        "connected_components": 1,
+        "cycle_order_is_hamiltonian": true,
+        "all_possible_grid_edge_xors_checked": 20,
+        "right_cap_constant_and_matches_type": true,
+        "wrap_edge_count_mod_2_matches_type": true
+      }
+    },
+    "H2_rotated": {
+      "vertex_columns": 3,
+      "global_column_offset": 3,
+      "type_bit": 1,
+      "type_name": "noncontractible",
+      "cycle_order_closed": [[4,1],[3,1],[2,1],[1,1],[1,2],[2,2],[3,2],[3,3],[2,3],[1,3],[4,3],[4,2]],
+      "selected_edges": [[[1,1],[1,2]],[[1,1],[2,1]],[[1,2],[2,2]],[[1,3],[2,3]],[[1,3],[4,3]],[[2,1],[3,1]],[[2,2],[3,2]],[[2,3],[3,3]],[[3,1],[4,1]],[[3,2],[3,3]],[[4,1],[4,2]],[[4,2],[4,3]]],
+      "vertical_selected_masks_by_vertex_column": [[1,1,1,0],[1,1,0,0],[1,1,0,1]],
+      "horizontal_selected_masks_by_cut": [[1,0,0,1],[0,0,1,1]],
+      "cap_and_window_support_columns": [[0,0,0,0],[1,1,1,0],[0,0,1,0],[1,1,1,1]],
+      "wrap_edges": [[[1,3],[4,3]]],
+      "verified": {
+        "vertices": 12,
+        "selected_edges": 12,
+        "every_vertex_degree": 2,
+        "connected_components": 1,
+        "cycle_order_is_hamiltonian": true,
+        "all_possible_grid_edge_xors_checked": 20,
+        "right_cap_constant_and_matches_type": true,
+        "wrap_edge_count_mod_2_matches_type": true
+      }
+    },
+    "joined": {
+      "vertex_columns": 6,
+      "global_column_offset": 0,
+      "type_bit": 0,
+      "type_name": "contractible",
+      "cycle_order_closed": [[1,3],[1,2],[1,1],[4,1],[3,1],[2,1],[2,2],[3,2],[4,2],[4,3],[3,3],[2,3],[2,4],[3,4],[4,4],[4,5],[4,6],[1,6],[2,6],[3,6],[3,5],[2,5],[1,5],[1,4]],
+      "selected_edges": [[[1,1],[1,2]],[[1,1],[4,1]],[[1,2],[1,3]],[[1,3],[1,4]],[[1,4],[1,5]],[[1,5],[2,5]],[[1,6],[2,6]],[[1,6],[4,6]],[[2,1],[2,2]],[[2,1],[3,1]],[[2,2],[3,2]],[[2,3],[2,4]],[[2,3],[3,3]],[[2,4],[3,4]],[[2,5],[3,5]],[[2,6],[3,6]],[[3,1],[4,1]],[[3,2],[4,2]],[[3,3],[4,3]],[[3,4],[4,4]],[[3,5],[3,6]],[[4,2],[4,3]],[[4,4],[4,5]],[[4,5],[4,6]]],
+      "vertical_selected_masks_by_vertex_column": [[0,1,1,1],[0,1,1,0],[0,1,1,0],[0,1,1,0],[1,1,0,0],[1,1,0,1]],
+      "horizontal_selected_masks_by_cut": [[1,1,0,0],[1,0,0,1],[1,1,0,0],[1,0,0,1],[0,0,1,1]],
+      "cap_and_window_support_columns": [[0,0,0,0],[0,1,1,1],[0,0,0,1],[0,1,1,1],[0,0,0,1],[1,1,0,1],[0,0,0,0]],
+      "wrap_edges": [[[1,1],[4,1]],[[1,6],[4,6]]],
+      "verified": {
+        "vertices": 24,
+        "selected_edges": 24,
+        "every_vertex_degree": 2,
+        "connected_components": 1,
+        "cycle_order_is_hamiltonian": true,
+        "all_possible_grid_edge_xors_checked": 44,
+        "right_cap_constant_and_matches_type": true,
+        "wrap_edge_count_mod_2_matches_type": true
+      }
+    }
+  },
+  "splice": {
+    "row_gap_r": 1,
+    "H1_right_vertex_column": 3,
+    "H2_left_vertex_column_global": 4,
+    "deleted_edges_global": [[[1,3],[2,3]],[[1,4],[2,4]]],
+    "added_edges_global": [[[1,3],[1,4]],[[2,3],[2,4]]],
+    "seam_window_column_after_vertex_column": 3,
+    "seam_support": [0,1,1,1],
+    "beta_H1": 1,
+    "gamma_H2": 1,
+    "joined_type_beta_xor_gamma": 0,
+    "H1_original_window_supports_preserved": true,
+    "H2_original_window_supports_all_xor_beta": true
+  },
+  "unrolled_display": {
+    "display_row_labels_top_to_bottom": ["1","2","3","4","1 (identified copy)"],
+    "display_rows_represent_physical_rows": [1,2,3,4,1],
+    "required_identification": "Show that the top and bottom displayed row 1 are identified. They are the same vertices, not additional vertices.",
+    "wrap_edge_rendering": "Render each physical gap-4 vertical edge between displayed row 4 and the bottom copy of row 1.",
+    "row_1_horizontal_rendering": "If horizontal row-1 edges are shown on both top and bottom boundaries, they are duplicate drawings of the same physical edges; do not count them twice.",
+    "window_rows": "There are four window rows, one between each successive displayed vertex row."
+  },
+  "verification_summary": {
+    "all_checks_passed": true,
+    "graphs_checked": 3,
+    "total_vertex_degree_checks": 48,
+    "total_possible_grid_edge_xor_checks": 84,
+    "specified_splice_edge_identity_checked": true,
+    "rotation_and_all_canonical_colors_checked": true,
+    "types": [1,1,0]
+  }
+}

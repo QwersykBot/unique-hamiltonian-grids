@@ -1,12 +1,12 @@
 # Asymptotic equality and transfer structure for thin-cylinder Hamiltonian cycles
 
-**AI-authored research draft — 24 November 2026.**
-The underlying arguments have received independent AI-agent logical review.
-They have not received human peer review or proof-assistant verification.
-The [review record](reviews/cylinder_transfer.md) identifies the exact reviewed
-texts and the scope of that review. No literature-wide priority is asserted.
+**AI-authored research draft — 25 November 2026.**
+This direct-splicing exposition has received independent AI-agent review.
+The [review record](reviews/cylinder_transfer.md) identifies the exact candidate
+and publication comparison. No human peer review, proof-assistant verification,
+or literature-wide priority is asserted.
 
-## 1. Exact model, statement, and dependency
+## 1. Exact model, statement, and proof route
 
 Use the model of Bodroža-Pantić, Kwong, and Pantić [1] for Hamiltonian cycles
 on the thin cylinder $C_m\times P_{n+1}$. In its Section 5, printed p. 228,
@@ -49,15 +49,13 @@ additional involution exchanging the two terminal sets; connectivity alone
 does not supply equality of the leading constants. No finite-length equality
 of the two counts is asserted.
 
-For connectivity we use Sections 1–6 of the
-[rectangular pairing-sector theorem](polynomial_cutoff.md) [2]: any two
-retained, nonisolated, nonempty noncrossing-pairing states in the same sector
-$h=|C-s|$, where $C=\sum_i(-1)^{i+1}x_i$ and $s=m\bmod2$, are joined in
-both directions by full rectangular columns, without premature cycles or
-empty intermediate states. Only connectivity is used here. Even widths use
-only $h=0$; odd widths use only $h=1$. Both sectors are retained and
-nonisolated, including the two-port case at width three. The bipartiteness
-argument below is independent of this dependency.
+The proof works with actual complete cycles and their window states.
+Section 3 recovers an actual state from its frontier pairing and shade.
+Sections 4–5 splice complete cycles to prove quotient connectivity and
+existence of every actual state's opposite shade. Sections 7–10 establish
+the weighted symmetry, terminal exchange, and asymptotics. This replaces the
+rectangular-connectivity route of the pinned published exposition [4].
+No charge-sector theorem or arbitrary formal-pairing realization is used.
 
 ## 2. A local parity invariant
 
@@ -180,117 +178,161 @@ Thus equal \((P,c)\) means equal \(B\)-states, not just equal support or
 equal component counts. There is no need below to assert that every formal
 shaded pairing occurs as an actual cylinder state.
 
-## 4. Local columns preserve the shading when the seam is unused
+## 4. Splicing complete cycles with exact canonical colors
 
-Let \(a\) be the old support, and let \(z_i\) indicate a selected primal
-vertical edge between rows \(i\) and \(i+1\), cyclically. Define the new
-support by
+### 4.1 Geometry and color convention
 
-\[
-b_i=a_i\oplus z_i.                                  \tag{4}
-\]
+Write $G(m,a)=C_m\times P_a$, with $m\ge3$ and $a\ge2$. Rows $i$ are
+cyclic and vertex columns are $j=1,\ldots,a$. Window $w_{i,j}$ lies between
+rows $i,i+1$ and vertex columns $j,j+1$. A vertical edge at gap $i$
+joins rows $i,i+1$ in one vertex column; a horizontal edge joins successive
+columns in one row.
 
-If the chosen column has input ports \(x\), output ports \(y\), and degree
-two at every primal vertex, parity of the degree equation gives
-\(y_i=b_{i-1}\oplus b_i\). The four colors around each primal vertex have
-exactly two changes. Equivalently they satisfy [A2]: they are neither constant
-nor checkerboard. A nonempty output frontier makes \(b\) mixed. In a
-rectangular column the seam edge is absent, so \(z_m=0\) and the shading
-\(c\) is preserved.
+For a Hamiltonian cycle $H$, let $A_{i,j}\in\{0,1\}$ be its canonical
+window support. The left cap has color zero; the right cap has color
+$\tau(H)$, where $\tau=0$ for a contractible cycle and $\tau=1$ for a
+noncontractible cycle. An edge is selected exactly when its adjacent face
+colors differ [1, Section 2 and the proof of Theorem 3.2]. Fixing the left
+cap fixes these colors uniquely, because the face-adjacency graph is
+connected and crossing each edge prescribes whether its color changes.
 
-For actual transitions this describes the original column geometry exactly:
-\(z_i=a_i\oplus b_i\), and the incoming and outgoing matchings are the
-ones induced by the partial Hamiltonian paths. The application below needs
-only the forward construction of rectangular connectors and their subsequent
-completion to genuine Hamiltonian cycles. It does not require a syntactic
-converse for arbitrary formal [B3] words.
+### 4.2 The primal join
 
-## 5. Lifting a rectangular connector into the actual cylinder graph
+Take cycles $H_1$ on $G(m,a)$ and $H_2$ on $G(m,b)$. Each vertex in a
+boundary column has at most one horizontal neighbor and degree two in the
+cycle, so every boundary column contains a selected vertical edge. Choose
+one in the last column of $H_1$ and one in the first column of $H_2$.
+Rotate either input to align them at a common row gap $r$.
 
-Suppose actual states \(d,e\) have equal shading and their pairings are
-retained, nonisolated states in the same rectangular sector. Take a connector from
-\(P(d)\) to \(P(e)\). Begin with a genuine Hamiltonian prefix realizing
-\(d\), and append its columns with the seam unused.
+Place the vertex columns consecutively. Delete the two chosen vertical
+edges and insert the two seam horizontals at rows $r,r+1$. Deleting one
+edge from each cycle leaves two disjoint spanning paths; the two new edges
+join their endpoints into one cycle. Every vertex retains degree two and
+is visited. The result is a Hamiltonian cycle on $G(m,a+b)$. At $r=m$,
+row $r+1$ means row 1 and the same construction uses the cyclic seam square.
 
-Every column is embedded in the new cylindrical strip with the wrap edge
-unused. All visited vertices have degree two; the prefix remains a union of
-paths because the connector's cycle-rejection rule is determined by its
-pairing. Its final pairing is \(Q=P(e)\). Equation (4) preserves the shading
-and gives the correct ports at each step.
+### 4.3 The canonical colors of the join
 
-Now append the remaining primal vertices, edges, and frontier stubs from a
-Hamiltonian cycle realizing \(e\). This makes one Hamiltonian cycle:
-collapse each old prefix path in that target cycle to an edge joining its
-two frontier ports. Doing the same to the replacement prefix produces exactly
-the same matching \(Q\). Consequently the union with the fixed target
-suffix has the same component structure as the original target cycle.
-All replacement vertices are visited and have degree two, so the single
-component is Hamiltonian.
+Put $\beta=\tau(H_1)$ and $\gamma=\tau(H_2)$, extending original supports
+to their caps by
 
-Assign this completed cycle its actual positive-window labels. Its initial
-prefix is unchanged, and the window colors propagate across every new primal
-vertical edge by (4). At the target cut, the pairing and shading equal those
-of \(e\), so Section 3 recovers exactly \(e\). Every intermediate word is
-now a column of an actual \(B\)-matrix and belongs to \(D_m\).
-In particular all [B2]–[B3] forest-cycle, connectivity, and component-survival
-requirements hold, as properties of that genuine cycle. We have not inferred
-them by treating an enlarged formal state space as the actual graph.
+$$
+A^1_{i,0}=0,\quad A^1_{i,a}=\beta,\qquad
+A^2_{i,0}=0,\quad A^2_{i,b}=\gamma.
+$$
 
-The argument applies in both directions. Thus the rectangular connectivity
-theorem connects actual cylinder states of a fixed shading and sector.
+The selected aligned edges give
+$A^1_{r,a-1}=1\oplus\beta$ and $A^2_{r,1}=1$.
+Define the joined colors by
 
-## 6. Even widths: every actual state lies over C = 0
+$$
+\begin{aligned}
+A'_{i,j}&=A^1_{i,j} &&(1\le j\le a-1),\\
+A'_{i,a}&=S_i=\beta\oplus\mathbf1_{\{i=r\}},\\
+A'_{i,a+k}&=\beta\oplus A^2_{i,k} &&(1\le k\le b-1),
+\end{aligned}                                      \tag{4}
+$$
 
-For even \(m\), alternating summation of the cyclic primal degree equations
-cancels every vertical edge, including the wrap edge. Hence each cylinder
-transition has \(C(y)=-C(x)\).
+with left cap zero and right cap $\beta\oplus\gamma$.
 
-The initial support condition [A1]/[B1] has isolated zero windows. Each such
-zero contributes its two adjacent transition ports, one on each row parity,
-so the initial charge is zero. Every actual state has a prefix from this
-initial set; therefore every actual state has \(C=0\).
+At the last vertex column of $H_1$, the vertical-edge indicator changes
+from $A^1_{i,a-1}\oplus\beta$ to $A^1_{i,a-1}\oplus S_i$.
+They differ only at $i=r$, deleting precisely its selected edge. At the
+first column of $H_2$, the new indicator is
 
-Consider the actual states
+$$
+S_i\oplus(\beta\oplus A^2_{i,1})
+=A^2_{i,1}\oplus\mathbf1_{\{i=r\}},
+$$
 
-\[
-f_0=2^{m-1}0,\qquad f_1=0\,2^{m-1}.
-\]
+again deleting precisely the chosen edge. A seam horizontal at row $i$
+has indicator $S_{i-1}\oplus S_i$, which equals one exactly at
+$i=r,r+1$, including the cyclic case $r=m$.
 
-The perimeter Hamiltonian cycle of an $m$-by-$2$ open rectangular strip,
-embedded in the cylinder, realizes $f_0$ as its one-column $B$ word.
-Rotating that cycle realizes $f_1$. Its $m-1$ positive windows form one path. They have
-shadings zero and one respectively. Their port sets are \(\{1,m\}\) and
-\(\{1,2\}\), each with its sole pairing, and both have charge zero.
+All internal edges of $H_1$ are unchanged. Adjacent faces of $H_2$ are
+both changed by $\beta$, so their edge indicators are unchanged. Its right
+boundary is preserved because both the adjacent window and cap change by
+$\beta$; the left boundary of $H_1$ is unchanged. Thus (4) gives exactly
+the joined cycle's edges and zero left cap. Uniqueness makes it the
+canonical coloring, and the joined type is $\beta\oplus\gamma$.
 
-By Section 5, any actual state of shading \(c\) is mutually reachable with
-\(f_c\). The sector \(h=0\) is retained in the rectangular theorem even
-when \(4\mid m\). Finally \(f_0\) and \(f_1\) are rotations of one
-another, so they are the same vertex of \(D_m^*\). Every quotient vertex
-is mutually reachable with that vertex.
+### 4.4 All original cuts, including the end cuts
 
-## 7. Odd widths: every rotation orbit meets h = 1
+At every original $B$-cut of $H_1$, the processed primal and window prefix
+is unchanged. Its altered last-column vertical edge lies after even its
+last original cut. All original colors are unchanged, so every exact
+$H_1$ state, including its connectivity labels, is preserved.
 
-For odd \(m\), the number of ports is even, so \(q=C-1\) is odd. Rotate
-a port word one position to the right. Direct calculation gives
+At every original $B$-cut of $H_2$, its deleted first-column edge lies
+strictly before the cut. That edge has been replaced by the path consisting
+of $H_1$ minus its deleted edge and the two seam horizontals. Contracting
+this replacement path restores the original $H_2$ prefix. Thus all frontier
+ports and their matching $P$ are unchanged, while (4) changes every support
+entry by $\beta$. The shade changes from $c$ to $c\oplus\beta$.
+Section 3 determines the exact resulting state.
 
-\[
-C'=2x_m-C,\qquad q'=-q-2(1-x_m).                    \tag{5}
-\]
+This includes the first and last $B$-columns of both inputs. If an input
+was rotated for alignment, its preserved states mean the rotated states
+with labels recanonicalized. When $\beta=1$, positive labels must be
+reconstructed from $P$ and the new positive runs; numerical labels are
+not carried over. All resulting states are actual because the join is a
+complete Hamiltonian cycle.
 
-Every rotation orbit contains a word with \(|q|=1\). Otherwise all its
-\(q\)-values would have absolute value at least three, and (5) would
-reverse the sign at each rotation. After the odd number \(m\) of rotations
-the word returns to itself, contradicting that sign reversal.
+## 5. Quotient connectivity and an actual complement for every state
 
-Rotation preserves actual cylinder states, with positive labels recanonicalized.
-Thus every quotient vertex has an actual representative in \(h=1\).
-The same states \(f_0,f_1\) from Section 6 have \(q=1,-1\), respectively,
-and opposite shadings. The rectangular \(h=1\) sector is nonisolated for
-every odd \(m\ge3\). Section 5 connects any such representative of shading
-\(c\) both ways to \(f_c\). Their rotation identification again proves
-strong connectivity of \(D_m^*\).
+### 5.1 An auxiliary noncontractible cycle
 
-## 8. Period and scope
+For every $m\ge3$, the following cyclic ordering is a Hamiltonian cycle
+on three vertex columns:
+
+$$
+\begin{gathered}
+(1,1),(m,1),(m-1,1),\ldots,(2,1),\\
+(2,2),(3,2),\ldots,(m,2),\\
+(m,3),(m-1,3),\ldots,(1,3),\\
+(1,2),\quad\text{then back to }(1,1).
+\end{gathered}
+$$
+
+The segments visit all vertices of column 1, rows $2,\ldots,m$ of
+column 2, all of column 3, and finally the remaining vertex $(1,2)$.
+Consecutive vertices are adjacent. The only row-wrap edge is
+$(1,1)(m,1)$, so the cycle has nonzero annular homology modulo two and is
+noncontractible. The ordering and verification apply also at $m=3$.
+
+### 5.2 Contractible containing cycles and quotient reachability
+
+Every actual state $d$ has a contractible containing cycle. Choose a cycle
+$H$ containing it. If $H$ is noncontractible, append the auxiliary cycle,
+rotating only the auxiliary for edge alignment. The joined type is
+$1\oplus1=0$, while Section 4.4 preserves every original state of $H$,
+including the exact $d$.
+
+For actual states $d,e$, choose a contractible containing cycle for $d$
+and any containing cycle for $e$. Join them in this order, rotating the
+second input for edge alignment. The first cycle's states are preserved.
+Its type is zero, so the second cycle's states are preserved apart from
+that row rotation and label recanonicalization. The joined $B$-column
+sequence therefore gives a directed walk from $d$ to $\sigma(e)$ for some
+row rotation $\sigma$. In $D_m^*$ this is a walk from $[d]$ to $[e]$.
+Interchange $d,e$ to obtain the reverse direction. Thus $D_m^*$ is strongly
+connected and its nonnegative adjacency matrix $T_m^*$ is irreducible for
+every $m\ge3$.
+
+### 5.3 Actual shade complementation
+
+Fix an actual state $e$ and a containing cycle $H_e$ at its original row
+indices. Prefix the noncontractible auxiliary, rotating only that auxiliary
+to align its right-boundary edge with a selected left edge of $H_e$.
+Section 4.4 produces, at the original cut of $e$, an actual state with the
+same matching $P(e)$ and opposite shade. Define it as $Je$. Section 3
+gives uniqueness. Applying the construction again gives the unique actual
+state with data $(P(e),c(e))$, namely $e$, so $J^2=I$.
+
+This proves complement closure of the actual state set. It does not require
+or prove realization of arbitrary formal shaded pairings.
+
+## 6. Period and scope
 
 For an irreducible nonnegative matrix, the period is the greatest common
 divisor of the lengths of its directed closed walks. At even width, the
@@ -304,42 +346,7 @@ These structural conclusions concern the exact symmetry-reduced matrix in
 every enlarged formal state space. We next prove the extra symmetry needed
 for the asymptotic statement.
 
-## 9. Every eligible pairing occurs with both shades
-
-At even width let $P$ be any noncrossing matching on a nonempty even port
-set with $C=0$. At odd width initially suppose $P$ lies in $h=1$. For each
-$c\in\{0,1\}$, the rectangular theorem supplies a roundtrip
-
-$$
-P(f_c)\longrightarrow P\longrightarrow P(f_c).
-$$
-
-Its endpoints and intermediate states are retained and nonisolated. Begin
-with the genuine prefix of the seed cycle $f_c$, append the roundtrip with
-the wrap edges unused, and append the seed cycle's genuine suffix at the
-new final position. The path-contraction argument of Section 5 gives one
-Hamiltonian cycle: the replacement prefix induces the same final matching
-as the original prefix. Its shade remains $c$ throughout the connector.
-Consequently the intermediate cut at $P$ realizes an actual $B$ state with
-data $(P,c)$.
-
-This argument starts with a formal rectangular matching $P$ and proves its
-cylinder realization. It does not assume that realization as an input to
-the connector theorem. The only actual state needed initially is $f_c$.
-
-At odd width an arbitrary nonempty even port set can be rotated into
-$h=1$ by Section 7. Rotate its matching as well, realize it with both
-shades, and rotate the two realizing cycles back. Rotation preserves
-complementarity of their supports. They therefore give the original
-matching with both shades, although the numerical shade need not be
-preserved by the rotation.
-
-Combined with the injectivity in Section 3 and the even-width restriction
-in Section 6, this identifies the actual state set exactly: both shades
-of all nonempty noncrossing matchings at odd width, and both shades of
-all such matchings with $C=0$ at even width.
-
-## 10. A shading involution preserving the weighted transfer
+## 7. A shading involution preserving the weighted transfer
 
 For an actual state $d$, define $Jd$ by
 
@@ -347,7 +354,7 @@ $$
 P(Jd)=P(d),\qquad c(Jd)=1-c(d).
 $$
 
-Section 9 supplies existence; Section 3 supplies uniqueness. Thus $J^2$ is
+Section 5.3 supplies existence; Section 3 supplies uniqueness. Thus $J^2$ is
 the identity. The reconstructed support of $Jd$ is $1-a$, since the port
 differences are unchanged and the starting shade is reversed.
 
@@ -355,21 +362,27 @@ The positive connectivity labels are recomputed from the same $P$ and the
 new positive-run matching $S$, using the components of $P\cup S$. They
 are not retained from $d$. Nor is an existing prefix recolored in place:
 the prefix realizing $Jd$ may have a different length and embedding, and
-its own left cap is still zero. The construction in Section 9 is what
+its own left cap is still zero. The construction in Section 5.3 is what
 makes this operation legitimate in the actual state graph.
 
-### 10.1 Preservation of actual edges
+### 7.1 Preservation of actual edges
 
 Take an actual edge $d\to e$ and a witnessing primal column. Its input
 and output matchings are $P=P(d)$ and $Q=P(e)$; let $z_i$ indicate its
-selected vertical edges, including the wrap edge. Apply the same column
-to a genuine prefix realizing $Jd$. The input matching is still $P$, so
-current-component connectivity and rejection of closed components have
+selected vertical edges, including the wrap edge. If $a,b$ are its old
+and new supports, edge reconstruction gives $b_i=a_i\oplus z_i$.
+Apply the same column to a genuine prefix realizing $Jd$. The input
+matching is still $P$, so current-component connectivity and rejection of
+closed components have
 exactly the same outcome. The output matching is $Q$.
 
-Append a genuine suffix for $Je$. Its frontier matching is $Q$, so the
-path-contraction argument again completes one Hamiltonian cycle. Color
-propagation across the inserted column gives
+Append a genuine suffix for $Je$. To check the completion, collapse each
+prefix path in a cycle realizing $Je$ to an edge between its frontier
+ports. The replacement prefix has the same matching $Q$, so the fixed
+suffix produces the same single component. Every replacement vertex is
+visited and has degree two; the completed cycle is Hamiltonian. Its zero
+left cap and unchanged starting prefix fix the colors. Across the inserted
+column they satisfy
 
 $$
 (1-a_i)\oplus z_i=1-(a_i\oplus z_i).
@@ -387,7 +400,7 @@ concatenate a genuine prefix for $d$, the admissible pair, and a genuine
 suffix for $e$. The resulting matrix satisfies [B1]–[B4], and Theorem 4.2
 of [1] supplies the witnessing cycle.
 
-### 10.2 Descent with multiplicities
+### 7.2 Descent with multiplicities
 
 The involution commutes with rotations and reflections. On full state
 data, it complements the support and keeps the matching. A dihedral
@@ -410,7 +423,7 @@ $$
 UT=TU,\qquad U^2=I.
 $$
 
-## 11. The involution exchanges the exact terminal sets
+## 8. The involution exchanges the exact terminal sets
 
 Let $L_c,L_{nc}$ be the last-column sets specified in [B4] of [1]. For
 $d\in L_c$, zero windows are isolated and all positive windows have one
@@ -445,20 +458,20 @@ For $b=1$ the component has two parallel edges. Both conclusions still
 hold. It follows that $J(L_c)=L_{nc}$ and $J(L_{nc})=L_c$, both before
 and after the symmetry quotient.
 
-## 12. Even widths: equal leading constants and an exponential error
+## 9. Even widths: equal leading constants and an exponential error
 
-Fix even $m\ge4$. Let $f$ be the row vector whose entry at a quotient
-orbit is the number of first-column states in that orbit. The first-column
-set is invariant under the dihedral symmetries, so a nonzero entry is the
-orbit's size. Let $g_c,g_{nc}$ be column indicators of the two terminal
-orbit sets. The exact walk enumeration of [1] is
+At any width, let $\mathcal F$ be the exact first-column set [B1] of [1]. For each quotient orbit $O$, set $f_O=|O\cap\mathcal F|$.
+Dihedral invariance of $\mathcal F$ makes this the orbit size on eligible
+initial orbits and zero elsewhere. Let $g_c,g_{nc}$ be column indicators
+of the two terminal orbit sets. The exact walk enumeration of [1] is
 
 $$
 h_m^c(n+1)=fT^n g_c,\qquad
 h_m^{nc}(n+1)=fT^n g_{nc},\qquad n\ge0.
 $$
 
-Sections 6 and 8 make $T$ primitive. Let $\rho>0$ be its Perron
+Now fix even $m\ge4$. Sections 5.2 and 6 make $T$ primitive. Let
+$\rho>0$ be its Perron
 eigenvalue, with positive right and left vectors $r,\ell$, normalized by
 
 $$
@@ -468,7 +481,7 @@ $$
 Since $U$ commutes with $T$, the vector $\ell U$ is another positive
 left Perron vector. Uniqueness gives $\ell U=\alpha\ell$ with
 $\alpha>0$; applying $U$ twice gives $\alpha^2=1$, hence
-$\ell U=\ell$. Section 11 gives $Ug_c=g_{nc}$, so
+$\ell U=\ell$. Section 8 gives $Ug_c=g_{nc}$, so
 
 $$
 \ell g_c=\ell U g_c=\ell g_{nc}.
@@ -508,9 +521,7 @@ $$
 Therefore $\rho=\theta_m$ and $a_m$ is exactly the constant in
 Conjecture 1 of [1]. This proves its stated asymptotic equivalence.
 
-## 13. Odd widths and state counts
-
-### 13.1 Cancellation of the negative peripheral eigenvalue
+## 10. Odd widths: cancellation of the negative peripheral eigenvalue
 
 At odd width, let $E$ be diagonal with entries
 $(-1)^{\varepsilon(d)}$ on quotient states. Section 2 gives $ETE=-T$.
@@ -548,70 +559,55 @@ $$
 Period two alone would not give cancellation for arbitrary endpoint
 vectors. Here the endpoint-exchanging involution supplies that extra step.
 
-### 13.2 Exact numbers of unreduced states
-
-Let $\mathrm{Cat}_j=\frac1{j+1}\binom{2j}{j}$. The exact state
-identification in Section 9 yields
-
-$$
-|V(D_m)|=2\sum_{j=1}^{\lfloor m/2\rfloor}
-  \binom{m}{2j}\mathrm{Cat}_j\quad(m\text{ odd}),
-$$
-
-and
-
-$$
-|V(D_{2p})|=2\sum_{j=1}^{p}\binom pj^2\mathrm{Cat}_j.
-$$
-
-The first formula chooses any nonempty even port set and one of its
-noncrossing matchings. The second chooses equal numbers of ports from the
-two row parities, exactly the condition $C=0$. Both have two shade choices.
-For widths 3 through 10 the values are
-$6,12,40,64,252,364,1668,2234$, agreeing with Table 1 of [1]. This finite
-agreement is a consistency check; it is not used to prove realization or
-any asymptotic assertion.
-
-## 14. Sources, attribution, and bounded literature check
+## 11. Sources, attribution, and scope
 
 1. O. Bodroža-Pantić, H. Kwong, M. Pantić (2015),
    [A Conjecture on the Number of Hamiltonian Cycles on Thin Grid Cylinder Graphs](https://dmtcs.episciences.org/en/articles/2113/download),
    *DMTCS* **17:1**, 219–240,
    DOI [10.46298/dmtcs.2113](https://doi.org/10.46298/dmtcs.2113).
-   Relevant printed pages: 221, coloring convention; 224, [A1]–[A4];
-   225–227, prefix connectivity and [B1]–[B4]; 228, actual states and
-   symmetry quotient; 237, period witnesses; 238, the stated questions.
-2. [Polynomial cutoff for unique full-column fillings](polynomial_cutoff.md),
-   Sections 1–6. This application uses the published source at commit
-   `7f5f0c1268a4538e52e1fd16c4c0a51d25eca743`, SHA-256
-   `46ab4d73958ff6b46aa49c2362e7ee446903388e5c13c79b5f776378bb266453`.
-   Its quantitative refinement is unnecessary for the application; the
-   nonempty pairing-sector connectivity conclusion is the dependency.
-3. N. R. Beaton, J. W. Eng, C. E. Soteros (2016),
+   Relevant parts: Section 2 and Theorem 3.2, canonical colors and edge
+   reconstruction; Sections 4–5, [B1]–[B4], actual states, and quotient;
+   Section 7, period witnesses; Section 8, the questions and conjecture.
+2. N. R. Beaton, J. W. Eng, C. E. Soteros (2016),
    [Polygons in restricted geometries subjected to infinite forces](https://www.nicholasbeaton.com/papers/BES2016.pdf),
-   Section 4.1. This is relevant prior pairing-state connectivity work:
-   the Hamiltonian 1-patterns that occur in Hamiltonian polygons form a
-   strongly connected graph, by concatenating containing polygons using
-   the construction in the proof of Theorem 6. It is not cited here as a
-   correspondence with the exact 2015 cylinder $B$ states.
-4. J. Đokić, K. Doroslovački, O. Bodroža-Pantić (2023),
-   [A Spanning Union of Cycles in Thin Cylinder, Torus and Klein Bottle Grid Graphs](https://www.mdpi.com/2227-7390/11/4/846),
-   *Mathematics* **11**, 846, especially Sections 4 and 7.
-5. J. Đokić, K. Doroslovački, O. Bodroža-Pantić (2024),
+   Section 4.1 and the construction in the proof of Theorem 6.
+3. J. Đokić, K. Doroslovački, O. Bodroža-Pantić (2024),
    [The structure of the 2-factor transfer digraph common for thin cylinder, torus and Klein bottle grid graphs](https://doiserbia.nb.rs/img/doi/0354-5180/2024/0354-51802401057D.pdf),
-   *Filomat* **38:1**, 57–65, especially Definition 3 and Theorem 5.
+   *Filomat* **38:1**, 57–65, Definition 3 and Lemma 3, especially pp. 64–65.
+4. [Asymptotic equality and transfer structure for thin-cylinder Hamiltonian cycles](https://github.com/QwersykBot/unique-hamiltonian-grids/blob/e8cbd3996559d95857a37e59f14ed8704904d9ae/cylinder_transfer.md),
+   published AI-authored snapshot at commit
+   `e8cbd3996559d95857a37e59f14ed8704904d9ae`, 28,155 bytes, SHA-256
+   `bbf8ccefdab549967892b3623fce9e1390e459905f60510853dac220fc5f90a0`.
+   This is exposition provenance; the arguments used here are included above.
+5. *Direct cycle splicing for the exact thin-cylinder transfer*, internal
+   AI-authored proof note, 24 November 2026, `cylinder-direct-splicing-lemma.txt`,
+   14,672 bytes, SHA-256
+   `a36a91a5382a0faec583eea4e7f98689ab5880411f02e5bf4063731022915b95`.
+   Sections 4–5 above integrate its direct construction and color calculation.
 
-The transfer method, path connectivity information, and concatenation of
-realizable patterns are established ideas. The application above provides
-an explicit correspondence and path lifting for the particular window-label
-model in [1]. The later structural results [4]–[5] concern binary outlet-word
-2-factor transfer graphs, which allow several cycles and use a different
-state model. Their similarly named matrices must not be identified with
-$T_m^*$ in [1] without a correspondence theorem.
+Concatenation-based connectivity is established work. Beaton, Eng, and
+Soteros [2, Section 4.1] join polygons containing two realizable Hamiltonian
+1-patterns in either order, using their Theorem 6 construction, to prove
+strong connectivity. The present application supplies the canonical-color
+and exact-state checks for the particular window-label model of [1].
 
-A bounded primary-source search on 24 November 2026 found no exact prior
-resolution of these questions or the asymptotic conjecture in the sources inspected. This is neither
-an exhaustive literature review nor a novelty certification. No third-party
-paper is redistributed here. The argument and its AI review status remain
-open to mathematical correction. No sign pattern for the coefficients of
-$K_m$, sharp cylinder exponent, or uniform spectral gap is claimed.
+Complement methods also appear explicitly in [3, Lemma 3]: the involution
+$a\leftrightarrow f$, $b\leftrightarrow e$, $c\leftrightarrow d$ preserves
+their local transfer rules and induces outlet-word complementation,
+identifying the two odd-width components. Their binary outlet-word graph
+represents 2-factors, which may have several cycles. It is a different state
+model. Actual $B$-state complement closure, terminal exchange, and the exact
+weighted quotient are established separately in Sections 3–8 here.
+
+The splice proves the main theorem without classifying all formal pairings.
+The optional exact state-count formulas in [4, Section 13.2] retain their
+separate formal-realization argument and are omitted here. The published
+manuscript reports a bounded primary-source search on 24 November 2026
+that found no exact prior resolution in the sources inspected; that was
+neither an exhaustive search nor a novelty certification. This integration
+claims no new literature-wide search. No third-party paper is redistributed.
+
+This draft remains open to mathematical correction. No strong-connectivity
+claim for the unreduced graph,
+finite-length equality, coefficient-sign rule for $K_m$, sharp cylinder
+exponent, or uniform spectral gap is added.
