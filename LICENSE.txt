@@ -8,4 +8,5 @@ papers, forum posts, services, or software libraries linked or referenced
 by the material. Those works are not included in this archive.
 
 The material is provided without warranty. Independent automated review is
-not human peer review or proof-assistant formalization.
+not human peer review. Formal verification is limited to the declarations
+and assumptions recorded in formal/README.md.

@@ -1,0 +1,37 @@
+ROOT SEMANTIC REVIEW — LOCAL COLUMN WEIGHTS — PASS
+25 November 2026
+
+Reviewed complete ColumnWeights.lean, 8,971 bytes, SHA256
+2acab36db1cc42c5762cec9bf665429eb1526a53281a6448308c06e65259dcd9,
+and the complete frozen MeridianClassifier.lean, SHA256
+f02907309c7dca23e85385c0eeaff89b0d323b005581ac4eea0f138e5b8ac5fb.
+The reviewer had already read the full imported PhysicalEdges and
+ColumnGeometry modules. No semantic blocker was found.
+
+The generic formulas quantify over arbitrary functions on physical IDs and
+an additive commutative monoid. The disjoint Sum types and product indices
+are decomposed faithfully, with columns/cuts before rows. H and D remain
+distinct families even when endpoints coincide on one side. The concrete
+sum transport uses toEdge_injective, so the finite image cannot discard a
+second physical-edge contribution under the stated m>=3 assumption.
+
+The filtered formula uses the existing sourceVertex, not a newly assumed
+assignment. Its definitions give the source column c for V, H and D. Thus
+filtering at c.val<=j includes outgoing intercolumn edges from j. The same
+predicate appears on each family sum; no incoming edge is assigned again
+to its target column. This exactly matches the stated prefix convention.
+
+The meridian specialization directly invokes the owner's row-step
+classifier for V/D and same-row zero formula for H. The last-row finite
+sum reduction is a simple singleton-support identity. The resulting full
+and filtered formulas are valid for arbitrary masks, without a cycle,
+degree, connectedness or frontier-realizability premise. L=0/1 and j beyond
+the final column are handled by the finite domains and filter as written.
+
+The module introduces no alternate parity object, no annular
+contractibility theorem, and no transfer count or asymptotic claim. Its
+autoImplicit=false option prevents accidental implicit premises.
+
+The author's final strict run compiled eight modules and audited the exact
+14 new declarations. Root's separate combined import audit binds this
+same source and the counted-object composition in one coherent packet.

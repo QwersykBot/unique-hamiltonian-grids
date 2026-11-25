@@ -1,0 +1,71 @@
+INDEPENDENT COLUMN-GEOMETRY SEMANTIC REVIEW — PASS
+Reviewer: /root/grid_proof_review
+25 November 2026
+
+SOURCE BINDING
+Reviewed directory:
+/workspace/scratch/3a4d7a8b3970/cylinder_formal_bridges/column_geometry
+
+ColumnGeometry.lean: 6,309 bytes, SHA-256
+0550d21514ef624aa4e72da4d60f6b38bffeb770ffd6e02913fc635f2fe6216f
+PhysicalEdges.lean: 7,601 bytes, SHA-256
+21b18600f47568e1534be59cfc5634cc52e3eaf0bd3e9280f44135ff2c080742
+
+Both complete files were read. The actual imported file hashes agree with
+import-pins.json, including the previously reviewed graph/splice inputs:
+CylinderSplice.lean:
+d8c3e3445b48d56fc526985b798dcdcab05d7e4a3ecdf2154cb47942b9496cc4
+TriangularCylinder.lean:
+6f4f4fe9f9603168ee6eb596a60a071e5471b992eddacb6d1c8a9ee26d47bf04
+
+FINDINGS
+1. Physical identifiers have exactly the intended three disjoint families:
+   V(r,c) joins (r,c) to (r+1 mod m,c), at all L column positions;
+   H(r,c) joins (r,c) to (r,c+1), at the L-1 intercolumn positions;
+   D(r,c) joins (r,c) to (r+1 mod m,c+1), at those same positions.
+   The diagonal orientation agrees with the frozen TriangularCylinder.graph.
+   Wrapping occurs in the row coordinate only; no column wrap is introduced.
+2. PhysicalEdges proves both injectivity and coverage of the actual unordered
+   endpoint-pair map. forward_asymm uses m>=3 to eliminate reversed-forward
+   collisions; the remaining family distinctions and fixed endpoints recover
+   the identifier. exists_toEdge covers both orientations of every graph edge.
+   Thus edgeEquiv is grounded in a proved physical-edge bijection, not an
+   assumed identification. The m>=3 premise is material: vertical identifiers
+   would collide as unordered pairs at m=2.
+3. The Boolean masks use column-then-row indexing consistently. geometryFlag
+   reverses the identifier pair's row/column argument order deliberately and
+   correctly. H and D flags retain the source row, with no extra wrap or dummy
+   boundary bits. The two explicit inverse laws prove a bijection between
+   all edge-ID finsets and all such V/H/D mask families.
+4. graphSelectionEquiv transports finite subsets of the proved edge-ID
+   equivalence and then removes only subtype proof data. Its value theorem
+   identifies the result with exactly S.image (toEdge hm). Consequently the
+   composed columnSelectionEquiv has value exactly realizedEdges hm g.
+   These value theorems prevent an unrelated abstract equivalence from being
+   mistaken for the concrete geometric correspondence.
+5. realizedEdges_mem proves validity of every realized graph edge. The
+   realizedEdges_injective and existsUnique_geometry_of_edges theorems then
+   establish exactly one mask family for every finite graph-edge selection.
+   No multiplicity can disappear through Finset.image: toEdge injectivity is
+   already part of the proved edge equivalence.
+
+BOUNDARY CASES
+At L=0, Fin L and Fin (L-1) are empty, all mask-domain functions are unique,
+EdgeId and the graph vertex type are empty, and the sole edge selection is
+the empty finset. The equivalence is therefore correct, not vacuously hiding
+extra choices. At L=1, the H and D domains are empty; the V family has exactly
+m independent Boolean coordinates and represents subsets of the one-column C_m graph. The
+natural subtraction L-1 and lowerCol/upperCol definitions introduce no
+out-of-range element in either boundary case. All physical claims retain
+m>=3. The unrestricted geometryEquiv is only a mask/ID representation fact.
+
+SCOPE
+PASS for the exact V/H/D-mask-to-graph-edge-finset correspondence. All masks
+are allowed; no degree, connectivity, Hamiltonian-cycle, frontier-pairing,
+topology, transfer-state sufficiency, counting formula, or asymptotic property
+is supplied or silently imposed. The noncomputable equivalences use proved
+bijections; this review does not claim an executable enumeration algorithm.
+
+This was a read-only semantic review. No source was modified, no compiler
+or additional experiment was run, and no independently observed compilation
+result is claimed here. The root owns the separate strict verification run.

@@ -1,0 +1,13 @@
+name = "cylinder_formalization"
+version = "0.1.0"
+defaultTargets = ["CylinderProofs"]
+moreLeanArgs = ["-DwarningAsError=true"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "c44e0c8ee63ca166450922a373c7409c5d26b00b"
+
+[[lean_lib]]
+name = "CylinderProofs"
+roots = ["CylinderSplice", "TriangularCylinder", "TriangularParity", "MatrixContraction.Basic", "MatrixContraction.Limits", "MatrixContraction.PositiveBlocks", "EnumeratedWalk", "MeridianClassifier", "AuxiliaryCycle", "EdgeCoboundary", "MatrixContraction.OrderedApplication", "RowRotation", "SelectedEdgePresentation", "SelectedCylinderSplice", "ConnectedTwoRegular", "FrontierSubstitution", "FrontierAttachment", "FrontierCongruence", "ColumnCut", "TwoColumnWitness", "ThreeColumnWitness", "TwoColumnWitnessCut", "ThreeColumnWitnessCut", "FiniteTransfer", "AcceptedRatio", "PhysicalEdges", "GenericEdgeWeights", "CountedHamiltonian", "SelectedCharacterization", "SelectedIff", "BoundaryState", "ColumnFragments", "ColumnCutOutgoing", "CommonWitnessState", "ExceptionalState", "ColumnGeometry", "ColumnHamiltonian", "ColumnWeights", "ZigzagException", "ColumnEmbedding", "CycleSaturation", "FullCrossing", "FrontierDegrees", "FrontierDegreesGeneral", "EdgeReplacementReachability", "ColumnBoundaryDegree", "BoundaryVertical", "FiniteTransferPaths", "ActualTransfer", "CycleAccepted", "AcceptedReconstruction", "TransferWitnesses", "PrefixReplacement", "FragmentRecovery", "ColumnStepConnectivity", "ProcessedPrefix", "AcceptedExtensionality", "AcceptedGraph", "AcceptedStateRecovery", "BoundaryParity", "BoundaryParityUpdates", "AcceptedParity", "AcceptedUniqueness", "CompletionTransport", "AcceptedRealization", "CountedTransferEquivalence", "CycleIntervals", "SplicePrefixCoordinates", "ReplacementRestriction", "SelectedCycleDeletion", "SpliceSelectedGraph", "SplicePrefixReachability", "SpliceStateFields", "StateEndVertical", "ColumnTailSums", "SpliceRightRegion", "SpliceTailWeights", "StateWidthTransport", "SpliceAssignedParity", "CoreStateFlip", "SpliceCutTransport", "CycleWidthTransport", "SpliceIndexedState", "IndexedEndVertical", "ParityOneSplice", "CoreLabelFlip", "SpliceLeftState", "CommonReturns", "StateInterval", "AuxiliaryParity", "CoreConnectivity", "TriangularCountRatio", "TriangularCountImbalance", "ProofAudit"]

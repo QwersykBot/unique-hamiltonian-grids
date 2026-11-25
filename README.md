@@ -3,8 +3,18 @@
 This repository contains **AI-authored research drafts** on the vertex deletions
 needed to leave a unique Hamiltonian cycle in a grid, and on the relative counts
 of contractible and noncontractible cycles on a thin cylinder. The arguments have received
-independent AI-agent review. They have not received human peer review or
-proof-assistant verification.
+independent AI-agent review. They have not received human peer review.
+The [Lean project](formal/README.md) proves a concrete asymptotic counting
+theorem: for every fixed circumference $m\ge3$, the numbers of undirected
+Hamiltonian edge sets of odd and even wrap-edge parity on the consistently
+triangulated cylinder have ratio tending to one as its number of columns
+tends to infinity. Both counts are positive eventually. It also proves a
+geometric bound on their imbalance relative to the total count. The project proves
+the exact finite counting correspondence and supplies every hypothesis of
+its transfer-ratio argument. Identifying that parity with annular
+contractibility, the circumference-two multigraph case, weighted extensions,
+absolute spectral asymptotics, and the other manuscript results remain
+outside the formal theorem.
 
 The cylinder results prove asymptotic equality of the two cycle types on every
 fixed even-width square-grid cylinder and every fixed-width consistently
