@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "candidate_version": "2026-11-25-1",
-  "authorship_and_review": "AI-origin proof and independent AI-agent reviews; no human peer review, proof-assistant verification, external acceptance, or literature-wide priority claim.",
+  "authorship_and_review": "AI-authored manuscript proofs and independent AI-agent reviews. Scoped Lean verification is documented in formal/README.md and formal/provenance.json; the manuscript results are not all formalized. No human peer review, external acceptance, or literature-wide priority is claimed.",
   "original_archives": [
     {
       "name": "grid-width-classification-review-v1.zip",

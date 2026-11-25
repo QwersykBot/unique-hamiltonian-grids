@@ -25,6 +25,13 @@ uniform geometric balance for arbitrary shared edge-weight fields with fixed
 positive lower and upper bounds. The field may vary with row, column, edge
 direction, and length; no translation symmetry is required.
 
+The [physical observation extension](observations.md) applies this balance
+to independent noisy reports of the edges and to exact observations outside
+one unobserved band. It proves bounds for the actual physical masses and
+their normalized distributions, including the required positivity of class
+totals. The constants are existential and depend on the fixed circumference
+and activity or likelihood-ratio bounds.
+
 The formal results concern combinatorial meridian parity. Its identification
 with annular contractibility, the circumference-two multigraph convention,
 and absolute spectral asymptotics remain separate. The square-cylinder and
@@ -538,6 +545,56 @@ The [weighted application review](reviews/weighted_application.md) records
 these scope checks. Common absolute bounds are sufficient; no optimality
 claim is made for the quantitative constants or hypotheses.
 
+## Physical observations
+
+The [observation note](observations.md) gives the full statements, interpretation,
+and limits of two applications. Both use the original fixed-labelled,
+unordered Hamiltonian edge selections and a shared physical edge-product
+prior.
+
+For independent reports, the likelihood includes every actual edge, whether
+selected or absent. Factoring out the absent-edge likelihood turns each
+fixed report into a new physical weight field. Fixed positive lower and
+finite upper bounds on the likelihood ratios, together with the fixed
+base-activity bounds, give a uniform geometric posterior-parity bound.
+A finite-mass theorem also bounds the total variation
+between the separately normalized report distributions. Interpreting these
+as a specified observation channel requires its actual likelihoods and a
+complete normalized report alphabet; this interpretation is distinguished
+from the finite algebra in the note.
+
+For exact exterior observations, let $L=n+2$ with $n\ge1$ and $0\le a\le b\le n$.
+Local slots $a\le i<b$ leave $H_i,D_i,V_{i+1}$ unobserved; all other edges
+have both their selected and absent values prescribed. If $Z_p^\sigma$ is
+the physical weighted mass with exterior $\sigma$, the checked bound is
+
+$$
+|Z_0^\sigma-Z_1^\sigma|
+\le \rho^{\lfloor(b-a)/N\rfloor}(Z_0^\sigma+Z_1^\sigma).
+$$
+
+The constants $N\ge2$ and $0\le\rho<1$ are chosen before the length,
+interval, prescription, and common field. The theorem permits impossible
+prescriptions and zero masses. A canonical code records each physical
+exterior exactly once, and its masses sum to the original weighted parity
+count. For $N\le b-a$ and positive pooled count, both class totals are
+positive and the two normalized exterior laws have total variation at most
+$\rho^{\lfloor(b-a)/N\rfloor}$.
+
+| Modules | Checked role |
+|---|---|
+| [FiniteParityObservation](FiniteParityObservation.lean) | Sharp finite total-variation bound from a pointwise relative-imbalance inequality, including unequal class totals and zero-mass atoms. |
+| [NoisyCylinderLikelihood](NoisyCylinderLikelihood.lean), [NoisyParityObservation](NoisyParityObservation.lean) | Exact physical likelihood factorization, uniform report-mass imbalance, pooled-prior posterior bias, and finite report-distribution total variation. |
+| [ExteriorGeometry](ExteriorGeometry.lean), [ExteriorEncoding](ExteriorEncoding.lean) | Complete selected-and-absent exterior event, owned-mask filters, and its exact physical weighted transfer formula. |
+| [ExteriorSymmetry](ExteriorSymmetry.lean), [WindowProduct](WindowProduct.lean), [ExteriorCountImbalance](ExteriorCountImbalance.lean) | Same-position filtered symmetry and contraction through one unrestricted interval, followed by the physical exterior-count inequality. |
+| [CanonicalExteriorObservation](CanonicalExteriorObservation.lean), [ExteriorParityObservation](ExteriorParityObservation.lean) | Unique physical observation codes, exact mass partition, nonnegativity, and normalized total variation with the original class counts as denominators. |
+
+These results concern fixed circumference and the stated common bounds.
+The exterior theorem covers one interval and assumes bounds on all actual
+edges. It does not supply numerical constants, a rate uniform in circumference,
+or a general assertion for correlated noise. The [observation review](reviews/physical_observations.md)
+records the physical correspondence and normalization checks.
+
 ## Scope beyond the formal theorem
 
 The development does not contain the annular embedding and topological
@@ -604,6 +661,12 @@ eight-module extension, exact physical counting convention, uniform quantifier
 order, source-review provenance, and the integration gate. Earlier review
 reports describe their own pinned checkpoints and may list weighted counts
 among work that was then outside scope.
+
+The [physical observation review](reviews/physical_observations.md) covers the
+ten-module extension, exact likelihood and exterior-event identities,
+canonical observation partition, normalization, and independent source-review
+limits. The project verifier includes all of its declarations in the same
+exact audit inventory.
 
 The repository's [CC0 notice](../LICENSE.txt) applies to this original work.
 Mathlib and Lean retain their own licenses. The concrete parity-count ratio

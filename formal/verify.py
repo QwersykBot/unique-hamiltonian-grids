@@ -119,6 +119,16 @@ MODULES = (
     "WeightedCylinderBounds",
     "WeightedCountImbalance",
     "WeightedCountRatio",
+    "NoisyCylinderLikelihood",
+    "FiniteParityObservation",
+    "NoisyParityObservation",
+    "ExteriorGeometry",
+    "ExteriorEncoding",
+    "ExteriorSymmetry",
+    "WindowProduct",
+    "ExteriorCountImbalance",
+    "CanonicalExteriorObservation",
+    "ExteriorParityObservation",
 )
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 EXPECTED_AUDITS = set("""
@@ -852,6 +862,69 @@ TriangularCylinder.WeightedCylinderBounds.weightedInitialVector_nonneg
 TriangularCylinder.WeightedCylinderBounds.weightedTerminalVector_nonneg
 TriangularCylinder.Transfer.exists_weightedParityCount_geometric_imbalance
 TriangularCylinder.Transfer.weighted_parity_ratio_limits
+CountedHamiltonian.selectionLikelihood
+CountedHamiltonian.absentLikelihoodProduct
+CountedHamiltonian.selectionLikelihood_eq_product
+CountedHamiltonian.weightedSelectionLikelihood_eq_product
+CountedHamiltonian.absentLikelihoodProduct_pos
+CountedHamiltonian.selectionLikelihood_nonneg
+TriangularCylinder.Transfer.noisyParityMass
+TriangularCylinder.Transfer.noisyParityMass_eq_weightedParityCount
+TriangularCylinder.Transfer.noisyParityMass_nonneg
+TriangularCylinder.Transfer.exists_noisyParityMass_geometric_imbalance
+FiniteParityObservation.totals_pos_and_totalVariation_le
+FiniteParityObservation.posterior_bias_of_imbalance
+TriangularCylinder.Transfer.exists_noisyParityMass_posterior_bias
+TriangularCylinder.Transfer.exists_noisyParityMass_report_totalVariation_bound
+TriangularCylinder.Transfer.freeLocalSlot
+TriangularCylinder.Transfer.freePhysicalId
+TriangularCylinder.Transfer.ExteriorAgrees
+TriangularCylinder.Transfer.GeometryExteriorAgrees
+TriangularCylinder.Transfer.localMaskAgreement
+TriangularCylinder.Transfer.terminalMaskAgreement
+TriangularCylinder.Transfer.exteriorIndicator
+TriangularCylinder.Transfer.initialExteriorFilter
+TriangularCylinder.Transfer.localExteriorFilter
+TriangularCylinder.Transfer.terminalExteriorFilter
+TriangularCylinder.Transfer.exteriorInitialWeight
+TriangularCylinder.Transfer.exteriorLocalWeight
+TriangularCylinder.Transfer.exteriorTerminalWeight
+TriangularCylinder.Transfer.exteriorInitialVector
+TriangularCylinder.Transfer.exteriorLocalMatrix
+TriangularCylinder.Transfer.exteriorTerminalVector
+TriangularCylinder.Transfer.exteriorAcceptedWeight
+TriangularCylinder.Transfer.exteriorParityCount
+TriangularCylinder.Transfer.exteriorAgrees_realizedEdges_iff
+TriangularCylinder.Transfer.geometryExteriorAgrees_iff_ownedMasks
+TriangularCylinder.Transfer.exteriorAgrees_acceptedEdges_iff
+TriangularCylinder.Transfer.acceptedExteriorFilters_eq_indicator
+TriangularCylinder.Transfer.exteriorAcceptedWeight_eq_physical
+TriangularCylinder.Transfer.exteriorParityCount_eq_sum_acceptedWeight
+TriangularCylinder.Transfer.exteriorParityCount_eq_orderedProduct
+TriangularCylinder.Transfer.exteriorLocalWeight_flip
+TriangularCylinder.Transfer.exteriorTerminalWeight_flip
+TriangularCylinder.Transfer.exteriorLocalMatrix_flip
+TriangularCylinder.Transfer.exteriorTerminalVector_flip
+TriangularCylinder.Transfer.exteriorTerminalVector_one_eq_zero_flip
+TriangularCylinder.Transfer.exteriorLocalMatrix_eq_unfiltered
+TriangularCylinder.Transfer.exteriorInitialWeight_nonneg
+TriangularCylinder.Transfer.exteriorLocalWeight_nonneg
+TriangularCylinder.Transfer.exteriorTerminalWeight_nonneg
+TriangularCylinder.Transfer.exteriorInitialVector_nonneg
+TriangularCylinder.Transfer.exteriorLocalMatrix_nonneg
+TriangularCylinder.Transfer.exteriorTerminalVector_nonneg
+CylinderMatrixContraction.uniform_window_imbalance_of_support
+TriangularCylinder.Transfer.exists_exteriorParityCount_geometric_imbalance
+TriangularCylinder.Transfer.CanonicalExteriorCode
+TriangularCylinder.Transfer.canonicalExteriorCodeFintype
+TriangularCylinder.Transfer.encodeExterior
+TriangularCylinder.Transfer.encodeExterior_flag
+TriangularCylinder.Transfer.exteriorAgrees_encodeExterior
+TriangularCylinder.Transfer.exteriorAgrees_iff_encodeExterior_eq
+TriangularCylinder.Transfer.sum_exteriorIndicator
+TriangularCylinder.Transfer.sum_exteriorParityCount
+TriangularCylinder.Transfer.exteriorParityCount_nonneg
+TriangularCylinder.Transfer.exists_exteriorParityCount_totalVariation_bound
 """.split())
 
 
@@ -924,7 +997,7 @@ def main() -> int:
     receipt = {
         "status": "RUNNING",
         "checked_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-        "scope": "Concrete triangular-cylinder parity-count and physical edge-product ratio limits, with a geometric relative bound uniform over shared fields with common positive edge bounds for every fixed m >= 3; topology and circumference two remain separate.",
+        "scope": "Concrete triangular-cylinder parity-count and physical edge-product ratio limits, plus noisy-report and exact-exterior observation bounds with normalized total variation for fixed m >= 3 and the stated common bounds; topology and circumference two remain separate.",
         "commands": [],
     }
 
@@ -987,7 +1060,7 @@ def main() -> int:
         print(version)
         print(f"PASS: {len(MODULES)} proof modules; {len(EXPECTED_AUDITS)} exact named audits; "
               "standard logical axioms only.")
-        print("Actual triangular-cylinder unweighted and uniformly bounded physical-weight parity ratios are checked for fixed m >= 3; topology and circumference two remain separate.")
+        print("Actual triangular-cylinder parity ratios and physical observation bounds are checked for fixed m >= 3 under their stated bounds; topology and circumference two remain separate.")
         return 0
     except (OSError, RuntimeError, ValueError, subprocess.TimeoutExpired) as error:
         receipt["status"] = "FAIL"

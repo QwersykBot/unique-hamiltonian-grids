@@ -14,7 +14,11 @@ the exact finite counting correspondence and supplies every hypothesis of
 its transfer-ratio argument. The [physical weighted extension](formal/README.md#physical-edge-product-weights)
 proves the same balance uniformly over shared edge-weight fields within fixed
 positive lower and upper bounds; the field may vary arbitrarily with position
-and cylinder length. Identifying parity with annular contractibility, the
+and cylinder length. The [physical observation results](formal/observations.md)
+also bound the information about parity in independent noisy edge reports,
+or in the exact edge configuration outside one sufficiently long unobserved
+band. They include normalized total-variation bounds with explicit scope
+and positivity conditions. Identifying parity with annular contractibility, the
 circumference-two multigraph case, absolute spectral asymptotics, and the
 other manuscript results remain outside these formal theorems.
 

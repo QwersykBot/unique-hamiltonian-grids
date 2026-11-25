@@ -99,6 +99,16 @@ import WeightedCylinderSymmetry
 import WeightedCylinderBounds
 import WeightedCountImbalance
 import WeightedCountRatio
+import NoisyCylinderLikelihood
+import FiniteParityObservation
+import NoisyParityObservation
+import ExteriorGeometry
+import ExteriorEncoding
+import ExteriorSymmetry
+import WindowProduct
+import ExteriorCountImbalance
+import CanonicalExteriorObservation
+import ExteriorParityObservation
 
 /-! Exact named supporting results; standard logical axioms only. -/
 
@@ -836,3 +846,67 @@ import WeightedCountRatio
 #print axioms TriangularCylinder.WeightedCylinderBounds.weightedTerminalVector_nonneg
 #print axioms TriangularCylinder.Transfer.exists_weightedParityCount_geometric_imbalance
 #print axioms TriangularCylinder.Transfer.weighted_parity_ratio_limits
+
+#print axioms CountedHamiltonian.selectionLikelihood
+#print axioms CountedHamiltonian.absentLikelihoodProduct
+#print axioms CountedHamiltonian.selectionLikelihood_eq_product
+#print axioms CountedHamiltonian.weightedSelectionLikelihood_eq_product
+#print axioms CountedHamiltonian.absentLikelihoodProduct_pos
+#print axioms CountedHamiltonian.selectionLikelihood_nonneg
+#print axioms TriangularCylinder.Transfer.noisyParityMass
+#print axioms TriangularCylinder.Transfer.noisyParityMass_eq_weightedParityCount
+#print axioms TriangularCylinder.Transfer.noisyParityMass_nonneg
+#print axioms TriangularCylinder.Transfer.exists_noisyParityMass_geometric_imbalance
+#print axioms FiniteParityObservation.totals_pos_and_totalVariation_le
+#print axioms FiniteParityObservation.posterior_bias_of_imbalance
+#print axioms TriangularCylinder.Transfer.exists_noisyParityMass_posterior_bias
+#print axioms TriangularCylinder.Transfer.exists_noisyParityMass_report_totalVariation_bound
+#print axioms TriangularCylinder.Transfer.freeLocalSlot
+#print axioms TriangularCylinder.Transfer.freePhysicalId
+#print axioms TriangularCylinder.Transfer.ExteriorAgrees
+#print axioms TriangularCylinder.Transfer.GeometryExteriorAgrees
+#print axioms TriangularCylinder.Transfer.localMaskAgreement
+#print axioms TriangularCylinder.Transfer.terminalMaskAgreement
+#print axioms TriangularCylinder.Transfer.exteriorIndicator
+#print axioms TriangularCylinder.Transfer.initialExteriorFilter
+#print axioms TriangularCylinder.Transfer.localExteriorFilter
+#print axioms TriangularCylinder.Transfer.terminalExteriorFilter
+#print axioms TriangularCylinder.Transfer.exteriorInitialWeight
+#print axioms TriangularCylinder.Transfer.exteriorLocalWeight
+#print axioms TriangularCylinder.Transfer.exteriorTerminalWeight
+#print axioms TriangularCylinder.Transfer.exteriorInitialVector
+#print axioms TriangularCylinder.Transfer.exteriorLocalMatrix
+#print axioms TriangularCylinder.Transfer.exteriorTerminalVector
+#print axioms TriangularCylinder.Transfer.exteriorAcceptedWeight
+#print axioms TriangularCylinder.Transfer.exteriorParityCount
+#print axioms TriangularCylinder.Transfer.exteriorAgrees_realizedEdges_iff
+#print axioms TriangularCylinder.Transfer.geometryExteriorAgrees_iff_ownedMasks
+#print axioms TriangularCylinder.Transfer.exteriorAgrees_acceptedEdges_iff
+#print axioms TriangularCylinder.Transfer.acceptedExteriorFilters_eq_indicator
+#print axioms TriangularCylinder.Transfer.exteriorAcceptedWeight_eq_physical
+#print axioms TriangularCylinder.Transfer.exteriorParityCount_eq_sum_acceptedWeight
+#print axioms TriangularCylinder.Transfer.exteriorParityCount_eq_orderedProduct
+#print axioms TriangularCylinder.Transfer.exteriorLocalWeight_flip
+#print axioms TriangularCylinder.Transfer.exteriorTerminalWeight_flip
+#print axioms TriangularCylinder.Transfer.exteriorLocalMatrix_flip
+#print axioms TriangularCylinder.Transfer.exteriorTerminalVector_flip
+#print axioms TriangularCylinder.Transfer.exteriorTerminalVector_one_eq_zero_flip
+#print axioms TriangularCylinder.Transfer.exteriorLocalMatrix_eq_unfiltered
+#print axioms TriangularCylinder.Transfer.exteriorInitialWeight_nonneg
+#print axioms TriangularCylinder.Transfer.exteriorLocalWeight_nonneg
+#print axioms TriangularCylinder.Transfer.exteriorTerminalWeight_nonneg
+#print axioms TriangularCylinder.Transfer.exteriorInitialVector_nonneg
+#print axioms TriangularCylinder.Transfer.exteriorLocalMatrix_nonneg
+#print axioms TriangularCylinder.Transfer.exteriorTerminalVector_nonneg
+#print axioms CylinderMatrixContraction.uniform_window_imbalance_of_support
+#print axioms TriangularCylinder.Transfer.exists_exteriorParityCount_geometric_imbalance
+#print axioms TriangularCylinder.Transfer.CanonicalExteriorCode
+#print axioms TriangularCylinder.Transfer.canonicalExteriorCodeFintype
+#print axioms TriangularCylinder.Transfer.encodeExterior
+#print axioms TriangularCylinder.Transfer.encodeExterior_flag
+#print axioms TriangularCylinder.Transfer.exteriorAgrees_encodeExterior
+#print axioms TriangularCylinder.Transfer.exteriorAgrees_iff_encodeExterior_eq
+#print axioms TriangularCylinder.Transfer.sum_exteriorIndicator
+#print axioms TriangularCylinder.Transfer.sum_exteriorParityCount
+#print axioms TriangularCylinder.Transfer.exteriorParityCount_nonneg
+#print axioms TriangularCylinder.Transfer.exists_exteriorParityCount_totalVariation_bound
