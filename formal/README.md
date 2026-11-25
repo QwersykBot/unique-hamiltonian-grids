@@ -2,8 +2,9 @@
 
 This is a development checkpoint of Lean proofs supporting the
 [triangular-cylinder argument](../triangular_cylinder_asymptotics.md).
-It also contains a generic theorem about products of varying nonnegative
-matrices. **Neither cylinder asymptotic theorem has been fully formalized.**
+It also contains exact finite counting interfaces and generic ratio theorems
+for labelled transfers and products of varying nonnegative matrices.
+**Neither cylinder asymptotic theorem has been fully formalized.**
 The exact correspondence between transfer products and the intended cycle
 counts remains to be proved.
 
@@ -29,7 +30,7 @@ selected with `--lake /absolute/path/to/lake`.
 The verifier checks the repository manifest, local source inventory,
 dependency commits and tracked-source cleanliness. It builds the ordinary
 Lake project with warnings treated as errors and recompiles
-[`ProofAudit.lean`](ProofAudit.lean), requiring exactly 54 named axiom reports.
+[`ProofAudit.lean`](ProofAudit.lean), requiring its exact named declaration set.
 Every report must use only a subset of `propext`, `Classical.choice`, and
 `Quot.sound`. The local sources contain no proof placeholders, custom axioms,
 unsafe declarations, or native decision procedures. A machine-readable local
@@ -73,10 +74,62 @@ classification is assumed or established by these declarations.
 
 `exists_aligned_three_column_auxiliary` quantifies over the actual
 circumference and both prescribed gaps. It supplies a Hamiltonian cycle
-with parity one containing both selected boundary edges. The current
-concrete splice theorem takes each deleted edge first in its input walk;
-conversion from an arbitrary selected-edge presentation is a separate
-obligation at this checkpoint.
+with parity one containing both selected boundary edges.
+[SelectedEdgePresentation](SelectedEdgePresentation.lean) derives an
+edge-first presentation in either requested orientation while preserving
+the whole unordered edge list up to permutation.
+[SelectedCylinderSplice](SelectedCylinderSplice.lean) therefore joins
+arbitrarily rooted input cycles directly from selected-edge membership,
+with the exact original-edge-set replacement and parity addition.
+
+The [two-column](TwoColumnWitness.lean) and
+[three-column](ThreeColumnWitness.lean) parity-zero witnesses are explicit
+Hamiltonian cycles for every `m ≥ 3`. Their respective
+[sole-cut](TwoColumnWitnessCut.lean) and
+[last-cut](ThreeColumnWitnessCut.lean) results prove that the crossings
+are exactly the first- and last-row horizontals. Each processed prefix is
+exactly one spanning path. These are the graph facts needed for the
+intended common-state returns; no transfer-return statement is asserted
+by those files.
+
+## Undirected counted objects and frontier replacement
+
+[CountedHamiltonian](CountedHamiltonian.lean) defines a selection as a
+finite set of unordered edges having a standard Hamiltonian-cycle
+realization. The witnessing root and traversal are existential
+propositions, so they are not additional counted data. The vertex labels
+remain fixed. [GenericEdgeWeights](GenericEdgeWeights.lean) proves that
+additive trail weights depend only on the selected edges; the concrete
+parity is consequently independent of the cycle presentation.
+
+[SelectedCharacterization](SelectedCharacterization.lean) and
+[SelectedIff](SelectedIff.lean) prove that an admissible edge selection is
+Hamiltonian exactly when its spanning selected graph is connected and
+has two neighbors at every vertex. The reverse direction uses
+[ConnectedTwoRegular](ConnectedTwoRegular.lean), a small standard-Hamiltonian
+interface to Mathlib's existing component-spanning cycle theorem.
+Admissibility explicitly excludes diagonal pairs and ambient nonedges;
+the recovered Hamiltonian walk uses the entire original selected set.
+
+[PhysicalEdges](PhysicalEdges.lean) proves that the disjoint vertical,
+horizontal, and consistently oriented diagonal identifiers correspond
+bijectively to the actual graph edges, for `m ≥ 3` and every column count.
+This statement does not introduce a multigraph convention at `m = 2`.
+
+The frontier connectivity interfaces are separate from the counting types:
+
+| Module | Checked result |
+|---|---|
+| [FrontierSubstitution](FrontierSubstitution.lean) | Replacing an attached prefix by another with the same boundary reachability preserves connectedness under every fixed suffix. |
+| [FrontierAttachment](FrontierAttachment.lean) | Actual glued connectedness forces prefix attachment when the boundary is nonempty; a stronger version allows any boundary or suffix vertex. |
+| [FrontierCongruence](FrontierCongruence.lean) | The same replacement preserves every suffix reachability query. A canonical boundary graph compresses this relation for connectivity computations. |
+| [ColumnCut](ColumnCut.lean) | Splits an actual selected cylinder graph at its entire last processed column. The prefix owns boundary-column edges, and the canonical glue is isomorphic to the original graph. |
+
+The concrete cut theorem derives the absence of long edges from the actual
+cylinder adjacency. It then derives the prefix attachment invariant from
+the original graph's connectedness. The compressed relation edges in
+`FrontierCongruence` carry only connectivity information; their degrees
+are not physical selected degrees.
 
 ## Generic ordered-matrix theorem
 
@@ -134,11 +187,36 @@ in this source.
 | [PositiveBlocks](MatrixContraction/PositiveBlocks.lean) | Derives positive blocks from support connectivity, common-state returns of lengths two and three, and uniform factor bounds. |
 | [OrderedApplication](MatrixContraction/OrderedApplication.lean) | Constructs the partition of each original factor list and composes the full generic result. |
 
+## Exact labelled-path counts and their ratio
+
+[FiniteTransfer](FiniteTransfer.lean) defines actual finite labelled paths.
+A zero-step path has one equality witness when its endpoints coincide.
+A successor path chooses its next state, one local label, and a shorter
+path. Accepted objects additionally choose initial and terminal labels.
+Sigma/product cardinality identities prove that their count is exactly
+`f · M^n · g`, where `M(i,j)` counts the local labels from `i` to `j`.
+The real-valued formula is an exact cast of that natural-number count.
+
+[AcceptedRatio](AcceptedRatio.lean) applies the generic algebra to these
+finite objects. Its hypotheses are paths between every pair of states,
+returns of lengths two and three at the same state, nonempty total initial
+and terminal choices, and an involutive state permutation with explicit
+local-label and terminal-label equivalences. It proves that the two
+accepted counts have ratio tending to one and that the denominator is
+strictly positive eventually. It derives the positive-power threshold
+and the entry bounds, and removes a finite shift to allow zero counts at
+short lengths. Initial labels need no permutation symmetry.
+
+This theorem counts its dependent accepted-object type. Identifying that
+type with the intended Hamiltonian edge selections is a separate
+application obligation; no root or direction multiplicity is silently
+divided out.
+
 ## Remaining cylinder obligations
 
 To obtain a formal cylinder counting theorem, the development still needs
-an exact finite state model, the isolated two-column case, a bijection
-between accepted transfer configurations and undirected Hamiltonian edge
+the complete state and transition model, the isolated two-column case, a
+bijection between accepted transfer configurations and undirected Hamiltonian edge
 sets, preservation of actual frontier states under splicing, and the
 concrete involution and endpoint exchange. It also needs common-state
 return witnesses, support connectivity, positive totals, and any claimed
@@ -153,11 +231,17 @@ does not discharge them.
 
 The proof sources and review reports are AI-authored. Separate agents
 reviewed the [graph statements](reviews/graph_statements.md),
-[concrete auxiliary](reviews/auxiliary_cycle.md), and
-[ordered matrix argument](reviews/ordered_matrices.md). The auxiliary
-reviewer authored the imported enumeration helper; that report explicitly
-does not claim independent review of the helper. The repository steward
-also read the packaged sources and ran the conventional project check.
+[concrete auxiliary](reviews/auxiliary_cycle.md),
+[zero-parity witnesses and selected-edge splice](reviews/zero_witnesses_and_splice.md),
+[frontier substitution](reviews/frontier_substitution.md),
+[undirected counted objects](reviews/counted_objects.txt),
+[selected-edge characterization](reviews/selected_edge_characterization.json),
+[ordered matrix argument](reviews/ordered_matrices.md), and
+[finite labelled-transfer ratio](reviews/finite_labelled_transfer.md).
+The auxiliary and zero-witness reviewer authored the imported enumeration
+helper; those reports explicitly exclude independent review of that helper.
+The repository steward also read the packaged sources. The conventional
+project check validates their integration under the pinned dependencies.
 
 The reports identify the earlier prototype hashes and may refer to paths
 in the reviewers' workspaces. [`provenance.json`](provenance.json) maps

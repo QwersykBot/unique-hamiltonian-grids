@@ -1,0 +1,34 @@
+{
+  "reviewer": "/root/resource_and_impact_audit/selected_semantic_review",
+  "mode": "read-only complete source review; no compilation, network, or edits",
+  "verdict": "PASS",
+  "sources": {
+    "SelectedCharacterization.lean": {
+      "bytes": 6082,
+      "sha256": "74a408a3f626b066b10ddfbf115c35b3c70f7bcb0511ea4763f0389025b1d367"
+    },
+    "SelectedIff.lean": {
+      "bytes": 2497,
+      "sha256": "798f3e86fdc79b9dc405bfa4af2aeae9fbe6095d49af76c000b1ec699bfbb094"
+    },
+    "ConnectedTwoRegular.lean": {
+      "bytes": 3200,
+      "sha256": "ecb25d18fc212c28cb53734bf841f62bc5c274a40af803b0b16f6f74a1031f8c"
+    },
+    "CountedHamiltonian.lean": {
+      "bytes": 6545,
+      "sha256": "8a0e8cd07056a3b869758f5a0abe8001ad67ed15724f6cfdd017e6aafa0b9bd4"
+    }
+  },
+  "findings": [
+    "E subset G.edgeSet excludes all discarded diagonal pairs and all ambient nonedges; recovery preserves exactly E.",
+    "Forward Hamiltonian support makes the cycle subgraph spanning; graph isomorphism transfers connectedness correctly.",
+    "A supplied Hamiltonian cycle exhausts any finite two-regular graph; the exhaustion proof does not presuppose exact selected-edge equality.",
+    "Identity-vertex graph inclusion preserves standard IsHamiltonianCycle and unordered selected edges.",
+    "Connected includes nonemptiness; exact degree two excludes singleton and two-vertex simple graphs.",
+    "The generic supplied wrapper obtains its cycle from Mathlib and proves full standard support-tail counts; Hamiltonicity is not assumed.",
+    "All three final iff statements compose the separately supplied constructor with exact-edge recovery and have the requested finite-graph scope.",
+    "The final SelectedIff source differs from the first reviewed version only by the explicit ambient G argument to selection_edge_mem; reviewer confirmed this one-line change and the exact final hash.",
+    "No full-cylinder counting, transfer enumeration, topology identification, external acceptance, or adoption is claimed."
+  ]
+}

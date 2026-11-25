@@ -18,10 +18,36 @@ ROOT = Path(__file__).resolve().parent
 MATHLIB_COMMIT = "c44e0c8ee63ca166450922a373c7409c5d26b00b"
 MATHLIB_MANIFEST = "5c6421b650bc87a2427a892a39e5522dc44543ca4ac1bd6e9f08d536c044a752"
 MODULES = (
-    "CylinderSplice", "TriangularCylinder", "TriangularParity", "EnumeratedWalk",
-    "MeridianClassifier", "AuxiliaryCycle", "EdgeCoboundary", "RowRotation",
-    "MatrixContraction.Basic", "MatrixContraction.Limits",
-    "MatrixContraction.PositiveBlocks", "MatrixContraction.OrderedApplication",
+    "CylinderSplice",
+    "TriangularCylinder",
+    "TriangularParity",
+    "MatrixContraction.Basic",
+    "MatrixContraction.Limits",
+    "MatrixContraction.PositiveBlocks",
+    "EnumeratedWalk",
+    "MeridianClassifier",
+    "AuxiliaryCycle",
+    "EdgeCoboundary",
+    "MatrixContraction.OrderedApplication",
+    "RowRotation",
+    "SelectedEdgePresentation",
+    "SelectedCylinderSplice",
+    "ConnectedTwoRegular",
+    "FrontierSubstitution",
+    "FrontierAttachment",
+    "FrontierCongruence",
+    "ColumnCut",
+    "TwoColumnWitness",
+    "ThreeColumnWitness",
+    "TwoColumnWitnessCut",
+    "ThreeColumnWitnessCut",
+    "FiniteTransfer",
+    "AcceptedRatio",
+    "PhysicalEdges",
+    "GenericEdgeWeights",
+    "CountedHamiltonian",
+    "SelectedCharacterization",
+    "SelectedIff",
 )
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 EXPECTED_AUDITS = set("""
@@ -79,6 +105,125 @@ CylinderMatrixContraction.symmetricUnder_mul
 CylinderMatrixContraction.symmetricUnder_list_prod
 CylinderMatrixContraction.uniform_finite_imbalance_of_support
 CylinderMatrixContraction.ordered_factor_family_ratio_tendsto_one
+SelectedEdgePresentation.isHamiltonianCycle_append_swap
+SelectedEdgePresentation.isHamiltonianCycle_reverse
+SelectedEdgePresentation.exists_edge_first
+SelectedEdgePresentation.exists_edge_first_with_weight
+TriangularCylinder.exists_splice_of_selected_edges
+ConnectedTwoRegular.exists_isHamiltonianCycle_at_of_neighbor_ncard_two
+ConnectedTwoRegular.exists_isHamiltonianCycle_of_neighbor_ncard_two
+ConnectedTwoRegular.exists_isHamiltonianCycle_of_degree_two
+CylinderFrontier.glue_preconnected_iff
+CylinderFrontier.glue_connected_iff
+CylinderFrontier.boundary_reachable_of_glue_reachable
+CylinderFrontier.touchesBoundary_of_glue_preconnected
+CylinderFrontier.touchesBoundary_of_glue_connected
+CylinderFrontier.touchesBoundary_of_glue_connected_of_nonempty_boundary
+CylinderFrontier.glue_connected_swap
+CylinderFrontier.suffix_touchesBoundary_of_glue_connected
+CylinderFrontier.both_touchBoundary_of_glue_connected
+CylinderFrontier.glue_suffix_reachable_iff
+CylinderFrontier.boundaryGraph_adj
+CylinderFrontier.boundaryGraph_reachable
+CylinderFrontier.compressedPrefix_reachable
+CylinderFrontier.touchesBoundary_compressedPrefix
+CylinderFrontier.glue_suffix_reachable_iff_compressedPrefix
+TriangularCylinder.ColumnCut.ofVertex_toVertex
+TriangularCylinder.ColumnCut.toVertex_ofVertex
+TriangularCylinder.ColumnCut.vertexEquiv_row
+TriangularCylinder.ColumnCut.suffixPart_no_boundary_edges
+TriangularCylinder.ColumnCut.prefixPart_boundary_adj
+TriangularCylinder.ColumnCut.adj_column_distance_le_one
+TriangularCylinder.ColumnCut.no_interior_suffix_edge
+TriangularCylinder.ColumnCut.glue_parts_eq_comap
+TriangularCylinder.ColumnCut.glue_parts_connected
+TriangularCylinder.ColumnCut.prefixPart_touchesBoundary
+TriangularCylinder.ColumnCut.both_parts_touchBoundary
+CountedHamiltonian.selection_has_presentation
+CountedHamiltonian.presentationSelection_surjective
+CountedHamiltonian.ofCycle_eq_iff
+CountedHamiltonian.selection_edge_mem
+CountedHamiltonian.selection_card
+CountedHamiltonian.selection_three_le_card
+CountedHamiltonian.selectionWeight_ofCycle
+TriangularCylinder.selectionParity_ofCycle
+TriangularCylinder.parityCount_partition
+TriangularCylinder.perimeterCycle_isHamiltonianCycle
+TriangularCylinder.perimeterCycle_typeParity
+TriangularCylinder.perimeterCycle_left_join_edge
+TriangularCylinder.perimeterCycle_right_join_edge
+TriangularCylinder.perimeterCycle_lastCut_edges_iff
+TriangularCylinder.perimeterPrefixWalk_isPath
+TriangularCylinder.perimeterPrefixWalk_support_iff
+TriangularCylinder.perimeterPrefixWalk_edges
+TriangularCylinder.perimeterPrefixWalk_edges_in_cycle
+TriangularCylinder.perimeterPrefixWalk_pair_edges_iff
+TriangularCylinder.perimeterPrefixWalk_typeParity
+TriangularCylinder.exists_two_column_zero_witness
+TriangularCylinder.threeWitnessCycle_isHamiltonianCycle
+TriangularCylinder.threeWitnessCycle_typeParity
+TriangularCylinder.threeWitnessCycle_left_join_edge
+TriangularCylinder.threeWitnessCycle_right_join_edge
+TriangularCylinder.threeWitnessCycle_lastCut_edges_iff
+TriangularCylinder.threePrefixWalk_isPath
+TriangularCylinder.threePrefixWalk_support_iff
+TriangularCylinder.threePrefixWalk_edges
+TriangularCylinder.threePrefixWalk_edges_in_cycle
+TriangularCylinder.threePrefixWalk_pair_edges_iff
+TriangularCylinder.threePrefixWalk_typeParity
+TriangularCylinder.exists_three_column_zero_witness
+TriangularCylinder.threePrefixVertex_first
+TriangularCylinder.threePrefixVertex_last
+CylinderTransfer.transitionMatrix_apply
+CylinderTransfer.card_labelledPath_zero
+CylinderTransfer.card_labelledPath_succ
+CylinderTransfer.card_labelledPath
+CylinderTransfer.realTransitionMatrix_pow
+CylinderTransfer.card_labelledPath_real
+CylinderTransfer.card_accepted
+CylinderTransfer.card_accepted_zero
+CylinderTransfer.card_accepted_real
+CylinderTransfer.realTransitionMatrix_pow_pos_iff
+CylinderTransfer.card_accepted_pos_of_positive_power
+CylinderTransfer.eventually_card_accepted_pos
+CylinderTransfer.accepted_ratio_limit
+CountedHamiltonian.coe_selectedEdges
+CountedHamiltonian.selectedEdges_eq_of_edgeSet_eq
+CountedHamiltonian.edgeWeight_eq_sum_selectedEdges
+CountedHamiltonian.edgeWeight_eq_of_selectedEdges_eq
+CountedHamiltonian.edgeWeight_eq_of_edgeSet_eq
+CountedHamiltonian.hamiltonianCycle_edgeWeight_eq_of_selectedEdges_eq
+CountedHamiltonian.hamiltonianCycle_edgeWeight_eq_of_edgeSet_eq
+CountedHamiltonian.selection_eq_iff
+TriangularCylinder.parity_eq_zero_or_one
+TriangularEdgeEncoding.nextRow_rowSucc
+TriangularEdgeEncoding.nextRow_asymm
+TriangularEdgeEncoding.forward_col_le
+TriangularEdgeEncoding.forward_asymm
+TriangularEdgeEncoding.forward_source_target
+TriangularEdgeEncoding.toEdge_mem_edgeSet
+TriangularEdgeEncoding.toEdge_endpoints
+TriangularEdgeEncoding.toEdge_injective
+TriangularEdgeEncoding.exists_toEdge_of_forward
+TriangularEdgeEncoding.exists_toEdge
+TriangularEdgeEncoding.toGraphEdge_bijective
+TriangularEdgeEncoding.edgeEquiv
+TriangularEdgeEncoding.edgeEquiv_apply_val
+CountedHamiltonian.walk_spanningCoe_edgeSet
+CountedHamiltonian.fromEdgeSet_selectedEdges
+CountedHamiltonian.hamiltonian_selected_connected
+CountedHamiltonian.hamiltonian_selected_ncard
+CountedHamiltonian.realization_selected_connected_two
+CountedHamiltonian.selectedGraph_edgeSet
+CountedHamiltonian.selectedGraph_le
+CountedHamiltonian.hamiltonian_edgeSet_eq_of_ncard
+CountedHamiltonian.selectedEdges_eq_of_hamiltonian_selected
+CountedHamiltonian.selectedEdges_mapLe
+CountedHamiltonian.realization_of_selected_hamiltonian
+CountedHamiltonian.neighborSet_ncard_eq_degree
+CountedHamiltonian.realization_iff_connected_two
+CountedHamiltonian.realization_iff_connected_degree_two
+CountedHamiltonian.realization_iff_subset_connected_two
 """.split())
 
 

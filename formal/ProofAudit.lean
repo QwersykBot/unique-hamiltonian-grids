@@ -1,7 +1,35 @@
-import RowRotation
+import CylinderSplice
+import TriangularCylinder
+import TriangularParity
+import MatrixContraction.Basic
+import MatrixContraction.Limits
+import MatrixContraction.PositiveBlocks
+import EnumeratedWalk
+import MeridianClassifier
+import AuxiliaryCycle
+import EdgeCoboundary
 import MatrixContraction.OrderedApplication
+import RowRotation
+import SelectedEdgePresentation
+import SelectedCylinderSplice
+import ConnectedTwoRegular
+import FrontierSubstitution
+import FrontierAttachment
+import FrontierCongruence
+import ColumnCut
+import TwoColumnWitness
+import ThreeColumnWitness
+import TwoColumnWitnessCut
+import ThreeColumnWitnessCut
+import FiniteTransfer
+import AcceptedRatio
+import PhysicalEdges
+import GenericEdgeWeights
+import CountedHamiltonian
+import SelectedCharacterization
+import SelectedIff
 
-/-! The named supporting results must use only Lean's standard logical axioms. -/
+/-! Exact named supporting results; standard logical axioms only. -/
 
 #print axioms CylinderSplice.splice_cycles_isHamiltonianCycle
 #print axioms CylinderSplice.splice_edgeSet
@@ -57,3 +85,122 @@ import MatrixContraction.OrderedApplication
 #print axioms CylinderMatrixContraction.symmetricUnder_list_prod
 #print axioms CylinderMatrixContraction.uniform_finite_imbalance_of_support
 #print axioms CylinderMatrixContraction.ordered_factor_family_ratio_tendsto_one
+#print axioms SelectedEdgePresentation.isHamiltonianCycle_append_swap
+#print axioms SelectedEdgePresentation.isHamiltonianCycle_reverse
+#print axioms SelectedEdgePresentation.exists_edge_first
+#print axioms SelectedEdgePresentation.exists_edge_first_with_weight
+#print axioms TriangularCylinder.exists_splice_of_selected_edges
+#print axioms ConnectedTwoRegular.exists_isHamiltonianCycle_at_of_neighbor_ncard_two
+#print axioms ConnectedTwoRegular.exists_isHamiltonianCycle_of_neighbor_ncard_two
+#print axioms ConnectedTwoRegular.exists_isHamiltonianCycle_of_degree_two
+#print axioms CylinderFrontier.glue_preconnected_iff
+#print axioms CylinderFrontier.glue_connected_iff
+#print axioms CylinderFrontier.boundary_reachable_of_glue_reachable
+#print axioms CylinderFrontier.touchesBoundary_of_glue_preconnected
+#print axioms CylinderFrontier.touchesBoundary_of_glue_connected
+#print axioms CylinderFrontier.touchesBoundary_of_glue_connected_of_nonempty_boundary
+#print axioms CylinderFrontier.glue_connected_swap
+#print axioms CylinderFrontier.suffix_touchesBoundary_of_glue_connected
+#print axioms CylinderFrontier.both_touchBoundary_of_glue_connected
+#print axioms CylinderFrontier.glue_suffix_reachable_iff
+#print axioms CylinderFrontier.boundaryGraph_adj
+#print axioms CylinderFrontier.boundaryGraph_reachable
+#print axioms CylinderFrontier.compressedPrefix_reachable
+#print axioms CylinderFrontier.touchesBoundary_compressedPrefix
+#print axioms CylinderFrontier.glue_suffix_reachable_iff_compressedPrefix
+#print axioms TriangularCylinder.ColumnCut.ofVertex_toVertex
+#print axioms TriangularCylinder.ColumnCut.toVertex_ofVertex
+#print axioms TriangularCylinder.ColumnCut.vertexEquiv_row
+#print axioms TriangularCylinder.ColumnCut.suffixPart_no_boundary_edges
+#print axioms TriangularCylinder.ColumnCut.prefixPart_boundary_adj
+#print axioms TriangularCylinder.ColumnCut.adj_column_distance_le_one
+#print axioms TriangularCylinder.ColumnCut.no_interior_suffix_edge
+#print axioms TriangularCylinder.ColumnCut.glue_parts_eq_comap
+#print axioms TriangularCylinder.ColumnCut.glue_parts_connected
+#print axioms TriangularCylinder.ColumnCut.prefixPart_touchesBoundary
+#print axioms TriangularCylinder.ColumnCut.both_parts_touchBoundary
+#print axioms CountedHamiltonian.selection_has_presentation
+#print axioms CountedHamiltonian.presentationSelection_surjective
+#print axioms CountedHamiltonian.ofCycle_eq_iff
+#print axioms CountedHamiltonian.selection_edge_mem
+#print axioms CountedHamiltonian.selection_card
+#print axioms CountedHamiltonian.selection_three_le_card
+#print axioms CountedHamiltonian.selectionWeight_ofCycle
+#print axioms TriangularCylinder.selectionParity_ofCycle
+#print axioms TriangularCylinder.parityCount_partition
+#print axioms TriangularCylinder.perimeterCycle_isHamiltonianCycle
+#print axioms TriangularCylinder.perimeterCycle_typeParity
+#print axioms TriangularCylinder.perimeterCycle_left_join_edge
+#print axioms TriangularCylinder.perimeterCycle_right_join_edge
+#print axioms TriangularCylinder.perimeterCycle_lastCut_edges_iff
+#print axioms TriangularCylinder.perimeterPrefixWalk_isPath
+#print axioms TriangularCylinder.perimeterPrefixWalk_support_iff
+#print axioms TriangularCylinder.perimeterPrefixWalk_edges
+#print axioms TriangularCylinder.perimeterPrefixWalk_edges_in_cycle
+#print axioms TriangularCylinder.perimeterPrefixWalk_pair_edges_iff
+#print axioms TriangularCylinder.perimeterPrefixWalk_typeParity
+#print axioms TriangularCylinder.exists_two_column_zero_witness
+#print axioms TriangularCylinder.threeWitnessCycle_isHamiltonianCycle
+#print axioms TriangularCylinder.threeWitnessCycle_typeParity
+#print axioms TriangularCylinder.threeWitnessCycle_left_join_edge
+#print axioms TriangularCylinder.threeWitnessCycle_right_join_edge
+#print axioms TriangularCylinder.threeWitnessCycle_lastCut_edges_iff
+#print axioms TriangularCylinder.threePrefixWalk_isPath
+#print axioms TriangularCylinder.threePrefixWalk_support_iff
+#print axioms TriangularCylinder.threePrefixWalk_edges
+#print axioms TriangularCylinder.threePrefixWalk_edges_in_cycle
+#print axioms TriangularCylinder.threePrefixWalk_pair_edges_iff
+#print axioms TriangularCylinder.threePrefixWalk_typeParity
+#print axioms TriangularCylinder.exists_three_column_zero_witness
+#print axioms TriangularCylinder.threePrefixVertex_first
+#print axioms TriangularCylinder.threePrefixVertex_last
+#print axioms CylinderTransfer.transitionMatrix_apply
+#print axioms CylinderTransfer.card_labelledPath_zero
+#print axioms CylinderTransfer.card_labelledPath_succ
+#print axioms CylinderTransfer.card_labelledPath
+#print axioms CylinderTransfer.realTransitionMatrix_pow
+#print axioms CylinderTransfer.card_labelledPath_real
+#print axioms CylinderTransfer.card_accepted
+#print axioms CylinderTransfer.card_accepted_zero
+#print axioms CylinderTransfer.card_accepted_real
+#print axioms CylinderTransfer.realTransitionMatrix_pow_pos_iff
+#print axioms CylinderTransfer.card_accepted_pos_of_positive_power
+#print axioms CylinderTransfer.eventually_card_accepted_pos
+#print axioms CylinderTransfer.accepted_ratio_limit
+#print axioms CountedHamiltonian.coe_selectedEdges
+#print axioms CountedHamiltonian.selectedEdges_eq_of_edgeSet_eq
+#print axioms CountedHamiltonian.edgeWeight_eq_sum_selectedEdges
+#print axioms CountedHamiltonian.edgeWeight_eq_of_selectedEdges_eq
+#print axioms CountedHamiltonian.edgeWeight_eq_of_edgeSet_eq
+#print axioms CountedHamiltonian.hamiltonianCycle_edgeWeight_eq_of_selectedEdges_eq
+#print axioms CountedHamiltonian.hamiltonianCycle_edgeWeight_eq_of_edgeSet_eq
+#print axioms CountedHamiltonian.selection_eq_iff
+#print axioms TriangularCylinder.parity_eq_zero_or_one
+#print axioms TriangularEdgeEncoding.nextRow_rowSucc
+#print axioms TriangularEdgeEncoding.nextRow_asymm
+#print axioms TriangularEdgeEncoding.forward_col_le
+#print axioms TriangularEdgeEncoding.forward_asymm
+#print axioms TriangularEdgeEncoding.forward_source_target
+#print axioms TriangularEdgeEncoding.toEdge_mem_edgeSet
+#print axioms TriangularEdgeEncoding.toEdge_endpoints
+#print axioms TriangularEdgeEncoding.toEdge_injective
+#print axioms TriangularEdgeEncoding.exists_toEdge_of_forward
+#print axioms TriangularEdgeEncoding.exists_toEdge
+#print axioms TriangularEdgeEncoding.toGraphEdge_bijective
+#print axioms TriangularEdgeEncoding.edgeEquiv
+#print axioms TriangularEdgeEncoding.edgeEquiv_apply_val
+#print axioms CountedHamiltonian.walk_spanningCoe_edgeSet
+#print axioms CountedHamiltonian.fromEdgeSet_selectedEdges
+#print axioms CountedHamiltonian.hamiltonian_selected_connected
+#print axioms CountedHamiltonian.hamiltonian_selected_ncard
+#print axioms CountedHamiltonian.realization_selected_connected_two
+#print axioms CountedHamiltonian.selectedGraph_edgeSet
+#print axioms CountedHamiltonian.selectedGraph_le
+#print axioms CountedHamiltonian.hamiltonian_edgeSet_eq_of_ncard
+#print axioms CountedHamiltonian.selectedEdges_eq_of_hamiltonian_selected
+#print axioms CountedHamiltonian.selectedEdges_mapLe
+#print axioms CountedHamiltonian.realization_of_selected_hamiltonian
+#print axioms CountedHamiltonian.neighborSet_ncard_eq_degree
+#print axioms CountedHamiltonian.realization_iff_connected_two
+#print axioms CountedHamiltonian.realization_iff_connected_degree_two
+#print axioms CountedHamiltonian.realization_iff_subset_connected_two

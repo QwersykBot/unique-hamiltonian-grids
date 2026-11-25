@@ -1,0 +1,92 @@
+INDEPENDENT COUNTED-FOUNDATION REVIEW — PASS
+Reviewer: /root/grid_proof_review
+25 November 2026
+
+REVIEWED SOURCE
+The reviewed CountedHamiltonian.lean is exactly 6,545 bytes, SHA-256
+8a0e8cd07056a3b869758f5a0abe8001ad67ed15724f6cfdd017e6aafa0b9bd4.
+GenericEdgeWeights.lean is exactly 3,936 bytes, SHA-256
+da3a8e5bef47eb6b802f0c71b0ac6ec4abda47dc3373187ec475ea05f21d91f1.
+The supplied verify.py is exactly 5,672 bytes, SHA-256
+bd28fd13227a0d53985c648e23de7c0d0369b7fa53bc6868bead81543444ccd7.
+
+I read the full new sources, their audit/verifier and README, and the frozen
+CylinderSplice, TriangularCylinder and TriangularParity dependencies. The
+copied input hashes agree with import-pins.json. snapshot-source-pins.json
+binds all nine copied source/documentation files. All original and snapshot
+source bytes still matched these pins after the replay.
+
+SEMANTIC FINDINGS
+1. Selection G is exactly a subtype of Finset (Sym2 V) with a proposition
+   asserting an actual Mathlib IsHamiltonianCycle realization. Only the
+   selected edge finset is data. The existential root, walk and proof do not
+   create additional counted elements. Sym2 makes edges undirected and
+   Finset removes list ordering. Vertex labels remain fixed; there is no
+   graph-automorphism or spatial symmetry quotient.
+2. ofCycle_eq_iff is the correct equality criterion. The presentation map is
+   genuinely proved surjective. The source and README do not claim it is
+   injective, and do not assert universal noninjectivity (which would be
+   false for an empty presentation type). No root/direction multiplicity
+   factor is silently introduced or divided out.
+3. The classical finite instance follows from the finite ambient edge-finset
+   type. Its existential realization predicate is not presented as an
+   executable cycle enumeration algorithm.
+4. selection_edge_mem derives actual graph-edge validity from the realizing
+   walk. selection_card correctly uses the trail's edge-list uniqueness and
+   Hamiltonian length to obtain exactly |V| edges. selection_three_le_card
+   follows from Mathlib's nondegenerate cycle length bound. Empty, singleton
+   and two-vertex graphs do not acquire spurious selections. In particular,
+   this does not import the graph-level singleton Hamiltonian convention.
+5. GenericEdgeWeights uses the genuine IsTrail premise to pass from the
+   edge list sum to the finite selected-edge sum. That premise is necessary
+   for general walks. The same-edge-set equality statements allow distinct
+   roots, endpoints and ambient graphs on the same labeled vertex type.
+   Their Hamiltonian specializations obtain trailhood from IsHamiltonianCycle.
+6. selectionWeight_ofCycle and selectionParity_ofCycle instantiate that
+   established finite-sum identity. The latter uses the exact imported
+   TriangularCylinder.meridianWeight and typeParity definitions. No walk
+   representative is chosen to define selectionParity.
+7. parityCount_partition explicitly proves disjointness and coverage of
+   the two ZMod 2 classes before applying finite-set cardinality. It counts
+   the same Selection type on both sides. The zero/one split is not called
+   a formal contractibility classification.
+
+INDEPENDENT REPLAY
+The initial tool interruption happened after the source-only snapshot was
+created and before a verification receipt existed. I resumed from that
+snapshot; there was one completed replay, without repeating a finished run.
+No original build objects or receipts were copied. The supplied verifier was
+executed unchanged with python3 -B verify.py from:
+/workspace/scratch/3a4d7a8b3970/cylinder_formal_bridges/counted_foundation_independent_review/snapshot
+
+All six modules compiled with -DwarningAsError=true, each with exit code 0
+and empty stderr. The final audit printed exactly the expected 23 declarations.
+Their axiom union is {propext, Classical.choice, Quot.sound}; no other axiom
+dependency appeared. The verifier rejected proof-placeholder/custom-axiom/
+native-decision escape tokens in supplied Lean sources. I also read the
+printed theorem signatures and audit output. This is a fresh replay using
+the supplied verifier, not a claim of an independently implemented compiler.
+
+Observed environment: Lean 4.19.0, compiler commit 6caaee842e94; Mathlib commit
+c44e0c8ee63ca166450922a373c7409c5d26b00b; dependency-manifest SHA-256
+5c6421b650bc87a2427a892a39e5522dc44543ca4ac1bd6e9f08d536c044a752.
+The tracked Mathlib source tree passed the cleanliness check. The fresh
+receipt began at 2026-11-25T01:07:25.305099+00:00 and records all commands,
+source pins, compiler output and axiom declarations.
+
+SCOPE AND DISPOSITION
+PASS for the finite counted-object and presentation-independent additive
+parity foundation. No mathematical or wording blocker was found.
+
+The count remains classical rather than an executable enumerator. This
+simple-graph/Sym2 representation must not replace the m=2 physical-multigraph
+model. The owner graph is used at m>=3; the intended manuscript application
+has L>=2, although these finite definitions also make sense at other L.
+The packet proves neither annular contractibility correspondence nor a
+transfer-state/counting bijection, state sufficiency, spectral/asymptotic
+formula, or either complete cylinder theorem. Those remain separate tasks.
+
+Original sources and receipts were not changed. No install, download,
+auxiliary-cycle construction, matrix development, or public action occurred.
+This review checkpoint contains original review evidence and compiler logs;
+the reviewed source packet is identified by hashes rather than duplicated.

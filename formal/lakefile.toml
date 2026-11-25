@@ -10,4 +10,4 @@ rev = "c44e0c8ee63ca166450922a373c7409c5d26b00b"
 
 [[lean_lib]]
 name = "CylinderProofs"
-roots = ["CylinderSplice", "TriangularCylinder", "TriangularParity", "MatrixContraction.Basic", "MatrixContraction.Limits", "MatrixContraction.PositiveBlocks", "EnumeratedWalk", "MeridianClassifier", "AuxiliaryCycle", "EdgeCoboundary", "MatrixContraction.OrderedApplication", "RowRotation", "ProofAudit"]
+roots = ["CylinderSplice", "TriangularCylinder", "TriangularParity", "MatrixContraction.Basic", "MatrixContraction.Limits", "MatrixContraction.PositiveBlocks", "EnumeratedWalk", "MeridianClassifier", "AuxiliaryCycle", "EdgeCoboundary", "MatrixContraction.OrderedApplication", "RowRotation", "SelectedEdgePresentation", "SelectedCylinderSplice", "ConnectedTwoRegular", "FrontierSubstitution", "FrontierAttachment", "FrontierCongruence", "ColumnCut", "TwoColumnWitness", "ThreeColumnWitness", "TwoColumnWitnessCut", "ThreeColumnWitnessCut", "FiniteTransfer", "AcceptedRatio", "PhysicalEdges", "GenericEdgeWeights", "CountedHamiltonian", "SelectedCharacterization", "SelectedIff", "ProofAudit"]
