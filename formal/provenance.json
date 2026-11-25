@@ -1,6 +1,6 @@
 {
   "source_publication_commit": "79b692d1b5127d440d91c016b15adc9ffa839590",
-  "scope": "Concrete triangular-cylinder parity-count and physical edge-product ratio limits, with a geometric relative bound uniform over shared fields with common positive edge bounds for every fixed m >= 3; topology and circumference two remain separate.",
+  "scope": "Concrete triangular-cylinder parity-count and physical edge-product ratio limits, plus noisy-report and exact-exterior observation bounds with normalized total variation for fixed m >= 3 and the stated common bounds; topology and circumference two remain separate.",
   "copied_sources": {
     "CylinderSplice.lean": {
       "prototype_sha256": "d8c3e3445b48d56fc526985b798dcdcab05d7e4a3ecdf2154cb47942b9496cc4",
@@ -506,6 +506,66 @@
       "prototype_sha256": "608eb4a6ca34db8dc74de6a3ff75f20a6e66bf83bb256769a007aea46c3f885e",
       "packaged_sha256": "608eb4a6ca34db8dc74de6a3ff75f20a6e66bf83bb256769a007aea46c3f885e",
       "change": "byte-identical"
+    },
+    "NoisyCylinderLikelihood.lean": {
+      "prototype_sha256": "ce7213fb57f11d794d5e64924278318da29a1cb01ca3ab2cfba0e5636d29ed9f",
+      "packaged_sha256": "ce7213fb57f11d794d5e64924278318da29a1cb01ca3ab2cfba0e5636d29ed9f",
+      "change": "byte-identical",
+      "producer_receipt_sha256": "8ad9c4f805501fa61a51404239eb2bdc4d634916c61e65f384e0c7262862d661"
+    },
+    "FiniteParityObservation.lean": {
+      "prototype_sha256": "95ae0f4d2076386c84e14f035156415a4cce3d7ad9f2b5e010f01ca1e89f2ed1",
+      "packaged_sha256": "95ae0f4d2076386c84e14f035156415a4cce3d7ad9f2b5e010f01ca1e89f2ed1",
+      "change": "byte-identical",
+      "producer_receipt_sha256": "f7c20c8810f25c3e824863eae51262f6407cd39ab904061206488df9e566327b"
+    },
+    "NoisyParityObservation.lean": {
+      "prototype_sha256": "2985c325ae383fc93b8335a31243097c0fc6297a4594805ac5eca569f2956df9",
+      "packaged_sha256": "2985c325ae383fc93b8335a31243097c0fc6297a4594805ac5eca569f2956df9",
+      "change": "byte-identical",
+      "producer_receipt_sha256": "8ddb93ef1f5861bc2057f5ffdf29fd9372765c538269c1ac57565f2927dfb6e8"
+    },
+    "ExteriorGeometry.lean": {
+      "prototype_sha256": "e6950cce367814084ff5677fea83c250f1d28acda3d0bdbd3147a8cb7de92702",
+      "packaged_sha256": "e6950cce367814084ff5677fea83c250f1d28acda3d0bdbd3147a8cb7de92702",
+      "change": "byte-identical",
+      "producer_receipt_sha256": "9f76fcc8db21d97c773c4ab4ab4774ff1218be122729007309cb353973d0fe06"
+    },
+    "ExteriorEncoding.lean": {
+      "prototype_sha256": "7ea1869decc322a20051e3e04872b58cce3b396e9307e9f0154e4429cba31a9d",
+      "packaged_sha256": "7ea1869decc322a20051e3e04872b58cce3b396e9307e9f0154e4429cba31a9d",
+      "change": "byte-identical",
+      "producer_receipt_sha256": "bb30e19ae9c56eceaa6ca84641cc6ae7ae55fc70822106a39a58b72be5cf19f1"
+    },
+    "ExteriorSymmetry.lean": {
+      "prototype_sha256": "8ee74ea1c5c73297fcdae44a643598884e7c7e8faeaab187de1b76138c43e1fb",
+      "packaged_sha256": "8ee74ea1c5c73297fcdae44a643598884e7c7e8faeaab187de1b76138c43e1fb",
+      "change": "byte-identical",
+      "producer_receipt_sha256": "4c92f2ca9ab719e6de9e6416c024b3dad066a70f12a690e1d6dea50c946301e7"
+    },
+    "WindowProduct.lean": {
+      "prototype_sha256": "b3844d5dfbaf097b922fcda88b257324c31f9ae71b50c871f10be2f62a6f3c42",
+      "packaged_sha256": "b3844d5dfbaf097b922fcda88b257324c31f9ae71b50c871f10be2f62a6f3c42",
+      "change": "byte-identical",
+      "producer_receipt_sha256": "b9691d1a8733963ca6f968dbc55887efff953adbba7fc38ed27944434f64dea0"
+    },
+    "ExteriorCountImbalance.lean": {
+      "prototype_sha256": "1c3da8344377daf84389ae7b2231d1043c09a71d3e1db60df5ed662ef34b5555",
+      "packaged_sha256": "1c3da8344377daf84389ae7b2231d1043c09a71d3e1db60df5ed662ef34b5555",
+      "change": "byte-identical",
+      "producer_receipt_sha256": "ac7cfd3fc3f27196ec064d1aed37b786325a415487e10f540e338ce3a950f54d"
+    },
+    "CanonicalExteriorObservation.lean": {
+      "prototype_sha256": "7e9d9faf5b1ace2c43187611ee30defee10ca154bffe82b160ef930b06902940",
+      "packaged_sha256": "7e9d9faf5b1ace2c43187611ee30defee10ca154bffe82b160ef930b06902940",
+      "change": "byte-identical",
+      "producer_receipt_sha256": "17331256ce1115685b783586a727098c650d1d816601913dfaadc0a30a6e6e1d"
+    },
+    "ExteriorParityObservation.lean": {
+      "prototype_sha256": "9782ab87b363e4abc85175de5c8fb0e712b9638796a5577cb508bd63be69930d",
+      "packaged_sha256": "9782ab87b363e4abc85175de5c8fb0e712b9638796a5577cb508bd63be69930d",
+      "change": "byte-identical",
+      "producer_receipt_sha256": "eadb6fab9e4a1dea62189f4136bef3a20562b20a25fa7057e394f5d6e6ba00fb"
     }
   }
 }

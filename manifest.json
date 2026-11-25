@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "candidate_version": "2026-11-25-weighted-1",
+  "candidate_version": "2026-11-25-observations-1",
   "proof_sha256": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1",
   "reviewed_sources_sha256": {
     "grid_width_classification.md": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1",
@@ -30,8 +30,8 @@
       "sha256": "ee0df234ac9968c830b1873cb4c9e5cb3ecabb41428ccfac876b360dbb683a79"
     },
     "README.md": {
-      "bytes": 18673,
-      "sha256": "01a6d50e26530e4f7251dd377ca4e91d582e9e0447219d1805b0c94dec0be9f3"
+      "bytes": 18983,
+      "sha256": "0455a44eeaec907e3c77aa04adf6127730d42d5b758e4793179a64d7e7166431"
     },
     "checks/check_cylinder_model.py": {
       "bytes": 18372,
@@ -153,6 +153,10 @@
       "bytes": 16376,
       "sha256": "88878e56e5afe32ea18c5fa74dc86f71ab17ddefcc3f1a6b2fd7efa8fdc82b55"
     },
+    "formal/CanonicalExteriorObservation.lean": {
+      "bytes": 4820,
+      "sha256": "7e9d9faf5b1ace2c43187611ee30defee10ca154bffe82b160ef930b06902940"
+    },
     "formal/ColumnBoundaryDegree.lean": {
       "bytes": 5226,
       "sha256": "253de1f7cd3dab7661ec40cd33d41ebbff80e23979399fdb48ba1c9a06483d7e"
@@ -265,6 +269,30 @@
       "bytes": 8440,
       "sha256": "8287ef5c579e921a374ca6201fe26f70eca60d0097aede0ba71f988d50d450c7"
     },
+    "formal/ExteriorCountImbalance.lean": {
+      "bytes": 4490,
+      "sha256": "1c3da8344377daf84389ae7b2231d1043c09a71d3e1db60df5ed662ef34b5555"
+    },
+    "formal/ExteriorEncoding.lean": {
+      "bytes": 12773,
+      "sha256": "7ea1869decc322a20051e3e04872b58cce3b396e9307e9f0154e4429cba31a9d"
+    },
+    "formal/ExteriorGeometry.lean": {
+      "bytes": 7505,
+      "sha256": "e6950cce367814084ff5677fea83c250f1d28acda3d0bdbd3147a8cb7de92702"
+    },
+    "formal/ExteriorParityObservation.lean": {
+      "bytes": 3733,
+      "sha256": "9782ab87b363e4abc85175de5c8fb0e712b9638796a5577cb508bd63be69930d"
+    },
+    "formal/ExteriorSymmetry.lean": {
+      "bytes": 8616,
+      "sha256": "8ee74ea1c5c73297fcdae44a643598884e7c7e8faeaab187de1b76138c43e1fb"
+    },
+    "formal/FiniteParityObservation.lean": {
+      "bytes": 5162,
+      "sha256": "95ae0f4d2076386c84e14f035156415a4cce3d7ad9f2b5e010f01ca1e89f2ed1"
+    },
     "formal/FiniteTransfer.lean": {
       "bytes": 5056,
       "sha256": "c0944775990d54f418c31570dea12c852fc7f9d1c011642f98f4fd41392310a1"
@@ -329,6 +357,14 @@
       "bytes": 3260,
       "sha256": "f02907309c7dca23e85385c0eeaff89b0d323b005581ac4eea0f138e5b8ac5fb"
     },
+    "formal/NoisyCylinderLikelihood.lean": {
+      "bytes": 8098,
+      "sha256": "ce7213fb57f11d794d5e64924278318da29a1cb01ca3ab2cfba0e5636d29ed9f"
+    },
+    "formal/NoisyParityObservation.lean": {
+      "bytes": 5799,
+      "sha256": "2985c325ae383fc93b8335a31243097c0fc6297a4594805ac5eca569f2956df9"
+    },
     "formal/ParityOneSplice.lean": {
       "bytes": 2359,
       "sha256": "2e4a3fbb0674a85bb46af3f2d289189c42f23fe06fa59a4faa20a8c2b85ce449"
@@ -346,12 +382,12 @@
       "sha256": "cbc25db1f583294ca55ea1d57c999980235e6f3345a79494daf845a69f3cdc35"
     },
     "formal/ProofAudit.lean": {
-      "bytes": 51852,
-      "sha256": "3ae53f1f435ed61dd379e992f28cdcf931a53a459e051185b7568adfbad53903"
+      "bytes": 56488,
+      "sha256": "05c96b9fd6286be653612b9591959795952b25ededeb94444ee7d447560dc876"
     },
     "formal/README.md": {
-      "bytes": 34096,
-      "sha256": "514a4652c943285941d3cff7ba270309545dad1dcaa579f9b802533440ab9d50"
+      "bytes": 38289,
+      "sha256": "d6319079af4ec69a4810d27569a8ea9db54ae1d7de669d18104d32457b8072d7"
     },
     "formal/ReplacementRestriction.lean": {
       "bytes": 1749,
@@ -501,6 +537,10 @@
       "bytes": 6375,
       "sha256": "61a9244a9d35cf89fc2c88309b16a7989cb9a94c1c7efa826263b87a9593c4c8"
     },
+    "formal/WindowProduct.lean": {
+      "bytes": 6935,
+      "sha256": "b3844d5dfbaf097b922fcda88b257324c31f9ae71b50c871f10be2f62a6f3c42"
+    },
     "formal/ZigzagException.lean": {
       "bytes": 8496,
       "sha256": "0dc6bd98c607bc90198a33c410ea8604be27153d90190c30700d8f653d11e775"
@@ -510,16 +550,20 @@
       "sha256": "40b1835f8096d30247e849ae1aa3425e5f71f2307ddeaf4e324509a6c01b6b97"
     },
     "formal/lakefile.toml": {
-      "bytes": 2552,
-      "sha256": "c19f7a2183f44ce26b3b71796e54c4e8f0f61d940447a047a1e2057c5bcf015b"
+      "bytes": 2796,
+      "sha256": "b6c1a639ea76a5b22ecf152c18ff0fb9042c62c3c71d1f3b512047607ca1ff4e"
     },
     "formal/lean-toolchain": {
       "bytes": 25,
       "sha256": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea"
     },
+    "formal/observations.md": {
+      "bytes": 11602,
+      "sha256": "2a26a0f6c84396eef301fec947a82d6853ae0595bd97b33f9351cb504c740849"
+    },
     "formal/provenance.json": {
-      "bytes": 26702,
-      "sha256": "b2e8148d2504ba16cd03ccfaa641a54e1d5ecedeac2f693d88929c0e6f724e91"
+      "bytes": 30355,
+      "sha256": "0f57df3b6ddd9c1a17c24116265612b17be7c21ba1fc23480f8dedbe6328bc92"
     },
     "formal/reviews/accepted_helpers.md": {
       "bytes": 3570,
@@ -609,6 +653,10 @@
       "bytes": 9031,
       "sha256": "9961653feba4068868af3ab4f737f1f05904a388a79a055565582e88d588aab6"
     },
+    "formal/reviews/physical_observations.md": {
+      "bytes": 9771,
+      "sha256": "e695bc80a57998d7afff8aa4dc02ba264d4befd3db8f46c148f1495c0d1569b1"
+    },
     "formal/reviews/selected_edge_characterization.json": {
       "bytes": 2020,
       "sha256": "088d112738953476e2cbca7ce15c5d90a1b1950fce32217a99991e2e5e43d606"
@@ -658,8 +706,8 @@
       "sha256": "61a8e6cb476cb8a8ac16f68999567b302b91f3db984ea157997a2de48b3ddd8a"
     },
     "formal/verify.py": {
-      "bytes": 49599,
-      "sha256": "ac2bf3343e51b78a107cd438521578cd123c8f2f1fd21854fa307d92c364d597"
+      "bytes": 53380,
+      "sha256": "368baf42390b0a53edba39135753a044910018eab6d5f2b6b72522797be9fe2c"
     },
     "four_n_cutoff.md": {
       "bytes": 11274,
@@ -674,8 +722,8 @@
       "sha256": "46ab4d73958ff6b46aa49c2362e7ee446903388e5c13c79b5f776378bb266453"
     },
     "provenance.json": {
-      "bytes": 34306,
-      "sha256": "e9f5d613bc84a888a0b7db1e9b765fad5c0cbdff897fd7b2203cafa8fb320535"
+      "bytes": 34429,
+      "sha256": "79677d8882a03a29f58cdf413a0a51a55ac3f1c67c8648a9fb07440789fe4887"
     },
     "results/cylinder_model.json": {
       "bytes": 5500,
