@@ -1,6 +1,6 @@
 {
   "source_publication_commit": "79b692d1b5127d440d91c016b15adc9ffa839590",
-  "scope": "Exact finite triangular-cylinder counted correspondence for m >= 3 and L >= 3, plus supporting lemmas; neither cylinder asymptotic theorem is fully formalized.",
+  "scope": "Concrete triangular-cylinder meridian-parity count ratios and a finite geometric imbalance bound for every fixed m >= 3; topology and circumference two remain separate.",
   "copied_sources": {
     "CylinderSplice.lean": {
       "prototype_sha256": "d8c3e3445b48d56fc526985b798dcdcab05d7e4a3ecdf2154cb47942b9496cc4",
@@ -370,6 +370,101 @@
     "StateEndVertical.lean": {
       "prototype_sha256": "ae3a2af383b5a755d61feeac4c69483d85a514c1017248d35d05526c04455d32",
       "packaged_sha256": "ae3a2af383b5a755d61feeac4c69483d85a514c1017248d35d05526c04455d32",
+      "change": "byte-identical"
+    },
+    "ColumnTailSums.lean": {
+      "prototype_sha256": "1e17ae02043ee82390d7a856cdf3140195f140a11ec79c5c6066361da28b38a8",
+      "packaged_sha256": "1e17ae02043ee82390d7a856cdf3140195f140a11ec79c5c6066361da28b38a8",
+      "change": "byte-identical"
+    },
+    "SpliceRightRegion.lean": {
+      "prototype_sha256": "486a7b249a80dd73035a59ab2dc47c67d6e85a9adb5b10d8db71d61bca750b90",
+      "packaged_sha256": "486a7b249a80dd73035a59ab2dc47c67d6e85a9adb5b10d8db71d61bca750b90",
+      "change": "byte-identical"
+    },
+    "SpliceTailWeights.lean": {
+      "prototype_sha256": "c64ae8164887a6ebb36d9b518b7ec2d9171ac2a4d9d25bcdd544582f56a4c588",
+      "packaged_sha256": "c64ae8164887a6ebb36d9b518b7ec2d9171ac2a4d9d25bcdd544582f56a4c588",
+      "change": "byte-identical"
+    },
+    "StateWidthTransport.lean": {
+      "prototype_sha256": "3ba6dedec8737525c43175d72f8e3ac6f2a3240890f192e202a0de338032d420",
+      "packaged_sha256": "3ba6dedec8737525c43175d72f8e3ac6f2a3240890f192e202a0de338032d420",
+      "change": "byte-identical"
+    },
+    "SpliceAssignedParity.lean": {
+      "prototype_sha256": "4a1cc134b84a59d25297c22e67605cad071558f8017d5a47ec6a17df343d7649",
+      "packaged_sha256": "4a1cc134b84a59d25297c22e67605cad071558f8017d5a47ec6a17df343d7649",
+      "change": "byte-identical"
+    },
+    "CoreStateFlip.lean": {
+      "prototype_sha256": "9f6971da8b14b6f1bc73d806d124dbe90c7047bdfa9a6224bdbcb4858509bf63",
+      "packaged_sha256": "9f6971da8b14b6f1bc73d806d124dbe90c7047bdfa9a6224bdbcb4858509bf63",
+      "change": "byte-identical"
+    },
+    "SpliceCutTransport.lean": {
+      "prototype_sha256": "c67bd244c09897df3f669bd22f75375ffb84a07ae40bedb4d76625589d2fb6af",
+      "packaged_sha256": "c67bd244c09897df3f669bd22f75375ffb84a07ae40bedb4d76625589d2fb6af",
+      "change": "byte-identical"
+    },
+    "CycleWidthTransport.lean": {
+      "prototype_sha256": "7a0b07181ff1903c08b0970b3aa30e4932cddb9e3620cc23d4dc84adff61ada1",
+      "packaged_sha256": "7a0b07181ff1903c08b0970b3aa30e4932cddb9e3620cc23d4dc84adff61ada1",
+      "change": "byte-identical"
+    },
+    "SpliceIndexedState.lean": {
+      "prototype_sha256": "a252f061eb580340c54197eec2c429c07db2cc76912b36aeadaa0f0bd845c1b5",
+      "packaged_sha256": "a252f061eb580340c54197eec2c429c07db2cc76912b36aeadaa0f0bd845c1b5",
+      "change": "byte-identical"
+    },
+    "IndexedEndVertical.lean": {
+      "prototype_sha256": "a2b728af434cd56d18f856f696969117709e4c1166407e4b9095da9a5b8d6108",
+      "packaged_sha256": "a2b728af434cd56d18f856f696969117709e4c1166407e4b9095da9a5b8d6108",
+      "change": "byte-identical"
+    },
+    "ParityOneSplice.lean": {
+      "prototype_sha256": "2e4a3fbb0674a85bb46af3f2d289189c42f23fe06fa59a4faa20a8c2b85ce449",
+      "packaged_sha256": "2e4a3fbb0674a85bb46af3f2d289189c42f23fe06fa59a4faa20a8c2b85ce449",
+      "change": "byte-identical"
+    },
+    "CoreLabelFlip.lean": {
+      "prototype_sha256": "dc1cc959e699b6854fc9de7e3be5796e3b404a1e239f5bdc0d070893aab7f23a",
+      "packaged_sha256": "dc1cc959e699b6854fc9de7e3be5796e3b404a1e239f5bdc0d070893aab7f23a",
+      "change": "byte-identical"
+    },
+    "SpliceLeftState.lean": {
+      "prototype_sha256": "136d457154ea3e7c63b5530c688f617ea68077f36ef9b973f7d80473b1f52604",
+      "packaged_sha256": "136d457154ea3e7c63b5530c688f617ea68077f36ef9b973f7d80473b1f52604",
+      "change": "byte-identical"
+    },
+    "CommonReturns.lean": {
+      "prototype_sha256": "e7071f8e42b4b3dd9668c1ceb82fa9055706ef940bab0fcc31f23d931afb6313",
+      "packaged_sha256": "e7071f8e42b4b3dd9668c1ceb82fa9055706ef940bab0fcc31f23d931afb6313",
+      "change": "byte-identical"
+    },
+    "StateInterval.lean": {
+      "prototype_sha256": "ac1b574fadd028a149e8dbed3244c5c196b505c89e7d11d9e8f75031811bcbb4",
+      "packaged_sha256": "ac1b574fadd028a149e8dbed3244c5c196b505c89e7d11d9e8f75031811bcbb4",
+      "change": "byte-identical"
+    },
+    "AuxiliaryParity.lean": {
+      "prototype_sha256": "a04ff35c5df77e473b6bbbede3083fc956a2eec026d02298bfe9866009012688",
+      "packaged_sha256": "a04ff35c5df77e473b6bbbede3083fc956a2eec026d02298bfe9866009012688",
+      "change": "byte-identical"
+    },
+    "CoreConnectivity.lean": {
+      "prototype_sha256": "a0be084d04c8fc6257600cd80a1fd1be1227979f8594685ce88751be299edd17",
+      "packaged_sha256": "a0be084d04c8fc6257600cd80a1fd1be1227979f8594685ce88751be299edd17",
+      "change": "byte-identical"
+    },
+    "TriangularCountRatio.lean": {
+      "prototype_sha256": "f9b13d53a60ed9bf0953c4dec06be44c5392d83cfc9c5bb7a1340afa0bd216c3",
+      "packaged_sha256": "f9b13d53a60ed9bf0953c4dec06be44c5392d83cfc9c5bb7a1340afa0bd216c3",
+      "change": "byte-identical"
+    },
+    "TriangularCountImbalance.lean": {
+      "prototype_sha256": "11f36283596d11a48deb40033cc79ad19d0b7fb01e7a4a83710565771a1338f1",
+      "packaged_sha256": "11f36283596d11a48deb40033cc79ad19d0b7fb01e7a4a83710565771a1338f1",
       "change": "byte-identical"
     }
   }

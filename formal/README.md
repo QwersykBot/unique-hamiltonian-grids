@@ -1,15 +1,30 @@
-# Exact finite cylinder counting and supporting lemmas
+# Checked triangular-cylinder parity-count ratio
 
-This is a development checkpoint of Lean proofs supporting the
-[triangular-cylinder argument](../triangular_cylinder_asymptotics.md).
-It proves an exact finite correspondence between undirected Hamiltonian
-edge selections and accepted labelled transfers for consistently triangulated
-cylinders with circumference and length at least three. It also contains
-generic ratio theorems for labelled transfers and products of varying
-nonnegative matrices.
-**Neither cylinder asymptotic theorem has been fully formalized.**
-The concrete symmetry, support-connectivity, and return-path hypotheses of
-the ratio theorem remain to be supplied.
+This Lean/mathlib project proves the concrete combinatorial ratio limit
+underlying the [triangular-cylinder argument](../triangular_cylinder_asymptotics.md).
+For a fixed circumference $m\ge3$, let $C_p(m,L)$ count the undirected
+Hamiltonian edge selections on the consistently triangulated cylinder with
+$L$ columns and wrap-edge parity $p\in\{0,1\}$. Then both counts are positive
+for all sufficiently large $L$, and
+
+$$
+\frac{C_1(m,L)}{C_0(m,L)}\longrightarrow1,
+\qquad
+\frac{C_0(m,L)}{C_1(m,L)}\longrightarrow1.
+$$
+
+The main limit results are in [TriangularCountRatio](TriangularCountRatio.lean).
+Their hypotheses are only the fixed natural circumference and $m\ge3$.
+The exact counted correspondence, actual-state symmetry, connectivity,
+and common return paths are all proved by the project. Hamiltonian cycles
+are counted as unordered edge sets on fixed labelled vertices, with no
+root or traversal multiplicity.
+
+The formal result concerns combinatorial meridian parity. Its identification
+with annular contractibility, the circumference-two multigraph convention,
+weighted physical-cylinder extensions, and absolute spectral asymptotics
+remain separate. The square-cylinder and rectangular-grid results have
+not been formalized by this project.
 
 The project uses Lean 4.19.0, compiler commit `6caaee842e94`, and Mathlib
 commit `c44e0c8ee63ca166450922a373c7409c5d26b00b`. These are fixed historical
@@ -176,15 +191,16 @@ column is processed. The two conventions are proved explicitly.
 
 Actual occurrence separately requires a standard Hamiltonian cycle in the
 intended ambient graph. The raw parity flip is involutive and has no fixed
-points; closure of the actual occurring states under that flip is still
-an application obligation.
+points. [CoreStateFlip](CoreStateFlip.lean), described below, proves closure
+of the nonfull actual core under this flip.
 
 [CommonWitnessState](CommonWitnessState.lean) computes the entire state of
 the two- and three-column zero-parity witnesses: only the first- and
 last-row horizontal crossings are selected, every pair of boundary rows
 is connected inside the prefix, and parity is zero. It proves literal
 equality of the two states and actual occurrence for every `m ≥ 3`.
-It does not yet prove transfer returns of lengths two and three.
+[CommonReturns](CommonReturns.lean) uses these witnesses to prove the
+common-state transfer returns of lengths two and three.
 
 The [two-column zigzag](ZigzagException.lean) selects all horizontal and
 diagonal edges and no vertical edges. Its actual selected graph is
@@ -212,7 +228,10 @@ every old prefix, including cut zero.
 [SplicePrefixReachability](SplicePrefixReachability.lean) preserves every old
 prefix reachability query for the same constructed Hamiltonian splice, and
 [SpliceStateFields](SpliceStateFields.lean) preserves its outgoing H/D and
-reach fields. Assigned-prefix parity under that splice remains separate.
+reach fields. [SpliceAssignedParity](SpliceAssignedParity.lean) proves that
+the assigned parity at every shifted old cut changes by the whole-cycle
+parity increment. The physical V/D tail strictly beyond the cut is unchanged;
+the outgoing D at the cut remains charged to the prefix.
 [StateEndVertical](StateEndVertical.lean) obtains both selected end verticals
 from a nonfull actual state, including a two-column witness.
 
@@ -348,7 +367,7 @@ countedTransferEquiv hm hn p :
   ParitySelection hm p (n + 2) ≃ AcceptedObject hm p n
 
 parityCount_eq_card_accepted hm hn p :
-  CountedHamiltonian.parityCount m (n + 2) hm p =
+  TriangularCylinder.parityCount m (n + 2) hm p =
     Fintype.card (AcceptedObject hm p n)
 ```
 
@@ -366,21 +385,75 @@ between ordered cuts of one longer actual cycle, with length equal to the
 difference of their cut indices. It does not by itself supply common-state
 returns or paths between arbitrary core states.
 
-## Remaining cylinder obligations
+## Concrete symmetry, connectivity, and the ratio limit
 
-To obtain the formal asymptotic ratio for the actual cylinder counts, the
-development still needs closure of actual core states under the parity
-flip, local-label and terminal-label equivalences under that involution,
-paths between every pair of core states, and common-state returns of
-lengths two and three. The checked generic ratio theorem then supplies
-eventual positivity from these hypotheses and the concrete nonempty
-boundary choices. Weighted applications also require their claimed
-physical edge-weight bounds.
+[CoreStateFlip](CoreStateFlip.lean) closes the actual core under changing
+only its parity bit. It prepends an actual aligned three-column auxiliary
+of odd parity to an occurrence witness. The resulting state has unchanged
+H/D masks and boundary reachability, and the opposite assigned parity.
+The map is an involution on the existing core type.
 
-Identification of combinatorial parity with annular contractibility,
-the circumference-two multigraph convention, and the stronger absolute
-Perron asymptotics are additional obligations. The generic ratio theorem
-does not discharge them.
+[CoreLabelFlip](CoreLabelFlip.lean) proves explicit equivalences of the
+counted local and terminal label types. For a local label, one actual joined
+cycle realizes both flipped states at consecutive shifted cuts. Its physical
+V mask is identical to the original label's mask. The terminal construction
+also flips the whole-cycle parity. Both equivalences act as the identity on
+mask data; their inverse constructions use the involution. No symmetry of
+initial labels is needed.
+
+[SpliceLeftState](SpliceLeftState.lean) preserves every old left state when
+a cylinder is appended on the right. [CommonReturns](CommonReturns.lean)
+self-splices the concrete two- and three-column witnesses, producing actual
+paths of lengths two and three at the same `commonCoreState`.
+[AuxiliaryParity](AuxiliaryParity.lean) constructs an aligned connector in
+either parity class. [CoreConnectivity](CoreConnectivity.lean) uses two
+actual splices and a connector matching the source witness's parity to put
+any two core states into one Hamiltonian cycle. [StateInterval](StateInterval.lean)
+then extracts the finite path between those two cuts of that same cycle.
+Original occurrence witnesses may have only two columns; nonfullness gives
+the selected end edges needed by the construction.
+
+[TriangularCountRatio](TriangularCountRatio.lean) applies the generic
+accepted-path ratio theorem to these concrete data, rewrites the actual
+count formula only eventually for `n >= 1`, and removes the `n + 2` column
+shift. It proves:
+
+```lean
+triangular_parity_ratio_limit (m : ℕ) (hm : 3 ≤ m) :
+  (∀ᶠ L in atTop, 0 < parityCount m L hm 1) ∧
+    Tendsto (fun L =>
+      (parityCount m L hm 0 : ℝ) / (parityCount m L hm 1 : ℝ))
+      atTop (𝓝 1)
+```
+
+The companion `triangular_parity_ratio_limit_reciprocal` proves the odd-over-
+even orientation and eventual positivity of the even count. Its inverse-limit
+step uses continuity at the nonzero limit one, allowing arbitrary short-length
+zeros. Both conclusions concern the complete sequence of column lengths.
+
+[TriangularCountImbalance](TriangularCountImbalance.lean) further proves
+that, for each fixed $m\ge3$, there are an integer $N\ge2$ and a real
+$0\le\rho<1$ such that every $L\ge3$ satisfies
+
+$$
+|C_0(m,L)-C_1(m,L)|\le
+\rho^{\lfloor(L-2)/N\rfloor}\bigl(C_0(m,L)+C_1(m,L)\bigr).
+$$
+
+The constants depend on the fixed circumference and are not numerically
+evaluated. The inequality uses no division and remains valid if counts
+vanish at a short length. It bounds the imbalance relative to the total;
+it does not assert that the absolute difference of the counts tends to zero.
+
+## Scope beyond the formal theorem
+
+The development does not contain the annular embedding and topological
+classification needed to identify even parity with contractibility and odd
+parity with noncontractibility. It does not cover circumference two's parallel
+edge convention, physical weighted counts, or a common leading exponential
+coefficient with a smaller exponential error term. Generic matrix theorems
+and physical weight identities are supporting interfaces for those further
+applications. No uniform convergence rate in the circumference is asserted.
 
 ## Review and provenance
 
@@ -421,7 +494,18 @@ records the remaining state and prefix interfaces and their authorship
 limits. Separate splice reports cover the exact selected-graph identity,
 prefix restriction, and the three non-parity state fields.
 
+The final stage is covered by the [state and return review](reviews/splice_returns_and_interval.md),
+[all-pairs connectivity review](reviews/core_connectivity.md),
+[core-flip review](reviews/core_state_flip.md),
+[counted-label symmetry review](reviews/core_label_flip.md), and
+[final ratio review](reviews/triangular_count_ratio.md).
+The [finite imbalance review](reviews/triangular_count_imbalance.md) checks
+the geometric strengthening and its quantifier order.
+The [integration assessment](reviews/final_parity_interfaces.md) records the
+remaining parity and coordinate interfaces, the counting conventions, and
+the exact limits of these reviews.
+
 The repository's [CC0 notice](../LICENSE.txt) applies to this original work.
-Mathlib and Lean retain their own licenses. These results are a reproducible
-supporting checkpoint, with no claim of human review, external adoption,
-literature-wide priority, or a complete formal cylinder proof.
+Mathlib and Lean retain their own licenses. The concrete parity-count ratio
+is a kernel-checked theorem under the pinned dependencies. Human review,
+external adoption, and literature-wide priority have not been established.

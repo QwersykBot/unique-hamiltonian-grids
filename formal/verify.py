@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the pinned Lean project and audit the exact named supporting results."""
+"""Build the pinned Lean project and audit the exact named cylinder results."""
 
 from __future__ import annotations
 
@@ -92,6 +92,25 @@ MODULES = (
     "SplicePrefixReachability",
     "SpliceStateFields",
     "StateEndVertical",
+    "ColumnTailSums",
+    "SpliceRightRegion",
+    "SpliceTailWeights",
+    "StateWidthTransport",
+    "SpliceAssignedParity",
+    "CoreStateFlip",
+    "SpliceCutTransport",
+    "CycleWidthTransport",
+    "SpliceIndexedState",
+    "IndexedEndVertical",
+    "ParityOneSplice",
+    "CoreLabelFlip",
+    "SpliceLeftState",
+    "CommonReturns",
+    "StateInterval",
+    "AuxiliaryParity",
+    "CoreConnectivity",
+    "TriangularCountRatio",
+    "TriangularCountImbalance",
 )
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 EXPECTED_AUDITS = set("""
@@ -688,6 +707,99 @@ TriangularCylinder.SpliceStateFields.stateAt_reach_eq
 TriangularCylinder.StateEndVertical.full_masks_of_no_end_vertical_two_columns
 TriangularCylinder.StateEndVertical.exists_selected_verticals_of_nonfull_stateAt
 TriangularCylinder.StateEndVertical.exists_selected_end_edges_of_nonfull_stateAt
+ColumnTailSums.shiftCol_val
+ColumnTailSums.shiftCol_eq_natAdd
+ColumnTailSums.shiftCol_injective
+ColumnTailSums.sum_tail_shift
+ColumnTailSums.sum_tail_shift_of_eq
+TriangularCylinder.SpliceRightRegion.lowerCol_shift
+TriangularCylinder.SpliceRightRegion.upperCol_shift
+TriangularCylinder.SpliceRightRegion.right_adj_iff_of_pos_column
+TriangularCylinder.SpliceRightRegion.right_vertical_adj_iff
+TriangularCylinder.SpliceRightRegion.right_intercolumn_adj_iff
+TriangularCylinder.SpliceTailWeights.selectedGeometry_vertical_true_iff
+TriangularCylinder.SpliceTailWeights.selectedGeometry_diagonal_true_iff
+TriangularCylinder.SpliceTailWeights.selected_filter_add_tail
+TriangularCylinder.SpliceTailWeights.vertical_tail_eq
+TriangularCylinder.SpliceTailWeights.diagonal_tail_eq
+TriangularCylinder.StateWidthTransport.fullWidthEquiv_eq_widthEquiv
+TriangularCylinder.StateWidthTransport.occurs_stateAt_comap_widthEquiv
+TriangularCylinder.StateWidthTransport.occurs_joined_state
+TriangularCylinder.SpliceAssignedParity.assignedParity_add_of_splice
+TriangularCylinder.SpliceAssignedParity.stateAt_parity_add_of_splice
+TriangularCylinder.Transfer.stateAt_flip_of_splice
+TriangularCylinder.Transfer.occurs_flip_of_nonfull
+TriangularCylinder.Transfer.coreFlip
+TriangularCylinder.Transfer.coreFlip_val
+TriangularCylinder.Transfer.coreFlip_involutive
+TriangularCylinder.Transfer.coreFlip_ne
+TriangularCylinder.Transfer.coreFlipEquiv
+TriangularCylinder.Transfer.coreFlipEquiv_apply
+TriangularCylinder.SpliceCutTransport.shiftCut_castSucc
+TriangularCylinder.SpliceCutTransport.shiftCut_succ
+TriangularCylinder.SpliceCutTransport.shiftCut_last
+TriangularCylinder.SpliceCutTransport.cutTail_shiftCut
+TriangularCylinder.SpliceCutTransport.cutState_shiftCut_eq_stateAt
+TriangularCylinder.SpliceCutTransport.shiftStep_column
+TriangularCylinder.SpliceCutTransport.shift_last_column
+TriangularCylinder.SpliceCutTransport.widthEquiv_shiftCol
+TriangularCylinder.CycleWidthTransport.widthHom_apply
+TriangularCylinder.CycleWidthTransport.widthHom_row
+TriangularCylinder.CycleWidthTransport.widthHom_col_val
+TriangularCylinder.CycleWidthTransport.widthHom_bijective
+TriangularCylinder.CycleWidthTransport.widthHom_refl
+TriangularCylinder.CycleWidthTransport.map_isHamiltonianCycle
+TriangularCylinder.CycleWidthTransport.typeParity_map
+TriangularCylinder.CycleWidthTransport.selectedGraph_map
+TriangularCylinder.SpliceIndexedState.stateAt_flip_of_splice_width
+TriangularCylinder.SpliceIndexedState.cutState_flip_of_splice
+TriangularCylinder.SpliceIndexedState.verticalMask_shift_of_splice
+TriangularCylinder.IndexedEndVertical.exists_selected_end_edges_of_nonfull_cutState
+TriangularCylinder.ParityOneSplice.exists_parity_one_left_splice
+TriangularCylinder.Transfer.localRealized_flip
+TriangularCylinder.Transfer.terminalRealized_flip
+TriangularCylinder.Transfer.localRealized_flip_iff
+TriangularCylinder.Transfer.terminalRealized_flip_iff
+TriangularCylinder.Transfer.localLabelFlipEquiv
+TriangularCylinder.Transfer.terminalLabelFlipEquiv
+TriangularCylinder.Transfer.localLabelFlipEquiv_val
+TriangularCylinder.Transfer.terminalLabelFlipEquiv_val
+TriangularCylinder.Transfer.localLabel_card_flip
+TriangularCylinder.Transfer.terminalLabel_card_flip
+TriangularCylinder.SpliceLeftState.leftWidth_prefixVertex
+TriangularCylinder.SpliceLeftState.leftWidth_boundaryCol
+TriangularCylinder.SpliceLeftState.leftWidth_nextCol
+TriangularCylinder.SpliceLeftState.leftWidth_column
+TriangularCylinder.SpliceLeftState.leftWidth_lowerCol
+TriangularCylinder.SpliceLeftState.leftWidth_upperCol
+TriangularCylinder.SpliceLeftState.prefixVertex_col_le
+TriangularCylinder.SpliceLeftState.sum_prefix_castLE
+TriangularCylinder.SpliceLeftState.stateAt_parity_geometry
+TriangularCylinder.SpliceLeftState.selectedGeometry_diagonal_iff
+TriangularCylinder.SpliceLeftState.left_adj_iff
+TriangularCylinder.SpliceLeftState.left_adj_iff_of_col_le
+TriangularCylinder.SpliceLeftState.prefixPart_eq
+TriangularCylinder.SpliceLeftState.stateAt_horizontal_eq
+TriangularCylinder.SpliceLeftState.stateAt_diagonal_eq
+TriangularCylinder.SpliceLeftState.stateAt_reach_eq
+TriangularCylinder.SpliceLeftState.selectedGeometry_vertical_eq
+TriangularCylinder.SpliceLeftState.selectedGeometry_diagonal_eq
+TriangularCylinder.SpliceLeftState.stateAt_parity_eq
+TriangularCylinder.SpliceLeftState.stateAt_eq_of_graph_identity
+TriangularCylinder.SpliceLeftState.exists_splice_preserving_left_state
+TriangularCylinder.Transfer.stateAt_eq_of_zero_splice
+TriangularCylinder.Transfer.common_interval_return
+TriangularCylinder.Transfer.common_return_two
+TriangularCylinder.Transfer.common_return_three
+TriangularCylinder.Transfer.path_between_stateAt
+TriangularCylinder.exists_aligned_six_column_zero_auxiliary
+TriangularCylinder.exists_aligned_auxiliary_of_parity
+TriangularCylinder.Transfer.right_last_adj_iff_of_splice
+TriangularCylinder.Transfer.stateAt_left_eq_of_splice_width
+TriangularCylinder.Transfer.core_path_nonempty
+TriangularCylinder.Transfer.triangular_parity_ratio_limit
+TriangularCylinder.Transfer.triangular_parity_ratio_limit_reciprocal
+TriangularCylinder.Transfer.exists_parityCount_geometric_imbalance
 """.split())
 
 
@@ -760,7 +872,7 @@ def main() -> int:
     receipt = {
         "status": "RUNNING",
         "checked_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-        "scope": "Exact finite triangular-cylinder counted correspondence and supporting lemmas; asymptotic theorems remain unformalized.",
+        "scope": "Concrete triangular-cylinder meridian-parity count ratios and a finite geometric imbalance bound for every fixed m >= 3; topology and circumference two remain separate.",
         "commands": [],
     }
 
@@ -821,9 +933,9 @@ def main() -> int:
         }
         receipt["status"] = "PASS"
         print(version)
-        print(f"PASS: {len(MODULES)} supporting modules; {len(EXPECTED_AUDITS)} exact named audits; "
+        print(f"PASS: {len(MODULES)} proof modules; {len(EXPECTED_AUDITS)} exact named audits; "
               "standard logical axioms only.")
-        print("Finite triangular-cylinder counting correspondence is checked; asymptotic theorems remain unformalized.")
+        print("Actual triangular-cylinder parity-count ratios are checked for fixed m >= 3; topology and circumference two remain separate.")
         return 0
     except (OSError, RuntimeError, ValueError, subprocess.TimeoutExpired) as error:
         receipt["status"] = "FAIL"

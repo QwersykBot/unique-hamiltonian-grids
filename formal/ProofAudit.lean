@@ -72,6 +72,25 @@ import SpliceSelectedGraph
 import SplicePrefixReachability
 import SpliceStateFields
 import StateEndVertical
+import ColumnTailSums
+import SpliceRightRegion
+import SpliceTailWeights
+import StateWidthTransport
+import SpliceAssignedParity
+import CoreStateFlip
+import SpliceCutTransport
+import CycleWidthTransport
+import SpliceIndexedState
+import IndexedEndVertical
+import ParityOneSplice
+import CoreLabelFlip
+import SpliceLeftState
+import CommonReturns
+import StateInterval
+import AuxiliaryParity
+import CoreConnectivity
+import TriangularCountRatio
+import TriangularCountImbalance
 
 /-! Exact named supporting results; standard logical axioms only. -/
 
@@ -669,3 +688,98 @@ import StateEndVertical
 #print axioms TriangularCylinder.StateEndVertical.full_masks_of_no_end_vertical_two_columns
 #print axioms TriangularCylinder.StateEndVertical.exists_selected_verticals_of_nonfull_stateAt
 #print axioms TriangularCylinder.StateEndVertical.exists_selected_end_edges_of_nonfull_stateAt
+
+#print axioms ColumnTailSums.shiftCol_val
+#print axioms ColumnTailSums.shiftCol_eq_natAdd
+#print axioms ColumnTailSums.shiftCol_injective
+#print axioms ColumnTailSums.sum_tail_shift
+#print axioms ColumnTailSums.sum_tail_shift_of_eq
+#print axioms TriangularCylinder.SpliceRightRegion.lowerCol_shift
+#print axioms TriangularCylinder.SpliceRightRegion.upperCol_shift
+#print axioms TriangularCylinder.SpliceRightRegion.right_adj_iff_of_pos_column
+#print axioms TriangularCylinder.SpliceRightRegion.right_vertical_adj_iff
+#print axioms TriangularCylinder.SpliceRightRegion.right_intercolumn_adj_iff
+#print axioms TriangularCylinder.SpliceTailWeights.selectedGeometry_vertical_true_iff
+#print axioms TriangularCylinder.SpliceTailWeights.selectedGeometry_diagonal_true_iff
+#print axioms TriangularCylinder.SpliceTailWeights.selected_filter_add_tail
+#print axioms TriangularCylinder.SpliceTailWeights.vertical_tail_eq
+#print axioms TriangularCylinder.SpliceTailWeights.diagonal_tail_eq
+#print axioms TriangularCylinder.StateWidthTransport.fullWidthEquiv_eq_widthEquiv
+#print axioms TriangularCylinder.StateWidthTransport.occurs_stateAt_comap_widthEquiv
+#print axioms TriangularCylinder.StateWidthTransport.occurs_joined_state
+#print axioms TriangularCylinder.SpliceAssignedParity.assignedParity_add_of_splice
+#print axioms TriangularCylinder.SpliceAssignedParity.stateAt_parity_add_of_splice
+#print axioms TriangularCylinder.Transfer.stateAt_flip_of_splice
+#print axioms TriangularCylinder.Transfer.occurs_flip_of_nonfull
+#print axioms TriangularCylinder.Transfer.coreFlip
+#print axioms TriangularCylinder.Transfer.coreFlip_val
+#print axioms TriangularCylinder.Transfer.coreFlip_involutive
+#print axioms TriangularCylinder.Transfer.coreFlip_ne
+#print axioms TriangularCylinder.Transfer.coreFlipEquiv
+#print axioms TriangularCylinder.Transfer.coreFlipEquiv_apply
+#print axioms TriangularCylinder.SpliceCutTransport.shiftCut_castSucc
+#print axioms TriangularCylinder.SpliceCutTransport.shiftCut_succ
+#print axioms TriangularCylinder.SpliceCutTransport.shiftCut_last
+#print axioms TriangularCylinder.SpliceCutTransport.cutTail_shiftCut
+#print axioms TriangularCylinder.SpliceCutTransport.cutState_shiftCut_eq_stateAt
+#print axioms TriangularCylinder.SpliceCutTransport.shiftStep_column
+#print axioms TriangularCylinder.SpliceCutTransport.shift_last_column
+#print axioms TriangularCylinder.SpliceCutTransport.widthEquiv_shiftCol
+#print axioms TriangularCylinder.CycleWidthTransport.widthHom_apply
+#print axioms TriangularCylinder.CycleWidthTransport.widthHom_row
+#print axioms TriangularCylinder.CycleWidthTransport.widthHom_col_val
+#print axioms TriangularCylinder.CycleWidthTransport.widthHom_bijective
+#print axioms TriangularCylinder.CycleWidthTransport.widthHom_refl
+#print axioms TriangularCylinder.CycleWidthTransport.map_isHamiltonianCycle
+#print axioms TriangularCylinder.CycleWidthTransport.typeParity_map
+#print axioms TriangularCylinder.CycleWidthTransport.selectedGraph_map
+#print axioms TriangularCylinder.SpliceIndexedState.stateAt_flip_of_splice_width
+#print axioms TriangularCylinder.SpliceIndexedState.cutState_flip_of_splice
+#print axioms TriangularCylinder.SpliceIndexedState.verticalMask_shift_of_splice
+#print axioms TriangularCylinder.IndexedEndVertical.exists_selected_end_edges_of_nonfull_cutState
+#print axioms TriangularCylinder.ParityOneSplice.exists_parity_one_left_splice
+#print axioms TriangularCylinder.Transfer.localRealized_flip
+#print axioms TriangularCylinder.Transfer.terminalRealized_flip
+#print axioms TriangularCylinder.Transfer.localRealized_flip_iff
+#print axioms TriangularCylinder.Transfer.terminalRealized_flip_iff
+#print axioms TriangularCylinder.Transfer.localLabelFlipEquiv
+#print axioms TriangularCylinder.Transfer.terminalLabelFlipEquiv
+#print axioms TriangularCylinder.Transfer.localLabelFlipEquiv_val
+#print axioms TriangularCylinder.Transfer.terminalLabelFlipEquiv_val
+#print axioms TriangularCylinder.Transfer.localLabel_card_flip
+#print axioms TriangularCylinder.Transfer.terminalLabel_card_flip
+#print axioms TriangularCylinder.SpliceLeftState.leftWidth_prefixVertex
+#print axioms TriangularCylinder.SpliceLeftState.leftWidth_boundaryCol
+#print axioms TriangularCylinder.SpliceLeftState.leftWidth_nextCol
+#print axioms TriangularCylinder.SpliceLeftState.leftWidth_column
+#print axioms TriangularCylinder.SpliceLeftState.leftWidth_lowerCol
+#print axioms TriangularCylinder.SpliceLeftState.leftWidth_upperCol
+#print axioms TriangularCylinder.SpliceLeftState.prefixVertex_col_le
+#print axioms TriangularCylinder.SpliceLeftState.sum_prefix_castLE
+#print axioms TriangularCylinder.SpliceLeftState.stateAt_parity_geometry
+#print axioms TriangularCylinder.SpliceLeftState.selectedGeometry_diagonal_iff
+#print axioms TriangularCylinder.SpliceLeftState.left_adj_iff
+#print axioms TriangularCylinder.SpliceLeftState.left_adj_iff_of_col_le
+#print axioms TriangularCylinder.SpliceLeftState.prefixPart_eq
+#print axioms TriangularCylinder.SpliceLeftState.stateAt_horizontal_eq
+#print axioms TriangularCylinder.SpliceLeftState.stateAt_diagonal_eq
+#print axioms TriangularCylinder.SpliceLeftState.stateAt_reach_eq
+#print axioms TriangularCylinder.SpliceLeftState.selectedGeometry_vertical_eq
+#print axioms TriangularCylinder.SpliceLeftState.selectedGeometry_diagonal_eq
+#print axioms TriangularCylinder.SpliceLeftState.stateAt_parity_eq
+#print axioms TriangularCylinder.SpliceLeftState.stateAt_eq_of_graph_identity
+#print axioms TriangularCylinder.SpliceLeftState.exists_splice_preserving_left_state
+#print axioms TriangularCylinder.Transfer.stateAt_eq_of_zero_splice
+#print axioms TriangularCylinder.Transfer.common_interval_return
+#print axioms TriangularCylinder.Transfer.common_return_two
+#print axioms TriangularCylinder.Transfer.common_return_three
+#print axioms TriangularCylinder.Transfer.path_between_stateAt
+#print axioms TriangularCylinder.exists_aligned_six_column_zero_auxiliary
+#print axioms TriangularCylinder.exists_aligned_auxiliary_of_parity
+#print axioms TriangularCylinder.Transfer.right_last_adj_iff_of_splice
+#print axioms TriangularCylinder.Transfer.stateAt_left_eq_of_splice_width
+#print axioms TriangularCylinder.Transfer.core_path_nonempty
+#print axioms TriangularCylinder.Transfer.triangular_parity_ratio_limit
+#print axioms TriangularCylinder.Transfer.triangular_parity_ratio_limit_reciprocal
+
+#print axioms TriangularCylinder.Transfer.exists_parityCount_geometric_imbalance
