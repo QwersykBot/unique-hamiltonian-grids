@@ -73,6 +73,21 @@ width-three and width-four matrices and checks full cycle sequences against
 direct enumeration on six small cylinders. These are bounded checks, not a
 proof of the all-width theorem.
 
+### All-length sign at circumferences eight and ten
+
+The [finite-sign supplement](supplements/finite-sign/README.txt) gives exact
+integer certificates for Question 4 of the same 2015 paper at circumferences
+eight and ten. Put $a_k=(-1)^k[h_m^c(k+1)-h_m^{nc}(k+1)]$ for $k\ge0$.
+At $m=8$, it proves $a_0=6$ and $a_{k+1}>2a_k>0$; at $m=10$, it proves
+$a_0=8$ and $a_{k+1}>8a_k>0$. These are all-length recurrence proofs.
+The universal even-circumference sign question remains open here.
+
+Run `python supplements/finite-sign/verify.py` to reconstruct the width-ten
+physical transfer and check both certificates using exact integer arithmetic.
+The supplement includes the source model, complete proof arguments, a separate
+C++ count check, and internal review records. It adds no Lean theorem or claim
+of human peer review.
+
 ### Triangular cylinders
 
 Add the diagonal $(i,j)(i+1,j+1)$ to every square of the cylinder, with cyclic

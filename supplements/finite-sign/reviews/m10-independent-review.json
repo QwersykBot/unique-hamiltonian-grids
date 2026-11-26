@@ -1,0 +1,61 @@
+{
+  "reviewer": "finite_sign_theory; independent non-author agent in the same collective",
+  "recorded_at_utc": "2026-11-26T10:53:27.366378+00:00",
+  "status": "PASS",
+  "reviewed_files": {
+    "m10-all-length-sign-certificate.json": "f4a5b8a723b3035722a0be862271bbe2737c492382a7d6ef91b3c1f2eee442ea",
+    "verify_sign_certificate.py": "e4bb004f334f2caf4db0efe1d292dd5c50280b560013098c15578d1dfec18430",
+    "README-sign.txt": "1c39524c114b6863ccfa5fc691cec6e83c74e03524b6218e78e149b25834ad13",
+    "signed_transfer.cpp": "3dbd722aee47f16bdfd6ae0066fc482201034e3433d1589bf7db997a7acfbec6"
+  },
+  "author_frozen_pins_match": true,
+  "fresh_verifier_replay": {
+    "status": "PASS",
+    "elapsed_seconds": 15.495083229999977,
+    "states": 2234,
+    "dihedral_orbits": 172,
+    "odd_dimension": 82,
+    "annihilator_degree": 82,
+    "rational_denominator_degree": 67,
+    "r": 8,
+    "q_minus_A_v_zero": true,
+    "exact_rational_identity": true,
+    "minimum_initial_difference": 798,
+    "existing_cpp_record_terms_compared": 83
+  },
+  "independent_algebra": {
+    "coprime_numerator_denominator": true,
+    "numerator_degree": 66,
+    "denominator_degree": 67,
+    "smallest_beta": 2,
+    "gamma": "19676990277789349175922546551608103560124231883434186232797184",
+    "method": "Separate SymPy polynomial gcd and Euclidean division; the primary verifier uses exact stdlib integer identities."
+  },
+  "independent_primary_source_checks": {
+    "source": "https://dmtcs.episciences.org/en/articles/2113/download",
+    "Question_4_printed_page": 238,
+    "m10_printed_page": 236,
+    "m10_separately_transcribed_count_differences_matched": 16,
+    "m10_reported_denominator_degree": 67,
+    "m8_printed_page": 235,
+    "m8_exact_denominator_match": true,
+    "m8_separate_rational_initial_differences_matched": 20,
+    "m8_separately_printed_count_differences_matched": 15
+  },
+  "semantic_review": [
+    "L=k+2 and n=k+1 give exactly a_k=(-1)^k(h_c(k+1)-h_nc(k+1)); the sign orientation matches Question 4.",
+    "The quotient starts with f_i=number of eligible labelled initial states in orbit i, so labelled cycles are not divided by a dihedral factor.",
+    "Odd terminal difference is J-antisymmetric. On one representative of each J-pair, A_ij=T_ij-T_i,Jj and u_i=f_i-f_Ji; there is no factor of two. J-fixed orbits have zero odd component and can be removed.",
+    "The existing checker exhausts all vertical masks, verifies initial membership and transition closure of its finite pairing-state inventory, trims reachable/coaccessible states, rejects premature closed components, and uses exact one-cycle closing caps. Each complete edge selection is its unique column-mask sequence.",
+    "The exact vector annihilation q(-A)v=0 yields a recurrence for every subsequent length, rather than only the finite checked prefix.",
+    "Coefficientwise integer cross multiplication identifies the reduced proper rational function; an independent gcd check confirms full reduction.",
+    "Writing d(x)=(x-8)(x^66-sum beta_j x^(66-j))-gamma with beta_j>=0, gamma>0 gives b_(k+66)=sum beta_j b_(k+66-j)+gamma a_k. Positive initial a0 and b0..b65 prove both a_k>0 and b_k>0 for all k by joint induction."
+  ],
+  "limitations": [
+    "No all-even-circumference theorem or new universal combinatorial interpretation.",
+    "No Lean formalization or independent human review.",
+    "Primary source omits the m10 rational polynomial, so only 16 printed differences and the degree can be compared externally; the full polynomial identity is certified against the reconstructed transfer.",
+    "The optional C++ comparison reads the existing recorded output; this review did not rerun that C++ enumerator.",
+    "A bounded literature query did not establish literature-wide priority."
+  ]
+}

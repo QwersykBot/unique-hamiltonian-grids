@@ -1,0 +1,87 @@
+ALL-LENGTH SIGN AT CIRCUMFERENCE EIGHT FROM THE PUBLISHED RATIONAL FUNCTION
+26 November 2026 — AI-authored mathematical supplement
+
+Statement and source
+--------------------
+Use the counting convention of Bodroza-Pantic, Kwong and Pantic,
+"A Conjecture on the Number of Hamiltonian Cycles on Thin Grid Cylinder
+Graphs", DMTCS 17:1 (2015), 219–240:
+https://dmtcs.episciences.org/en/articles/2113/download
+
+Let h_c(n), h_nc(n) count the contractible and noncontractible undirected
+Hamiltonian edge sets of C_8 x P_(n+1), on labelled vertices. Define
+
+    a_k = (-1)^k [h_c(k+1) - h_nc(k+1)],  k >= 0.
+
+Thus the vertex-column count is L=k+2. The conclusion is
+
+    a_0 = 6, and a_(k+1) > 2 a_k > 0 for every k >= 0.
+
+This proves the strict alternating-sign assertion in Question 4 (printed
+page 238) at circumference eight for every length. It is not a theorem
+for every even circumference.
+
+Exact source data
+-----------------
+Section 6.7, printed page 235, gives K_8(x)=r_8(x)/s_8(x), where
+K_8=H_8^c-H_8^nc. The companion verifier contains all coefficients of
+r_8 and s_8, transcribed in ascending order, and explicitly substitutes
+x -> -x. Therefore A(x)=sum_(k>=0) a_k x^k=P(x)/D(x), with
+deg P=19, deg D=20 and D(0)=1.
+
+The verifier expands exactly the twenty initial coefficients a_0,...,a_19
+by solving D(x)A(x)=P(x). It separately contains all fifteen coefficients
+printed for each of H_8^c and H_8^nc, and compares their alternating
+differences with the first fifteen expanded coefficients. These checks
+support the transcription; the all-length conclusion comes from the
+following recurrence argument.
+
+Positive recurrence proof
+-------------------------
+Let d(t)=t^20 D(1/t). Exact integer synthetic division gives
+
+    d(t)=(t-2) Q(t)-gamma,
+    Q(t)=t^19-beta_1*t^18-...-beta_19,
+    gamma=117455600,
+
+where the beta list, in this order, is
+
+    3, 110, 749, 3046, 7922, 11929, 10331, 13480, 47874,
+    126775, 244336, 453635, 908475, 1836540, 3673970,
+    7342170, 14682292, 29363996, 58727808.
+
+Every beta is positive. Because deg P<20, the coefficients of P/D obey
+d(E)a_k=0 for every k>=0, where E shifts a sequence one place forward.
+Put b_k=a_(k+1)-2 a_k. Substituting the displayed factorization yields
+
+    b_(k+19)=beta_1 b_(k+18)+...+beta_19 b_k+gamma a_k.
+
+The verifier checks a_0=6 and b_0,...,b_18>0 directly from the exact
+rational expansion. Their minimum is 178. These premises imply
+a_0,...,a_19>0 by a_(k+1)=2a_k+b_k. Joint induction now proves every
+subsequent b positive using the recurrence, and every subsequent a
+positive using that same update identity. The conclusion therefore
+holds for all k, without checking or estimating further terms.
+
+Reproduction
+------------
+With Python 3.10 or later:
+
+    python verify_k8_published_sign.py
+
+The script uses only the standard library and makes no network requests.
+It is self-contained: neither a repository checkout nor the earlier JSON
+certificate is required. Run without -O, -OO or PYTHONOPTIMIZE, because
+its exact validation premises are checked with assertions.
+
+Scope and provenance
+--------------------
+The graph-count identification is the rational formula stated in the
+original paper; this supplement does not replace its transfer-model proof.
+The new algebra is an exact positive-recurrence certificate for that
+specific rational function. Its derivation is independent of the
+circumference-ten transfer reconstruction in the companion packet.
+No universal combinatorial interpretation, all-circumference result,
+Lean formalization, human peer review, external adoption, or
+literature-wide priority is claimed. The original paper is linked and
+is not included in this supplement.

@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "width": 10,
+  "model_states": 2234,
+  "dihedral_quotient_states": 172,
+  "odd_block_dimension": 82,
+  "annihilator_degree": 82,
+  "reduced_recurrence_degree": 67,
+  "r": 8,
+  "cone_remainder": -19676990277789349175922546551608103560124231883434186232797184,
+  "minimum_initial_difference": 798,
+  "q_B_v_zero": true,
+  "exact_rational_identity": true,
+  "positive_induction_conditions": true,
+  "independent_cpp_terms_compared": 83,
+  "source_checker_sha256": "85abf5b4eb3a87a26ed61231be611decfb6529598d7a4ef83a673a90be88aed9",
+  "certificate_sha256": "f4a5b8a723b3035722a0be862271bbe2737c492382a7d6ef91b3c1f2eee442ea",
+  "elapsed_seconds": 15.640474233000077,
+  "scope": "All lengths for this reconstructed m=10 transfer model; no all-circumference conclusion."
+}
