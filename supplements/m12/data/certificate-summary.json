@@ -1,0 +1,45 @@
+{
+  "format": {
+    "format": "m12-hc-certificate-v1",
+    "n": 12,
+    "edge_order": "row-major-right-then-down"
+  },
+  "records": 818983,
+  "by_deletion_count": {
+    "0": {
+      "records": 1,
+      "zero": 0,
+      "multiple": 1
+    },
+    "2": {
+      "records": 666,
+      "zero": 70,
+      "multiple": 596
+    },
+    "4": {
+      "records": 818316,
+      "zero": 215993,
+      "multiple": 602323
+    }
+  },
+  "cycle_witnesses": 1205840,
+  "gzip_bytes": 9559221,
+  "gzip_sha256": "9ea69782a31f3ec4de132782f119fea882f095c9326d15b4f2e5b66a5849658d",
+  "uncompressed_bytes": 96638420,
+  "uncompressed_sha256": "fb23d30b7b2751b693c8a2ce6269d6219c6eb0a38396ab549f3564ad31ff63cd",
+  "shard_gzip_sha256": [
+    "4dd7828c81d6a7768dcac9146a46cd420148a7be64f0026c82b6c90155a53782",
+    "4079e8a3074c7b03fd615c856b07299fd331fa913d6232d1be4003fef266bc0e"
+  ],
+  "producer_source_sha256": "8189790d83a68decbfe6085354b88c020579615f2dc6346a1a9ece60b5f3a436",
+  "counter_source_sha256": "e7565ef9f96788cea152cd30bcd58a55a783e6f85259ed5b64b9cee9385b48a8",
+  "total_producer_cpu_seconds": 433.592107,
+  "max_producer_wall_seconds": 217.886229987,
+  "merge_seconds": 11.157682207000107,
+  "independent_verification_status": "Passed complete independent check; no producer or Counter imports in checker.",
+  "independent_report": "independent-check-report.json",
+  "independent_report_sha256": "e0d2031ff9f950fa04c42028298716dea6724dd2de6fe1812fce7c00e8f145f6",
+  "checker_sha256": "8ea3cdc69c0cbde301acb8e63f263a9072d1ab8e83dff163a3e73594faa2fd23",
+  "checker_proof_sha256": "2be9be5ffc25f75a54fe726bc3a69655c79e1770f861b48de9add9060b6751be",
+  "original_v1_packet_sha256_verified_unchanged": "ab477d1f594fb5b18f7ae7d75058ea0de479cfc8205b0e0b86026014d8fb46a7"
+}

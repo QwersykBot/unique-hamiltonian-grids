@@ -1,0 +1,90 @@
+{
+  "edition": "complete-certificate",
+  "result": "M(12,12)=6 for vertex deletion from the ordinary induced square grid",
+  "date_utc": "2026-11-26",
+  "license": "CC0 1.0 Universal for original code and documentation; see LICENSE.txt and README.md",
+  "copied_files_unchanged_sha256": {
+    "data/complete-m12-hc-certificate.jsonl.gz": "9ea69782a31f3ec4de132782f119fea882f095c9326d15b4f2e5b66a5849658d",
+    "data/sample-m12-hc-certificate.jsonl.gz": "b21879c81f03f3b5283688045e9b6900945bd9c10207a6ff5f8755281a623008",
+    "data/independent-check-report.json": "e0d2031ff9f950fa04c42028298716dea6724dd2de6fe1812fce7c00e8f145f6",
+    "data/certificate-summary.json": "ac548b0cdd0a5fd43b9f3808fda596ea9e40564039c505a4307bf8e9facb5479",
+    "data/upper12-witness.json": "8dfe1b9849fa63888f36b4b67efef1f0df7f31e510a0be1ba48036093e0d055f",
+    "src/check_certificate.py": "8ea3cdc69c0cbde301acb8e63f263a9072d1ab8e83dff163a3e73594faa2fd23",
+    "src/root_transfer.py": "8a31e1dcbc11a6feb1e48bc61298a1ffb3e7b470054d14637e23a6f221f155f2",
+    "CHECKER_PROOF.md": "2be9be5ffc25f75a54fe726bc3a69655c79e1770f861b48de9add9060b6751be",
+    "LICENSE.txt": "ee0df234ac9968c830b1873cb4c9e5cb3ecabb41428ccfac876b360dbb683a79",
+    "producer/cycle_counter.cpp": "e7565ef9f96788cea152cd30bcd58a55a783e6f85259ed5b64b9cee9385b48a8",
+    "producer/certificate_producer.cpp": "8189790d83a68decbfe6085354b88c020579615f2dc6346a1a9ece60b5f3a436",
+    "producer/compress_producer.py": "f0778633b4d58aae3ddacfd69f577a16c332d7c39243a5a39e0bb430904848f4",
+    "producer/merge_certificates.py": "b998cc4a5ff101642a9b968bc3d2c93a4f5fce662be5d3d464299018ad5c3e05",
+    "producer/producer-metadata.json": "ccc4f0dc03390a106f0accbc09abf41b398df215dcf70e68a530dbf478fe8140"
+  },
+  "previous_search_record_archive": {
+    "filename": "m12-square-grid-reproducibility.zip",
+    "sha256": "ab477d1f594fb5b18f7ae7d75058ea0de479cfc8205b0e0b86026014d8fb46a7",
+    "preserved_unchanged": true,
+    "embedded_in_this_packet": false
+  },
+  "source_roles": {
+    "src/check_certificate.py": "Independent certificate checker: no producer or counting-program imports; all records checked without Hamiltonian search.",
+    "src/root_transfer.py": "Separately written exact cell-frontier counter, retained only for an optional upper-construction cross-check (--frontier). Not imported by default verification.",
+    "producer/cycle_counter.cpp": "Frozen AI-authored degree-propagation edge counter used to find witnesses. Not trusted by verification.",
+    "producer/certificate_producer.cpp": "Frozen producer with inverse D4 witness mapping and full-grid edge-bit encoding. Not trusted by verification.",
+    "verify.py": "New portable wrapper: payload integrity, complete/partial certificate checking, and elementary upper uniqueness via forced degrees and proper-subtour edge exclusions. No Hamiltonian search or cycle counting in default proof.",
+    "regenerate.py": "New portable wrapper around the unchanged producer scripts; generates outputs in a fresh directory.",
+    "UPPER_PROOF.md": "Soundness argument for the elementary six-deletion uniqueness verification."
+  },
+  "upstream_algorithmic_reference": {
+    "repository": "https://github.com/QwersykBot/unique-hamiltonian-grids",
+    "commit": "2269358eea2922cd773b47b7d495266ebb323ab6",
+    "path": "checks/independent_cycle_counter.py",
+    "sha256": "9f6949815a4fa56b05fdc2463578186a9e713dd36b2274a8956329d4646527de",
+    "needed_for_verification_or_regeneration": false
+  },
+  "historical_metadata_note": "Producer metadata records commands from the original certificate directory. regenerate.py places all required producer inputs together in a new work directory and invokes the packaged checker explicitly.",
+  "validation_status": "The unchanged complete certificate previously passed the unchanged independent checker. New verify/regenerate wrappers passed the 1193-record partial sample and elementary upper proof; sample mode explicitly withholds complete lower coverage and equality. No new full search or lower check was run for packaging.",
+  "review_scope": "Internal AI source review and machine checking; no human peer review, formal-kernel verification, general lower-bound theorem, or priority claim.",
+  "new_upper_verification": {
+    "report": "data/upper-check-report.json",
+    "propagation_rounds": 3,
+    "proper_subtour_edge_exclusions": 4,
+    "forced_edges": 138,
+    "optional_frontier_count": 1
+  },
+  "upper_construction_attribution": {
+    "author": "Misha Lavrov",
+    "answer_date": "2025-10-25",
+    "source": "https://math.stackexchange.com/questions/5103789/minimum-of-black-squares-to-guarantee-uniqueness-of-loop-visiting-all-white-sq",
+    "known_bound": "M(4k,4k) <= 2k",
+    "instance": "k=3",
+    "source_one_based_deletions": [
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        1,
+        12
+      ],
+      [
+        11,
+        3
+      ],
+      [
+        11,
+        7
+      ],
+      [
+        11,
+        11
+      ]
+    ],
+    "coordinate_equivalence": "Convert to zero-based coordinates, then apply (r,c) -> (11-c,r).",
+    "rectangular_problem_context": "https://math.stackexchange.com/questions/5109188/minimum-number-of-forbidden-cells-for-a-unique-loop-on-m-times-n-grid",
+    "scope": "Verification of an established construction; no new upper-bound claim and no source code or prose reproduced."
+  }
+}

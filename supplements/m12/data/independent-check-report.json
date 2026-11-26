@@ -1,0 +1,45 @@
+{
+  "valid": true,
+  "complete": true,
+  "records": 818983,
+  "datasets": {
+    "0": {
+      "canonical_sets": 1,
+      "expected_canonical_sets": 1,
+      "expanded_orbit_total": 1,
+      "classifications": {
+        "at_least_two": 1
+      }
+    },
+    "2": {
+      "canonical_sets": 666,
+      "expected_canonical_sets": 666,
+      "expanded_orbit_total": 5184,
+      "classifications": {
+        "at_least_two": 596,
+        "zero": 70
+      }
+    },
+    "4": {
+      "canonical_sets": 818316,
+      "expected_canonical_sets": 818316,
+      "expanded_orbit_total": 6533136,
+      "classifications": {
+        "at_least_two": 602323,
+        "zero": 215993
+      }
+    }
+  },
+  "zero_obstructions": {
+    "degree": 213882,
+    "forced_proper_cycle": 2181
+  },
+  "conclusion": "Every balanced deletion set of size 0, 2, or 4 has zero or at least two Hamiltonian cycles; therefore M(12,12) >= 6.",
+  "seconds": 87.62179389699986,
+  "checker_sha256": "8ea3cdc69c0cbde301acb8e63f263a9072d1ab8e83dff163a3e73594faa2fd23",
+  "certificate_sha256": "9ea69782a31f3ec4de132782f119fea882f095c9326d15b4f2e5b66a5849658d",
+  "certificate_file": "complete-m12-hc-certificate.jsonl.gz",
+  "certificate_compressed_bytes": 9559221,
+  "python_version": "3.12.14",
+  "witness_count": 1205840
+}

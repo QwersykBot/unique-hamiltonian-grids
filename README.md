@@ -187,6 +187,23 @@ and its
 The width-two case has $M(2,n)=0$. No literature-wide priority or external
 acceptance is claimed.
 
+### Certified square-grid value: M(12,12) = 6
+
+The [complete certificate](supplements/m12/README.md) establishes
+$M(12,12)=6$. It covers all 818,983 balanced deletion classes below six
+deletions, modulo square symmetries. A separate checker validates two
+distinct Hamiltonian edge sets for every positive case and proves every
+zero case by necessary degree constraints or a forced proper cycle.
+Lavrov's existing six-deletion construction supplies the upper bound;
+elementary edge forcing verifies its uniqueness.
+
+Run `python supplements/m12/verify.py` with Python 3.10 or newer. Verification
+uses the standard library and requires no Hamiltonian search or C++ compiler.
+The packet includes the full certificate, proof notes, provenance, and
+optional regeneration sources. This is a finite computational result with
+internal AI review; no general square-grid bound, formal-kernel proof,
+human peer review, or priority claim is made.
+
 ## Read the argument
 
 | Source | Role |

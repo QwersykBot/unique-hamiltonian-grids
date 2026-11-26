@@ -20,3 +20,4 @@ jobs:
           python-version: '3.12'
       - run: python verify.py
       - run: python supplements/finite-sign/verify.py
+      - run: python supplements/m12/verify.py

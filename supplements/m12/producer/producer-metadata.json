@@ -1,0 +1,37 @@
+{
+  "counter_source_sha256": "e7565ef9f96788cea152cd30bcd58a55a783e6f85259ed5b64b9cee9385b48a8",
+  "frozen_sweep_source_sha256": "1db4d3fc266a0b8f3f50a531e4ce302f6276fb7db02a8e93ad34d27a1934a0fd",
+  "node_cap": 4096,
+  "orientation_order": [
+    0,
+    2,
+    1,
+    3,
+    4,
+    6,
+    5,
+    7
+  ],
+  "format": "m12-hc-certificate-v1",
+  "n": 12,
+  "edge_order": "row-major-right-then-down",
+  "hex_convention": "66 lowercase hex digits, ordinary integer notation; bit i selects full-grid edge i; edge0 is least-significant bit",
+  "original_packet_unchanged_sha256": "ab477d1f594fb5b18f7ae7d75058ea0de479cfc8205b0e0b86026014d8fb46a7",
+  "producer_source_sha256": "8189790d83a68decbfe6085354b88c020579615f2dc6346a1a9ece60b5f3a436",
+  "compression_helper_sha256": "f0778633b4d58aae3ddacfd69f577a16c332d7c39243a5a39e0bb430904848f4",
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "compiler_flags": "-O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic",
+  "sample": {
+    "records": 1193,
+    "stress_cases": 14,
+    "gzip_bytes": 21028,
+    "sha256": "b21879c81f03f3b5283688045e9b6900945bd9c10207a6ff5f8755281a623008"
+  },
+  "commands": [
+    "g++ -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic certificate_producer.cpp -o certificate_producer",
+    "python compress_producer.py 0 2 shard0-m12-hc-certificate.jsonl.gz",
+    "python compress_producer.py 1 2 shard1-m12-hc-certificate.jsonl.gz",
+    "python merge_certificates.py",
+    "python check_certificate.py complete-m12-hc-certificate.jsonl.gz"
+  ]
+}
