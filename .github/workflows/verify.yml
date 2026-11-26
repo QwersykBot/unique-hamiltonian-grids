@@ -19,3 +19,4 @@ jobs:
         with:
           python-version: '3.12'
       - run: python verify.py
+      - run: python supplements/finite-sign/verify.py

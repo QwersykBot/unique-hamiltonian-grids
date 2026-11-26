@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "candidate_version": "2026-11-25-observations-1",
+  "candidate_version": "2026-11-26-finite-sign-1",
   "proof_sha256": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1",
   "reviewed_sources_sha256": {
     "grid_width_classification.md": "3b325dfe8d0e874bf2202fe8b086e3f4a5f84013d5d4720d75d2f5d8c3402fd1",
@@ -22,16 +22,16 @@
       "sha256": "22b8b23b515511ace4ef361ab73c0fa9735fa0b90fea71184e3c66b20fb14359"
     },
     ".github/workflows/verify.yml": {
-      "bytes": 462,
-      "sha256": "3315da95887b77e7eb0f6596277c28dde9ddcf57f944f3d974316eae08b12c71"
+      "bytes": 516,
+      "sha256": "a8df8a5083fa66525b92779fd704559c1d93fc20d0ed4ca1184a410d5d9d2727"
     },
     "LICENSE.txt": {
       "bytes": 592,
       "sha256": "ee0df234ac9968c830b1873cb4c9e5cb3ecabb41428ccfac876b360dbb683a79"
     },
     "README.md": {
-      "bytes": 18983,
-      "sha256": "0455a44eeaec907e3c77aa04adf6127730d42d5b758e4793179a64d7e7166431"
+      "bytes": 19804,
+      "sha256": "923055472a2e1dc8b0a90ea2e0a54283b05bd0ee22e85eba29f776474b8b2a5e"
     },
     "checks/check_cylinder_model.py": {
       "bytes": 18372,
@@ -760,6 +760,82 @@
     "reviews/triangular_cylinder.md": {
       "bytes": 20704,
       "sha256": "13a1f83f385034573d2ff6344acf1706e9c3063522237e7a92c2610192099aee"
+    },
+    "supplements/finite-sign/LICENSE.txt": {
+      "bytes": 592,
+      "sha256": "ee0df234ac9968c830b1873cb4c9e5cb3ecabb41428ccfac876b360dbb683a79"
+    },
+    "supplements/finite-sign/README.txt": {
+      "bytes": 4087,
+      "sha256": "80b670a7796c6c80e97819940ba12b7103ce7d71afe6d92da91dc05d742c3e74"
+    },
+    "supplements/finite-sign/m10/README-sign.txt": {
+      "bytes": 5989,
+      "sha256": "1c39524c114b6863ccfa5fc691cec6e83c74e03524b6218e78e149b25834ad13"
+    },
+    "supplements/finite-sign/m10/cpp-10.json": {
+      "bytes": 100429,
+      "sha256": "80efcfd0a174aac845e9c0365b3284ca3d896d4a4636ef60acf202889fe8ecc2"
+    },
+    "supplements/finite-sign/m10/m10-all-length-sign-certificate.json": {
+      "bytes": 70003,
+      "sha256": "f4a5b8a723b3035722a0be862271bbe2737c492382a7d6ef91b3c1f2eee442ea"
+    },
+    "supplements/finite-sign/m10/m10-verification.json": {
+      "bytes": 790,
+      "sha256": "100153a5795ed6aa9988e0c673a04e885d96e72992e3068f7531feeac659f02b"
+    },
+    "supplements/finite-sign/m10/root-m10-replay.json": {
+      "bytes": 790,
+      "sha256": "eb8b3f389e981f0048e2c588da5ca36c5f1889b267ad5b36b8302374c7cf3331"
+    },
+    "supplements/finite-sign/m10/signed_transfer.cpp": {
+      "bytes": 4735,
+      "sha256": "3dbd722aee47f16bdfd6ae0066fc482201034e3433d1589bf7db997a7acfbec6"
+    },
+    "supplements/finite-sign/m10/verify_sign_certificate.py": {
+      "bytes": 5273,
+      "sha256": "e4bb004f334f2caf4db0efe1d292dd5c50280b560013098c15578d1dfec18430"
+    },
+    "supplements/finite-sign/m8/K8-published-sign-proof.txt": {
+      "bytes": 3677,
+      "sha256": "76901ae9e76e47714635897ee502478e21220bcffd4cd0f44c4b0331eb2982a4"
+    },
+    "supplements/finite-sign/m8/k8-published-sign-verification.json": {
+      "bytes": 1356,
+      "sha256": "c6915e7c92716ba5bff9c00eb71888cbac20f2c6c941cea11368bfe2e80ceb09"
+    },
+    "supplements/finite-sign/m8/k8_positive_cone.json": {
+      "bytes": 1663,
+      "sha256": "aa2c6d1b2197df8e3fba9b643031f0a890a9d9fbe1f155ab98981e7e39d71867"
+    },
+    "supplements/finite-sign/m8/verify_k8_published_sign.py": {
+      "bytes": 4697,
+      "sha256": "efa143fccfa9b20e4f19fd4082838ed9bb08f9e2fae072a6bcd354411f77ceb5"
+    },
+    "supplements/finite-sign/manifest.json": {
+      "bytes": 2835,
+      "sha256": "2d41f0e5cd92be271da9f31705673eccf72cee96245337113b56b07f54e7825a"
+    },
+    "supplements/finite-sign/reviews/m10-independent-review.json": {
+      "bytes": 3779,
+      "sha256": "66ef2b918d45893a263ba89d3f4f2fadbe54eced5514392d286f8bdc7c901196"
+    },
+    "supplements/finite-sign/reviews/package-replay.json": {
+      "bytes": 2546,
+      "sha256": "72d7ed563983426616d5762eb127f0e3e821a61828897850bdaa8cb5865e13c9"
+    },
+    "supplements/finite-sign/reviews/sterling-crab-review.json": {
+      "bytes": 4202,
+      "sha256": "975b38d3dec0abdb36ad83f75eb58446be80f6de72d18ec6c61c5e0e2c5dfdf5"
+    },
+    "supplements/finite-sign/source_model/checks/check_cylinder_model.py": {
+      "bytes": 18372,
+      "sha256": "85abf5b4eb3a87a26ed61231be611decfb6529598d7a4ef83a673a90be88aed9"
+    },
+    "supplements/finite-sign/verify.py": {
+      "bytes": 1077,
+      "sha256": "36550218e5ba8c47bc01d2a68e63f5e8807bc7dff5aea528e22f596ff5a0ae83"
     },
     "triangular_cylinder_asymptotics.md": {
       "bytes": 19437,
