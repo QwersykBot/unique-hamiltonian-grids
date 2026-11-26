@@ -1,0 +1,27 @@
+{
+  "valid": true,
+  "scope": "Complete verification of the six-deletion upper construction; no complete lower-certificate rerun in this smoke test.",
+  "upper_construction": {
+    "deleted_vertices": [
+      0,
+      48,
+      96,
+      22,
+      70,
+      118
+    ],
+    "witness_valid": true,
+    "uniqueness_proved": true,
+    "exact_hamiltonian_cycle_count": 1,
+    "method": "degree and proper-subtour forcing; no search or counting",
+    "propagation_rounds": 3,
+    "proper_subtour_edge_exclusions": 4,
+    "forced_edges": 138,
+    "unique_cycle_hex": "aabbbbbba08889ceeeecc22223bbbbba08889ceeeecc22223bbbbba08889deeeec",
+    "optional_frontier_cycle_count": 1
+  },
+  "python_version": "3.12.14",
+  "verify_source_sha256": "a9d9e276a5eb089bfbcd1db087baf7b4bba623f0267189f1df5213b674eff920",
+  "checker_sha256": "8ea3cdc69c0cbde301acb8e63f263a9072d1ab8e83dff163a3e73594faa2fd23",
+  "optional_frontier_sha256": "8a31e1dcbc11a6feb1e48bc61298a1ffb3e7b470054d14637e23a6f221f155f2"
+}
